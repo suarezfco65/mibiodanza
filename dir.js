@@ -428,13 +428,13 @@ for (var i=0; i<arrayDir.length; i++)	{
 function oa(disco, pista, obs='')	{
 var cancion = arrayCanciones.find(c => (c.disco == disco && c.pista == pista));
 //var cancion = arrayCanciones[1];
-var	s = '<tr>';
-	s += '<td nowrap rowspan="3">'+disco+'-'+pista+'</td>';
+var	s = '<tr style="vertical-align:top">';
+	s += '<th nowrap rowspan="3">'+disco+'-'+pista+'&nbsp;</th>';
     if (cancion == undefined)   
-        s += '<td colspan="2">Canción no encontrada</td>'
+        s += '<th colspan="2">Canción no encontrada</th>'
     else    {
-        s += '<td>'+cancion.autor+'</td>';
-        s += '<td>'+cancion.nombre+'</td>';
+        s += '<th style="color:rgb(0,64,128)">'+cancion.autor+'</th>';
+        s += '<th style="color:#BB0000">'+cancion.nombre+'</th>';
     }
     s += '</tr><tr>';
     s += '<td colspan="2"><audio src="'+ubicacion+cancion.archivo+'" controls preload="none">Tu navegador no soporta la etiqueta audio</audio></td>';
