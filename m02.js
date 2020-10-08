@@ -1,4 +1,4 @@
-function m01()  {
+function m02()  {
   var s=`
         `+inicioContenido(["2"],"LA MARCHA")+`
             <li class="list-group-item">
