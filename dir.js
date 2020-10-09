@@ -441,5 +441,5 @@ var	s = '<tr style="vertical-align:top">';
 	s += '</tr><tr>';
 	s += '<td colspan="3"><i>'+obs+'</i></td>';
 	s += '</tr>';
-    document.write(s);
+    return s;
 }
