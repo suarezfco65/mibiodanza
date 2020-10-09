@@ -16,89 +16,72 @@
     </style>
     <script>
         function inicioGrupo()  {
-        return `
+        document.write(`
             <div class="panel-group">
                 <div class="panel panel-default">
-            `;
+            `);
         }
 
         function finGrupo() {
-        return `
+        document.write(`
                 </div>
             </div>
-            `;
+            `);
         }
         function inicioContenido(indice,titulo) {
-        return `
+        document.write(`
                     <div class="panel-heading">
                         <h4 class="panel-title"><a data-toggle="collapse" href="#collapse`+indice.join("_")+`">`+indice.join(".")+`. `+titulo+`</a></h4>
                     </div>
                     <div id="collapse`+indice.join("_")+`" class="panel-collapse collapse">
                         <ul class="list-group">
-            `;
+            `);
         }
         function finContenido(indice,titulo) {
-        return `
+        document.write(`
                         </ul>
                         <div class="panel-footer"><a style="color:black" data-toggle="collapse" href="#collapse`+indice.join("_")+`">FIN DE: `+indice.join(".")+`. `+titulo+`</a></div>
                     </div>
-            `;
+            `);
         }
     </script>
 </head>
 <body>
-<audio id="miAudio"></audio>
-
 <div class="container">
     <center>
         <img src="logo300x291.png" height="145" width="145"><br>
         <h2>Lista Oficial de Ejercicios, Músicas y Consignas 2012</h2>
         <p>Edición revisada y amplificada a partir de la Edición del Asesorado Metodológico 2009</p>
     </center>
-
 <script>
-        document.write(inicioGrupo()); // principal
+    inicioGrupo(); // principal
 
-        for (var i=0; i<arrTiposDanzas.length; i++)  {
-            var tipoDanza = arrTiposDanzas[i]
-            inicioContenido([tipoDanza.cod],tipoDanza.nombre)
-            if(tipoDanza.descripcion <> "")
-                document.write('<li class="list-group-item">'+tipoDanza.descripcion+'</li>'
-</script>
-            <li class="list-group-item">
-<script>    inicioGrupo();
-            for (var j=0; j<tipoDanza.arrDanzas.length; j++)    {
-                var danza = tipoDanza.arrDanzas[j];
-                inicioContenido([tipoDanza.cod,danza.cod],danza.nombre)
-                if(danza.descripcion <> "")
-                    document.write('<li class="list-group-item">'+danza.descripcion+'</li>'
-</script>
-                <li class="list-group-item"><h4>Música</h4>
-                    <table>
-<script>
-                for (var k=0; k<danza.arrCanciones.length;k++)  {
-                    var cancion = danza.arrCanciones[k];
-                    oa(cancion.disco,cancion.pista,cancion.descripcion);
-                }
-</script>
-                    </table>
-                </li>
-<script>
-                finContenido([tipoDanza.cod,danza.cod],danza.nombre)
-</script>}
-
-
-<script>
+    for (var i=0; i<arrTiposDanzas.length; i++)  {
+        var tipoDanza = arrTiposDanzas[i]
+        inicioContenido([tipoDanza.cod],tipoDanza.nombre)
+        if(tipoDanza.descripcion != "")
+            document.write('<li class="list-group-item">'+tipoDanza.descripcion+'</li>');
+        document.write('<li class="list-group-item">');
+        inicioGrupo();
+        for (var j=0; j<tipoDanza.arrDanzas.length; j++)    {
+            var danza = tipoDanza.arrDanzas[j];
+            inicioContenido([tipoDanza.cod,danza.cod],danza.nombre)
+            if(danza.descripcion != "")
+                document.write('<li class="list-group-item">'+danza.descripcion+'</li>');
+            document.write('<li class="list-group-item"><table>');
+            for (var k=0; k<danza.arrCanciones.length;k++)  {
+                var cancion = danza.arrCanciones[k];
+                document.write(oa(cancion.disco,cancion.pista,cancion.descripcion));
             }
-            finGrupo();
-</script>
-            </li>
-<script>
-            finContenido([tipoDanza.cod],tipoDanza.nombre)
-            
+            document.write('</table></li>');
+            finContenido([tipoDanza.cod,danza.cod],danza.nombre)
         }
+        finGrupo();
+        document.write('</li>');
+        finContenido([tipoDanza.cod],tipoDanza.nombre)
+    }
 
-        document.write(finGrupo()); // principal
+    finGrupo(); // principal
 </script>
     
 </div>

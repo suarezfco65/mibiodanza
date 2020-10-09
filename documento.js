@@ -3466,6 +3466,8 @@ var arrDocumento = [	['T', `LAS RONDAS`],
 	['C', `14-03 The Girl From Ipanema (feat. Astrud     Getz, Stan / Gilberto, Joõo     5:16`]	]
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
+var contDanzas=0;
+var contCanciones=0;
 for (var i=0; i<arrDocumento.length; i++)   {
     var dato = arrDocumento[i];
     if ('*T*ST*D'.indexOf(dato[0]) > 0)
@@ -3492,7 +3494,7 @@ for (var i=0; i<arrDocumento.length; i++)   {
                 descripcion : ''
             }
             var contCanciones=0;
-            arrTiposDanzas[contTipoDanza].arrDanzas.push(objDanza);
+            arrTiposDanzas[contTipoDanza-1].arrDanzas.push(objDanza);
             break;
         case    "C":
             contCanciones++;
@@ -3502,23 +3504,23 @@ for (var i=0; i<arrDocumento.length; i++)   {
                 pista : dato[1].substr(3,2),
                 descripcion : ''
             }
-            arrTiposDanzas[contTipoDanza].arrDanzas.push[contDanzas].arrCanciones(objCancion);
+            arrTiposDanzas[contTipoDanza-1].arrDanzas[contDanzas-1].arrCanciones.push(objCancion);
             break;
         default:
             var contenido = "";
             switch(dato[0]) {
                 case    "I":
-                    if (arrDocumento[i-1][0] <> "I")
+                    if (arrDocumento[i-1][0] != "I")
                         contenido += "<ul>";
-                    contenido += "<li>"+dato[1].substr(1)+"<li>";
-                    if (arrDocumento[i+1][0] <> "I")
+                    contenido += "<li>"+dato[1].substr(1)+"</li>";
+                    if (arrDocumento[i+1][0] != "I")
                         contenido += "</ul>";
                     break;
                 case    "IO":
-                    if (arrDocumento[i-1][0] <> "IO")
+                    if (arrDocumento[i-1][0] != "IO")
                         contenido += "<ol>";
-                    contenido += "<li>"+dato[1].substr(2)+"<li>";
-                    if (arrDocumento[i+1][0] <> "IO")
+                    contenido += "<li>"+dato[1].substr(2)+"</li>";
+                    if (arrDocumento[i+1][0] != "IO")
                         contenido += "</ol>";
                     break;
                 case    "P":
@@ -3532,10 +3534,10 @@ for (var i=0; i<arrDocumento.length; i++)   {
                     break;
             }
             if (contCanciones > 0)
-                arrTiposDanzas[contTipoDanza].arrDanzas.push[contDanzas].arrCanciones[contCanciones].descripcion +=contenido
+                arrTiposDanzas[contTipoDanza-1].arrDanzas[contDanzas-1].arrCanciones[contCanciones-1].descripcion +=contenido
             else if (contDanzas > 0)
-                arrTiposDanzas[contTipoDanza].arrDanzas.push[contDanzas].descripcion +=contenido
+                arrTiposDanzas[contTipoDanza-1].arrDanzas[contDanzas-1].descripcion +=contenido
             else
-                arrTiposDanzas[contTipoDanza].descripcion +=contenido;
+                arrTiposDanzas[contTipoDanza-1].descripcion +=contenido;
     }
 }   
