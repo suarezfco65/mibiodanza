@@ -80,17 +80,19 @@
         <center>
             <table class="table table-sm">
             <thead>
-                <tr><th>#</th><th>Danza</th><th>Música</th><th>Curva</th><th>Acciones</th></tr>
+                <tr><th>#</th><th>Danza</th><th>Duración</th><th>Curva</th><th>Acciones</th></tr>
             </thead>
             <tbody>
                 <tr  ng-repeat="d in sesion">
                     <td>{{ d.id }}</td>
                     <td>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-                        <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,40)}}</span>: <br>
-                        <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,40)}}</span></td>
-                    <td><audio id="audio{{d.id}}" src="{{getCancion(d.tipoDanza,d.danza,d.cancion).archivo}}" controls></audio></td>
+                        <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,isMobil() ? 25 : 40)}}</span>: <br>
+                        <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,isMobil() ? 25 : 40)}}</span>
+                        <audio id="audio{{d.id}}" src="{{getCancion(d.tipoDanza,d.danza,d.cancion).archivo}}"></audio></td>
+                    <td>{{duracionAudio(d.id)}}</td>
                     <td>{{d.curva}}</td>
-                    <td><button class="btn"><i class="fa fa-book"></i></button>
+                    <td><button class="btn"><i class="fa fa-play"></i></button>
+                        <button class="btn"><i class="fa fa-book"></i></button>
                         <button class="btn"><i class="fa fa-edit"></i></button>
                         <button class="btn"><i class="fa fa-trash"></i></button>
                     </td>
@@ -169,6 +171,12 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
             arr.push($scope.tiposDanzas[$scope.sesion[i].tipoDanza-1].arrDanzas[$scope.sesion[i].danza-1].nombre);
         return arr
     }
+    $scope.duracionAudio    =   function    (id)  {
+        var audio1 = document.getElementById("audio"+id);
+        audio1.onloadeddata = function() {
+            return audio1.duration;
+        };
+    }
     $scope.tipoDanza = 0;
     $scope.danza = 0;
     $scope.cancion = 0;
@@ -178,7 +186,8 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
         {id:3, tipoDanza:3, danza:11, cancion:12, curva:3, tipo:"" },
         {id:4, tipoDanza:3, danza:25, cancion:5, curva:4, tipo:"a"},
         {id:5, tipoDanza:3, danza:13, cancion:1, curva:2, tipo:"" },
-        {id:6, tipoDanza:19, danza:3, cancion:2, curva:1, tipo:"" }
+        {id:6, tipoDanza:19, danza:3, cancion:2, curva:1, tipo:"" },
+        {id:7, tipoDanza:19, danza:2, cancion:1, curva:0, tipo:"" },
     ];
     $scope.hideform = true;
     $scope.edit = true;
