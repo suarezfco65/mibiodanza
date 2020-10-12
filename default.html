@@ -53,17 +53,6 @@
         }
     </style>
     <script>
-    function isMobile ()  {
-        if (((navigator.userAgent.match(/Android/i)) ||
-            (navigator.userAgent.match(/webOS/i)) ||
-            (navigator.userAgent.match(/iPhone/i)) ||
-            (navigator.userAgent.match(/iPod/i)) ||
-            (navigator.userAgent.match(/iPad/i)) ) == null )
-            r = false
-        else
-            r = true;
-        return r
-    }
     </script>
 </head>
 <body>
@@ -89,21 +78,17 @@
                 <tr><th>#</th><th>Danza</th><th>Música</th><th>Curva</th><th>Acciones</th></tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td>Ronda de Integración Inicial<br>Milton Nascimento: “Estamos Chegando”.</td><td><script>if (isMobile()) {document.write('<button class="btn"><i class="fa fa-play"></i></button>')} else {document.write('<audio src="" controls></audio>')}</script></td><td>1</td>
-                <td><button class="btn"><i class="fa fa-book"></i></button>
-                    <button class="btn"><i class="fa fa-edit"></i></button>
-                    <button class="btn"><i class="fa fa-trash"></i></button>
-                </td></tr>
-                <tr class="table-primary"><td>2</td><td>Marcha fisiológica.<br>Traditional Jazz Band: “Doctor Jazz”</td><td><button class="btn"><i class="fa fa-play"></i></button></td><td>2</td>
-                <td><button class="btn"><i class="fa fa-book"></i></button>
-                    <button class="btn"><i class="fa fa-edit"></i></button>
-                    <button class="btn"><i class="fa fa-trash"></i></button>
-                </td></tr>
-                <tr class="table-danger"><td>3</td><td>Coordinación rítmica en parejas, con cambios.<br>Antigua Jazz Band: “El Hombre que Amo”.</td><td><button class="btn"><i class="fa fa-play"></i></button></td><td>3</td>
-                <td><button class="btn"><i class="fa fa-book"></i></button>
-                    <button class="btn"><i class="fa fa-edit"></i></button>
-                    <button class="btn"><i class="fa fa-trash"></i></button>
-                </td></tr>
+                <tr  ng-repeat="d in sesion">
+                    <td>{{ d.id }}</td>
+                    <td><b>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}</b><br>
+                        {{getSong(d.tipoDanza,d.danza,d.cancion).substr(0,50)}}</td>
+                    <td><audio id="audio{{d.id}}" src="{{getAudio(d.tipoDanza,d.danza,d.cancion)}}" controls></audio></td>
+                    <td>{{d.curva}}</td>
+                    <td><button class="btn"><i class="fa fa-book"></i></button>
+                        <button class="btn"><i class="fa fa-edit"></i></button>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
             </tbody>
             </table>
         </center>
@@ -120,9 +105,9 @@
         </div>
         <div class="form-group">
             <label for="danza">Cancion:</label>
-            <select ng-model="cancion" ng-options="c.cod as getSong(c.disco,c.pista) for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
+            <select ng-model="cancion" ng-options="c.cod as getSong(tipoDanza,danza,c.cod) for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
             </select>
-            <audio  src="{{getAudio(tipoDanza,danza,cancion)}}" controls></audio>
+            <audio  src="{{getAudio(tipoDanza,danza,cancion,false)}}" controls></audio>
         </div>
         <div class="form-check-inline">
             <label class="form-check-label">
@@ -163,10 +148,11 @@ var app = angular.module('myApp', []);
 angular.module('myApp', []).controller('sesionCtrl', function($scope) {
     $scope.tiposDanzas = arrTiposDanzas;
     $scope.canciones = arrayCanciones;
-    $scope.getSong  =   function(disco, pista)  {
-        if (disco == '00' && pista == 00)
+    $scope.getSong  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == 00)
             return "No Aplica";
-        var resultado = $scope.canciones.find(song => song.disco===disco && song.pista===pista)
+        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
         if (resultado == undefined)
             return "Cancion no encontrada ("+disco+"-"+pista+")"
         else    {
@@ -178,20 +164,25 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
         var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
         if (resultado == undefined)
             return "Cancion no encontrada ("+cancion.disco+"-"+cancion.pista+")"
-        else    {
-            return resultado.archivo
-        }
+        else
+            return resultado.archivo;
+    }
+    $scope.getDanzas    =   function()  {
+        var arr = [];
+        for (var i=0; i<$scope.sesion.length; i++)
+            arr.push($scope.tiposDanzas[$scope.sesion[i].tipoDanza-1].arrDanzas[$scope.sesion[i].danza-1].nombre);
+        return arr
     }
     $scope.tipoDanza = 0;
     $scope.danza = 0;
     $scope.cancion = 0;
     $scope.sesion = [
-        {id:1, tipoDanza:1, danza:1, cancion:1, curva:1 },
-        {id:2, tipoDanza:2, danza:2, cancion:2, curva:2 },
-        {id:3, tipoDanza:3, danza:3, cancion:3, curva:3 },
-        {id:4, tipoDanza:4, danza:4, cancion:4, curva:2 },
-        {id:5, tipoDanza:5, danza:5, cancion:5, curva:1 },
-        {id:6, tipoDanza:6, danza:6, cancion:6, curva:0 }
+        {id:1, tipoDanza:1, danza:1, cancion:2, curva:1 },
+        {id:2, tipoDanza:2, danza:2, cancion:1, curva:2 },
+        {id:3, tipoDanza:3, danza:11, cancion:12, curva:3 },
+        {id:4, tipoDanza:3, danza:25, cancion:5, curva:4 },
+        {id:5, tipoDanza:3, danza:13, cancion:1, curva:2 },
+        {id:6, tipoDanza:19, danza:3, cancion:2, curva:1 }
     ];
     $scope.hideform = true;
     $scope.edit = true;
@@ -229,6 +220,13 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
             $scope.incomplete = true;
         }
     };
+    $scope.isMobile = function ()  {
+        return (((navigator.userAgent.match(/Android/i)) ||
+            (navigator.userAgent.match(/webOS/i)) ||
+            (navigator.userAgent.match(/iPhone/i)) ||
+            (navigator.userAgent.match(/iPod/i)) ||
+            (navigator.userAgent.match(/iPad/i)) ) != null )
+    }    
 })
 </script>
 
@@ -245,7 +243,7 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
             text: 'Fuente: Grupo 6 Escuela Biodanza Barquisimeto'
         },
         xAxis: {
-            categories: ['Inicio', 'Ronda de Inicio', 'Marcha', 'Danza Ritmica', 'Juego', 'D Flui', 'D Flui', 'D Flui', 'D Flui', 'Clave', 'D Activ', 'D Activ','R Final' ]
+            categories: ['ESTADO INICIAL', 'RONDA DE INICIACIÓN', 'MARCHA FISIOLÓGICA', 'COORDINACIÓN RITMICA EN PARES', 'DESPLAZAMIENTO CON LEVEDAD', 'SINCRONIZACIÓN MELÓDICA EN PARES', 'INTIMIDAD', 'D Flui', 'D Flui', 'Clave', 'D Activ', 'D Activ','R Final' ]
         },
         yAxis: {
             title: {
