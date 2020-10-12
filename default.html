@@ -85,7 +85,7 @@
             <tbody>
                 <tr  ng-repeat="d in sesion">
                     <td>{{ d.id }}</td>
-                    <td><b>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}</b><br>
+                    <td>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
                         <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,40)}}</span>: <br>
                         <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,40)}}</span></td>
                     <td><audio id="audio{{d.id}}" src="{{getCancion(d.tipoDanza,d.danza,d.cancion).archivo}}" controls></audio></td>
