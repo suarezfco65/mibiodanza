@@ -18,6 +18,11 @@
     <script>// https://www.w3schools.com/angular/tryit.asp?filename=try_ng_w3css</script>
 
     <style>
+        .autor      {color: crimson; font-weight: bold}
+        .cancion    {color: darkslateblue; font-weight: bold}
+        .desc       {color: green; font-weight: bold}
+        .consigna   {color: orangered}
+        
         .highcharts-figure, .highcharts-data-table table {
             min-width: 310px; 
             max-width: 800px;
@@ -81,8 +86,9 @@
                 <tr  ng-repeat="d in sesion">
                     <td>{{ d.id }}</td>
                     <td><b>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}</b><br>
-                        {{getSong(d.tipoDanza,d.danza,d.cancion).substr(0,50)}}</td>
-                    <td><audio id="audio{{d.id}}" src="{{getAudio(d.tipoDanza,d.danza,d.cancion)}}" controls></audio></td>
+                        <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,40)}}</span>: <br>
+                        <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,40)}}</span></td>
+                    <td><audio id="audio{{d.id}}" src="{{getCancion(d.tipoDanza,d.danza,d.cancion).archivo}}" controls></audio></td>
                     <td>{{d.curva}}</td>
                     <td><button class="btn"><i class="fa fa-book"></i></button>
                         <button class="btn"><i class="fa fa-edit"></i></button>
@@ -105,9 +111,9 @@
         </div>
         <div class="form-group">
             <label for="danza">Cancion:</label>
-            <select ng-model="cancion" ng-options="c.cod as getSong(tipoDanza,danza,c.cod) for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
+            <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
             </select>
-            <audio  src="{{getAudio(tipoDanza,danza,cancion,false)}}" controls></audio>
+            <audio  src="{{getCancion(tipoDanza,danza,cancion).archivo}}" controls></audio>
         </div>
         <div class="form-check-inline">
             <label class="form-check-label">
@@ -128,7 +134,7 @@
 </div>
     
     <figure class="highcharts-figure">
-        <div id="container"></div>
+        <div id="grafico"></div>
     </figure>
 
 </body>
@@ -148,24 +154,14 @@ var app = angular.module('myApp', []);
 angular.module('myApp', []).controller('sesionCtrl', function($scope) {
     $scope.tiposDanzas = arrTiposDanzas;
     $scope.canciones = arrayCanciones;
-    $scope.getSong  =   function(td, d, c)  {
+    $scope.getCancion  =   function(td, d, c)  {
         var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-        if (cancion.disco == '00' && cancion.pista == 00)
-            return "No Aplica";
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
         var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
         if (resultado == undefined)
-            return "Cancion no encontrada ("+disco+"-"+pista+")"
-        else    {
-            return resultado.autor+": "+resultado.nombre
-        }
-    }
-    $scope.getAudio  =   function(td, d, c)  {
-        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
-        if (resultado == undefined)
-            return "Cancion no encontrada ("+cancion.disco+"-"+cancion.pista+")"
-        else
-            return resultado.archivo;
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
     }
     $scope.getDanzas    =   function()  {
         var arr = [];
@@ -177,12 +173,12 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
     $scope.danza = 0;
     $scope.cancion = 0;
     $scope.sesion = [
-        {id:1, tipoDanza:1, danza:1, cancion:2, curva:1 },
-        {id:2, tipoDanza:2, danza:2, cancion:1, curva:2 },
-        {id:3, tipoDanza:3, danza:11, cancion:12, curva:3 },
-        {id:4, tipoDanza:3, danza:25, cancion:5, curva:4 },
-        {id:5, tipoDanza:3, danza:13, cancion:1, curva:2 },
-        {id:6, tipoDanza:19, danza:3, cancion:2, curva:1 }
+        {id:1, tipoDanza:1, danza:1, cancion:2, curva:1, tipo:"" },
+        {id:2, tipoDanza:2, danza:2, cancion:1, curva:2, tipo:"" },
+        {id:3, tipoDanza:3, danza:11, cancion:12, curva:3, tipo:"" },
+        {id:4, tipoDanza:3, danza:25, cancion:5, curva:4, tipo:"a"},
+        {id:5, tipoDanza:3, danza:13, cancion:1, curva:2, tipo:"" },
+        {id:6, tipoDanza:19, danza:3, cancion:2, curva:1, tipo:"" }
     ];
     $scope.hideform = true;
     $scope.edit = true;
@@ -197,12 +193,14 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
             $scope.danza = 0;
             $scope.cancion = 0;
             $scope.curva = 0;
+            $scope.tipo = "";
         } else {
             $scope.edit = false;
             $scope.tipoDanza = $scope.sesion[id-1].tipoDanza;
             $scope.danza = $scope.sesion[id-1].danza;
             $scope.cancion = $scope.sesion[id-1].cancion;
             $scope.curva = $scope.sesion[id-1].curva;
+            $scope.tipo = $scope.sesion[id-1].tipo;
         }
     };
     $scope.$watch('passw1',function() {$scope.test();});
@@ -231,7 +229,7 @@ angular.module('myApp', []).controller('sesionCtrl', function($scope) {
 </script>
 
 <script>
-    Highcharts.chart('container', {
+    Highcharts.chart('grafico', {
         chart: {
             type: 'spline',
             height: 500
