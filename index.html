@@ -1,112 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Música IBF</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="dir.js"></script>
-    <style>
-        .autor      {color: crimson; font-weight: bold}
-        .cancion    {color: darkslateblue; font-weight: bold}
-        .desc       {color: green; font-weight: bold}
-        .consigna   {color: orangered}
-    </style>
-    <script>
-        function inicioGrupo()  {
-        var s=`
-            <div class="panel-group">
-                <div class="panel panel-default">
-            `;
-            document.write(s);
-        }
+  <title>Yo amo Biodanza</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+function cIcon(obj) {
+    if (obj.innerHTML == '❥')   
+        obj.innerHTML = '❤'
+    else 
+        obj.innerHTML = '❥';
+}
+function inicioContenido(titulo, h, id, c=true) {
+    var color = (h==2) ? 'red': ((h==3) ? 'green' : 'blue');
+    var sc= c ? '❥' : '❤';
+    var scoll = c ? 'collapse' : 'collapse in';
+    var s= '<h'+h+'>'+titulo+' <sub data-toggle="collapse" data-target="#c'+id+'" onclick="cIcon(this);" style="color:'+color+'; cursor:pointer">'+sc+'</sub></h'+h+'>';
+    s+='<div id="c'+id+'" class="'+scoll+'">';
+    document.write(s);
+}
+function finContenido(titulo, h, id) {
+    document.write('</div>')
+}
+</script>
 
-        function finGrupo() {
-        var s=`
-                </div>
-            </div>
-            `;
-            document.write(s);
-        }
-        function inicioContenido(indice,titulo) {
-        var s=`
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><a data-toggle="collapse" href="#collapse`+indice.join("_")+`">`+indice.join(".")+`. `+titulo+`</a></h4>
-                    </div>
-                    <div id="collapse`+indice.join("_")+`" class="panel-collapse collapse">
-                        <ul class="list-group">
-            `;
-            document.write(s);
-        }
-        function finContenido(indice,titulo) {
-        var s=`
-                        </ul>
-                        <div class="panel-footer"><a style="color:black" data-toggle="collapse" href="#collapse`+indice.join("_")+`">FIN DE: `+indice.join(".")+`. `+titulo+`</a></div>
-                    </div>
-            `;
-            document.write(s);
-        }
-    </script>
-	<script src="m01.js"></script><script src="m02.js"></script>
-	<script src="m03.js"></script>
 </head>
 <body>
-<audio id="miAudio"></audio>
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Yo<span style="color:red">&#10084</span>Biodanza</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li class="active" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">1er año<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Definición y Modelo Teórico</a></li>
+          <li><a href="#">Inconsciente Vital y Principio Biocéntrico</a></li>
+          <li><a href="#">La Vivencia</a></li>
+          <li><a href="#">Aspectos Biológicos</a></li>
+          <li><a href="#">Aspectos Fisiológicos</a></li>
+          <li><a href="#">Aspectos Psicológicos</a></li>
+          <li><a href="#">Antecedentes Míticos y Fisiológicos</a></li>
+          <li><a href="#">Identidaad e Integración</a></li>
+          <li><a href="#">Trance y Regresión</a></li>
+          <li><a href="#">Contacto y Caricias</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">2do año<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Movimiento Humano</a></li>
+          <li><a href="#">Vitalidad</a></li>
+          <li><a href="#">Sexualidad</a></li>
+          <li><a href="#">Creatividad</a></li>
+          <li><a href="#">Afectividad</a></li>
+          <li><a href="#">Trascendencia</a></li>
+          <li><a href="#">Mecanismos de Acción</a></li>
+          <li><a href="#">Biodanza y Acción Social</a></li>
+          <li><a href="#">Aplicaciones y Extensiones</a></li>
+          <li><a href="#">Biodanza Ars Magna</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">3er año<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">La Música</a></li>
+          <li><a href="#">Metodología I (Semantica Músical)</a></li>
+          <li><a href="#">Metodología II (La Sesión de Biodanza)</a></li>
+          <li><a href="#">Metodología III (La Sesión de Biodanza II)</a></li>
+          <li><a href="#">Metodología IV (Profundización)</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sesión<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Catálogo</a></li>
+          <li><a href="#">Preparación</a></li>
+        </ul>
+      </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
-    <center>
-        <img src="logo300x291.png" height="145" width="145"><br>
-        <h2>Lista Oficial de Ejercicios, Músicas y Consignas 2012</h2>
-        <p>Edición revisada y amplificada a partir de la Edición del Asesorado Metodológico 2009</p>
-    </center>
+    <script>inicioContenido('Biodanza', 2, 'ppal1', false)</script>
+        <p>Es un sistema de integración humana, renovación orgánica, reeducación afectiva y reaprendizaje de las funciones originarias de vida. Su metodología consiste en inducir vivencias integradoras por medio de la música, del canto, del movimiento y de situaciones de encuentro en grupo</p>
+        <script>inicioContenido('Rolando Toro Araneda', 4, 'ppal1-1', false)</script>
+            <p>Creador del Sistema Biodanza, nació en Concepción, Chile, el 19 de Abril de 1924. Entre los años 1968 y 1973, inició sus experiencias con Biodanza (llamada en este período Psícodanza). Aplicó este sistema en el Hospital Psiquiátrico de Santiago y en el Instituto de Estética de la Universidad Católica de Chile.</p>
+        <script>finContenido()</script>
+        <script>inicioContenido('Principio Biocéntrico', 4, 'ppal1-2', false)</script>
+            <p>El Principio Biocéntrico formulado por Rolando Toro en 1970, es un paradigma que intenta explicar que todo lo existente en el universo está organizado en función de la vida (“el universo existe porque existe la vida y no a la inversa”)</p>
+        <script>finContenido()</script>
+        <script>inicioContenido('La Vivencia', 4, 'ppal1-3', false)</script>
+            <p>Éstas se refieren a una experiencia vivida con gran intensidad en un lapso que transcurre aquí y ahora, que nos comunica un contenido preciso de sensaciones y percepciones.</p>
+        <script>finContenido()</script>
+    <script>finContenido()</script>
 
-    <script>inicioGrupo(); // principal</script>
-
-        <script>m01();// LA RONDA</script>
-        <script>m02();// LA MARCHA</script>
-        <script>m03();// LOS JUEGOS</script>
-
-    
-    <script>finGrupo(); // principal</script>
-    
 </div>
-    
+
 </body>
 </html>
-
-    <!--
-
-                <script>inicioContenido(["3",""],'')</script>
-                    <li class="list-group-item">
-                        <p></p>
-                        <p></p>
-                    </li>
-                    <li class="list-group-item"><h4>Descripción :</h4>
-                        <p class="desc"></p>
-                        <p class="desc"></p>
-                    </li>
-                    <li class="list-group-item"><h4>Objetivo :</h4>
-                        <p></p>
-                    </li>
-                    <li class="list-group-item"><h4>Música</h4>
-                        <table>
-                            <script>
-                            </script>
-                        </table>
-                    </li>
-                <script>finContenido(["3",""],'')</script>
-
-	<script>inicioContenido([""],"")</script>
-            <li class="list-group-item">
-                <p></p> 
-            </li>
-            <li class="list-group-item">
-                <script>inicioGrupo();</script>
-
-                <script>finGrupo();</script>
-            </li>
-
-        <script>finContenido([""],"")</script>}
-
--->
