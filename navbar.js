@@ -85,11 +85,12 @@ function cIcon(obj) {
         obj.innerHTML = '❥';
 }
 function inicioContenido(titulo, h, id, c=true) {
-    var color = (h==2) ? 'red': ((h==3) ? 'green' : 'blue');
+    var color = (h==2) ? 'red': ((h==4) ? 'blue' : 'green');
     var sc= c ? '❥' : '❤';
     var scoll = c ? 'collapse' : 'collapse in';
-    var s= '<h'+h+'>'+titulo+' <sub data-toggle="collapse" data-target="#c'+id+'" onclick="cIcon(this);" style="color:'+color+'; cursor:pointer">'+sc+'</sub></h'+h+'>';
-    s+='<div id="c'+id+'" class="'+scoll+'">';
+    var sty = (h==4) ? ' style="margin-left:5%"':'';
+    var s= '<h'+h+sty+'>'+titulo+' <sub data-toggle="collapse" data-target="#c'+id+'" onclick="cIcon(this);" style="color:'+color+'; cursor:pointer">'+sc+'</sub></h'+h+'>';
+    s+='<div id="c'+id+'" class="'+scoll+'"'+sty+'>';
     document.write(s);
 }
 function finContenido(titulo, h, id) {
