@@ -85,10 +85,10 @@ function cIcon(obj) {
         obj.innerHTML = '❥';
 }
 function inicioContenido(titulo, h, id, c=true) {
-    var color = (h==2) ? 'red': ((h==4) ? 'blue' : 'green');
+    var color = (h==4) ? 'red': ((h==5) ? 'blue' : 'green');
     var sc= c ? '❥' : '❤';
     var scoll = c ? 'collapse' : 'collapse in';
-    var sty = (h==4) ? ' style="margin-left:5%"':'';
+    var sty = (h==5) ? ' style="margin-left:5%"':'';
     var s= '<h'+h+sty+'>'+titulo+' <sub data-toggle="collapse" data-target="#c'+id+'" onclick="cIcon(this);" style="color:'+color+'; cursor:pointer">'+sc+'</sub></h'+h+'>';
     s+='<div id="c'+id+'" class="'+scoll+'"'+sty+'>';
     document.write(s);

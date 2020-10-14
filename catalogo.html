@@ -26,12 +26,12 @@
     
     for (var i=0; i<arrTiposDanzas.length; i++)  {
         var tipoDanza = arrTiposDanzas[i]
-        inicioContenido(tipoDanza.nombre, 2, 'td'+tipoDanza.cod);
+        inicioContenido(tipoDanza.nombre, 4, 'td'+tipoDanza.cod);
         if(tipoDanza.descripcion != "")
             document.write(tipoDanza.descripcion);
         for (var j=0; j<tipoDanza.arrDanzas.length; j++)    {
             var danza = tipoDanza.arrDanzas[j];
-            inicioContenido(danza.nombre, 4, 'd'+tipoDanza.cod+'-'+danza.cod);
+            inicioContenido(danza.nombre, 5, 'd'+tipoDanza.cod+'-'+danza.cod);
             if(danza.descripcion != "")
                 document.write(danza.descripcion);
             document.write('<table>');
