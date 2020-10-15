@@ -37,7 +37,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Preparar Sesion', href:'sesion.html', hijos:[]}
         ]}
     ];
-    document.write('<nav class="navbar navbar-inverse">');
+    document.write('<nav class="navbar sticky-top navbar-inverse">');
     document.write('  <div class="container-fluid">');
     document.write('    <div class="navbar-header">');
     document.write('      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">');
