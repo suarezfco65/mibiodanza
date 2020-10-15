@@ -69,7 +69,7 @@ var obtenerAnchos    =   function()  {
 <tbody>
     <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}">
         <td id="{{'td'+d.id}}">
-            {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre.substr(0,maxCar()) }}<br>
+            {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
             <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar())}}</span>: <br>
             <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar())}}</span><br>
         </td>
