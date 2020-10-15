@@ -37,7 +37,19 @@
 <div class="w3-container">
 
     <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
-    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="maxCar()">&#9998; Cantidad</button></p>
+    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
+
+<script>
+var obtenerAnchos    =   function()  {
+    var total = screen.width;
+    var tabla = document.getElementById('tablaDanzas').offsetWidth;
+    var td    = document.getElementById('td1').offsetWidth;
+    var fijo  = tabla - td;
+    alert('total:'+total+', tabla:'+tabla+' ,td:'+td+', fijo:'+fijo)
+}
+
+    </script>
+    
 <form>
     <div class="input-group">
       <span class="input-group-addon">Tema</span>
