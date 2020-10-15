@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="navbar.js"></script>
+    
+    
+    
+    <link rel="stylesheet" href="w3.css">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="documento.js"></script>
+    <script src="dir.js"></script>
+    <script src="navbar.js"></script>
+    <style>
+        .autor      {color: crimson;}
+        .cancion    {color: darkslateblue;}
+        .desc       {color: green; font-weight: bold}
+        .consigna   {color: orangered}
+    </style>
+
+</head>
+<body>
+<script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
+
+<div ng-app="myApp" ng-controller="userCtrl">
+<div class="w3-container">
+
+    <p style="text-align: right"><button class="w3-btn w3-red w3-ripple" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
+
+<form>
+    <div class="input-group">
+      <span class="input-group-addon">Tema</span>
+      <input id="tema" type="text" class="form-control" name="msg" placeholder="Tema de la Sesión">
+    </div>
+    
+</form>
+<!--<table class="w3-table w3-bordered">-->
+<table class="table table-sm">
+<thead class="thead-light">
+  <tr>
+    <th>Danza</th>
+    <th>Evolución</th>
+    <th style="text-align: right"><button type="button" class="w3-btn w3-white w3-ripple" ng-click="editUser('new')" data-toggle="modal" data-target="#myModal">&#9997; Nueva Danza</button></th>
+  </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="d in danzas">
+        <td>
+            {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
+            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,isMobil() ? 25 : 40)}}</span>: <br>
+            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,isMobil() ? 25 : 40)}}</span>
+        </td>
+        <td><div class="form-group">
+                <select class="form-control" id="evolucion" ng-model="d.evolucion" placeholder="Evolucion">
+                    <option ng-repeat="v in valores">{{v}}</option>
+                </select>
+            </div>
+        </td>
+        <td style="text-align: right">
+            <button type="button" class="btn" ng-click="playDanza(d.id)"><i class="fa fa-play"></i></button>
+            <button type="button" class="btn" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
+            <button type="button" class="btn" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
+        </td>
+    </tr>
+</tbody>
+</table>
+<center><audio id="audio" controls></audio></center>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+<!--          <h4 class="modal-title">Modal Heading</h4> -->
+  <h4 class="modal-title" ng-show="edit">Create New User:</h4>
+  <h4 class="modal-title" ng-hide="edit">Edit User:</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            
+<form ng-hide="hideform">
+    <label>First Name:</label>
+    <input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">
+  <br>
+    <label>Last Name:</label>
+    <input class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">
+  <br>
+    <label>Password:</label>
+    <input class="w3-input w3-border" type="password" ng-model="passw1" placeholder="Password">
+  <br>
+    <label>Repeat:</label>
+    <input class="w3-input w3-border" type="password" ng-model="passw2" placeholder="Repeat Password">
+</form>
+  <br>
+     
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+  <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveUser()" data-dismiss="modal">&#10004; Save Changes</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<div id="grafico"></div>
+    
+</div>
+
+    
+<script>
+angular.module('myApp', []).controller('userCtrl', function($scope) {
+$scope.tiposDanzas = arrTiposDanzas;
+$scope.canciones = arrayCanciones;
+$scope.play =   function    (td,d,c)    {
+    cancion = $scope.getCancion(td,d,c);
+    $scope.archivo= cancion.archivo;
+}
+$scope.getCancion  =   function(td, d, c)  {
+    var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+    if (cancion.disco == '00' && cancion.pista == '00')
+        return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+    var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+    if (resultado == undefined)
+        return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+    return resultado;
+}
+$scope.getDanzas    =   function()  {
+    var arr = [];
+    for (var i=0; i<$scope.sesion.length; i++)
+        arr.push($scope.tiposDanzas[$scope.sesion[i].tipoDanza-1].arrDanzas[$scope.sesion[i].danza-1].nombre);
+    return arr
+}
+$scope.tipoDanza = 0;
+$scope.danza = 0;
+$scope.cancion = 0;
+$scope.evolucion = '';
+$scope.danzas = [
+    {id:1, tipoDanza:1, danza:1, cancion:2, evolucion:'1' },
+    {id:2, tipoDanza:2, danza:2, cancion:1, evolucion:'2' },
+    {id:3, tipoDanza:3, danza:11, cancion:12, evolucion:'3' },
+    {id:4, tipoDanza:3, danza:25, cancion:5, evolucion:'4' },
+    {id:5, tipoDanza:3, danza:13, cancion:1, evolucion:'2' },
+    {id:6, tipoDanza:19, danza:3, cancion:2, evolucion:'1' },
+    {id:7, tipoDanza:19, danza:2, cancion:1, evolucion:'0' },
+];
+$scope.id=0;
+$scope.fName = '';
+$scope.lName = '';
+$scope.evolucion = '';
+$scope.valores = ['0','1','2','3','4','5','-1','-2','-3','-4','-5'];
+$scope.passw1 = '';
+$scope.passw2 = '';
+$scope.cancion = 'IBFC21 - 12 - Danse de Zorba.mp3'
+$scope.users = [
+{id:1, fName:'Hege',lName:"Pege", evolucion: '1', cancion:'IBFC21 - 12 - Danse de Zorba.mp3' },
+{id:2, fName:'Loreena',lName:"McKennitt", evolucion: '2', cancion:'IBFC21 - 15 - McKennitt, Loreena - All Souls Night.mp3' },
+{id:3, fName:'Sal',lName:"Smith", evolucion:'3', cancion:'IBFC21 - 12 - Danse de Zorba.mp3' },
+{id:4, fName:'Jack',lName:"Jones", evolucion:'2', cancion:'IBFC21 - 15 - McKennitt, Loreena - All Souls Night.mp3' },
+{id:5, fName:'John',lName:"Doe", evolucion:'1', cancion:'IBFC21 - 12 - Danse de Zorba.mp3' },
+{id:6, fName:'Peter',lName:"Pan", evolucion:'0', cancion:'IBFC21 - 15 - McKennitt, Loreena - All Souls Night.mp3' }
+];
+$scope.playMusica   =   function    (cancion)   {
+    var obj = document.getElementById("audio");
+    obj.src = cancion;
+    obj.play();
+}
+$scope.hideform = true;
+$scope.edit = true;
+$scope.error = false;
+$scope.incomplete = false; 
+$scope.editUser = function(id) {
+    $scope.hideform = false;
+    if (id == 'new') {
+        $scope.edit = true;
+        $scope.incomplete = true;
+        $scope.fName = '';
+        $scope.lName = '';
+        $scope.evolucion = 0;
+        $scope.id = myArrayMax($scope.users)+1;
+    } else {
+        $scope.id = id;
+        $scope.edit = false;
+        $scope.fName = $scope.users[id-1].fName;
+        $scope.lName = $scope.users[id-1].lName; 
+    }
+};
+$scope.$watch('passw1',function() {$scope.test();});
+$scope.$watch('passw2',function() {$scope.test();});
+$scope.$watch('fName',function() {$scope.test();});
+$scope.$watch('lName',function() {$scope.test();});
+$scope.test = function() {
+    if ($scope.passw1 !== $scope.passw2) {
+        $scope.error = true;
+    } else {
+        $scope.error = false;
+    }
+    $scope.incomplete = false;
+    if ($scope.edit && (!$scope.fName.length ||
+                        !$scope.lName.length ||
+                        !$scope.passw1.length || 
+                        !$scope.passw2.length)) {
+        $scope.incomplete = true;
+    }
+};
+
+var myArrayMax = function(arr) {
+  var len = arr.length;
+  var max = 0;
+  while (len--) {
+    if (arr[len].id > max) {
+      max = arr[len].id;
+    }
+  }
+  return max;
+}
+    
+$scope.saveUser =   function()  {
+    var user    =   {id:$scope.id, fName:$scope.fName, lName:$scope.lName};
+    console.log(user);
+    if ($scope.id == (myArrayMax($scope.users)+1)) $scope.users.push(user);
+    $scope.hideform = true;    
+}
+
+var chkUser = function (u)  {
+    return (u.id == $scope.id)
+}
+
+$scope.deleteUser =   function(id)  {
+    $scope.id = id;
+    var pos    =   $scope.users.findIndex(chkUser);
+    $scope.users.splice(pos,1);
+}
+
+$scope.salvarSesion =   function()  {
+    var aux = document.createElement("input");
+    var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQñÑ';
+    const inicio = -5;
+
+    aux.setAttribute("value", document.URL+"?data="+JSON.stringify($scope.users));
+
+    document.body.appendChild(aux);
+
+    aux.select();
+
+    document.execCommand("copy");
+
+    document.body.removeChild(aux);
+}
+
+  $scope.cat = ['Estado Inicial', 
+  		        'Ronda de Integración...', 
+                'Marcha Fisiológica', 
+                'Coordinación Rítmica...', 
+                'Danza de Desplazamiento...', 
+                'Sincronización Melódica...',
+          		'Intimidad', 
+                'Conexión con el Infinito', 
+                'Mecer la Vida', 
+                'Encuentros', 
+                'Grupo Compacto de Mecim...', 
+                'Ronda de Activación Pro...'];
+  $scope.dat = [0, 1, 2, 3, 2, 1, 0, -1, -2, -3, -1, 0];
+    Highcharts.chart('grafico', {
+        title: {
+            text: 'Tema de la Sesión de Biodanza'
+        },
+
+        subtitle: {
+            text: 'Realizado por: Equipo B, Dayana, Marisabel, Anneris y Francisco'
+        },
+
+        xAxis: {
+            categories: $scope.cat
+        },
+        yAxis: {
+            title: {
+                text: 'Colinérgico - + - Adrenérgico'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value;
+                }
+            }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
+ 
+        series: [{
+            name: 'nivel',
+            marker: {
+                symbol: 'square'
+            },
+            data: $scope.dat
+        }]
+
+    });
+
+
+})
+</script>
+
+</div>
+</body>
+</html>
+
+<!--
+ <ul>
+  <script>
+//    for (var i=8000;i<10500; i++)   document.write('<li>'+i+' -> &#'+i+';</i>');
+  </script>
+  </ul> 
+-->
