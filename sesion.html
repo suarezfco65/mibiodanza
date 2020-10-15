@@ -61,7 +61,7 @@
             <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,isMobil() ? 25 : 40)}}</span>: <br>
             <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,isMobil() ? 25 : 40)}}</span>
         </td>
-        <td><div class="form-group">
+        <td><div class="form-group form-group-sm">
                 <select class="form-control" id="evolucion" ng-model="d.evolucion" placeholder="Evolucion">
                     <option ng-repeat="v in valores">{{v}}</option>
                 </select>
