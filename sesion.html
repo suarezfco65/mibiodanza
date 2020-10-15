@@ -346,7 +346,9 @@ $scope.salvarSesion =   function()  {
     $scope.maxCar    =   function()  {
         var total = screen.width;
         var fijo  = 350;
-        return Math.round((total-fijo)/8.5);
+        var car = Math.round((total-fijo)/8.5);
+        if(car < 20) return 20
+        else return car;
     }
 })
 </script>
