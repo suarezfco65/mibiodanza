@@ -89,7 +89,7 @@ function inicioContenido(titulo, h, id, c=true) {
     var sc= c ? '❥' : '❤';
     var scoll = c ? 'collapse' : 'collapse in';
     var sty = (h==5) ? ' style="margin-left:5%"':'';
-    var s= '<h'+h+sty+'>'+titulo+' <sub data-toggle="collapse" data-target="#c'+id+'" onclick="cIcon(this);" style="color:'+color+'; cursor:pointer">'+sc+'</sub></h'+h+'>';
+    var s= '<h'+h+sty+'><span data-toggle="collapse" data-target="#c'+id+'" onclick="cIcon(this);" style="color:'+color+'; cursor:pointer">'+sc+'</span> '+titulo+'</h'+h+'>';
     s+='<div id="c'+id+'" class="'+scoll+'"'+sty+'>';
     document.write(s);
 }
