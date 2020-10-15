@@ -34,7 +34,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
         ]},
         {titulo:'Sesión', href:'#', hijos:[
           {titulo:'Catalogo de Danzas', href:'catalogo.html', hijos:[]},
-          {titulo:'Preparación de Sesion', href:'sesion.html', hijos:[]}
+          {titulo:'Preparar Sesion', href:'sesion.html', hijos:[]}
         ]}
     ];
     document.write('<nav class="navbar navbar-inverse">');
