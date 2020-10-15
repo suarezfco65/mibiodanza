@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap Example</title>
+    <title>Preparar Sesión</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -36,8 +36,8 @@
 <div ng-app="myApp" ng-controller="userCtrl" style="margin-top:60px">
 <div class="w3-container">
 
-    <p style="text-align: right">{{isMobil()?'movil':'pc'}}<button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
-
+    <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
+    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="maxCar()">&#9998; Cantidad</button></p>
 <form>
     <div class="input-group">
       <span class="input-group-addon">Tema</span>
@@ -46,20 +46,20 @@
     
 </form>
 <!--<table class="w3-table w3-bordered">-->
-<table class="table table-sm">
+<table class="table table-sm" id="tablaDanzas">
 <thead class="thead-light">
   <tr>
     <th>Danza</th>
     <th>Evolución</th>
-    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editUser('new')" data-toggle="modal" data-target="#myModal">&#9997; Nueva Danza</button></th>
+    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editUser('new')" data-toggle="modal" data-target="#myModal">&#9997; Nueva</button></th>
   </tr>
 </thead>
 <tbody>
-    <tr ng-repeat="d in danzas">
-        <td>
-            {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,isMobil() ? 25 : 40)}}</span>: <br>
-            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,isMobil() ? 25 : 40)}}</span>
+    <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}">
+        <td id="{{'td'+d.id}}">
+            {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre.substr(0,maxCar()) }}<br>
+            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar())}}</span>: <br>
+            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar())}}</span><br>
         </td>
         <td><div class="form-group">
                 <select class="form-control" id="evolucion" ng-model="d.evolucion" placeholder="Evolucion">
@@ -331,6 +331,11 @@ $scope.salvarSesion =   function()  {
             (navigator.userAgent.match(/iPad/i)) ) != null )
     }    
 
+    $scope.maxCar    =   function()  {
+        var total = screen.width;
+        var fijo  = 350;
+        return Math.round((total-fijo)/8.5);
+    }
 })
 </script>
 

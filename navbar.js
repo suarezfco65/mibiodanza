@@ -34,7 +34,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
         ]},
         {titulo:'Sesión', href:'#', hijos:[
           {titulo:'Catalogo de Danzas', href:'catalogo.html', hijos:[]},
-          {titulo:'Preparación de Sesion', href:'sesion.html', hijos:[]}
+          {titulo:'Preparar de Sesion', href:'sesion.html', hijos:[]}
         ]}
     ];
     document.write('<nav class="navbar navbar-inverse navbar-fixed-top">');
@@ -71,8 +71,8 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
     }
     document.write('      </ul>');
     document.write('      <ul class="nav navbar-nav navbar-right">');
-    document.write('        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>');
-    document.write('        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>');
+    document.write('        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Registro</a></li>');
+    document.write('        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Acceder</a></li>');
     document.write('      </ul>');
     document.write('    </div>');
     document.write('  </div>');
