@@ -36,7 +36,7 @@
 <div ng-app="myApp" ng-controller="userCtrl">
 <div class="w3-container">
 
-    <p style="text-align: right"><button class="w3-btn w3-red w3-ripple" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
+    <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
 
 <form>
     <div class="input-group">
@@ -51,7 +51,7 @@
   <tr>
     <th>Danza</th>
     <th>Evolución</th>
-    <th style="text-align: right"><button type="button" class="w3-btn w3-white w3-ripple" ng-click="editUser('new')" data-toggle="modal" data-target="#myModal">&#9997; Nueva Danza</button></th>
+    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editUser('new')" data-toggle="modal" data-target="#myModal">&#9997; Nueva Danza</button></th>
   </tr>
 </thead>
 <tbody>
@@ -68,10 +68,10 @@
             </div>
         </td>
         <td style="text-align: right">
-            <button type="button" class="btn" ng-click="playDanza(d.id)"><i class="fa fa-play"></i></button>
-            <button type="button" class="btn" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
-            <button type="button" class="btn" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn btn-default" ng-click="playDanza(d.id)"><i class="fa fa-play"></i></button>
+            <button type="button" class="btn btn-default" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
+            <button type="button" class="btn btn-default" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-default" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
         </td>
     </tr>
 </tbody>
