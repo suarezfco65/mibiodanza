@@ -34,10 +34,10 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
         ]},
         {titulo:'Sesión', href:'#', hijos:[
           {titulo:'Catalogo de Danzas', href:'catalogo.html', hijos:[]},
-          {titulo:'Preparar Sesion', href:'sesion.html', hijos:[]}
+          {titulo:'Preparación de Sesion', href:'sesion.html', hijos:[]}
         ]}
     ];
-    document.write('<nav class="navbar sticky-top navbar-inverse">');
+    document.write('<nav class="navbar navbar-inverse navbar-fixed-top">');
     document.write('  <div class="container-fluid">');
     document.write('    <div class="navbar-header">');
     document.write('      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">');
