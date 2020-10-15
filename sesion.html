@@ -10,8 +10,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
     
-    
-    
     <link rel="stylesheet" href="w3.css">  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -63,7 +61,7 @@ var obtenerAnchos    =   function()  {
   <tr>
     <th>Danza</th>
     <th>Evolución</th>
-    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editUser('new')" data-toggle="modal" data-target="#myModal">&#9997; Nueva</button></th>
+    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editUser('new')" data-toggle="modal" data-target="#editModal">&#9997; Nueva</button></th>
   </tr>
 </thead>
 <tbody>
@@ -90,13 +88,12 @@ var obtenerAnchos    =   function()  {
 </table>
 <center><audio id="audio" controls></audio></center>
   <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+  <div class="modal fade" id="editModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-<!--          <h4 class="modal-title">Modal Heading</h4> -->
   <h4 class="modal-title" ng-show="edit">Create New User:</h4>
   <h4 class="modal-title" ng-hide="edit">Edit User:</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -347,7 +344,7 @@ $scope.salvarSesion =   function()  {
         var total = screen.width;
         var fijo  = 350;
         var car = Math.round((total-fijo)/8.5);
-        if(car < 20) return 20
+        if(car < 25) return 25
         else return car;
     }
 })
