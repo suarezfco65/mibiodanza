@@ -10,6 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
     
+    
+    
     <link rel="stylesheet" href="w3.css">  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -35,8 +37,8 @@
 <div class="w3-container">
 
     <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
-    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
 
+<!--    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
 <script>
 var obtenerAnchos    =   function()  {
     var total = screen.width;
@@ -45,9 +47,8 @@ var obtenerAnchos    =   function()  {
     var fijo  = tabla - td;
     alert('total:'+total+', tabla:'+tabla+' ,td:'+td+', fijo:'+fijo)
 }
-
-    </script>
-    
+</script>
+-->    
 <form>
     <div class="input-group">
       <span class="input-group-addon">Tema</span>
@@ -61,7 +62,7 @@ var obtenerAnchos    =   function()  {
   <tr>
     <th>Danza</th>
     <th>Evolución</th>
-    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editUser('new')" data-toggle="modal" data-target="#editModal">&#9997; Nueva</button></th>
+    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">&#9997; Agregar</button></th>
   </tr>
 </thead>
 <tbody>
@@ -78,8 +79,8 @@ var obtenerAnchos    =   function()  {
             </div>
         </td>
         <td style="text-align: right">
-            <button type="button" class="btn btn-default" ng-click="playDanza(d.id)"><i class="fa fa-play"></i></button>
-            <button type="button" class="btn btn-default" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
+            <button type="button" class="btn btn-default" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)"><i class="fa fa-play"></i></button>
+            <button type="button" class="btn btn-default" ng-click="descDanza(d.tipoDanza,d.danza)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
             <button type="button" class="btn btn-default" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
             <button type="button" class="btn btn-default" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
         </td>
@@ -87,46 +88,54 @@ var obtenerAnchos    =   function()  {
 </tbody>
 </table>
 <center><audio id="audio" controls></audio></center>
-  <!-- The Modal -->
-  <div class="modal fade" id="editModal">
+    
+<!-- The Modal for Agregar o editar danza-->
+<div class="modal fade" id="editModal">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+        <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-  <h4 class="modal-title" ng-show="edit">Create New User:</h4>
-  <h4 class="modal-title" ng-hide="edit">Edit User:</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" ng-show="edit">Agregar nueva danza:</h4>
+            <h4 class="modal-title" ng-hide="edit">Editar Danza:</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
             
-<form ng-hide="hideform">
-    <label>First Name:</label>
-    <input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">
-  <br>
-    <label>Last Name:</label>
-    <input class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">
-  <br>
-    <label>Password:</label>
-    <input class="w3-input w3-border" type="password" ng-model="passw1" placeholder="Password">
-  <br>
-    <label>Repeat:</label>
-    <input class="w3-input w3-border" type="password" ng-model="passw2" placeholder="Repeat Password">
-</form>
-  <br>
+            <form ng-hide="hideform">
+
+        <div class="form-group">
+            <label for="tipoDanza">Tipo de Danza:</label>
+            <select ng-model="tipoDanza" ng-options="td.cod as td.nombre for td in tiposDanzas" class="form-control form-control-sm" id="tipoDanza">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="danza">Danza:</label>
+            <select ng-model="danza" ng-options="d.cod as d.nombre for d in tiposDanzas[tipoDanza-1].arrDanzas" class="form-control form-control-sm" id="danza">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="danza">Cancion:</label>
+            <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
+            </select>
+        </div>
+        <center><button class="btn" ng-click="play(tipoDanza,danza,cancion)"><i class="fa fa-play"></i></button>
+        </center>
+            </form>
+            <br>
      
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-  <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveUser()" data-dismiss="modal">&#10004; Save Changes</button>
+            <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveUser()" data-dismiss="modal">&#10004; Save Changes</button>
         </div>
         
-      </div>
+        </div>
     </div>
-  </div>
+</div>
 
 <div id="grafico"></div>
     
@@ -156,6 +165,7 @@ $scope.getDanzas    =   function()  {
         arr.push($scope.tiposDanzas[$scope.sesion[i].tipoDanza-1].arrDanzas[$scope.sesion[i].danza-1].nombre);
     return arr
 }
+$scope.id=0;
 $scope.tipoDanza = 0;
 $scope.danza = 0;
 $scope.cancion = 0;
@@ -169,45 +179,29 @@ $scope.danzas = [
     {id:6, tipoDanza:19, danza:3, cancion:2, evolucion:'1' },
     {id:7, tipoDanza:19, danza:2, cancion:1, evolucion:'0' },
 ];
-$scope.id=0;
-$scope.fName = '';
-$scope.lName = '';
-$scope.evolucion = '';
 $scope.valores = ['0','1','2','3','4','5','-1','-2','-3','-4','-5'];
-$scope.passw1 = '';
-$scope.passw2 = '';
-$scope.cancion = 'IBFC21 - 12 - Danse de Zorba.mp3'
-$scope.users = [
-{id:1, fName:'Hege',lName:"Pege", evolucion: '1', cancion:'IBFC21 - 12 - Danse de Zorba.mp3' },
-{id:2, fName:'Loreena',lName:"McKennitt", evolucion: '2', cancion:'IBFC21 - 15 - McKennitt, Loreena - All Souls Night.mp3' },
-{id:3, fName:'Sal',lName:"Smith", evolucion:'3', cancion:'IBFC21 - 12 - Danse de Zorba.mp3' },
-{id:4, fName:'Jack',lName:"Jones", evolucion:'2', cancion:'IBFC21 - 15 - McKennitt, Loreena - All Souls Night.mp3' },
-{id:5, fName:'John',lName:"Doe", evolucion:'1', cancion:'IBFC21 - 12 - Danse de Zorba.mp3' },
-{id:6, fName:'Peter',lName:"Pan", evolucion:'0', cancion:'IBFC21 - 15 - McKennitt, Loreena - All Souls Night.mp3' }
-];
-$scope.playMusica   =   function    (cancion)   {
-    var obj = document.getElementById("audio");
-    obj.src = cancion;
-    obj.play();
-}
 $scope.hideform = true;
 $scope.edit = true;
 $scope.error = false;
 $scope.incomplete = false; 
-$scope.editUser = function(id) {
+$scope.editDanza = function(id) {
     $scope.hideform = false;
     if (id == 'new') {
         $scope.edit = true;
         $scope.incomplete = true;
-        $scope.fName = '';
-        $scope.lName = '';
-        $scope.evolucion = 0;
-        $scope.id = myArrayMax($scope.users)+1;
+        $scope.tipoDanza = '';
+        $scope.danza = '';
+        $scope.cancion = '';
+        $scope.evolucion = '';
+        $scope.id = myArrayMax($scope.danzas)+1;
     } else {
         $scope.id = id;
-        $scope.edit = false;
-        $scope.fName = $scope.users[id-1].fName;
-        $scope.lName = $scope.users[id-1].lName; 
+        $scope.edit = true;
+        var objDanza = $scope.danzas.find(e => e.id == id);
+        $scope.tipoDanza = objDanza.tipoDanza;
+        $scope.danza = objDanza.danza; 
+        $scope.cancion = objDanza.cancion; 
+        $scope.evolucion = objDanza.evolucion; 
     }
 };
 $scope.$watch('passw1',function() {$scope.test();});
@@ -343,10 +337,25 @@ $scope.salvarSesion =   function()  {
     $scope.maxCar    =   function()  {
         var total = screen.width;
         var fijo  = 350;
-        var car = Math.round((total-fijo)/8.5);
-        if(car < 25) return 25
-        else return car;
+        return Math.round((total-fijo)/8.5);
     }
+
+    $scope.playDanza =   function    (td,d,c)    {
+        cancion = $scope.getCancion(td,d,c);
+        objAudio = document.getElementById('audio');
+        objAudio.src =cancion.archivo;
+        objAudio.play();
+    }
+    $scope.getCancion  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+        var resultado = arrayCanciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+        if (resultado == undefined)
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
+    }
+
 })
 </script>
 
