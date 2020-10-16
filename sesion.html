@@ -36,7 +36,7 @@
 <div ng-app="myApp" ng-controller="userCtrl" style="margin-top:60px">
 <div class="w3-container">
 
-    <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button></p>
+    <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p>
 
 <!--    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
 <script>
@@ -52,7 +52,7 @@ var obtenerAnchos    =   function()  {
 <form>
     <div class="input-group">
       <span class="input-group-addon">Tema</span>
-      <input id="tema" type="text" class="form-control" name="msg" placeholder="Tema de la Sesión">
+      <input ng-model="tema" type="text" class="form-control" placeholder="Tema de la Sesión">
     </div>
     
 </form>
@@ -73,8 +73,7 @@ var obtenerAnchos    =   function()  {
             <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar())}}</span><br>
         </td>
         <td><div class="form-group">
-                <select class="form-control" id="evolucion" ng-model="d.evolucion" placeholder="Evolucion">
-                    <option ng-repeat="v in valores">{{v}}</option>
+                <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm">
                 </select>
             </div>
         </td>
@@ -96,7 +95,7 @@ var obtenerAnchos    =   function()  {
       
         <!-- Modal Header -->
         <div class="modal-header">
-            <h4 class="modal-title" ng-show="edit">Agregar nueva danza:</h4>
+            <h4 class="modal-title" ng-show="edit">Agregar Danza:</h4>
             <h4 class="modal-title" ng-hide="edit">Editar Danza:</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
@@ -130,7 +129,7 @@ var obtenerAnchos    =   function()  {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-            <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveUser()" data-dismiss="modal">&#10004; Save Changes</button>
+            <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Save Changes</button>
         </div>
         
         </div>
@@ -161,25 +160,26 @@ $scope.getCancion  =   function(td, d, c)  {
 }
 $scope.getDanzas    =   function()  {
     var arr = [];
-    for (var i=0; i<$scope.sesion.length; i++)
-        arr.push($scope.tiposDanzas[$scope.sesion[i].tipoDanza-1].arrDanzas[$scope.sesion[i].danza-1].nombre);
+    for (var i=0; i<$scope.danzas.length; i++)
+        arr.push($scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre);
     return arr
 }
 $scope.id=0;
 $scope.tipoDanza = 0;
 $scope.danza = 0;
 $scope.cancion = 0;
-$scope.evolucion = '';
+$scope.evolucion = 0;
+$scope.tema ="";
 $scope.danzas = [
-    {id:1, tipoDanza:1, danza:1, cancion:2, evolucion:'1' },
-    {id:2, tipoDanza:2, danza:2, cancion:1, evolucion:'2' },
-    {id:3, tipoDanza:3, danza:11, cancion:12, evolucion:'3' },
-    {id:4, tipoDanza:3, danza:25, cancion:5, evolucion:'4' },
-    {id:5, tipoDanza:3, danza:13, cancion:1, evolucion:'2' },
-    {id:6, tipoDanza:19, danza:3, cancion:2, evolucion:'1' },
-    {id:7, tipoDanza:19, danza:2, cancion:1, evolucion:'0' },
+    {id:1, tipoDanza:1, danza:1, cancion:2, evolucion:1 },
+    {id:2, tipoDanza:2, danza:2, cancion:1, evolucion:2 },
+    {id:3, tipoDanza:3, danza:11, cancion:12, evolucion:3 },
+    {id:4, tipoDanza:3, danza:25, cancion:5, evolucion:4 },
+    {id:5, tipoDanza:3, danza:13, cancion:1, evolucion:2 },
+    {id:6, tipoDanza:19, danza:3, cancion:2, evolucion:1 },
+    {id:7, tipoDanza:19, danza:2, cancion:1, evolucion:0 },
 ];
-$scope.valores = ['0','1','2','3','4','5','-1','-2','-3','-4','-5'];
+$scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
 $scope.hideform = true;
 $scope.edit = true;
 $scope.error = false;
@@ -189,10 +189,10 @@ $scope.editDanza = function(id) {
     if (id == 'new') {
         $scope.edit = true;
         $scope.incomplete = true;
-        $scope.tipoDanza = '';
-        $scope.danza = '';
-        $scope.cancion = '';
-        $scope.evolucion = '';
+        $scope.tipoDanza = 0;
+        $scope.danza = 0;
+        $scope.cancion = 0;
+        $scope.evolucion = 0;
         $scope.id = myArrayMax($scope.danzas)+1;
     } else {
         $scope.id = id;
@@ -204,23 +204,12 @@ $scope.editDanza = function(id) {
         $scope.evolucion = objDanza.evolucion; 
     }
 };
-$scope.$watch('passw1',function() {$scope.test();});
-$scope.$watch('passw2',function() {$scope.test();});
-$scope.$watch('fName',function() {$scope.test();});
-$scope.$watch('lName',function() {$scope.test();});
+$scope.$watch('tipoDanza',function() {$scope.test();});
+$scope.$watch('danza',function() {$scope.test();});
+$scope.$watch('cancion',function() {$scope.test();});
 $scope.test = function() {
-    if ($scope.passw1 !== $scope.passw2) {
-        $scope.error = true;
-    } else {
-        $scope.error = false;
-    }
-    $scope.incomplete = false;
-    if ($scope.edit && (!$scope.fName.length ||
-                        !$scope.lName.length ||
-                        !$scope.passw1.length || 
-                        !$scope.passw2.length)) {
-        $scope.incomplete = true;
-    }
+    $scope.error = false;
+    $scope.incomplete = ($scope.tipoDanza  == 0 || $scope.danza  == 0 || $scope.cancion == 0)
 };
 
 var myArrayMax = function(arr) {
@@ -234,29 +223,51 @@ var myArrayMax = function(arr) {
   return max;
 }
     
-$scope.saveUser =   function()  {
-    var user    =   {id:$scope.id, fName:$scope.fName, lName:$scope.lName};
-    console.log(user);
-    if ($scope.id == (myArrayMax($scope.users)+1)) $scope.users.push(user);
+$scope.saveDanza =   function()  {
+    
+    if ($scope.id == (myArrayMax($scope.danzas)+1)) 
+        $scope.danzas.push({id:$scope.id, tipoDanza:$scope.tipoDanza, danza:$scope.danza, cancion:$scope.cancion, evolucion:$scope.evolucion})
+    else    {
+        var pos    =   $scope.danzas.findIndex(chkDanza);
+        $scope.danzas[pos].tipoDanza = $scope.tipoDanza;
+        $scope.danzas[pos].danza = $scope.danza;
+        $scope.danzas[pos].cancion = $scope.cancion;        
+    }
     $scope.hideform = true;    
 }
 
-var chkUser = function (u)  {
-    return (u.id == $scope.id)
+var chkDanza = function (d)  {
+    return (d.id == $scope.id)
 }
 
 $scope.deleteUser =   function(id)  {
     $scope.id = id;
-    var pos    =   $scope.users.findIndex(chkUser);
-    $scope.users.splice(pos,1);
+    var pos    =   $scope.users.findIndex(chkDanza);
+    $scope.danzas.splice(pos,1);
 }
 
 $scope.salvarSesion =   function()  {
-    var aux = document.createElement("input");
-    var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQñÑ';
-    const inicio = -5;
-
-    aux.setAttribute("value", document.URL+"?data="+JSON.stringify($scope.users));
+    var aux = document.createElement('input');
+    valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+    const inicio = -7;
+    var danzas = '';
+    var descripcion = '';
+    descripcion = '*Tema: '+$scope.tema+'*<sl><sl>';
+    for (var i=0; i<$scope.danzas.length; i++)  {
+        descripcion += '   '+(i+1)+'. *Tipo de Danza:* '+$scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].nombre+'<sl>';
+        descripcion += '   *Danza:* '+$scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza].nombre+'<sl>';
+        descripcion += '<b>Canción:</b> '+$scope.getCancion($scope.danzas[i].tipoDanza,$scope.danzas[i].danza,$scope.danzas[i].cancion).nombre
+        descripcion += ' ('+$scope.getCancion($scope.danzas[i].tipoDanza,$scope.danzas[i].danza,$scope.danzas[i].cancion).autor+')<sl><sl>'
+        danzas += valores.substr(i+1+(inicio*-1),1);
+        danzas += valores.substr($scope.danzas[i].tipoDanza+(inicio*-1),1);
+        danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
+        danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
+        danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
+    }
+    descripcion += '<sl><sl>';
+    descripcion+='+URL:* '+document.URL+"?tema="+$scope.tema+",danzas="+danzas;
+    
+    aux.setAttribute("value", descripcion);
 
     document.body.appendChild(aux);
 
@@ -265,6 +276,9 @@ $scope.salvarSesion =   function()  {
     document.execCommand("copy");
 
     document.body.removeChild(aux);
+}
+$scope.recuperarSesion =    function()  {
+    
 }
 
   $scope.cat = ['Estado Inicial', 
