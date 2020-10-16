@@ -252,20 +252,20 @@ $scope.salvarSesion =   function()  {
     const inicio = -7;
     var danzas = '';
     var descripcion = '';
-    descripcion = '   *Tema: '+$scope.tema+'*<sl><sl>';
+    descripcion = '.  *Tema: '+$scope.tema+'*  ';
     for (var i=0; i<$scope.danzas.length; i++)  {
-        descripcion += '   '+(i+1)+'. *Tipo de Danza:* '+$scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].nombre+'<sl>';
-        descripcion += '   *Danza:* '+$scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza].nombre+'<sl>';
-        descripcion += '   *Música:* '+$scope.getCancion($scope.danzas[i].tipoDanza,$scope.danzas[i].danza,$scope.danzas[i].cancion).nombre
-        descripcion += ' ('+$scope.getCancion($scope.danzas[i].tipoDanza,$scope.danzas[i].danza,$scope.danzas[i].cancion).autor+')<sl><sl>'
+//        descripcion += '   '+(i+1)+'. *Tipo de Danza:* '+$scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].nombre+'<sl>';
+//        descripcion += '   *Danza:* '+$scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza].nombre+'<sl>';
+//        descripcion += '   *Música:* '+$scope.getCancion($scope.danzas[i].tipoDanza,$scope.danzas[i].danza,$scope.danzas[i].cancion).nombre
+//        descripcion += ' ('+$scope.getCancion($scope.danzas[i].tipoDanza,$scope.danzas[i].danza,$scope.danzas[i].cancion).autor+')<sl><sl>'
         danzas += valores.substr(i+1+(inicio*-1),1);
         danzas += valores.substr($scope.danzas[i].tipoDanza+(inicio*-1),1);
         danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
         danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
         danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
     }
-    descripcion += '<sl><sl>URL: ';
-    descripcion =document.URL+"?tema="+$scope.tema+",danzas="+danzas;
+//    descripcion += '<sl><sl>URL: ';
+    descripcion += document.URL+"?tema="+$scope.tema+",danzas="+danzas;
     
     aux.setAttribute("value", descripcion);
 
