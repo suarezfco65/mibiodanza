@@ -143,42 +143,66 @@ var obtenerAnchos    =   function()  {
     
 <script>
 angular.module('myApp', []).controller('userCtrl', function($scope) {
-$scope.tiposDanzas = arrTiposDanzas;
-$scope.canciones = arrayCanciones;
-$scope.play =   function    (td,d,c)    {
-    cancion = $scope.getCancion(td,d,c);
-    $scope.archivo= cancion.archivo;
-}
-$scope.getCancion  =   function(td, d, c)  {
-    var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-    if (cancion.disco == '00' && cancion.pista == '00')
-        return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
-    var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
-    if (resultado == undefined)
-        return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
-    return resultado;
-}
-$scope.getDanzas    =   function()  {
-    var arr = [];
-    for (var i=0; i<$scope.danzas.length; i++)
-        arr.push($scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre);
-    return arr
-}
-$scope.id=0;
-$scope.tipoDanza = 0;
-$scope.danza = 0;
-$scope.cancion = 0;
-$scope.evolucion = 0;
-$scope.tema ="";
-$scope.danzas = [
-    {id:1, tipoDanza:1, danza:1, cancion:2, evolucion:1 },
-    {id:2, tipoDanza:2, danza:2, cancion:1, evolucion:2 },
-    {id:3, tipoDanza:3, danza:11, cancion:12, evolucion:3 },
-    {id:4, tipoDanza:3, danza:25, cancion:5, evolucion:4 },
-    {id:5, tipoDanza:3, danza:13, cancion:1, evolucion:2 },
-    {id:6, tipoDanza:19, danza:3, cancion:2, evolucion:1 },
-    {id:7, tipoDanza:19, danza:2, cancion:1, evolucion:0 },
-];
+    $scope.tiposDanzas = arrTiposDanzas;
+    $scope.canciones = arrayCanciones;
+    $scope.play =   function    (td,d,c)    {
+        cancion = $scope.getCancion(td,d,c);
+        $scope.archivo= cancion.archivo;
+    }
+    $scope.getCancion  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+        if (resultado == undefined)
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
+    }
+    $scope.getDanzas    =   function()  {
+        var arr = [];
+        for (var i=0; i<$scope.danzas.length; i++)
+            arr.push($scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre);
+        return arr
+    }
+    $scope.id=0;
+    $scope.tipoDanza = 0;
+    $scope.danza = 0;
+    $scope.cancion = 0;
+    $scope.evolucion = 0;
+    $scope.tema ="";
+    $scope.danzas   = [];
+    $scope.recuperarSesion =    function()  {
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        const inicio = -7;
+        var getQueryStringValue = function (key) {  
+                return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+        }
+        $scope.tema = getQueryStringValue("tema");
+        
+        var codDanzas = getQueryStringValue("danzas");
+        
+        for (var i = 0; i<codDanzas.length;i+=5)    {
+            var danza = {id:0, tipoDanza:0, danza:0, cancion:0, evolucion:0};
+            danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
+            danza.tipoDanza =valores.indexOf(codDanzas.substr(i+1,1))+inicio;
+            danza.danza     =valores.indexOf(codDanzas.substr(i+2,1))+inicio;
+            danza.cancion   =valores.indexOf(codDanzas.substr(i+3,1))+inicio;
+            danza.evolucion =valores.indexOf(codDanzas.substr(i+4,1))+inicio;
+            $scope.danzas.push(danza);
+        }
+    }
+    $scope.recuperarSesion();
+/*    $scope.danzas = [
+        {id:1, tipoDanza:1, danza:1, cancion:2, evolucion:1 },
+        {id:2, tipoDanza:2, danza:2, cancion:1, evolucion:2 },
+        {id:3, tipoDanza:3, danza:11, cancion:12, evolucion:3 },
+        {id:4, tipoDanza:3, danza:25, cancion:5, evolucion:4 },
+        {id:5, tipoDanza:3, danza:13, cancion:1, evolucion:2 },
+        {id:6, tipoDanza:19, danza:3, cancion:2, evolucion:1 },
+        {id:7, tipoDanza:19, danza:2, cancion:1, evolucion:0 },
+    ];
+*/
+
 $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
 $scope.hideform = true;
 $scope.edit = true;
@@ -248,7 +272,7 @@ $scope.deleteUser =   function(id)  {
 
 $scope.salvarSesion =   function()  {
     var aux = document.createElement('input');
-    valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+    var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
     const inicio = -7;
     var danzas = '';
     var descripcion = '';
@@ -265,7 +289,7 @@ $scope.salvarSesion =   function()  {
         danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
     }
 //    descripcion += '<sl><sl>URL: ';
-    descripcion += document.URL+"?tema="+$scope.tema+",danzas="+danzas;
+    descripcion += document.URL+"?tema="+$scope.tema+"&danzas="+danzas;
     
     aux.setAttribute("value", descripcion);
 
@@ -276,9 +300,6 @@ $scope.salvarSesion =   function()  {
     document.execCommand("copy");
 
     document.body.removeChild(aux);
-}
-$scope.recuperarSesion =    function()  {
-    
 }
 
   $scope.cat = ['Estado Inicial', 
