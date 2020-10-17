@@ -70,7 +70,7 @@
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">
-                    <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm">
+                    <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm" ng-change="grafico()">
                     </select>
                 </div>
             </td>
@@ -310,69 +310,63 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         alert('URL copiado...')
     }
 
-    $scope.cat  =   ["ESTADO INICIAL"];
-    $scope.dat  =   [0];
     $scope.grafico  =   function()  {
+        $scope.cat  =   ["ESTADO INICIAL"];
+        $scope.dat  =   [0];
         for(var i=0; i<$scope.danzas.length;i++)    {
             var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
             $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
             $scope.dat.push($scope.danzas[i].evolucion);
         }
-    }
-    Highcharts.chart('grafico', {
-        title: {
-            text: 'Tema de la Sesión de Biodanza'
-        },
-
-        subtitle: {
-            text: 'Realizado por: Equipo B, Dayana, Marisabel, Anneris y Francisco'
-        },
-
-        xAxis: {
-            categories: $scope.cat
-        },
-        yAxis: {
+        Highcharts.chart('grafico', {
             title: {
-                text: 'Colinérgico - + - Adrenérgico'
+                text: 'Tema de la Sesión de Biodanza'
             },
-            labels: {
-                formatter: function () {
-                    return this.value;
+
+            subtitle: {
+                text: 'Realizado por: Equipo B, Dayana, Marisabel, Anneris y Francisco'
+            },
+
+            xAxis: {
+                categories: $scope.cat
+            },
+            yAxis: {
+                title: {
+                    text: 'Colinérgico - + - Adrenérgico'
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
                 }
-            }
-        },
-        tooltip: {
-            crosshairs: true,
-            shared: true
-        },
-        plotOptions: {
-            spline: {
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        radius: 4,
+                        lineColor: '#666666',
+                        lineWidth: 1
+                    }
+                }
+            },
+
+            series: [{
+                name: 'nivel',
                 marker: {
-                    radius: 4,
-                    lineColor: '#666666',
-                    lineWidth: 1
-                }
-            }
-        },
- 
-        series: [{
-            name: 'nivel',
-            marker: {
-                symbol: 'square'
-            },
-            data: $scope.dat
-        }]
+                    symbol: 'square'
+                },
+                data: $scope.dat
+            }]
 
-    });
+        });
+    }
 
-    $scope.isMobile = function ()  {
-        return (((navigator.userAgent.match(/Android/i)) ||
-            (navigator.userAgent.match(/webOS/i)) ||
-            (navigator.userAgent.match(/iPhone/i)) ||
-            (navigator.userAgent.match(/iPod/i)) ||
-            (navigator.userAgent.match(/iPad/i)) ) != null )
-    }    
-
+    $scope.grafico();
+    
     $scope.maxCar    =   function()  {
         var total = screen.width;
         var fijo  = 350;
@@ -412,6 +406,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 $scope.danzas.splice(posHasta,0,elemento);
             }
             document.getElementById('tr'+$scope.cambios[0]).style.backgroundColor="white";
+            $scope.grafico();
             $scope.cambios = [];
         }   else    {
             document.getElementById('tr'+id).style.backgroundColor="#F08080";
