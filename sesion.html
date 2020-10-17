@@ -103,9 +103,7 @@ var obtenerAnchos    =   function()  {
     </tr>
 </tbody>
 </table>
-    <!--
-<center><audio id="audio" controls></audio></center>
-    -->
+
 <!-- The Modal for Agregar o editar danza-->
 <div class="modal fade" id="editModal">
     <div class="modal-dialog modal-lg">
@@ -321,7 +319,7 @@ $scope.salvarSesion =   function()  {
     document.body.removeChild(aux);
 }
 
-  $scope.cat = ['Estado Inicial', 
+/*  $scope.cat = ['Estado Inicial', 
   		        'Ronda de Integración...', 
                 'Marcha Fisiológica', 
                 'Coordinación Rítmica...', 
@@ -332,8 +330,16 @@ $scope.salvarSesion =   function()  {
                 'Mecer la Vida', 
                 'Encuentros', 
                 'Grupo Compacto de Mecim...', 
-                'Ronda de Activación Pro...'];
-  $scope.dat = [0, 1, 2, 3, 2, 1, 0, -1, -2, -3, -1, 0];
+                'Ronda de Activación Pro...']; 
+    $scope.dat = [0, 1, 2, 3, 2, 1, 0, -1, -2, -3, -1, 0];
+*/
+    $scope.cat  =   ["ESTADO INICIAL"]
+    $scope.dat  =   [0]
+    for(var i=0; i<$scope.danzas.length;i++)    {
+        var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
+        $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
+        $scope.dat.push($scope.danzas[i].evolucion);
+    }
     Highcharts.chart('grafico', {
         title: {
             text: 'Tema de la Sesión de Biodanza'
