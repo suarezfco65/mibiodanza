@@ -411,7 +411,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 $scope.danzas.splice(posDesde,1);
                 $scope.danzas.splice(posHasta,0,elemento);
             }
+            document.getElementById('tr'+$scope.cambios[0]).style.backgroundColor="white";
             $scope.cambios = [];
+        }   else    {
+            document.getElementById('tr'+id).style.backgroundColor="#F08080";
         }
     }
 
