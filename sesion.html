@@ -28,7 +28,18 @@
         .rb {
             position: fixed;
             top:55px;
-            right:5px;
+            right: 5px;
+            font-size: 20px;
+        }
+        .bcs {
+            position: fixed; 
+            bottom:10px;
+            right:10px;
+        }
+        .song {
+            color:red;
+            margin-bottom: 12px;
+            cursor: pointer;
         }
     </style>
 
@@ -37,14 +48,16 @@
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
 
     
-<audio id="audio" class="rb" controls></audio>
+    <div class="rb"><audio id="audio" controls></audio></div>
     
     
-<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:70px">
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:115px">
 <div class="w3-container">
 
-    <p style="text-align: left"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p>
-
+<!--    <p style="text-align: left"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p> -->
+<div class="bcs"> 
+    <button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button>
+</div>
 <!--    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
 <script>
 var obtenerAnchos    =   function()  {
