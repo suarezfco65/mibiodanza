@@ -66,8 +66,8 @@
         <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}">
             <td id="{{'td'+d.id}}">
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-                <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<30?30:maxCar())}}</span>: <br>
-                <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<30?30:maxCar())}}</span><br>
+                <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
+                <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">
                     <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm">
@@ -84,6 +84,30 @@
     </tbody>
     </table>
 
+    <!-- The Modal for Describir danza-->
+    <div class="modal fade" id="descModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{descTitle}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body"  id="descBody">
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success w3-ripple" data-dismiss="modal">Cerrar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>    
+    
     <!-- The Modal for Agregar o editar danza-->
     <div class="modal fade" id="editModal">
         <div class="modal-dialog modal-lg">
@@ -91,8 +115,8 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title" ng-show="edit">Agregar Danza:</h4>
-                <h4 class="modal-title" ng-hide="edit">Editar Danza:</h4>
+                <h4 class="modal-title" ng-show="edit">Editar Danza:</h4>
+                <h4 class="modal-title" ng-hide="edit">Agregar Danza:</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -186,6 +210,15 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     }
     $scope.recuperarSesion();
     $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
+
+    $scope.descTitle = "";
+    $scope.descDanza    =   function    (id)    {
+        var danza = $scope.danzas.find(e => e.id == id);
+        var d = $scope.tiposDanzas[danza.tipoDanza-1].arrDanzas[danza.danza-1]
+        $scope.descTitle = d.nombre
+        document.getElementById("descBody").innerHTML = d.descripcion.substr(0, d.descripcion.indexOf('Música'))
+    }
+    
     $scope.hideform = true;
     $scope.edit = true;
     $scope.error = false;
@@ -193,7 +226,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.editDanza = function(id) {
         $scope.hideform = false;
         if (id == 'new') {
-            $scope.edit = true;
+            $scope.edit = false;
             $scope.incomplete = true;
             $scope.tipoDanza = 0;
             $scope.danza = 0;
