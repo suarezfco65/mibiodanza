@@ -9,9 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
-    
-    
-    
+
     <link rel="stylesheet" href="w3.css">  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -27,16 +25,25 @@
         .cancion    {color: darkslateblue;}
         .desc       {color: green; font-weight: bold}
         .consigna   {color: orangered}
+        .rb {
+            position: fixed;
+            top:55px;
+            right:5px;
+        }
     </style>
 
 </head>
 <body>
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
 
-<div ng-app="myApp" ng-controller="userCtrl" style="margin-top:60px">
+    
+<audio id="audio" class="rb" controls></audio>
+    
+    
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:70px">
 <div class="w3-container">
 
-    <p style="text-align: right"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p>
+    <p style="text-align: left"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p>
 
 <!--    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
 <script>
@@ -86,8 +93,9 @@ var obtenerAnchos    =   function()  {
     </tr>
 </tbody>
 </table>
+    <!--
 <center><audio id="audio" controls></audio></center>
-    
+    -->
 <!-- The Modal for Agregar o editar danza-->
 <div class="modal fade" id="editModal">
     <div class="modal-dialog modal-lg">
@@ -120,8 +128,6 @@ var obtenerAnchos    =   function()  {
             <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
             </select>
         </div>
-        <center><button class="btn" ng-click="play(tipoDanza,danza,cancion)"><i class="fa fa-play"></i></button>
-        </center>
             </form>
             <br>
      
@@ -129,7 +135,7 @@ var obtenerAnchos    =   function()  {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-            <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Save Changes</button>
+            <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Salvar</button>
         </div>
         
         </div>
@@ -142,7 +148,7 @@ var obtenerAnchos    =   function()  {
 
     
 <script>
-angular.module('myApp', []).controller('userCtrl', function($scope) {
+angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.tiposDanzas = arrTiposDanzas;
     $scope.canciones = arrayCanciones;
     $scope.play =   function    (td,d,c)    {
@@ -264,9 +270,9 @@ var chkDanza = function (d)  {
     return (d.id == $scope.id)
 }
 
-$scope.deleteUser =   function(id)  {
+$scope.deleteDanza =   function(id)  {
     $scope.id = id;
-    var pos    =   $scope.users.findIndex(chkDanza);
+    var pos    =   $scope.danzas.findIndex(chkDanza);
     $scope.danzas.splice(pos,1);
 }
 
