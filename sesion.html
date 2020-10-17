@@ -63,7 +63,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}">
+        <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}" ng-dblclick="cambiarPosicion(d.id)">
             <td id="{{'td'+d.id}}">
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
@@ -251,75 +251,73 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         $scope.incomplete = ($scope.tipoDanza  == 0 || $scope.danza  == 0 || $scope.cancion == 0)
     };
 
-var myArrayMax = function(arr) {
-  var len = arr.length;
-  var max = 0;
-  while (len--) {
-    if (arr[len].id > max) {
-      max = arr[len].id;
+    var myArrayMax = function(arr) {
+      var len = arr.length;
+      var max = 0;
+      while (len--) {
+        if (arr[len].id > max) {
+          max = arr[len].id;
+        }
+      }
+      return max;
     }
-  }
-  return max;
-}
     
-$scope.saveDanza =   function()  {
-    
-    if ($scope.id == (myArrayMax($scope.danzas)+1)) 
-        $scope.danzas.push({id:$scope.id, tipoDanza:$scope.tipoDanza, danza:$scope.danza, cancion:$scope.cancion, evolucion:$scope.evolucion})
-    else    {
+    $scope.saveDanza =   function()  {
+
+        if ($scope.id == (myArrayMax($scope.danzas)+1)) 
+            $scope.danzas.push({id:$scope.id, tipoDanza:$scope.tipoDanza, danza:$scope.danza, cancion:$scope.cancion, evolucion:$scope.evolucion})
+        else    {
+            var pos    =   $scope.danzas.findIndex(chkDanza);
+            $scope.danzas[pos].tipoDanza = $scope.tipoDanza;
+            $scope.danzas[pos].danza = $scope.danza;
+            $scope.danzas[pos].cancion = $scope.cancion;        
+        }
+        $scope.hideform = true;    
+    }
+
+    var chkDanza = function (d)  {
+        return (d.id == $scope.id)
+    }
+
+    $scope.deleteDanza =   function(id)  {
+        $scope.id = id;
         var pos    =   $scope.danzas.findIndex(chkDanza);
-        $scope.danzas[pos].tipoDanza = $scope.tipoDanza;
-        $scope.danzas[pos].danza = $scope.danza;
-        $scope.danzas[pos].cancion = $scope.cancion;        
+        $scope.danzas.splice(pos,1);
     }
-    $scope.hideform = true;    
-}
 
-var chkDanza = function (d)  {
-    return (d.id == $scope.id)
-}
-
-$scope.deleteDanza =   function(id)  {
-    $scope.id = id;
-    var pos    =   $scope.danzas.findIndex(chkDanza);
-    $scope.danzas.splice(pos,1);
-}
-
-$scope.salvarSesion =   function()  {
-    var aux = document.createElement('input');
-    var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
-    const inicio = -7;
-    var danzas = '';
-    var descripcion = '';
-    for (var i=0; i<$scope.danzas.length; i++)  {
-        danzas += valores.substr(i+1+(inicio*-1),1);
-        danzas += valores.substr($scope.danzas[i].tipoDanza+(inicio*-1),1);
-        danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
-        danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
-        danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
+    $scope.salvarSesion =   function()  {
+        var aux = document.createElement('input');
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        const inicio = -7;
+        var danzas = '';
+        var descripcion = '';
+        for (var i=0; i<$scope.danzas.length; i++)  {
+            danzas += valores.substr(i+1+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].tipoDanza+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
+        }
+        var url = document.URL;
+        var pos = url.indexOf('?');
+        if (pos >= 0)   url = url.substr(0,pos);
+        descripcion += url+"?danzas="+danzas+"&tema="+encodeURIComponent($scope.tema);
+        aux.setAttribute("value", descripcion);
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+        alert('URL copiado...')
     }
-    var url = document.URL;
-    var pos = url.indexOf('?');
-    if (pos >= 0)   url = url.substr(0,pos);
-    descripcion += url+"?danzas="+danzas+"&tema="+$scope.tema;
-    
-    aux.setAttribute("value", descripcion);
 
-    document.body.appendChild(aux);
-
-    aux.select();
-
-    document.execCommand("copy");
-
-    document.body.removeChild(aux);
-}
-
-    $scope.cat  =   ["ESTADO INICIAL"]
-    $scope.dat  =   [0]
-    for(var i=0; i<$scope.danzas.length;i++)    {
-        var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
-        $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
-        $scope.dat.push($scope.danzas[i].evolucion);
+    $scope.cat  =   ["ESTADO INICIAL"];
+    $scope.dat  =   [0];
+    $scope.grafico  =   function()  {
+        for(var i=0; i<$scope.danzas.length;i++)    {
+            var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
+            $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
+            $scope.dat.push($scope.danzas[i].evolucion);
+        }
     }
     Highcharts.chart('grafico', {
         title: {
@@ -395,6 +393,26 @@ $scope.salvarSesion =   function()  {
         if (resultado == undefined)
             return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
         return resultado;
+    }
+    
+    $scope.cambios = [];
+    $scope.cambiarPosicion = function(id)   {
+        $scope.cambios.push(id);
+        if ($scope.cambios.length == 2) {
+            if ($scope.cambios[0] != $scope.cambios[1]) {
+                var posDesde = -1;
+                var posHasta = -1;
+                for (var i=0; i<$scope.danzas.length;i++)   {
+                    if ($scope.danzas[i].id == $scope.cambios[0])   posDesde=i;
+                    if ($scope.danzas[i].id == $scope.cambios[1])   posHasta=i;
+                }
+                var elemento = {};
+                for (e in $scope.danzas[posDesde])  elemento[e] = $scope.danzas[posDesde][e];
+                $scope.danzas.splice(posDesde,1);
+                $scope.danzas.splice(posHasta,0,elemento);
+            }
+            $scope.cambios = [];
+        }
     }
 
 })
