@@ -46,15 +46,13 @@
 </head>
 <body>
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
-
-    <table class="rb"><tr><td valign="middle"><button type="button"  class="btn  w3-green" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button></td>
-        <td valign="middle">&nbsp;<button type="button" class="btn btn-danger" ng-click="salvarSesion()">URL</button>&nbsp;</td>
-        <td><audio id="audio" controls></audio></td>
-        </tr></table>
-    
     
 <div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:115px">
 <div class="w3-container">
+    <table class="rb"><tr><td valign="middle"><button type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button></td>
+        <td valign="middle">&nbsp;<button type="button" class="btn btn-danger" ng-click="salvarSesion()">URL</button>&nbsp;</td>
+        <td><audio id="audio" controls></audio></td>
+        </tr></table>
 
 <!--    <p style="text-align: left"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p> -->
 <!--    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
@@ -97,7 +95,6 @@ var obtenerAnchos    =   function()  {
             </div>
         </td>
         <td style="text-align: right">
-<!--            <button type="button" class="btn btn-default" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)"><i class="fa fa-play"></i></button> -->
             <button type="button" class="btn btn-default" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
             <button type="button" class="btn btn-default" ng-click="descDanza(d.tipoDanza,d.danza)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
             <button type="button" class="btn btn-default" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
@@ -148,7 +145,7 @@ var obtenerAnchos    =   function()  {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-            <button type="button" class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Salvar</button>
+            <button type="button" class="btn btn-success w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Salvar</button>
         </div>
         
         </div>
