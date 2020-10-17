@@ -33,8 +33,8 @@
         }
         .bcs {
             position: fixed; 
-            bottom:10px;
-            right:10px;
+            top:55px;
+            right:315px;
         }
         .song {
             color:red;
@@ -47,17 +47,16 @@
 <body>
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
 
-    
-    <div class="rb"><audio id="audio" controls></audio></div>
+    <table class="rb"><tr><td valign="middle"><button type="button"  class="btn  w3-green" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button></td>
+        <td valign="middle">&nbsp;<button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; URL</button>&nbsp;</td>
+        <td><audio id="audio" controls></audio></td>
+        </tr></table>
     
     
 <div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:115px">
 <div class="w3-container">
 
 <!--    <p style="text-align: left"><button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar la Sesión</button></p> -->
-<div class="bcs"> 
-    <button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; Copiar Sesión</button>
-</div>
 <!--    <p style="text-align: right"><button type="button" class="btn btn-default" onclick="obtenerAnchos()">&#9998; Cantidad</button></p>
 <script>
 var obtenerAnchos    =   function()  {
@@ -79,11 +78,11 @@ var obtenerAnchos    =   function()  {
 <!--<table class="w3-table w3-bordered">-->
 <table class="table table-sm" id="tablaDanzas">
 <thead class="thead-light">
-  <tr>
-    <th>Danza</th>
-    <th>Evolución</th>
-    <th style="text-align: right"><button type="button"  class="btn btn-default" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">&#9997; Agregar</button></th>
-  </tr>
+    <tr>
+        <th>Danza</th>
+        <th>Evolución</th>
+        <th style="text-align: right">Controles</th>
+    </tr>
 </thead>
 <tbody>
     <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}">
