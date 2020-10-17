@@ -48,7 +48,7 @@
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
 
     <table class="rb"><tr><td valign="middle"><button type="button"  class="btn  w3-green" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button></td>
-        <td valign="middle">&nbsp;<button type="button" class="btn btn-danger" ng-click="salvarSesion()">&#9998; URL</button>&nbsp;</td>
+        <td valign="middle">&nbsp;<button type="button" class="btn btn-danger" ng-click="salvarSesion()">URL</button>&nbsp;</td>
         <td><audio id="audio" controls></audio></td>
         </tr></table>
     
@@ -97,7 +97,8 @@ var obtenerAnchos    =   function()  {
             </div>
         </td>
         <td style="text-align: right">
-            <button type="button" class="btn btn-default" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)"><i class="fa fa-play"></i></button>
+<!--            <button type="button" class="btn btn-default" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)"><i class="fa fa-play"></i></button> -->
+            <button type="button" class="btn btn-default" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
             <button type="button" class="btn btn-default" ng-click="descDanza(d.tipoDanza,d.danza)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
             <button type="button" class="btn btn-default" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
             <button type="button" class="btn btn-default" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
