@@ -66,8 +66,8 @@
         <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}">
             <td id="{{'td'+d.id}}">
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-                <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<25?25:maxCar())}}</span>: <br>
-                <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<25?25:maxCar())}}</span><br>
+                <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<30?30:maxCar())}}</span>: <br>
+                <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<30?30:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">
                     <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm">
