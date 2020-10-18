@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preparar Sesión - Yo❤Biodanza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="corazon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="navbar.js"></script>
+
+    <link rel="stylesheet" href="w3.css">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>    
+    <script src="documento.js"></script>
+    <script src="dir.js"></script>
+    <script src="navbar.js"></script>
+    <style>
+        .autor      {color: crimson;}
+        .cancion    {color: darkslateblue;}
+        .desc       {color: green; font-weight: bold}
+        .consigna   {color: orangered}
+        .rb {
+            position: fixed;
+            top:55px;
+            right: 5px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body><!--
+<script>//crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
+    -->
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:110px">
+<div class="w3-container">
+
+    <table class="rb"><tr><td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success btn-xs" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button>
+        <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
+        <td><audio id="audio" controls></audio></td>
+        </tr>
+    </table>
+
+    <h3 style="color:red; font-weight: bold">Preparación Sesión</h3>
+    <form>
+        <div class="form-group">
+<!--          <span class="input-group-addon">Tema</span>
+          <input ng-model="tema" type="text" class="form-control" placeholder="Indique el tema de la Sesión"> -->
+            <input ng-model="tema" type="text" class="form-control" id="tema" placeholder="Tema de la Sesión">
+        </div>    
+    </form>
+    
+    <!--<table class="w3-table w3-bordered">-->
+    <table class="table table-sm" id="tablaDanzas">
+    <thead class="thead-light">
+        <tr>
+            <th>Danza</th>
+            <th>Evolución</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}" ng-dblclick="cambiarPosicion(d.id)">
+            <td id="{{'td'+d.id}}">
+                {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
+                <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
+                <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
+            </td>
+            <td><div class="form-group">
+                    <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm" ng-change="grafico()">
+                    </select>
+                </div>
+            </td>
+            <td style="text-align: center">
+                <button style="margin-bottom: 4px" type="button" class="btn btn-success btn-xs" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
+                <button style="margin-bottom: 4px" type="button" class="btn btn-success btn-xs" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
+                <button style="margin-bottom: 4px" type="button" class="btn btn-success btn-xs" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+                <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+    <!-- The Modal for Describir danza-->
+    <div class="modal fade" id="descModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{descTitle}}</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body"  id="descBody">
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success w3-ripple" data-dismiss="modal">Cerrar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>    
+    
+    <!-- The Modal for Agregar o editar danza-->
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" ng-show="edit">Editar Danza:</h4>
+                <h4 class="modal-title" ng-hide="edit">Agregar Danza:</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <form ng-hide="hideform">
+
+            <div class="form-group">
+                <label for="tipoDanza">Tipo de Danza:</label>
+                <select ng-model="tipoDanza" ng-options="td.cod as td.nombre for td in tiposDanzas" class="form-control form-control-sm" id="tipoDanza">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="danza">Danza:</label>
+                <select ng-model="danza" ng-options="d.cod as d.nombre for d in tiposDanzas[tipoDanza-1].arrDanzas" class="form-control form-control-sm" id="danza">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="danza">Cancion:</label>
+                <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
+                </select>
+            </div>
+                </form>
+                <br>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Salvar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+        <div id="grafico"></div>
+    
+<script>
+angular.module('myApp', []).controller('sesionCrtl', function($scope) {
+    $scope.tiposDanzas = arrTiposDanzas;
+    $scope.canciones = arrayCanciones;
+    $scope.play =   function    (td,d,c)    {
+        cancion = $scope.getCancion(td,d,c);
+        $scope.archivo= cancion.archivo;
+    }
+    $scope.getCancion  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+        if (resultado == undefined)
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
+    }
+    $scope.getDanzas    =   function()  {
+        var arr = [];
+        for (var i=0; i<$scope.danzas.length; i++)
+            arr.push($scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre);
+        return arr
+    }
+    $scope.id=0;
+    $scope.tipoDanza = 0;
+    $scope.danza = 0;
+    $scope.cancion = 0;
+    $scope.evolucion = 0;
+    $scope.tema ="";
+    $scope.danzas   = [];
+    $scope.recuperarSesion =    function()  {
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        const inicio = -7;
+        var getQueryStringValue = function (key) {  
+                return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+        }
+        $scope.tema = getQueryStringValue("tema");
+        
+        var codDanzas = getQueryStringValue("danzas");
+        
+        for (var i = 0; i<codDanzas.length;i+=5)    {
+            var danza = {id:0, tipoDanza:0, danza:0, cancion:0, evolucion:0};
+            danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
+            danza.tipoDanza =valores.indexOf(codDanzas.substr(i+1,1))+inicio;
+            danza.danza     =valores.indexOf(codDanzas.substr(i+2,1))+inicio;
+            danza.cancion   =valores.indexOf(codDanzas.substr(i+3,1))+inicio;
+            danza.evolucion =valores.indexOf(codDanzas.substr(i+4,1))+inicio;
+            $scope.danzas.push(danza);
+        }
+    }
+    $scope.recuperarSesion();
+    $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
+
+    $scope.descTitle = "";
+    $scope.descDanza    =   function    (id)    {
+        var danza = $scope.danzas.find(e => e.id == id);
+        var d = $scope.tiposDanzas[danza.tipoDanza-1].arrDanzas[danza.danza-1]
+        $scope.descTitle = d.nombre
+        document.getElementById("descBody").innerHTML = d.descripcion.substr(0, d.descripcion.indexOf('Música'))
+    }
+    
+    $scope.hideform = true;
+    $scope.edit = true;
+    $scope.error = false;
+    $scope.incomplete = false; 
+    $scope.editDanza = function(id) {
+        $scope.hideform = false;
+        if (id == 'new') {
+            $scope.edit = false;
+            $scope.incomplete = true;
+            $scope.tipoDanza = 0;
+            $scope.danza = 0;
+            $scope.cancion = 0;
+            $scope.evolucion = 0;
+            $scope.id = myArrayMax($scope.danzas)+1;
+        } else {
+            $scope.id = id;
+            $scope.edit = true;
+            var objDanza = $scope.danzas.find(e => e.id == id);
+            $scope.tipoDanza = objDanza.tipoDanza;
+            $scope.danza = objDanza.danza; 
+            $scope.cancion = objDanza.cancion; 
+            $scope.evolucion = objDanza.evolucion; 
+        }
+    };
+    $scope.$watch('tipoDanza',function() {$scope.test();});
+    $scope.$watch('danza',function() {$scope.test();});
+    $scope.$watch('cancion',function() {$scope.test();});
+    $scope.test = function() {
+        $scope.error = false;
+        $scope.incomplete = ($scope.tipoDanza  == 0 || $scope.danza  == 0 || $scope.cancion == 0)
+    };
+
+    var myArrayMax = function(arr) {
+      var len = arr.length;
+      var max = 0;
+      while (len--) {
+        if (arr[len].id > max) {
+          max = arr[len].id;
+        }
+      }
+      return max;
+    }
+    
+    $scope.saveDanza =   function()  {
+
+        if ($scope.id == (myArrayMax($scope.danzas)+1)) 
+            $scope.danzas.push({id:$scope.id, tipoDanza:$scope.tipoDanza, danza:$scope.danza, cancion:$scope.cancion, evolucion:$scope.evolucion})
+        else    {
+            var pos    =   $scope.danzas.findIndex(chkDanza);
+            $scope.danzas[pos].tipoDanza = $scope.tipoDanza;
+            $scope.danzas[pos].danza = $scope.danza;
+            $scope.danzas[pos].cancion = $scope.cancion;        
+        }
+        $scope.hideform = true;    
+    }
+
+    var chkDanza = function (d)  {
+        return (d.id == $scope.id)
+    }
+
+    $scope.deleteDanza =   function(id)  {
+        $scope.id = id;
+        var pos    =   $scope.danzas.findIndex(chkDanza);
+        $scope.danzas.splice(pos,1);
+    }
+
+    $scope.salvarSesion =   function()  {
+        var aux = document.createElement('input');
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        const inicio = -7;
+        var danzas = '';
+        var descripcion = '';
+        for (var i=0; i<$scope.danzas.length; i++)  {
+            danzas += valores.substr(i+1+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].tipoDanza+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
+            danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
+        }
+        var url = document.URL;
+        var pos = url.indexOf('?');
+        if (pos >= 0)   url = url.substr(0,pos);
+        descripcion += url+"?danzas="+danzas+"&tema="+encodeURIComponent($scope.tema);
+        aux.setAttribute("value", descripcion);
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+        alert('URL copiado...')
+    }
+
+    $scope.grafico  =   function()  {
+        $scope.cat  =   ["ESTADO INICIAL"];
+        $scope.dat  =   [0];
+        for(var i=0; i<$scope.danzas.length;i++)    {
+            var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
+            $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
+            $scope.dat.push($scope.danzas[i].evolucion);
+        }
+        Highcharts.chart('grafico', {
+            chart: {
+                type: 'spline'
+            }, 
+            title: {
+                text: $scope.tema
+            },
+
+            subtitle: {
+                text: 'Realizado por: Equipo B, Dayana, Marisabel, Anneris y Francisco'
+            },
+
+            xAxis: {
+                categories: $scope.cat
+            },
+            yAxis: {
+                title: {
+                    text: 'Colinérgico - + - Adrenérgico'
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        radius: 4,
+                        lineColor: '#666666',
+                        lineWidth: 1
+                    }
+                }
+            },
+
+            series: [{
+                name: 'nivel',
+                marker: {
+                    symbol: 'square'
+                },
+                data: $scope.dat
+            }]
+
+        });
+    }
+
+    $scope.grafico();
+    
+    $scope.maxCar    =   function()  {
+        var total = screen.width;
+        var fijo  = 350;
+        return Math.round((total-fijo)/8.5);
+    }
+
+    $scope.playDanza =   function    (td,d,c)    {
+        cancion = $scope.getCancion(td,d,c);
+        objAudio = document.getElementById('audio');
+        objAudio.src =cancion.archivo;
+        objAudio.play();
+    }
+    $scope.getCancion  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+        var resultado = arrayCanciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+        if (resultado == undefined)
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
+    }
+    
+    $scope.cambios = [];
+    $scope.cambiarPosicion = function(id)   {
+        $scope.cambios.push(id);
+        if ($scope.cambios.length == 2) {
+            if ($scope.cambios[0] != $scope.cambios[1]) {
+                var posDesde = -1;
+                var posHasta = -1;
+                for (var i=0; i<$scope.danzas.length;i++)   {
+                    if ($scope.danzas[i].id == $scope.cambios[0])   posDesde=i;
+                    if ($scope.danzas[i].id == $scope.cambios[1])   posHasta=i;
+                }
+                var elemento = {};
+                for (e in $scope.danzas[posDesde])  elemento[e] = $scope.danzas[posDesde][e];
+                $scope.danzas.splice(posDesde,1);
+                $scope.danzas.splice(posHasta,0,elemento);
+            }
+            document.getElementById('tr'+$scope.cambios[0]).style.backgroundColor="white";
+            $scope.grafico();
+            $scope.cambios = [];
+        }   else    {
+            document.getElementById('tr'+id).style.backgroundColor="#F08080";
+        }
+    }
+
+})
+</script>
+
+</div>
+</body>
+</html>
+
+<!--
+ <ul>
+  <script>
+//    for (var i=8000;i<10500; i++)   document.write('<li>'+i+' -> &#'+i+';</i>');
+  </script>
+  </ul> 
+-->
