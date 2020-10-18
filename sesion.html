@@ -37,8 +37,15 @@
 <body>
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
     
-<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:55px">
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:110px">
 <div class="w3-container">
+
+    <table class="rb"><tr><td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success btn-xs" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button>
+        <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
+        <td><audio id="audio" controls></audio></td>
+        </tr>
+    </table>
+
     <h3 style="color:red; font-weight: bold">Preparación Sesión</h3>
     <form>
         <div class="form-group">
@@ -47,12 +54,6 @@
             <input ng-model="tema" type="text" class="form-control" id="tema" placeholder="Tema de la Sesión">
         </div>    
     </form>
-
-    <table class="rb"><tr><td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success btn-xs" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button>
-        <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
-        <td><audio id="audio" controls></audio></td>
-        </tr>
-    </table>
     
     <!--<table class="w3-table w3-bordered">-->
     <table class="table table-sm" id="tablaDanzas">
