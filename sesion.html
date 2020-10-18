@@ -27,7 +27,7 @@
         .consigna   {color: orangered}
         .rb {
             position: fixed;
-            top:140px;
+            top:55px;
             right: 5px;
             font-size: 20px;
         }
@@ -41,14 +41,15 @@
 <div class="w3-container">
     <h3 style="color:red; font-weight: bold">Preparación Sesión</h3>
     <form>
-        <div class="input-group">
-          <span class="input-group-addon">Tema</span>
-          <input ng-model="tema" type="text" class="form-control" placeholder="Tema de la Sesión">
+        <div class="form-group">
+<!--          <span class="input-group-addon">Tema</span>
+          <input ng-model="tema" type="text" class="form-control" placeholder="Indique el tema de la Sesión"> -->
+            <input ng-model="tema" type="text" class="form-control" id="tema" placeholder="Tema de la Sesión">
         </div>    
     </form>
 
     <table class="rb"><tr><td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success btn-xs" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button>
-        <button type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
+        <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
         <td><audio id="audio" controls></audio></td>
         </tr>
     </table>

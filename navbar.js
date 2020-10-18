@@ -9,7 +9,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Aspectos Fisiológicos', href:'#', hijos:[]},
           {titulo:'Aspectos Psicológicos', href:'#', hijos:[]},
           {titulo:'Antecedentes Míticos y Fisiológicos', href:'#', hijos:[]},
-          {titulo:'Identidaad e Integración', href:'#', hijos:[]},
+          {titulo:'Identidad e Integración', href:'#', hijos:[]},
           {titulo:'Trance y Regresión', href:'#', hijos:[]},
           {titulo:'Contacto y Caricias', href:'#', hijos:[]}
         ]},
