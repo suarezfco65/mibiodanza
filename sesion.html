@@ -16,7 +16,7 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>    
     <script src="documento.js"></script>
     <script src="dir.js"></script>
     <script src="navbar.js"></script>
@@ -156,9 +156,9 @@
         </div>
     </div>
 
-    <div id="grafico"></div>
-
-    </div>
+    <figure class="highcharts-figure">
+        <div id="grafico"></div>
+    </figure>
     
 <script>
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
@@ -321,8 +321,11 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.dat.push($scope.danzas[i].evolucion);
         }
         Highcharts.chart('grafico', {
+            chart: {
+                type: 'spline'
+            }, 
             title: {
-                text: 'Tema de la Sesión de Biodanza'
+                text: $scope.tema
             },
 
             subtitle: {
