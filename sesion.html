@@ -28,7 +28,7 @@
         .consigna   {color: orangered}
         .rb {
             position: fixed;
-            top:55px;
+            top:95px;
             right: 5px;
             font-size: 20px;
         }
@@ -38,8 +38,12 @@
 <body>
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
     
-<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:110px">
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
 <div class="w3-container">
+
+    <h3 style="color:red; font-weight: bold; margin-bottom: 80px ">Preparación de Sesión</h3>
+
+    <script>inicioContenido('Registro de datos', 4, 'datos', false)</script>
 
     <table class="rb"><tr><td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success btn-xs" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button>
         <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
@@ -47,12 +51,12 @@
         </tr>
     </table>
 
-    <h3 style="color:red; font-weight: bold">Preparación Sesión</h3>
     <form>
         <div class="form-group">
-<!--          <span class="input-group-addon">Tema</span>
-          <input ng-model="tema" type="text" class="form-control" placeholder="Indique el tema de la Sesión"> -->
             <input ng-model="tema" type="text" class="form-control" id="tema" placeholder="Tema de la Sesión">
+        </div>    
+        <div class="form-group">
+            <input ng-model="autor" type="text" class="form-control" id="autor" placeholder="Realizado por">
         </div>    
     </form>
     
@@ -86,6 +90,37 @@
         </tr>
     </tbody>
     </table>
+    <script>finContenido()</script>
+
+    <script>inicioContenido('Resultados', 4, 'resultados')</script>
+    <center>
+    <h1>{{tema}}</h1>
+    <p style="margin-bottom: 6px">Realizado por: {{autor}}</p>
+    <table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Danza</th>
+            <th>Evolución</th>
+        </tr>
+        <tr><td colspan="3"><hr></td></tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="d in danzas">
+            <td valign="top">{{d.id}}.&nbsp;</td>
+            <td>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
+            <i>{{getCancion(d.tipoDanza,d.danza,d.cancion).disco}}-{{getCancion(d.tipoDanza,d.danza,d.cancion).pista}}&nbsp;</i>
+            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor}}</span>: <br>
+            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span>
+            </td>
+            <td valign="top" align="center">{{d.evolucion}}</td>
+        </tr>
+    </tbody>
+    </table>
+    <div id="grafico"></div>
+    </center>
+    <br>
+    <script>finContenido()</script>
 
     <!-- The Modal for Describir danza-->
     <div class="modal fade" id="descModal">
@@ -157,7 +192,6 @@
         </div>
     </div>
 
-        <div id="grafico"></div>
     
 <script>
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
@@ -188,6 +222,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.cancion = 0;
     $scope.evolucion = 0;
     $scope.tema ="";
+    $scope.autor = "";
     $scope.danzas   = [];
     $scope.recuperarSesion =    function()  {
         var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
@@ -196,6 +231,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
         }
         $scope.tema = getQueryStringValue("tema");
+        $scope.autor = getQueryStringValue("autor");
         
         var codDanzas = getQueryStringValue("danzas");
         
@@ -302,7 +338,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         var url = document.URL;
         var pos = url.indexOf('?');
         if (pos >= 0)   url = url.substr(0,pos);
-        descripcion += url+"?danzas="+danzas+"&tema="+encodeURIComponent($scope.tema);
+        descripcion += url+"?danzas="+danzas+"&tema="+encodeURIComponent($scope.tema)+"&autor="+encodeURIComponent($scope.autor);
         aux.setAttribute("value", descripcion);
         document.body.appendChild(aux);
         aux.select();
@@ -328,7 +364,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             },
 
             subtitle: {
-                text: 'Realizado por: Equipo B, Dayana, Marisabel, Anneris y Francisco'
+                text: 'Realizado por: '+$scope.autor
             },
 
             xAxis: {
