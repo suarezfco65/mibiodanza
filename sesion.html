@@ -45,7 +45,7 @@
 
     <script>inicioContenido('Registro de datos', 4, 'datos')</script>
 
-    <table class="rb"><tr><td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success btn-xs" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal"> + </button>
+    <table class="rb"><tr><td valign="middle">
         <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
         <td><audio id="audio" controls></audio></td>
         </tr>
@@ -66,13 +66,15 @@
         <tr>
             <th>Danza</th>
             <th>Evolución</th>
-            <th>&nbsp;</th>
+            <th style="text-align: center"><button style="margin-bottom: 4px" type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">+ Danza</button></th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}" ng-dblclick="cambiarPosicion(d.id)">
             <td id="{{'td'+d.id}}">
+                <button type="button" class="btn btn-success btn-xs" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
+                <button type="button" class="btn btn-success btn-xs" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
@@ -82,10 +84,8 @@
                 </div>
             </td>
             <td style="text-align: center">
-                <button style="margin-bottom: 4px" type="button" class="btn btn-success btn-xs" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
-                <button style="margin-bottom: 4px" type="button" class="btn btn-success btn-xs" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
-                <button style="margin-bottom: 4px" type="button" class="btn btn-success btn-xs" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
-                <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
+                <button type="button" class="btn btn-success" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     </tbody>
