@@ -4,7 +4,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
         {titulo:'1er año', href:'#', hijos:[
           {titulo:'Definición y Modelo Teórico', href:'01 Definición y Modelo Teórico.html', hijos:[]},
           {titulo:'Inconsciente Vital y Principio Biocéntrico', href:'02 Inconsciente Vital y Principio Biocéntrico.html', hijos:[]},
-          {titulo:'La Vivencia', href:'#', hijos:[]},
+          {titulo:'La Vivencia', href:'03 La Vivencia.html', hijos:[]},
           {titulo:'Aspectos Biológicos', href:'#', hijos:[]},
           {titulo:'Aspectos Fisiológicos', href:'#', hijos:[]},
           {titulo:'Aspectos Psicológicos', href:'#', hijos:[]},
