@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Preparar Sesión - Yo❤Biodanza</title>
+    <title>Ejecutar Sesión</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="corazon.png">
@@ -62,8 +62,8 @@
             <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span>
             </td>
             <td valign="top" align="center">{{d.evolucion}}</td>
-            <td><button type="button" class="btn btn-success" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</td>
-            <td><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
+            <td valign="top"><button type="button" class="btn btn-success" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</td>
+            <td valign="top"><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
         </tr>
     </tbody>
     </table>

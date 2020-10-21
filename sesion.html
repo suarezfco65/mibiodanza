@@ -345,6 +345,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         var pos = url.indexOf('?');
         if (pos >= 0)   url = url.substr(0,pos);
         descripcion += url+"?danzas="+danzas+"&tema="+encodeURIComponent($scope.tema)+"&autor="+encodeURIComponent($scope.autor);
+        const regex = /sesion.html/gi;
+        descripcion = descripcion.replace(regex,'ejecutar.html');
         aux.setAttribute("value", descripcion);
         document.body.appendChild(aux);
         aux.select();
