@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preparar Sesión - Yo❤Biodanza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="corazon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="w3.css">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>    
+    <script src="documento.js"></script>
+    <script src="dir.js"></script>
+    <style>
+        .autor      {color: crimson;}
+        .cancion    {color: darkslateblue;}
+        .desc       {color: green; font-weight: bold}
+        .consigna   {color: orangered}
+        .rb {
+            position: fixed;
+            top:5px;
+            right: 5px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<audio class="rb" id="audio" controls></audio>    
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
+<div class="w3-container">
+
+    <center>
+    <table>
+    <thead>
+        <tr><td colspan="5" align="center">
+            <h1>{{tema}}</h1>
+            <p style="margin-bottom: 6px">Realizado por: {{autor}}</p></td>
+        </tr>
+        <tr>
+            <th>#</th>
+            <th>Danza</th>
+            <th>Evolución</th>
+            <th colspan="2">&nbsp;Controles</th>
+        </tr>
+        <tr><td colspan="5"><hr></td></tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="d in danzas">
+            <td valign="top">{{d.id}}.&nbsp;</td>
+            <td>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
+            <i>{{getCancion(d.tipoDanza,d.danza,d.cancion).disco}}-{{getCancion(d.tipoDanza,d.danza,d.cancion).pista}}&nbsp;</i>
+            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor}}</span>: <br>
+            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span>
+            </td>
+            <td valign="top" align="center">{{d.evolucion}}</td>
+            <td><button type="button" class="btn btn-success" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</td>
+            <td><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
+        </tr>
+    </tbody>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <div id="grafico"></div>
+    </center>
+
+    <!-- The Modal for Describir danza-->
+    <div class="modal fade" id="descModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{descTitle}}</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body"  id="descBody">
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success w3-ripple" data-dismiss="modal">Cerrar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>    
+    
+<script>
+angular.module('myApp', []).controller('sesionCrtl', function($scope) {
+    $scope.tiposDanzas = arrTiposDanzas;
+    $scope.canciones = arrayCanciones;
+    $scope.play =   function    (td,d,c)    {
+        cancion = $scope.getCancion(td,d,c);
+        $scope.archivo= cancion.archivo;
+    }
+    $scope.getCancion  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+        if (resultado == undefined)
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
+    }
+    $scope.getDanzas    =   function()  {
+        var arr = [];
+        for (var i=0; i<$scope.danzas.length; i++)
+            arr.push($scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre);
+        return arr
+    }
+    $scope.id=0;
+    $scope.tipoDanza = 0;
+    $scope.danza = 0;
+    $scope.cancion = 0;
+    $scope.evolucion = 0;
+    $scope.tema ="";
+    $scope.autor = "";
+    $scope.danzas   = [];
+    $scope.recuperarSesion =    function()  {
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        const inicio = -7;
+        var getQueryStringValue = function (key) {  
+                return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+        }
+        $scope.tema = getQueryStringValue("tema");
+        $scope.autor = getQueryStringValue("autor");
+        
+        var codDanzas = getQueryStringValue("danzas");
+        
+        for (var i = 0; i<codDanzas.length;i+=5)    {
+            var danza = {id:0, tipoDanza:0, danza:0, cancion:0, evolucion:0};
+            danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
+            danza.tipoDanza =valores.indexOf(codDanzas.substr(i+1,1))+inicio;
+            danza.danza     =valores.indexOf(codDanzas.substr(i+2,1))+inicio;
+            danza.cancion   =valores.indexOf(codDanzas.substr(i+3,1))+inicio;
+            danza.evolucion =valores.indexOf(codDanzas.substr(i+4,1))+inicio;
+            $scope.danzas.push(danza);
+        }
+    }
+    $scope.recuperarSesion();
+    $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
+
+    var myArrayMax = function(arr) {
+      var len = arr.length;
+      var max = 0;
+      while (len--) {
+        if (arr[len].id > max) {
+          max = arr[len].id;
+        }
+      }
+      return max;
+    }
+    
+    var chkDanza = function (d)  {
+        return (d.id == $scope.id)
+    }
+
+    $scope.grafico  =   function()  {
+        $scope.cat  =   ["ESTADO INICIAL"];
+        $scope.dat  =   [0];
+        for(var i=0; i<$scope.danzas.length;i++)    {
+            var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
+            $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
+            $scope.dat.push($scope.danzas[i].evolucion);
+        }
+        Highcharts.chart('grafico', {
+            chart: {
+                type: 'spline'
+            }, 
+            title: {
+                text: $scope.tema
+            },
+
+            subtitle: {
+                text: 'Realizado por: '+$scope.autor
+            },
+
+            xAxis: {
+                categories: $scope.cat
+            },
+            yAxis: {
+                title: {
+                    text: 'Colinérgico - + - Adrenérgico'
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
+                }
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        radius: 4,
+                        lineColor: '#666666',
+                        lineWidth: 1
+                    }
+                }
+            },
+
+            series: [{
+                name: 'nivel',
+                marker: {
+                    symbol: 'square'
+                },
+                data: $scope.dat
+            }]
+
+        });
+    }
+
+    $scope.grafico();
+    
+    $scope.maxCar    =   function()  {
+        var total = screen.width;
+        var fijo  = 350;
+        return Math.round((total-fijo)/8.5);
+    }
+
+    $scope.playDanza =   function    (td,d,c)    {
+        cancion = $scope.getCancion(td,d,c);
+        objAudio = document.getElementById('audio');
+        objAudio.src =cancion.archivo;
+        objAudio.play();
+    }
+    $scope.getCancion  =   function(td, d, c)  {
+        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
+        if (cancion.disco == '00' && cancion.pista == '00')
+            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
+        var resultado = arrayCanciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
+        if (resultado == undefined)
+            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
+        return resultado;
+    }
+    $scope.descTitle = "";
+    $scope.descDanza    =   function    (id)    {
+        var danza = $scope.danzas.find(e => e.id == id);
+        var d = $scope.tiposDanzas[danza.tipoDanza-1].arrDanzas[danza.danza-1]
+        $scope.descTitle = d.nombre
+        document.getElementById("descBody").innerHTML = d.descripcion.substr(0, d.descripcion.indexOf('Música'))
+    }
+    
+})
+</script>
+        </div>
+    </div>
+</body>
+</html>
