@@ -45,8 +45,8 @@
 
     <script>inicioContenido('Registro de datos', 4, 'datos')</script>
 
-    <table class="rb"><tr><td valign="middle">
-        <button style="margin-bottom: 4px" type="button" class="btn btn-danger btn-xs" ng-click="salvarSesion()">URL</button>&nbsp;</td>
+    <table class="rb"><tr>
+        <td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">+ Danza</button>&nbsp;</td>
         <td><audio id="audio" controls></audio></td>
         </tr>
     </table>
@@ -66,7 +66,7 @@
         <tr>
             <th>Danza</th>
             <th>Evolución</th>
-            <th style="text-align: center"><button style="margin-bottom: 4px" type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">+ Danza</button></th>
+            <th style="text-align: center">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -94,6 +94,9 @@
     <script>finContenido()</script>
 
     <script>inicioContenido('Resultados', 4, 'resultados')</script>
+    <center><button style="margin-bottom: 4px" type="button" class="btn btn-danger" ng-click="salvarSesion()">Copiar URL de la Sesión</button>
+    </center>
+    <hr>
     <center>
     <h1>{{tema}}</h1>
     <p style="margin-bottom: 6px">Realizado por: {{autor}}</p>

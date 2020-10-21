@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Música IBF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+-->
+    <script src="dir.js"></script>
+    <style>
+        .autor      {color: crimson; font-weight: bold}
+        .cancion    {color: darkslateblue; font-weight: bold}
+        .desc       {color: green; font-weight: bold}
+        .consigna   {color: orangered}
+    </style>
+    <script>
+        function buscarCancion(form)    {
+            var disco = form.elements.namedItem("disco").value; 
+            var pista = form.elements.namedItem("pista").value;
+            if(disco.length==1) disco   =   '0'+disco;
+            if(pista.length==1) pista   =   '0'+pista;
+            objMusica = document.getElementById("musica")
+            objMusica.innerHTML=oa(disco,pista)
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<center>
+    <img src="logo300x291.png" height="145" width="145"><br>
+    <h2>Música de Biodanza</h2>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="email">Disco</label>
+            <input type="text" class="form-control" id="disco" placeholder="Indique el disco" name="disco">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Pista:</label>
+            <input type="text" class="form-control" id="pista" placeholder="Indique la pista" name="pista">
+        </div>
+        <button type="button" class="btn" onclick="buscarCancion(this.form)">Buscar</button>
+    </form>
+    <br>
+    <table id="musica">
+        <tr><td>
+            <audio src="" controls></audio>
+        </td></tr>
+    </table>
+</center>
+</div>
+
+</body>
+</html>
+
+    
+</html>
