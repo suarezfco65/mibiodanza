@@ -443,8 +443,6 @@ var	s = '<tr style="vertical-align:top">';
         s += '<th nowrap rowspan="3">'+disco+'-'+pista+'&nbsp;<button type="button" class="btn btn-success" onclick="document.getElementById('audio').src=ubicacion+cancion.archivo">&#9835;</button>&nbsp;</th>';
         s += '<th class="autor">'+cancion.autor+'&nbsp;</th>';
         s += '<th class="cancion">'+cancion.nombre+'</th>';
-        s += '</tr><tr>';
-        s += '<td colspan="3"></td>';
     }
 	s += '</tr><tr>';
 	s += '<td colspan="3"><i>'+obs+'</i></td>';
