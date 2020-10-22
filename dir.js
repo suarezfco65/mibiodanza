@@ -437,7 +437,7 @@ function oa(disco, pista, obs='')	{
 var cancion = arrayCanciones.find(c => (c.disco == disco && c.pista == pista));
 var	s = '<tr style="vertical-align:top">';
     if (cancion == undefined) {
-        s += '<th nowrap rowspan="2">'+disco+'-'+pista+'&nbsp;</th>';
+        s += '<th nowrap rowspan="2">'+disco+'-'+pista+'&nbsp;<button type="button" class="btn btn-success" onclick="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</th>';
         s += '<th colspan="3" class="cancion">Canción no encontrada</th>';
     }   else    {
         s += '<th nowrap rowspan="3">'+disco+'-'+pista+'&nbsp;<button type="button" class="btn btn-success" onclick="document.getElementById('audio').src=ubicacion+cancion.archivo">&#9835;</button>&nbsp;</th>';
