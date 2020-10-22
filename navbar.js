@@ -6,7 +6,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Inconsciente Vital y Principio Biocéntrico', href:'02 Inconsciente Vital y Principio Biocéntrico.html', hijos:[]},
           {titulo:'La Vivencia', href:'03 La Vivencia.html', hijos:[]},
           {titulo:'Aspectos Biológicos', href:'04 Aspectos Biológicos de la Biodanza.html', hijos:[]},
-          {titulo:'Aspectos Fisiológicos', href:'#', hijos:[]},
+          {titulo:'Aspectos Fisiológicos', href:'05 Aspectos Fisiológicos de la Biodanza.html', hijos:[]},
           {titulo:'Aspectos Psicológicos', href:'#', hijos:[]},
           {titulo:'Antecedentes Míticos y Fisiológicos', href:'#', hijos:[]},
           {titulo:'Identidad e Integración', href:'#', hijos:[]},
