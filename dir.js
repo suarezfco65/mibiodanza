@@ -444,11 +444,7 @@ var	s = '<tr style="vertical-align:top">';
         s += '<th class="autor">'+cancion.autor+'&nbsp;</th>';
         s += '<th class="cancion">'+cancion.nombre+'</th>';
         s += '</tr><tr>';
-        s += '<td colspan="3"><button type="button" class="btn btn-success" ng-click="document.getElementById('audio').src=ubicacion+cancion.archivo">&#9835;</button>
-<!--
-<audio src="'+ubicacion+cancion.archivo+'" controls preload="none">Tu navegador no soporta la etiqueta audio</audio>
--->
-</td>';
+        s += '<td colspan="3"><button type="button" class="btn btn-success" ng-click="document.getElementById('audio').src=ubicacion+cancion.archivo">&#9835;</button></td>';
     }
 	s += '</tr><tr>';
 	s += '<td colspan="3"><i>'+obs+'</i></td>';
