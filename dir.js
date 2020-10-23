@@ -437,15 +437,20 @@ function oa(disco, pista, obs='')	{
 var cancion = arrayCanciones.find(c => (c.disco == disco && c.pista == pista));
 var	s = '<tr style="vertical-align:top">';
     if (cancion == undefined) {
-        s += '<th nowrap rowspan="2">'+disco+'-'+pista+'&nbsp;<button type="button" class="btn btn-success" onclick="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</th>';
+        s += '<th nowrap rowspan="2">'+disco+'-'+pista+'&nbsp;</th>';
         s += '<th colspan="3" class="cancion">Canción no encontrada</th>';
     }   else    {
-        s += '<th nowrap rowspan="3">'+disco+'-'+pista+'&nbsp;<button type="button" class="btn btn-success" onclick="document.getElementById('audio').src=ubicacion+cancion.archivo">&#9835;</button>&nbsp;</th>';
-        s += '<th class="autor">'+cancion.autor+'&nbsp;</th>';
-        s += '<th class="cancion">'+cancion.nombre+'</th>';
+        s += '<th nowrap rowspan="2">'+disco+'-'+pista+`&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic('`+ubicacion+cancion.archivo+`')">&#9835;</button>&nbsp;</th>`;
+        s += '<th colspan ="2"><p><span class="autor">'+cancion.autor+'&nbsp;<br>';
+        s += '<span class="cancion">'+cancion.nombre+'</p></th>';
     }
 	s += '</tr><tr>';
 	s += '<td colspan="3"><i>'+obs+'</i></td>';
 	s += '</tr>';
     return s;
+}
+var playMusic = function(song)  {
+var obj = document.getElementById('audio');
+    obj.src=song;
+    obj.play(); 
 }
