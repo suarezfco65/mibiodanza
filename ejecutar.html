@@ -56,10 +56,10 @@
     <tbody>
         <tr ng-repeat="d in danzas">
             <td valign="top">{{d.id}}.&nbsp;</td>
-            <td>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
+            <td><p>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
             <i>{{getCancion(d.tipoDanza,d.danza,d.cancion).disco}}-{{getCancion(d.tipoDanza,d.danza,d.cancion).pista}}&nbsp;</i>
             <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor}}</span>: <br>
-            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span>
+            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span></p>
             </td>
             <td valign="top" align="center">{{d.evolucion}}</td>
             <td valign="top"><button type="button" class="btn btn-success" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</td>

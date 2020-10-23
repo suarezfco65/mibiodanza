@@ -145,7 +145,7 @@ IBF07 - 17 - Milton Banana Trio - Cidade Vazia.mp3
 IBF07 - 18 - Goodman, Benny - After You've Gone (Take 2).mp3
 IBF07 - 19 - Light, Enoch & The Light Brigade - Moonlight Serenade.mp3
 IBF07 - 20 - Traditional Jazz Band - Sweet Lorraine.mp3
-IBF07 - 21 - Strauss II, Johann - An der sch”nen blauen Donau, op.314 [Part].mp3
+IBF07 - 21 - Strauss II, Johann - An der schonen blauen Donau, op.314 [Part].mp3
 IBF07 - 22 - Strauss II, Johann - Kaiserwalzer, op.437.mp3
 IBF07 - 23 - Delibes (David Zinman & Rotterdam Philharmonic Orchestra) - Valse - Ballet Coppelia - Acte I-2.mp3
 IBF07 - 24 - Fitzgerald, Ella - I've Got You Under My Skin.mp3
@@ -440,7 +440,7 @@ var	s = '<tr style="vertical-align:top">';
         s += '<th nowrap rowspan="2">'+disco+'-'+pista+'&nbsp;</th>';
         s += '<th colspan="3" class="cancion">Canción no encontrada</th>';
     }   else    {
-        s += '<th nowrap rowspan="2">'+disco+'-'+pista+`&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic('`+ubicacion+cancion.archivo+`')">&#9835;</button>&nbsp;</th>`;
+        s += '<th nowrap rowspan="2">'+disco+'-'+pista+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic(`'+ubicacion+cancion.archivo+'`)">&#9835;</button>&nbsp;</th>';
         s += '<th colspan ="2"><p><span class="autor">'+cancion.autor+'&nbsp;<br>';
         s += '<span class="cancion">'+cancion.nombre+'</p></th>';
     }

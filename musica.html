@@ -29,8 +29,18 @@
             objMusica.innerHTML=oa(disco,pista)
         }
     </script>
+    <style>
+        .rb {
+            position: fixed;
+            bottom:5px;
+            right: 5px;
+            font-size: 20px;
+        }
+    </style>
+
 </head>
 <body>
+<audio class="rb" id="audio" controls></audio>    
 <div class="container">
 <center>
     <img src="logo300x291.png" height="145" width="145"><br>
@@ -48,9 +58,6 @@
     </form>
     <br>
     <table id="musica">
-        <tr><td>
-            <audio src="" controls></audio>
-        </td></tr>
     </table>
 </center>
 </div>
