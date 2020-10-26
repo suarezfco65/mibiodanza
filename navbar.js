@@ -29,7 +29,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'La Música', href:'#', hijos:[]},
           {titulo:'Metodología I (Semantica Músical)', href:'#', hijos:[]},
           {titulo:'Metodología II (La Sesión de Biodanza)', href:'#', hijos:[]},
-          {titulo:'Metodología III (La Sesión de Biodanza II)', href:'#', hijos:[]},
+          {titulo:'Metodología III (La Sesión de Biodanza II)', href:'24 Metodología III.html', hijos:[]},
           {titulo:'Metodología IV (Profundización)', href:'25 Metodología IV.html', hijos:[]}
         ]},
         {titulo:'Sesión', href:'#', hijos:[
