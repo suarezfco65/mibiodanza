@@ -8,9 +8,9 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Aspectos Biológicos', href:'04 Aspectos Biológicos de la Biodanza.html', hijos:[]},
           {titulo:'Aspectos Fisiológicos', href:'05 Aspectos Fisiológicos de la Biodanza.html', hijos:[]},
           {titulo:'Aspectos Psicológicos', href:'06 Aspectos Psicológicos de la Biodanza.html', hijos:[]},
-          {titulo:'Antecedentes Míticos y Fisiológicos', href:'#', hijos:[]},
-          {titulo:'Identidad e Integración', href:'#', hijos:[]},
-          {titulo:'Trance y Regresión', href:'#', hijos:[]},
+          {titulo:'Antecedentes Míticos y Filosoficos', href:'07 Antecedentes Míticos y Filosóficos.html', hijos:[]},
+          {titulo:'Identidad e Integración', href:'08 Identidad e Integración.html', hijos:[]},
+          {titulo:'Trance y Regresión', href:'09 Trance y Regresión.html', hijos:[]},
           {titulo:'Contacto y Caricias', href:'#', hijos:[]}
         ]},
         {titulo:'2do año', href:'#', hijos:[
