@@ -76,7 +76,7 @@
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
                 <button type="button" class="btn btn-success btn-xs" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
-                <b>{{ getCancion(d.tipoDanza,d.danza,d.cancion).disco+'-'+getCancion(d.tipoDanza,d.danza,d.cancion).pista+' '}}</b>
+                <i>{{ getCancion(d.tipoDanza,d.danza,d.cancion).disco+'-'+getCancion(d.tipoDanza,d.danza,d.cancion).pista+' '}}</i>
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">

@@ -11,11 +11,11 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Antecedentes Míticos y Filosoficos', href:'07 Antecedentes Míticos y Filosóficos.html', hijos:[]},
           {titulo:'Identidad e Integración', href:'08 Identidad e Integración.html', hijos:[]},
           {titulo:'Trance y Regresión', href:'09 Trance y Regresión.html', hijos:[]},
-          {titulo:'Contacto y Caricias', href:'#', hijos:[]}
+          {titulo:'Contacto y Caricias', href:'10 Contacto y Caricias.html', hijos:[]}
         ]},
         {titulo:'2do año', href:'#', hijos:[
-          {titulo:'Movimiento Humano', href:'#', hijos:[]},
-          {titulo:'Vitalidad', href:'#', hijos:[]},
+          {titulo:'Movimiento Humano', href:'11 Movimiento Humano.html', hijos:[]},
+          {titulo:'Vitalidad', href:'12 Vitalidad.html', hijos:[]},
           {titulo:'Sexualidad', href:'#', hijos:[]},
           {titulo:'Creatividad', href:'#', hijos:[]},
           {titulo:'Afectividad', href:'#', hijos:[]},
