@@ -76,6 +76,7 @@
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
                 <button type="button" class="btn btn-success btn-xs" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
+                <b>{{ getCancion(d.tipoDanza,d.danza,d.cancion).disco+'-'+getCancion(d.tipoDanza,d.danza,d.cancion).pista+' '}}</b>
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">
@@ -181,7 +182,7 @@
             </div>
             <div class="form-group">
                 <label for="danza">Cancion:</label>
-                <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
+                <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).disco+'-'+getCancion(tipoDanza,danza,c.cod).pista+' '+getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
                 </select>
             </div>
                 </form>
