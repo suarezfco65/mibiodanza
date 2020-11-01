@@ -16,7 +16,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
         {titulo:'2do año', href:'#', hijos:[
           {titulo:'Movimiento Humano', href:'11 Movimiento Humano.html', hijos:[]},
           {titulo:'Vitalidad', href:'12 Vitalidad.html', hijos:[]},
-          {titulo:'Sexualidad', href:'#', hijos:[]},
+          {titulo:'Sexualidad', href:'13 Sexualidad.html', hijos:[]},
           {titulo:'Creatividad', href:'#', hijos:[]},
           {titulo:'Afectividad', href:'#', hijos:[]},
           {titulo:'Trascendencia', href:'#', hijos:[]},
