@@ -19,7 +19,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Sexualidad', href:'13 Sexualidad.html', hijos:[]},
           {titulo:'Creatividad', href:'14 Creatividad.html', hijos:[]},
           {titulo:'Afectividad', href:'15 Afectividad.html', hijos:[]},
-          {titulo:'Trascendencia', href:'#', hijos:[]},
+          {titulo:'Trascendencia', href:'16 Trascendencia.html', hijos:[]},
           {titulo:'Mecanismos de Acción', href:'#', hijos:[]},
           {titulo:'Biodanza y Acción Social', href:'#', hijos:[]},
           {titulo:'Aplicaciones y Extensiones', href:'#', hijos:[]},
