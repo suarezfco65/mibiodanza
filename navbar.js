@@ -21,8 +21,8 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Afectividad', href:'15 Afectividad.html', hijos:[]},
           {titulo:'Trascendencia', href:'16 Trascendencia.html', hijos:[]},
           {titulo:'Mecanismos de Acción', href:'17 Mecanismos de Acción.html', hijos:[]},
-          {titulo:'Biodanza y Acción Social', href:'#', hijos:[]},
-          {titulo:'Aplicaciones y Extensiones', href:'#', hijos:[]},
+          {titulo:'Biodanza y Acción Social', href:'18 Biodanza y Acción Social.html', hijos:[]},
+          {titulo:'Aplicaciones y Extensiones', href:'19 Aplicaciones y Extensiones.html', hijos:[]},
           {titulo:'Biodanza Ars Magna', href:'#', hijos:[]}
         ]},
         {titulo:'3er año', href:'#', hijos:[
