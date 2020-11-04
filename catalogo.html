@@ -43,7 +43,7 @@
             inicioContenido(danza.nombre, 5, 'd'+tipoDanza.cod+'-'+danza.cod);
             if(danza.descripcion != "")
                 document.write(danza.descripcion);
-            document.write('<table>');
+            document.write('<table class="table table-striped">');
             for (var k=0; k<danza.arrCanciones.length;k++)  {
                 var cancion = danza.arrCanciones[k];
                 document.write(oa(cancion.disco,cancion.pista,cancion.descripcion));
