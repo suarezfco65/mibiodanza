@@ -23,7 +23,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Mecanismos de Acción', href:'17 Mecanismos de Acción.html', hijos:[]},
           {titulo:'Biodanza y Acción Social', href:'18 Biodanza y Acción Social.html', hijos:[]},
           {titulo:'Aplicaciones y Extensiones', href:'19 Aplicaciones y Extensiones.html', hijos:[]},
-          {titulo:'Biodanza Ars Magna', href:'#', hijos:[]}
+          {titulo:'Biodanza Ars Magna', href:'20 Biodanza Ars Magna.html', hijos:[]}
         ]},
         {titulo:'3er año', href:'#', hijos:[
           {titulo:'La Música', href:'#', hijos:[]},
