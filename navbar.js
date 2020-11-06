@@ -26,9 +26,9 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Biodanza Ars Magna', href:'20 Biodanza Ars Magna.html', hijos:[]}
         ]},
         {titulo:'3er año', href:'#', hijos:[
-          {titulo:'La Música', href:'#', hijos:[]},
-          {titulo:'Metodología I (Semantica Músical)', href:'#', hijos:[]},
-          {titulo:'Metodología II (La Sesión de Biodanza)', href:'#', hijos:[]},
+          {titulo:'La Música', href:'21 La Música.html', hijos:[]},
+          {titulo:'Metodología I (Semantica Músical)', href:'22 Metodología I.html', hijos:[]},
+          {titulo:'Metodología II (La Sesión de Biodanza)', href:'23 Metodología II.html', hijos:[]},
           {titulo:'Metodología III (La Sesión de Biodanza II)', href:'24 Metodología III.html', hijos:[]},
           {titulo:'Metodología IV (Profundización)', href:'25 Metodología IV.html', hijos:[]}
         ]},
