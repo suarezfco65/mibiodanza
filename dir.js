@@ -455,3 +455,29 @@ var obj = document.getElementById('audio');
     obj.src=song;
     obj.play(); 
 }
+function fade(id, segundos)   {
+    var audioElement = document.getElementById(id);
+    var subir = (audioElement.volume < 0.2); 
+    var decimo = audioElement.volume / 10;
+    var decima = segundos * 1000 / 10
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.1 : 9*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.2 : 8*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.3 : 7*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.4 : 6*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.5 : 5*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.6 : 4*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.7 : 3*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.8 : 2*decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 0.9 : decimo;
+    setTimeout(function() {  audioElement.volume = (subir) ? 1 : 0;
+      }, decima);
+      }, decima);                                   
+      }, decima);                                   
+      }, decima);                                   
+      }, decima);                                   
+      }, decima);                                   
+      }, decima);                                   
+      }, decima);                                   
+      }, decima);                       
+      }, decima);
+}
