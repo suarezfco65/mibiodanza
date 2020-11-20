@@ -34,7 +34,10 @@
 
 </head>
 <body>
-<audio class="rb" id="audio" controls></audio>    
+<div class="rb">
+<audio id="audio" controls></audio>
+    <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
+</div>
 <div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
 <div class="w3-container">
 

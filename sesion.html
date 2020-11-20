@@ -43,11 +43,11 @@
 
     <h3 style="color:red; font-weight: bold; margin-bottom: 80px ">Preparación de Sesión Biodanza</h3>
 
-    <script>inicioContenido('Registro de datos', 4, 'datos')</script>
+    <script>inicioContenido('Registro de datos', 4, 'datos',false)</script>
 
     <table class="rb"><tr>
         <td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">+ Danza</button>&nbsp;</td>
-        <td ondblclick="fade('audio',5)"><audio id="audio" controls></audio>&nbsp;&nbsp;&nbsp;</td>
+        <td><audio id="audio" controls></audio><span  onclick="fade('audio',5)" class="crosshair">&nbsp;&nbsp;&nbsp;</span></td>
         </tr>
     </table>
 

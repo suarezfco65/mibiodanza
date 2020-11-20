@@ -14,7 +14,7 @@
 <body>
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Inicio')</script>
 
-<div class="container" style="margin-top:50px">
+<div ng-app="myApp" ng-controller="myController" class="container" style="margin-top:50px">
 <h3 style="color:red; font-weight: bold;">Inicio e Introducción</h3> <br>
 <script>inicioContenido('VIAJANDO A MIS PROFUNDIDADES', 4, 'INTRO', false)</script>
 <p>En este trabajo, me permito hablar de mí, no como un acto de ego, lo contrario, se trata de diluirme con Uds., de compartir mi experiencia vivida para mi transformación a la persona que deseo, un ser humano sin límite de lo humano sino como parte de todo lo que me rodea, y con la apertura del corazón a ser consciente de una evolución de vida que involucra principalmente mis sensaciones.</p>
@@ -50,5 +50,115 @@
     </center>
 <script>finContenido();</script>
 </div>
+
+    <!-- The Modal for Agregar o editar danza-->
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" ng-show="registrar">Registro</h4>
+                <h4 class="modal-title" ng-hide="registrar">Acceder</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <form name="myForm" ng-hide="hideform">
+
+                    <div class="login-container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <label>Correo</label>
+                                <input type="email" name="email" ng-model="user.username" required class="form-control">
+                                <div ng-show="myForm.email.$error.email" class="error">¡Correo incorrecto!</div>
+                                <div ng-show="myForm.email.$error.required &amp;&amp; myForm.email.$touched" class="error">¡Dato requerido!</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <label>Contraseña</label>
+                                <input type="password" name="pass" ng-model="user.password" required class="form-control">
+                                <div ng-show="myForm.pass.$error.required &amp;&amp; myForm.pass.$touched" class="error">¡Dato requerido!</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <button ng-click="authenticate()" ng-disabled="myForm.$invalid" class="btn btn-success pull-right">Login</button>
+                                <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div ng-show="showError" class="alert alert-danger">No logró su acceso, ¡Algún error en los datos suministrados!</div>
+                                <div ng-show="showSuccess" class="alert alert-success">Logró su acceso, ¡Se le ofrece una cordial bienvenida!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <br>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success w3-ripple" ng-disabled="error || incomplete" ng-click="saveDanza()" data-dismiss="modal">&#10004; Salvar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
+<script>
+    var app = angular.module('myApp',[]);
+
+    app.controller('myController',function($scope){
+
+        $scope.user={'username':'','password':''};
+
+        //----- Users json
+        var validUsers= [ 
+            {'username':'suarezfco65@gmail.com', 'password':'1234'},
+            {'username':'nini_ramos17@hotmail.com', 'password':'1234'},
+            {'username':'marysabelha22@gmail.com', 'password':'1234'},
+            {'username':'Dayi222@gmail.com', 'password':'1234'}
+        ];
+
+        $scope.showError = false; // set Error flag
+        $scope.showSuccess = false; // set Success Flag
+
+        //------- Authenticate function
+        $scope.authenticate = function (){
+            var flag= false;
+
+            for(var i in validUsers){ // loop on users array
+                if($scope.user.username == validUsers[i].username && $scope.user.password == validUsers[i].password){
+                    flag = true;
+                    break;
+                }
+                else{
+                    flag = false;
+                }				
+            }
+
+            //-------- set error or success flags
+            if(flag){
+                $scope.showError = false;
+                $scope.showSuccess = true;
+            }
+            else{
+                $scope.showError = true;
+                $scope.showSuccess = false;
+            }
+
+        }
+
+    });
+</script>
