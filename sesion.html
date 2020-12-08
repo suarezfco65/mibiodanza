@@ -11,7 +11,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
 
-    <link rel="stylesheet" href="w3.css">  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -46,8 +45,33 @@
     <script>inicioContenido('Registro de datos', 4, 'datos',false)</script>
 
     <table class="rb"><tr>
-        <td valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">+ Danza</button>&nbsp;</td>
-        <td><audio id="audio" controls></audio><span  onclick="fade('audio',5)" class="crosshair">&nbsp;&nbsp;&nbsp;</span></td>
+        <td>
+            <audio id="audio" controls>
+                <source id="ogg" src="" type="audio/ogg">
+                <source id="mp3" src="" type="audio/mpeg">
+            </audio>
+<!--  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="item active">
+      <h6><small id="Cdanza"></small></h6>
+      </div> 
+
+      <div class="item">
+      <h6><small class="cancion" id="Ccancion"></small></h6>
+      </div>
+    
+      <div class="item">
+      <h6><small class="autor" id="Cautor"></small></h6>
+      </div>
+    </div>
+  </div> -->
+
+            <audio id="audio2">
+                <source id="ogg2" src="" type="audio/ogg">
+                <source id="mp32" src="" type="audio/mpeg">
+            </audio>
+        </td>
+        <td onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</td>
         </tr>
     </table>
 
@@ -66,7 +90,8 @@
         <tr>
             <th>Danza</th>
             <th>Evolución</th>
-            <th style="text-align: center">&nbsp;</th>
+            <th style="text-align: center" valign="middle"><button style="margin-bottom: 4px" type="button"  class="btn btn-success" ng-click="editDanza('new')" data-toggle="modal" data-target="#editModal">+</button>&nbsp;</th>
+<!--            <th style="text-align: center">&nbsp;</th>  -->
         </tr>
     </thead>
     <tbody>
@@ -74,14 +99,14 @@
             <td id="{{'td'+d.id}}">
                 <button type="button" class="btn btn-success btn-xs" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-                <button type="button" class="btn btn-success btn-xs" ng-click="playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
+                <button type="button" class="btn btn-success btn-xs" ng-click="playColor(d.id);playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
                 <i>{{ getCancion(d.tipoDanza,d.danza,d.cancion).disco+'-'+getCancion(d.tipoDanza,d.danza,d.cancion).pista+' '}}</i>
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">
                     <select ng-model="d.evolucion" ng-options="v as v for v in valores" class="form-control form-control-sm" ng-change="grafico()">
-                    </select>
+                    </select><br>{{d.min}}:{{(d.seg < 10) ? ('0'+d.seg) : d.seg }}
                 </div>
             </td>
             <td style="text-align: center">
@@ -99,6 +124,7 @@
     </center>
     <hr>
     <center>
+    
     <h1>{{tema}}</h1>
     <p style="margin-bottom: 6px">Realizado por: {{autor}}</p>
     <table>
@@ -106,9 +132,9 @@
         <tr>
             <th>#</th>
             <th>Danza</th>
-            <th>Evolución</th>
+            <th>Evolución<br>Duración</th>
         </tr>
-        <tr><td colspan="3"><hr></td></tr>
+        <tr><td colspan="4"><hr></td></tr>
     </thead>
     <tbody>
         <tr ng-repeat="d in danzas">
@@ -118,7 +144,7 @@
             <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor}}</span>: <br>
             <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span>
             </td>
-            <td valign="top" align="center">{{d.evolucion}}</td>
+            <td valign="top" align="center">{{d.evolucion}}<br>{{d.min}}:{{(d.seg<10) ? '0'+d.seg : d.seg }}</td>
         </tr>
     </tbody>
     </table>
@@ -198,7 +224,6 @@
             </div>
         </div>
     </div>
-
     
 <script>
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
@@ -230,9 +255,27 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.evolucion = 0;
     $scope.tema ="";
     $scope.autor = "";
+    $scope.min = 0;
+    $scope.seg = 0;
     $scope.danzas   = [];
+    $scope.loadMusica =  function    (td,d,c,id)    {
+        var sufijo = (id == "audio") ? "":"2";
+        cancion = $scope.getCancion(td,d,c);
+        objAudio = document.getElementById('mp3'+sufijo);
+        objAudio.src =cancion.archivo;
+        objAudio = document.getElementById('ogg'+sufijo);
+        objAudio.src =cancion.archivo.substr(0,cancion.archivo.length-3)+'ogg';
+        objAudio = document.getElementById(id);
+        objAudio.load();
+/*        if (id=="audio")    {
+        document.getElementById('Cdanza').innerHTML = $scope.tiposDanzas[td-1].arrDanzas[d-1].nombre.substr(0,60)
+        document.getElementById('Ccancion').innerHTML = cancion.nombre.substr(0,60)
+        document.getElementById('Cautor').innerHTML = cancion.autor.substr(0,60)
+        }
+*/
+    }
     $scope.recuperarSesion =    function()  {
-        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
         const inicio = -7;
         var getQueryStringValue = function (key) {  
                 return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
@@ -243,14 +286,40 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         var codDanzas = getQueryStringValue("danzas");
         
         for (var i = 0; i<codDanzas.length;i+=5)    {
-            var danza = {id:0, tipoDanza:0, danza:0, cancion:0, evolucion:0};
+            var danza = {id:0, tipoDanza:0, danza:0, cancion:0, evolucion:0, min:0, seg:0};
             danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
             danza.tipoDanza =valores.indexOf(codDanzas.substr(i+1,1))+inicio;
             danza.danza     =valores.indexOf(codDanzas.substr(i+2,1))+inicio;
             danza.cancion   =valores.indexOf(codDanzas.substr(i+3,1))+inicio;
             danza.evolucion =valores.indexOf(codDanzas.substr(i+4,1))+inicio;
+            danza.min       =0;
+            danza.seg       =0;
             $scope.danzas.push(danza);
         }
+        if  (codDanzas.length>0)    $scope.getDuracion();
+    }
+    $scope.getDuracion  =   function()  {
+        var loadlist = new Object();
+        loadlist.objAudio = document.getElementById('audio2');
+        loadlist.objAudio.ondurationchange = function() {
+            var duracion = loadlist.objAudio.duration;
+            $scope.danzas[loadlist.pos].min = Math.trunc(duracion / 60);
+            $scope.danzas[loadlist.pos].seg = Math.trunc(duracion - (Math.trunc(duracion/60) * 60));
+            loadlist.pos++;
+            if (loadlist.pos < $scope.danzas.length) 
+                loadlist.load()
+            else    {
+                $scope.$digest();
+                loadlist = null;
+            }
+        };
+        loadlist.load = function ()  {
+            $scope.loadMusica($scope.danzas[loadlist.pos].tipoDanza,
+                              $scope.danzas[loadlist.pos].danza,
+                              $scope.danzas[loadlist.pos].cancion, 'audio2');
+        }
+        loadlist.pos = 0;
+        loadlist.load();
     }
     $scope.recuperarSesion();
     $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
@@ -276,6 +345,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.danza = 0;
             $scope.cancion = 0;
             $scope.evolucion = 0;
+            $scope.min = 0;
+            $scope.seg = 0;
             $scope.id = myArrayMax($scope.danzas)+1;
         } else {
             $scope.id = id;
@@ -285,6 +356,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.danza = objDanza.danza; 
             $scope.cancion = objDanza.cancion; 
             $scope.evolucion = objDanza.evolucion; 
+            $scope.min = objDanza.min; 
+            $scope.seg = objDanza.seg; 
         }
     };
     $scope.$watch('tipoDanza',function() {$scope.test();});
@@ -309,14 +382,22 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.saveDanza =   function()  {
 
         if ($scope.id == (myArrayMax($scope.danzas)+1)) 
-            $scope.danzas.push({id:$scope.id, tipoDanza:$scope.tipoDanza, danza:$scope.danza, cancion:$scope.cancion, evolucion:$scope.evolucion})
+            $scope.danzas.push({id:$scope.id, tipoDanza:$scope.tipoDanza, danza:$scope.danza, cancion:$scope.cancion, evolucion:$scope.evolucion, min:$scope.seg, min:$scope.seg})
         else    {
             var pos    =   $scope.danzas.findIndex(chkDanza);
             $scope.danzas[pos].tipoDanza = $scope.tipoDanza;
             $scope.danzas[pos].danza = $scope.danza;
             $scope.danzas[pos].cancion = $scope.cancion;        
         }
-        $scope.hideform = true;    
+        $scope.hideform = true;
+        $scope.playDanza($scope.tipoDanza,$scope.danza,$scope.cancion)
+        objAudio = document.getElementById('audio');
+        objAudio.oncanplay = function() {
+            var segs   =   objAudio.duration;
+            var pos    =   $scope.danzas.findIndex(chkDanza);
+            $scope.danzas[pos].min = Math.trunc(segs / 60);
+            $scope.danzas[pos].seg = Math.trunc(segs - (Math.trunc(segs/60) * 60));
+        };
     }
 
     var chkDanza = function (d)  {
@@ -331,7 +412,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 
     $scope.salvarSesion =   function()  {
         var aux = document.createElement('input');
-        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ';
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
         const inicio = -7;
         var danzas = '';
         var descripcion = '';
@@ -341,6 +422,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
             danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
             danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
+//            danzas += valores.substr($scope.danzas[i].min+(inicio*-1),1);
+//            danzas += valores.substr($scope.danzas[i].seg+(inicio*-1),1);
         }
         var url = document.URL;
         var pos = url.indexOf('?');
@@ -421,13 +504,19 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         var fijo  = 350;
         return Math.round((total-fijo)/8.5);
     }
-
+    
+    $scope.idplay = null;
+    $scope.playColor    =   function (id)   {
+        if ($scope.idplay != null)  document.getElementById('tr'+$scope.idplay).style.backgroundColor="white";
+        document.getElementById('tr'+id).style.backgroundColor="#D0D0FF";
+        $scope.idplay = id;
+    }
     $scope.playDanza =   function    (td,d,c)    {
-        cancion = $scope.getCancion(td,d,c);
+        $scope.loadMusica(td,d,c,'audio');
         objAudio = document.getElementById('audio');
-        objAudio.src =cancion.archivo;
         objAudio.play();
     }
+
     $scope.getCancion  =   function(td, d, c)  {
         var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
         if (cancion.disco == '00' && cancion.pista == '00')
@@ -461,11 +550,12 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             document.getElementById('tr'+id).style.backgroundColor="#F08080";
         }
     }
-
 })
 </script>
 
 </div>
+    </div>
+
 </body>
 </html>
 

@@ -250,7 +250,7 @@ IBF12 - 20 - Peixoto, Araken - Flamingo.mp3
 IBF12 - 21 - Peixoto, Araken - Who Needs Forever.mp3
 IBF13 - 01 - Krall, Diana - I Miss You So.mp3
 IBF13 - 02 - Merrill, Helen - When I Fall In Love.mp3
-IBF13 - 03 - Caymmi, Nana - Atr s da porta.mp3
+IBF13 - 03 - Caymmi, Nana - Atras da porta.mp3
 IBF13 - 04 - Creuza, Maria - Apelo.mp3
 IBF13 - 05 - Krall, Diana - I Don't Stand A Ghost Of A Chance With You.mp3
 IBF13 - 06 - Baker, Chet - Almost Blue.mp3
@@ -274,7 +274,7 @@ IBF14 - 01 - de Moraes&Creuza&Toquinho - Samba em preludio.mp3
 IBF14 - 02 - Getz, Stan & Gilberto, Joao - Corcovado (feat. Astrud Gilberto).mp3
 IBF14 - 03 - Getz, Stan & Gilberto, Joao - The Girl From Ipanema (feat. Astrud Gilberto).mp3
 IBF14 - 04 - Santiago, Emilio - Anos dourados-Eu sei que vou te amar.mp3
-IBF14 - 05 - Santiago, Emilio - Nada por Mim-Fullg s.mp3
+IBF14 - 05 - Santiago, Emilio - Nada por Mim-Fullgas.mp3
 IBF14 - 06 - Santiago, Emilio - Ronda-Sampa.mp3
 IBF14 - 07 - Santiago, Emilio - Verdade chinesa.mp3
 IBF14 - 08 - Santiago, Emilio - Perola Negra-Bem que se Quis.mp3
@@ -315,7 +315,7 @@ IBF16 - 04 - OST The Color Purple - Miss Celie's Blues (Sister) (1922 Jook Joint
 IBF16 - 05 - Merrill, Helen - I'm Just A Lucky So-And-So.mp3
 IBF16 - 06 - Ray, Charles & Carter, Betty - Baby It's Cold Outside.mp3
 IBF16 - 07 - Krall, Diana - Lost Mind.mp3
-IBF16 - 08 - Villa&Lobos, Heitor - Canzao de Amor - Floresta do Amazonas (Vocal Bid£ SayÆo).mp3
+IBF16 - 08 - Villa&Lobos, Heitor - Canzao de Amor - Floresta do Amazonas (Vocal Bidu Sayao).mp3
 IBF16 - 09 - OST Le Grand Bleu - Ouverture [Part].mp3
 IBF16 - 10 - Jarre, Jean Michel - Revolution, revolutions [Part].mp3
 IBF16 - 11 - Jarre, Jean Michel - Revolution Industrielle. Ouverture.mp3
@@ -395,7 +395,7 @@ IBFC20 - 18 - Shanti, Oliver & Friends - Tan Xingquing Park.mp3
 IBFC21 - 01 - The Beatles - Hello, Goodbye.mp3
 IBFC21 - 02 - Beethoven (Andre Cluytens & Berliner Philharmoniker) - Freude (Hymne a la joie) [Part] - Sinfonie 9 d-moll, op.125 - 4.mp3
 IBFC21 - 03 - Light, Enoch & The Light Brigade - Charleston.mp3
-IBFC21 - 04 - Barenbo‹m&Mederos&Console - El Dia en Que me Quieras.mp3
+IBFC21 - 04 - Barenboim&Mederos&Console - El Dia en Que me Quieras.mp3
 IBFC21 - 06 - Evora, Cesaria - Carnaval de Sao Vicente.mp3
 IBFC21 - 07 - Flack, Roberta - When You Smile.mp3
 IBFC21 - 08 - Jackson, Mahalia - When The Saints Go Marchin' In.mp3
@@ -451,8 +451,12 @@ var	s = '<tr style="vertical-align:top">';
     return s;
 }
 var playMusic = function(song)  {
-var obj = document.getElementById('audio');
-    obj.src=song;
+var obj = document.getElementById('mp3');
+    obj.src = song;
+    obj = document.getElementById('ogg');
+    obj.src = song.substr(0,song.length-3)+'ogg';
+    obj = document.getElementById('audio');
+    obj.load();
     obj.play(); 
 }
 function fade(id, segundos)   {

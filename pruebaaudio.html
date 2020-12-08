@@ -116,12 +116,11 @@ var playlist = new Object();
 
     playlist.objAudio.ondurationchange = function() {
         var duracion = playlist.objAudio.duration;
-        playlist.objAudio.play();
         playlist.objAudio.currentTime = (duracion/2-playlist.duracion/2);
         setTimeout(function(){ 
             playlist.objAudio.currentTime = (duracion-1);
         }, playlist.duracion*1000);
-    };
+    }
     playlist.objAudio.onended = function() {
         playlist.pos++;
         if (playlist.pos <= playlist.end) playlist.play();
@@ -130,6 +129,7 @@ var playlist = new Object();
         playlist.cargarDanza(playlist.danzas[playlist.pos].tipoDanza,
                              playlist.danzas[playlist.pos].danza,
                              playlist.danzas[playlist.pos].cancion);
+        playlist.objAudio.play();
     }
     
 </script>
