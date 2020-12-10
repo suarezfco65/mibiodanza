@@ -56,23 +56,24 @@
             <p style="margin-bottom: 6px">Realizado por: {{autor}}</p></td>
         </tr>
         <tr ng-hide="isMobile.mobilecheck()"><td colspan="4">
+<!--        <tr><td colspan="4"> -->
             <script>inicioContenido('Parametros para Prueba de Música', 4, 'opc')</script>
 
   <form class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-sm-2" for="sel1">Desde:</label>
-        <div class="col-sm-8">
+        <div class="col-sm-10">
         <select ng-model="desde" ng-options="d.id as d.nombre for d in danzas" class="form-control form-control-sm" id="desde"></select>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="sel1">Hasta:</label>
-        <div class="col-sm-8">
+        <div class="col-sm-10">
         <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control form-control-sm" id="hasta"></select>
         </div>
     </div>
-    <div class="form-group"  ng-hide="prueba">
-        <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label><input ng-model="prueba" type="checkbox"> Hacer prueba de Música</label>
             </div>
@@ -80,21 +81,20 @@
     </div>
     <div class="form-group" ng-show="prueba">
         <label class="control-label col-sm-2" for="duracion">Duración:</label>
-        <div class="col-sm-8">
+        <div class="col-sm-10">
             <input type="text" class="form-control" id="duracion" ng-model="duracion">
         </div>
     </div>
     <div class="form-group" ng-show="prueba">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-2 col-sm-10">
             <button type="button" class="btn btn-success" ng-click="iniciarPrueba()">Iniciar Prueba de Música</button>
         </div>
     </div>
     <div class="form-group" ng-hide="prueba">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-2 col-sm-10">
             <button type="button" class="btn btn-success" ng-click="iniciarSesion()">Iniciar Ejecución de Sesión Controlada</button>
         </div>
     </div>
-      
   </form>
             <script>finContenido();</script>
             </td>
@@ -166,19 +166,21 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         prueba.pos = $scope.desde+0;
         prueba.end = $scope.hasta+0;
         prueba.duracion = 0;
-
-        $scope.objAudio.onloadeddata = function() {
+        $scope.objAudio.ondurationchange = function() {
+            $scope.objAudio.pause();
             prueba.duracion = $scope.objAudio.duration;
-            $scope.objAudio.currentTime = (prueba.duracion/2-$scope.duracion/2);
-            setTimeout(function(){ 
-                $scope.objAudio.currentTime = (prueba.duracion-1);
-            }, $scope.duracion*1000);
+            $scope.objAudio.currentTime = Math.trunc(prueba.duracion/2-$scope.duracion/2);
+            $scope.objAudio.play();
+            setTimeout(function(){
+                $scope.objAudio.currentTime = (prueba.duracion-0.5);
+            }, $scope.duracion*1000);            
         }
+
         $scope.objAudio.onended = function() {
             prueba.pos++;
             if (prueba.pos <= prueba.end) prueba.play() 
             else {
-                $scope.objAudio.onloadeddata = function() {};
+                $scope.objAudio.onloadedmetadata = function() {};
                 $scope.objAudio.onended = function() {};
             }
         };
@@ -187,7 +189,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.loadMusica($scope.danzas[prueba.pos-1].tipoDanza,
                               $scope.danzas[prueba.pos-1].danza,
                               $scope.danzas[prueba.pos-1].cancion, "audio");
-            $scope.objAudio.play();
         }
         prueba.play();
     }
@@ -209,22 +210,28 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.loadMusica($scope.danzas[sesion.pos-1].tipoDanza,
                               $scope.danzas[sesion.pos-1].danza,
                               $scope.danzas[sesion.pos-1].cancion, "audio");
-            alert('Indique la consigna, para la danza\n\n'+
+            alert('Indique la consigna, para la danza\n\n'+sesion.pos+'. '+
                   $scope.tiposDanzas[$scope.danzas[sesion.pos-1].tipoDanza-1].arrDanzas[$scope.danzas[sesion.pos-1].danza-1].nombre);
-            var mostrar = confirm('Realiza Muestra');
+            var mostrar = confirm('¿Va a realizar muestra para ésta danza?');
             if (mostrar)    {
+                alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
                 setTimeout(function(){ 
                     $scope.objAudio.play();    
                     setTimeout(function(){ 
-                        alert('Detener la musica e invitar para iniciar la danza\n\nTiene 10 segundos luego de dar el click\n para bajar el volumen');
-//                        fade('audio',5);
+                        alert('click para detener la musica');
+                        var volumen = $scope.objAudio.volume;
+                        fade('audio',3);
                         setTimeout(function(){
+                            $scope.objAudio.pause()
                             $scope.objAudio.currentTime = 0;
-                            $scope.objAudio.play();    }, 10000);
+                            $scope.objAudio.volume=volumen;
+                            alert('Invite a danzar');
+                            $scope.objAudio.play();    
+                        }, 3500);
                     }, 15000);
                 }, 10000);
             }   else    {
-                alert('Invitar a danzar')
+                alert('Invite a danzar')
                 $scope.objAudio.play();
             }
         }
@@ -253,7 +260,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     }
     $scope.desde=null;
     $scope.hasta=null;
-    $scope.prueba=true;
+    $scope.prueba=false;
     $scope.duracion = 15;
     $scope.id=0;
     $scope.tipoDanza = 0;
@@ -451,3 +458,52 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     </div>
 </body>
 </html>
+<script>
+        /*
+        prueba.desde    = 0;
+        prueba.cantidad = 0;
+        $scope.test =   function(fase)  {
+            prueba.cantidad++;
+            document.getElementById('fases').innerHTML +="<li>"+fase+"</li>";
+            if (prueba.desde == 0)  {
+                prueba.duracion = $scope.objAudio.duration;
+                if (prueba.duracion > 0)    {
+                    prueba.desde = Math.trunc(prueba.duracion/2-$scope.duracion/2)
+                    $scope.objAudio.currentTime = prueba.desde;
+                    prueba.desde = $scope.objAudio.currentTime;
+                    if (prueba.desde > 0)   {
+                        document.getElementById("fase").innerHTML=fase
+                        setTimeout(function(){
+                            $scope.objAudio.currentTime = (prueba.duracion-1);
+                        }, $scope.duracion*1000);
+                    }
+                }
+            }
+        }
+        $scope.objAudio.addEventListener("loadstart",       function() {  $scope.test("onloadstart")  } );
+        $scope.objAudio.addEventListener("durationchange",  function() {  $scope.test("ondurationchange")  } );
+        $scope.objAudio.addEventListener("loadedmetadata",  function() {  $scope.test("onloadedmetadata")  } );
+        $scope.objAudio.addEventListener("loadeddata",      function() {  $scope.test("onloadeddata")  } );
+        $scope.objAudio.addEventListener("progress",        function() {  $scope.test("onprogress")  } );
+        $scope.objAudio.addEventListener("canplay",         function() {  $scope.test("oncanplay")  } );
+        $scope.objAudio.addEventListener("canplaythrough",  function() {  $scope.test("oncanplaythrough")  } );
+        $scope.objAudio.addEventListener("abort",           function() {  $scope.test("abort")  } );
+        $scope.objAudio.addEventListener("emptied",         function() {  $scope.test("emptied")  } );
+        $scope.objAudio.addEventListener("encrypted",       function() {  $scope.test("encrypted")  } );
+        $scope.objAudio.addEventListener("error",           function() {  $scope.test("error")  } );
+        $scope.objAudio.addEventListener("interruptbegin",  function() {  $scope.test("interruptbegin")  } );
+        $scope.objAudio.addEventListener("interruptend",    function() {  $scope.test("interruptend")  } );
+        $scope.objAudio.addEventListener("mozaudioavailable", function() {  $scope.test("mozaudioavailable")  } );
+        $scope.objAudio.addEventListener("pause",           function() {  $scope.test("pause")  } );
+        $scope.objAudio.addEventListener("play",            function() {  $scope.test("play")  } );
+        $scope.objAudio.addEventListener("playing",         function() {  $scope.test("playing")  } );
+        $scope.objAudio.addEventListener("ratechange",      function() {  $scope.test("ratechange")  } );
+        $scope.objAudio.addEventListener("seeked",          function() {  $scope.test("seeked")  } );
+        $scope.objAudio.addEventListener("seeking",         function() {  $scope.test("seeking")  } );
+        $scope.objAudio.addEventListener("stalled",         function() {  $scope.test("stalled")  } );
+        $scope.objAudio.addEventListener("suspend",         function() {  $scope.test("suspend")  } );
+        $scope.objAudio.addEventListener("timeupdate",      function() {  $scope.test("timeupdate")  } );
+        $scope.objAudio.addEventListener("volumechange",    function() {  $scope.test("volumechange")  } );
+        $scope.objAudio.addEventListener("waiting",         function() {  $scope.test("waiting")  } );
+        */
+</script>
