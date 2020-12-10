@@ -57,7 +57,7 @@
         </tr>
         <tr ng-hide="isMobile.mobilecheck()"><td colspan="4">
 <!--        <tr><td colspan="4"> -->
-            <script>inicioContenido('Parametros para Prueba de Música', 4, 'opc')</script>
+            <script>inicioContenido('Prueba y ejecución Controlada', 4, 'opc')</script>
 
   <form class="form-horizontal">
     <div class="form-group">
@@ -172,36 +172,39 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.objAudio.currentTime = Math.trunc(prueba.duracion/2-$scope.duracion/2);
             $scope.objAudio.play();
             setTimeout(function(){
+                $scope.objAudio.pause();
                 $scope.objAudio.currentTime = (prueba.duracion-0.5);
-            }, $scope.duracion*1000);            
+                $scope.objAudio.play();
+            }, $scope.duracion*1000);
         }
 
         $scope.objAudio.onended = function() {
             prueba.pos++;
             if (prueba.pos <= prueba.end) prueba.play() 
             else {
-                $scope.objAudio.onloadedmetadata = function() {};
+                $scope.objAudio.ondurationchange = function() {};
                 $scope.objAudio.onended = function() {};
             }
         };
         prueba.play = function ()  {
             $scope.playColor(prueba.pos)
-            $scope.loadMusica($scope.danzas[prueba.pos-1].tipoDanza,
-                              $scope.danzas[prueba.pos-1].danza,
-                              $scope.danzas[prueba.pos-1].cancion, "audio");
+            $scope.loadMusica(
+                $scope.danzas[prueba.pos-1].tipoDanza,
+                $scope.danzas[prueba.pos-1].danza,
+                $scope.danzas[prueba.pos-1].cancion,
+                "audio");
         }
         prueba.play();
     }
     $scope.iniciarSesion   =   function    ()  {
         var sesion  =   new Object();
-        $scope.objAudio.onloadeddata = function() {};
+        $scope.objAudio.ondurationchange = function() {};
         sesion.pos = $scope.desde+0;
         sesion.end = $scope.hasta+0;
         $scope.objAudio.onended = function() {
             sesion.pos++;
             if (sesion.pos <= sesion.end) sesion.play() 
             else {
-                $scope.objAudio.onloadeddata = function() {};
                 $scope.objAudio.onended = function() {};
             }
         };
@@ -322,6 +325,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             if (loadlist.pos < $scope.danzas.length) 
                 loadlist.load()
             else    {
+                Highcharts.chart('grafico', $scope.opciones);
                 $scope.$digest();
                 loadlist = null;
             }
@@ -360,7 +364,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
             $scope.dat.push($scope.danzas[i].evolucion);
         }
-        Highcharts.chart('grafico', {
+        $scope.opciones = {
             chart: {
                 type: 'spline'
             }, 
@@ -407,7 +411,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 data: $scope.dat
             }]
 
-        });
+        }
+        
     }
 
     $scope.grafico();
@@ -420,8 +425,17 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 
     $scope.idplay = null;
     $scope.playColor    =   function (id)   {
-        if ($scope.idplay != null)  document.getElementById('tr'+$scope.idplay).style.backgroundColor="white";
+        if ($scope.idplay != null)  {
+            document.getElementById('tr'+$scope.idplay).style.backgroundColor="white";
+            $scope.opciones.series[0].data[$scope.idplay-1]=$scope.danzas[$scope.idplay-1].evolucion;
+        }
         document.getElementById('tr'+id).style.backgroundColor="#D0D0FF";
+        $scope.opciones.series[0].data[id]= {
+            y: $scope.danzas[id-1].evolucion,
+            marker: {
+                symbol: 'diamond'
+            }
+        }
         $scope.idplay = id;
     }
     $scope.playDanza =   function    (td,d,c)    {
