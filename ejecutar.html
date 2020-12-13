@@ -81,8 +81,10 @@
     <div class="col-12 text-info">Realizado por: <b>{{autor}}</b></div>
   </div>
 </div>
-<script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div ng-hide="mobilecheck">
+<!-- <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div ng-hide="mobilecheck"> -->
+<script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div>
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
@@ -113,7 +115,8 @@
     </div>
 </form>
     </div>
-<script>if (!isMobile.mobilecheck()) finContenido();</script>
+<!-- <script>if (!isMobile.mobilecheck()) finContenido();</script> -->
+<script>finContenido();</script>
 <script>inicioContenido('Ejecución Controlada', 4, 'divEjecucion');</script>
 <form class="form-inline">
     <div class="input-group">
@@ -190,7 +193,8 @@
             </div>
         </div>
     </div>    
-    
+<ul id="tiempos">
+</ul>    
 <script>
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.objAudio = document.getElementById("audio");
@@ -200,6 +204,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         prueba.end = $scope.hasta+0;
         prueba.duracion = 0;
         $scope.objAudio.oncanplaythrough = function() {
+            document.getElementById("tiempos").innerHTML += "<li>Danza ("+prueba.pos+"); currentTime ("+$scope.objAudio.currentTime+")</li>"
             prueba.duracion = $scope.objAudio.duration;
             if ($scope.objAudio.currentTime == 0)   {
                 $scope.objAudio.play();
@@ -207,10 +212,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     $scope.objAudio.currentTime = Math.trunc(prueba.duracion/2-$scope.durMedio/2);
                 }, $scope.durInicio*1000)
             }
-            else    
+            else if ($scope.objAudio.currentTime <= (0.1+prueba.duracion/2-$scope.durMedio/2) ) 
                 setTimeout(function(){
                     $scope.objAudio.currentTime = (prueba.duracion-$scope.durFinal);
-                }, $scope.durMedio*1000);
+                }, $scope.durMedio*1000);  
         }
 
         $scope.objAudio.onended = function() {
