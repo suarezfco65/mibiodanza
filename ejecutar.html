@@ -26,7 +26,7 @@
         .consigna   {color: orangered}
         .rb {
             position: fixed;
-            top:5px;
+            top:100px;
             right: 5px;
             font-size: 20px;
         }
@@ -41,83 +41,98 @@
 
 </head>
 <body>
-<div class="rb">
-    <audio id="audio" controls>
-        <source id="ogg" src="" type="audio/ogg">
-        <source id="mp3" src="" type="audio/mpeg">
-    </audio>
-    <audio id="audio2">
-        <source id="ogg2" src="" type="audio/ogg">
-        <source id="mp32" src="" type="audio/mpeg">
-    </audio>
-    <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
-</div>
 <div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
 <div class="container">
-
-    <center>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Yo<span style="color:red">❤</span>Biodanza</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+          </ul>
+          <span class="navbar-text navbar-right" style="color:white">Ejecutar Sesión&nbsp;&nbsp;</span>
+        </div>
+      </div>
+    </nav>
+    <div class="rb">
+        <audio id="audio" controls>
+            <source id="ogg" src="" type="audio/ogg">
+            <source id="mp3" src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio2">
+            <source id="ogg2" src="" type="audio/ogg">
+            <source id="mp32" src="" type="audio/mpeg">
+        </audio>
+        <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    
+<div class="container-fluid">
+    <h3 style="color:red; font-weight: bold; margin-bottom: 40px ">Ejecutar Sesión</h3>
+  <div class="row">
+    <div class="col-12 text-primary"><h1><b>{{tema}}</b></h1></div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-info">Realizado por: <b>{{autor}}</b></div>
+  </div>
+</div>
+<script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div ng-hide="mobilecheck">
+<form class="form-inline">
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
+        <select ng-model="desde" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="desde"></select>
+    </div>
+</form>
+<form class="form-inline">
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
+        <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="hasta"></select>
+    </div>
+</form>
+<form class="form-inline">
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Inicio</span>
+        <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Medio&nbsp;</span>
+        <input id="durMedio" type="text" class="form-control input-sm" ng-model="durMedio" size="3">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Final&nbsp;</span>
+        <input id="durFinal" type="text" class="form-control input-sm" ng-model="durFinal" size="3">
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-success" ng-click="iniciarPrueba()" id="pr">Iniciar</button>
+    </div>
+</form>
+    </div>
+<script>if (!isMobile.mobilecheck()) finContenido();</script>
+<script>inicioContenido('Ejecución Controlada', 4, 'divEjecucion');</script>
+<form class="form-inline">
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
+        <select ng-model="desde" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="desde"></select>
+    </div>
+</form>
+<form class="form-inline">
+    <div class="input-group">
+        <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
+        <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="hasta"></select>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-success" ng-click="iniciarSesion()" id="pr">Iniciar</button>
+    </div>
+</form>
+<script>finContenido();</script>
     <table>
     <thead>
-        <tr><td colspan="4" align="center">
-            <h1>{{tema}}</h1>
-            <p style="margin-bottom: 6px">Realizado por: {{autor}}</p></td>
-        </tr>
-        <tr><td colspan="4">
-            <script>if (isMobile.mobilecheck()) inicioContenido('Ejecución Controlada', 4, 'opc');</script>
-            <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba y Ejecución Controlada', 4, 'opc');</script>
-
-  <form class="form-horizontal">
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="sel1">Desde:</label>
-        <div class="col-sm-10">
-        <select ng-model="desde" ng-options="d.id as d.nombre for d in danzas" class="form-control form-control-sm" id="desde"></select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="sel1">Hasta:</label>
-        <div class="col-sm-10">
-        <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control form-control-sm" id="hasta"></select>
-        </div>
-    </div>
-    <div class="form-group"  ng-hide="mobilecheck">
-        <div class="col-sm-offset-2 col-sm-10">
-            <div class="checkbox">
-                <label><input ng-model="prueba" type="checkbox"> Hacer prueba de Música</label>
-            </div>
-        </div>
-    </div>
-    <div class="form-group" ng-show="prueba">
-        <label class="control-label col-sm-2" for="sel1">Inicio:</label>
-        <div class="col-sm-10">
-            <input id="durInicio" type="text" class="form-control" ng-model="durInicio" placeholder="Duración (segs)">
-        </div>
-    </div>
-    <div class="form-group" ng-show="prueba">
-        <label class="control-label col-sm-2" for="sel1">Medio:</label>
-        <div class="col-sm-10">
-            <input id="durMedio" type="text" class="form-control" ng-model="durMedio" placeholder="Duración (segs)">
-        </div>
-    </div>
-    <div class="form-group" ng-show="prueba">
-        <label class="control-label col-sm-2" for="sel1">Final:</label>
-        <div class="col-sm-10">
-            <input id="durFinal" type="text" class="form-control" ng-model="durFinal" placeholder="Duración (segs)">
-        </div>
-    </div>
-    <div class="form-group" ng-show="prueba">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-success" ng-click="iniciarPrueba()">Iniciar Prueba de Música</button>
-        </div>
-    </div>
-    <div class="form-group" ng-hide="prueba">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-success" ng-click="iniciarSesion()">Iniciar Ejecución de Sesión Controlada</button>
-        </div>
-    </div>
-  </form>
-            <script>finContenido();</script>
-            </td>
-        </tr>
         <tr>
             <th>#</th>
             <th>Danza</th>
@@ -151,7 +166,6 @@
     <br>
     <hr>
     <br>
-    </center>
 
     <!-- The Modal for Describir danza-->
     <div class="modal fade" id="descModal">
@@ -283,7 +297,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.hasta=null;
     $scope.prueba=false;
     $scope.durInicio = 10;
-    $scope.durMedio = 10;
+    $scope.durMedio = 20;
     $scope.durFinal = 15;
     $scope.id=0;
     $scope.tipoDanza = 0;
