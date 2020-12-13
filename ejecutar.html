@@ -206,10 +206,13 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             var ct  =   $scope.objAudio.currentTime
             prueba.duracion = $scope.objAudio.duration;
             var tm  =   Math.trunc(prueba.duracion/2-$scope.durMedio/2);
-            if ((ct > $scope.durInicio) && (ct < tm) )
+            
+            if ((ct > $scope.durInicio) && (ct < tm) )  {
                 $scope.objAudio.currentTime = tm
-            else    if ((ct > (tm + $scope.durMedio)) && (ct < (prueba.duracion - $scope.durFinal)))
+            }
+            else    if ((ct > (tm + $scope.durMedio)) && (ct < (prueba.duracion - $scope.durFinal)))  {
                 $scope.objAudio.currentTime = prueba.duracion - $scope.durFinal;
+            }
         }
         $scope.objAudio.onended = function() {
             prueba.pos++;
@@ -231,7 +234,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     }
     $scope.iniciarSesion   =   function    ()  {
         var sesion  =   new Object();
-        $scope.objAudio.ondurationchange = function() {};
+        $scope.objAudio.ontimeupdate = function() {};
         sesion.pos = $scope.desde+0;
         sesion.end = $scope.hasta+0;
         $scope.objAudio.onended = function() {
@@ -474,7 +477,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         $scope.idplay = id;
     }
     $scope.playDanza =   function    (td,d,c)    {
-        $scope.objAudio.onloadeddata = function() {};
+        $scope.objAudio.ontimeupdate = function() {};
         $scope.objAudio.onended = function() {};
         $scope.loadMusica(td,d,c,'audio');
         $scope.objAudio.play();
