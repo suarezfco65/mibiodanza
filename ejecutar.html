@@ -206,8 +206,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         $scope.objAudio.oncanplaythrough = function() {
             document.getElementById("tiempos").innerHTML += "<li>Danza ("+prueba.pos+"); currentTime ("+$scope.objAudio.currentTime+")</li>"
             prueba.duracion = $scope.objAudio.duration;
-            if ($scope.objAudio.currentTime == 0)   {
-                $scope.objAudio.play();
+            if ($scope.objAudio.currentTime < 1)   {
                 setTimeout(function(){
                     $scope.objAudio.currentTime = Math.trunc(prueba.duracion/2-$scope.durMedio/2);
                 }, $scope.durInicio*1000)
@@ -233,6 +232,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 $scope.danzas[prueba.pos-1].danza,
                 $scope.danzas[prueba.pos-1].cancion,
                 "audio");
+                $scope.objAudio.play();
         }
         prueba.play();
     }
