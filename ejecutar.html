@@ -212,7 +212,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     $scope.objAudio.currentTime = Math.trunc(prueba.duracion/2-$scope.durMedio/2);
                 }, $scope.durInicio*1000)
             }
-            else if ($scope.objAudio.currentTime <= (0.1+prueba.duracion/2-$scope.durMedio/2) ) 
+            else if (($scope.objAudio.currentTime <= (0.1+prueba.duracion/2-$scope.durMedio/2)) && 
+                     ($scope.objAudio.currentTime > ($scope.durInicio-0.5)) ) 
                 setTimeout(function(){
                     $scope.objAudio.currentTime = (prueba.duracion-$scope.durFinal);
                 }, $scope.durMedio*1000);  
