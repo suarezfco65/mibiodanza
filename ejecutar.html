@@ -193,8 +193,6 @@
             </div>
         </div>
     </div>    
-<ul id="tiempos">
-</ul>    
 <script>
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.objAudio = document.getElementById("audio");
@@ -203,25 +201,20 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         prueba.pos = $scope.desde+0;
         prueba.end = $scope.hasta+0;
         prueba.duracion = 0;
-        $scope.objAudio.oncanplaythrough = function() {
-            document.getElementById("tiempos").innerHTML += "<li>Danza ("+prueba.pos+"); currentTime ("+$scope.objAudio.currentTime+")</li>"
-            prueba.duracion = $scope.objAudio.duration;
-            if ($scope.objAudio.currentTime < 1)   {
-                setTimeout(function(){
-                    $scope.objAudio.currentTime = Math.trunc(prueba.duracion/2-$scope.durMedio/2);
-                }, $scope.durInicio*1000)
-            }
-            else if (($scope.objAudio.currentTime <= (0.1+prueba.duracion/2-$scope.durMedio/2)) && 
-                     ($scope.objAudio.currentTime > ($scope.durInicio-0.5)) ) 
-                setTimeout(function(){
-                    $scope.objAudio.currentTime = (prueba.duracion-$scope.durFinal);
-                }, $scope.durMedio*1000);  
-        }
 
+        $scope.objAudio.ontimeupdate    =   function()  {
+            var ct  =   $scope.objAudio.currentTime
+            prueba.duracion = $scope.objAudio.duration;
+            var tm  =   Math.trunc(prueba.duracion/2-$scope.durMedio/2);
+            if ((ct > $scope.durInicio) && (ct < tm) )
+                $scope.objAudio.currentTime = tm
+            else    if ((ct > (tm + $scope.durMedio)) && (ct < (prueba.duracion - $scope.durFinal)))
+                $scope.objAudio.currentTime = prueba.duracion - $scope.durFinal;
+        }
         $scope.objAudio.onended = function() {
             prueba.pos++;
             if (prueba.pos > prueba.end) {
-                $scope.objAudio.oncanplaythrough = function() {};
+                $scope.objAudio.ontimeupdate = function() {};
                 $scope.objAudio.onended = function() {};
             }   else    prueba.play();
         };
