@@ -294,8 +294,15 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.loadMusica($scope.danzas[sesion.pos-1].tipoDanza,
                               $scope.danzas[sesion.pos-1].danza,
                               $scope.danzas[sesion.pos-1].cancion, "audio");
+            var d = $scope.tiposDanzas[$scope.danzas[sesion.pos-1].tipoDanza-1].arrDanzas[$scope.danzas[sesion.pos-1].danza-1];
+            var descripcion = d.descripcion.substr(0, d.descripcion.indexOf('Música'));
+            var descripcion = descripcion.replaceAll('<h5>','\n');
+            descripcion = descripcion.replaceAll('</h5>','\n');
+            descripcion = descripcion.replaceAll('<p>','');
+            descripcion = descripcion.replaceAll('</p>','\n');
             alert('Indique la consigna, para la danza\n\n'+sesion.pos+'. '+
-                  $scope.tiposDanzas[$scope.danzas[sesion.pos-1].tipoDanza-1].arrDanzas[$scope.danzas[sesion.pos-1].danza-1].nombre);
+                  d.nombre+'\n'+
+                  descripcion);
             var mostrar = confirm('¿Va a realizar muestra para ésta danza?');
             if (mostrar)    {
                 alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
