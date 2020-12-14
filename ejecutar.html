@@ -56,7 +56,6 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
           </ul>
-          <span class="navbar-text navbar-right" style="color:white">Ejecutar Sesión&nbsp;&nbsp;</span>
         </div>
       </div>
     </nav>
@@ -81,10 +80,10 @@
     <div class="col-12 text-info">Realizado por: <b>{{autor}}</b></div>
   </div>
 </div>
-<!-- <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div ng-hide="mobilecheck"> -->
-<script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div>
+<script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div ng-hide="mobilecheck">
+<!-- <script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div> -->
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
@@ -100,7 +99,8 @@
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Inicio</span>
-        <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3">
+        <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3" required pattern="[0-9]{3}"
+title="El número consta máximo 3 dígitos.">
     </div>
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Medio&nbsp;</span>
@@ -111,12 +111,12 @@
         <input id="durFinal" type="text" class="form-control input-sm" ng-model="durFinal" size="3">
     </div>
     <div class="form-group">
-        <button type="button" class="btn btn-success" ng-click="iniciarPrueba()" id="pr">Iniciar</button>
+        <button type="button" class="btn btn-success" ng-click="iniciarPrueba()" id="prIniciar">Iniciar</button>
     </div>
 </form>
-    </div>
-<!-- <script>if (!isMobile.mobilecheck()) finContenido();</script> -->
-<script>finContenido();</script>
+</div>
+<script>if (!isMobile.mobilecheck()) finContenido();</script>
+<!-- <script>finContenido();</script> -->
 <script>inicioContenido('Ejecución Controlada', 4, 'divEjecucion');</script>
 <form class="form-inline">
     <div class="input-group">
@@ -130,7 +130,7 @@
         <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="hasta"></select>
     </div>
     <div class="form-group">
-        <button type="button" class="btn btn-success" ng-click="iniciarSesion()" id="pr">Iniciar</button>
+        <button type="button" class="btn btn-success" ng-click="iniciarSesion()" id="ejIniciar">Iniciar</button>
     </div>
 </form>
 <script>finContenido();</script>
@@ -194,29 +194,55 @@
         </div>
     </div>    
 <script>
+
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.objAudio = document.getElementById("audio");
     $scope.iniciarPrueba   =   function    ()  {
+        var idObj = document.getElementById("ejIniciar")
+        $scope.objAudio.pause();
+        idObj.innerHTML = "Iniciar";
+        idObj.className = "btn btn-success";
+        $scope.objAudio.onended = function() {};
+
+        var idObj = document.getElementById("prIniciar")
+        if (idObj.innerHTML == "Iniciar") {
+            idObj.innerHTML = "Detener"
+            idObj.className = "btn btn-danger";
+        }   else    {
+            $scope.objAudio.pause();
+            idObj.innerHTML = "Iniciar";
+            idObj.className = "btn btn-success";
+            $scope.objAudio.ontimeupdate = function()  {};
+            $scope.objAudio.onended = function() {};
+            return
+        }
         var prueba  =   new Object();
         prueba.pos = $scope.desde+0;
         prueba.end = $scope.hasta+0;
         prueba.duracion = 0;
+        prueba.durInicio = Number($scope.durInicio);
+        prueba.durMedio = Number($scope.durMedio);
+        prueba.durFinal = Number($scope.durFinal);
 
         $scope.objAudio.ontimeupdate    =   function()  {
+            
             var ct  =   $scope.objAudio.currentTime
             prueba.duracion = $scope.objAudio.duration;
-            var tm  =   Math.trunc(prueba.duracion/2-$scope.durMedio/2);
-            
-            if ((ct > $scope.durInicio) && (ct < tm) )  {
+            var tm  =   Math.trunc(prueba.duracion/2-prueba.durMedio/2);
+            if ((ct > Number(prueba.durInicio)) && (ct < tm) )  {
                 $scope.objAudio.currentTime = tm
             }
-            else    if ((ct > (tm + $scope.durMedio)) && (ct < (prueba.duracion - $scope.durFinal)))  {
-                $scope.objAudio.currentTime = prueba.duracion - $scope.durFinal;
+            else    if ((ct > (tm + prueba.durMedio)) && (ct < (prueba.duracion - prueba.durFinal)))  {
+                $scope.objAudio.currentTime = prueba.duracion - prueba.durFinal;
             }
         }
         $scope.objAudio.onended = function() {
+            prueba.barra = new Array();
             prueba.pos++;
             if (prueba.pos > prueba.end) {
+                $scope.objAudio.pause();
+                idObj.innerHTML = "Iniciar";
+                idObj.className = "btn btn-success";
                 $scope.objAudio.ontimeupdate = function() {};
                 $scope.objAudio.onended = function() {};
             }   else    prueba.play();
@@ -228,19 +254,38 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 $scope.danzas[prueba.pos-1].danza,
                 $scope.danzas[prueba.pos-1].cancion,
                 "audio");
-                $scope.objAudio.play();
+            $scope.objAudio.play();
         }
         prueba.play();
     }
     $scope.iniciarSesion   =   function    ()  {
         var sesion  =   new Object();
+        var idObj = document.getElementById("prIniciar")
+        $scope.objAudio.pause();
+        idObj.innerHTML = "Iniciar";
+        idObj.className = "btn btn-success";
         $scope.objAudio.ontimeupdate = function() {};
+
+        var idObj = document.getElementById("ejIniciar")
+        if (idObj.innerHTML == "Iniciar") {
+            idObj.innerHTML = "Detener"
+            idObj.className = "btn btn-danger";
+        }   else    {
+            $scope.objAudio.pause();
+            idObj.innerHTML = "Iniciar";
+            idObj.className = "btn btn-success";
+            $scope.objAudio.onended = function() {};
+            return
+        }
+    
         sesion.pos = $scope.desde+0;
         sesion.end = $scope.hasta+0;
         $scope.objAudio.onended = function() {
             sesion.pos++;
             if (sesion.pos <= sesion.end) sesion.play() 
             else {
+                idObj.innerHTML = "Iniciar";
+                idObj.className = "btn btn-success";
                 $scope.objAudio.onended = function() {};
             }
         };
@@ -477,6 +522,14 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         $scope.idplay = id;
     }
     $scope.playDanza =   function    (td,d,c)    {
+        $scope.objAudio.pause();
+        var idObj = document.getElementById("prIniciar")
+        idObj.innerHTML = "Iniciar";
+        idObj.className = "btn btn-success";
+        var idObj = document.getElementById("ejIniciar")
+        $scope.objAudio.pause();
+        idObj.innerHTML = "Iniciar";
+        idObj.className = "btn btn-success";
         $scope.objAudio.ontimeupdate = function() {};
         $scope.objAudio.onended = function() {};
         $scope.loadMusica(td,d,c,'audio');
