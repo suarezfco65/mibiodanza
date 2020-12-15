@@ -155,8 +155,8 @@ title="El número consta máximo 3 dígitos.">
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5">
-    <div id="grafico"></div>
+            <td colspan="5" id="grafico">
+    <div></div>
             </td>
         </tr>
     </tfoot>
@@ -199,6 +199,9 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.danzas = [];
     $scope.prueba = false;
     $scope.ejecucion = false;
+    $scope.durInicio = 10;
+    $scope.durMedio = 20;
+    $scope.durFinal = 15;
     $scope.recuperarSesion =    function()  {
         var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
         const inicio = -7;
@@ -382,66 +385,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         }
         sesion.play();
     }
-    $scope.tiposDanzas = arrTiposDanzas;
-    $scope.canciones = arrayCanciones;
-    $scope.play =   function    (td,d,c)    {
-        cancion = $scope.getCancion(td,d,c);
-        $scope.archivo= cancion.archivo;
-    }
-    $scope.getCancion  =   function(td, d, c)  {
-        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-        if (cancion.disco == '00' && cancion.pista == '00')
-            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
-        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
-        if (resultado == undefined)
-            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
-        return resultado;
-    }
-    $scope.getDanzas    =   function()  {
-        var arr = [];
-        for (var i=0; i<$scope.danzas.length; i++)
-            arr.push($scope.tiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre);
-        return arr
-    }
-    $scope.desde=null;
-    $scope.hasta=null;
-    $scope.durInicio = 10;
-    $scope.durMedio = 20;
-    $scope.durFinal = 15;
-    $scope.id=0;
-    $scope.tipoDanza = 0;
-    $scope.danza = 0;
-    $scope.cancion = 0;
-    $scope.evolucion = 0;
-    $scope.min = 0;
-    $scope.seg = 0;
-    $scope.loadMusica =  function    (td,d,c,id)    {
-        var sufijo = (id == "audio") ? "":"2";
-        cancion = $scope.getCancion(td,d,c);
-        objAudio = document.getElementById('mp3'+sufijo);
-        objAudio.src =cancion.archivo;
-        objAudio = document.getElementById('ogg'+sufijo);
-        objAudio.src =cancion.archivo.substr(0,cancion.archivo.length-3)+'ogg';
-        objAudio = document.getElementById(id);
-        objAudio.load();
-    }
-    $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
-
-    var myArrayMax = function(arr) {
-      var len = arr.length;
-      var max = 0;
-      while (len--) {
-        if (arr[len].id > max) {
-          max = arr[len].id;
-        }
-      }
-      return max;
-    }
-    
-    var chkDanza = function (d)  {
-        return (d.id == $scope.id)
-    }
-
     $scope.grafico  =   function()  {
         $scope.cat  =   ["ESTADO INICIAL"];
         $scope.dat  =   [0];
@@ -450,7 +393,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
             $scope.dat.push($scope.danzas[i].evolucion);
         }
-        $scope.opciones = {
+        Highcharts.chart('grafico', {
             chart: {
                 type: 'spline'
             }, 
@@ -497,49 +440,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 data: $scope.dat
             }]
 
-        }
-        
+        });
     }
 
     $scope.grafico();
-    
-    $scope.maxCar    =   function()  {
-        var total = screen.width;
-        var fijo  = 350;
-        return Math.round((total-fijo)/8.5);
-    }
-
-    $scope.idplay = null;
-    $scope.playColor    =   function (id)   {
-        if ($scope.idplay != null)  {
-            document.getElementById('tr'+$scope.idplay).style.backgroundColor="white";
-            $scope.opciones.series[0].data[$scope.idplay-1]=$scope.danzas[$scope.idplay-1].evolucion;
-        }
-        document.getElementById('tr'+id).style.backgroundColor="#D0D0FF";
-        $scope.opciones.series[0].data[id]= {
-            y: $scope.danzas[id-1].evolucion,
-            marker: {
-                symbol: 'diamond'
-            }
-        }
-        $scope.idplay = id;
-    }
-    $scope.getCancion  =   function(td, d, c)  {
-        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-        if (cancion.disco == '00' && cancion.pista == '00')
-            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
-        var resultado = arrayCanciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
-        if (resultado == undefined)
-            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
-        return resultado;
-    }
-    $scope.descTitle = "";
-    $scope.descDanza    =   function    (id)    {
-        var danza = $scope.danzas.find(e => e.id == id);
-        var d = $scope.tiposDanzas[danza.tipoDanza-1].arrDanzas[danza.danza-1]
-        $scope.descTitle = d.nombre
-        document.getElementById("descBody").innerHTML = d.descripcion.substr(0, d.descripcion.indexOf('Música'))
-    }
 
     $scope.mobilecheck = isMobile.mobilecheck();
 })
