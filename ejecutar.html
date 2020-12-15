@@ -288,7 +288,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         if ($scope.prueba)  {
             $scope.prueba = false;
             $scope.stopDanza()
-            for (var i=Number($scope.desde); i<=Number($scope.hasta); i++) {
+            for (var i=0; i<$scope.danzas.length; i++) {
                 $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {}
                 $scope.danzas[i-1].oAudio.onended = function() {}
             }
@@ -318,6 +318,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     $scope.prueba = false;
                     $scope.$digest();
                     $scope.stopDanza();
+                    for (var i=0; i<$scope.danzas.length; i++) {
+                        $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {}
+                        $scope.danzas[i-1].oAudio.onended = function() {}
+                    }
                 }   else    {
                     $scope.playDanza(prueba.pos);
                 }
@@ -329,7 +333,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         if ($scope.ejecucion)  {
             $scope.ejecucion = false;
             $scope.stopDanza()
-            for (var i=Number($scope.desde); i<=Number($scope.hasta); i++)
+            for (var i=0; i<$scope.danzas.length; i++)
                 $scope.danzas[i-1].oAudio.onended = function() {}
             return
         }
@@ -344,6 +348,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     $scope.ejecucion = false;
                     $scope.$digest();
                     $scope.stopDanza();
+                    for (var i=0; i<$scope.danzas.length; i++)
+                        $scope.danzas[i-1].oAudio.onended = function() {}
                 }
             };
         }
