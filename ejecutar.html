@@ -130,7 +130,7 @@ title="El número consta máximo 3 dígitos.">
     </div>
 </form>
 <script>finContenido();</script>
-    <table>
+    <table width="470">
     <thead>
         <tr>
             <th>#</th>
@@ -288,7 +288,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         if ($scope.prueba)  {
             $scope.prueba = false;
             $scope.stopDanza()
-            for (var i=($scope.desde+0); i<=($scope.hasta+0); i++) {
+            for (var i=Number($scope.desde); i<=Number($scope.hasta); i++) {
                 $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {}
                 $scope.danzas[i-1].oAudio.onended = function() {}
             }
@@ -296,12 +296,11 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         }
         $scope.prueba = true;
         var prueba  =   new Object();
-        prueba.pos = $scope.desde+0;
-        prueba.end = $scope.hasta+0;
+        prueba.pos = Number($scope.desde);
         prueba.durInicio = Number($scope.durInicio);
         prueba.durMedio = Number($scope.durMedio);
         prueba.durFinal = Number($scope.durFinal);
-        for (var i=prueba.pos; i<=prueba.end; i++) {
+        for (var i=prueba.pos; i<=Number($scope.hasta); i++) {
             $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {
                 prueba.duracion = this.duration;
                 prueba.tm   =  Math.trunc(prueba.duracion/2-prueba.durMedio/2);
@@ -315,7 +314,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             };
             $scope.danzas[i-1].oAudio.onended = function() {
                 prueba.pos++;
-                if (prueba.pos > prueba.end) {
+                if (prueba.pos > Number($scope.hasta)) {
                     $scope.prueba = false;
                     $scope.$digest();
                     $scope.stopDanza();
@@ -330,18 +329,17 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         if ($scope.ejecucion)  {
             $scope.ejecucion = false;
             $scope.stopDanza()
-            for (var i=($scope.desde+0); i<=($scope.hasta+0); i++)
+            for (var i=Number($scope.desde); i<=Number($scope.hasta); i++)
                 $scope.danzas[i-1].oAudio.onended = function() {}
             return
         }
         $scope.ejecucion = true;
-        var sesion  =   new Object();    
-        sesion.pos = $scope.desde+0;
-        sesion.end = $scope.hasta+0;
-        for (var i=sesion.pos; i<=sesion.end; i++) {
+        var sesion  =   new Object(); 
+        sesion.pos = Number($scope.desde);
+        for (var i=sesion.pos; i<=Number($scope.hasta); i++) {
             $scope.danzas[i-1].oAudio.onended = function() {
                 sesion.pos++;
-                if (sesion.pos <= sesion.end) sesion.play() 
+                if (sesion.pos <= Number($scope.hasta)) sesion.play() 
                 else {
                     $scope.ejecucion = false;
                     $scope.$digest();
@@ -364,7 +362,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
                 setTimeout(function(){ 
                     $scope.playDanza(sesion.pos)
-//                    $scope.danzas[sesion.pos-1].oAudio.play();
                     setTimeout(function(){ 
                         alert('click para detener la musica');
                         var volumen = $scope.danzas[sesion.pos-1].oAudio.volume;
@@ -443,7 +440,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         });
     }
 
-    $scope.grafico();
+    setTimeout($scope.grafico(),5000);
 
     $scope.mobilecheck = isMobile.mobilecheck();
 })
