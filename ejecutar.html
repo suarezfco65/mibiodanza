@@ -59,14 +59,10 @@
         </div>
       </div>
     </nav>
-    <div class="rb">
-        <audio id="audio" controls>
-            <source id="ogg" src="" type="audio/ogg">
-            <source id="mp3" src="" type="audio/mpeg">
-        </audio>
-        <audio id="audio2">
-            <source id="ogg2" src="" type="audio/ogg">
-            <source id="mp32" src="" type="audio/mpeg">
+    <div class="rb" id="audios">
+        <audio ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none"> <!--  ondurationchange="getDuracion(d.id)" -->
+            <source id="{{'ogg_'+d.id}}" src="{{d.omusica.ogg}}" type="audio/ogg">
+            <source id="{{'mp3_'+d.id}}" src="{{d.omusica.mp3}}" type="audio/mpeg">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
     </div>
@@ -87,13 +83,13 @@
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
-        <select ng-model="desde" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="desde"></select>
+        <select ng-model="desde" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="desde"></select>
     </div>
 </form>
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
-        <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="hasta"></select>
+        <select ng-model="hasta" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="hasta"></select>
     </div>
 </form>
 <form class="form-inline">
@@ -111,7 +107,7 @@ title="El número consta máximo 3 dígitos.">
         <input id="durFinal" type="text" class="form-control input-sm" ng-model="durFinal" size="3">
     </div>
     <div class="form-group">
-        <button type="button" class="btn btn-success" ng-click="iniciarPrueba()" id="prIniciar">Iniciar</button>
+        <button type="button" class="{{prueba ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="iniciarPrueba()" id="prIniciar" ng-disabled="ejecucion">{{prueba ? 'Detener' : 'Iniciar'}}</button>
     </div>
 </form>
 </div>
@@ -121,16 +117,16 @@ title="El número consta máximo 3 dígitos.">
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
-        <select ng-model="desde" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="desde"></select>
+        <select ng-model="desde" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="desde"></select>
     </div>
 </form>
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
-        <select ng-model="hasta" ng-options="d.id as d.nombre for d in danzas" class="form-control input-sm" id="hasta"></select>
+        <select ng-model="hasta" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="hasta"></select>
     </div>
     <div class="form-group">
-        <button type="button" class="btn btn-success" ng-click="iniciarSesion()" id="ejIniciar">Iniciar</button>
+        <button type="button" class="{{ejecucion ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="iniciarSesion()" id="ejIniciar" ng-disabled="prueba">{{ejecucion ? 'Detener' : 'Iniciar'}}</button>
     </div>
 </form>
 <script>finContenido();</script>
@@ -147,13 +143,12 @@ title="El número consta máximo 3 dígitos.">
     <tbody>
         <tr ng-repeat="d in danzas"  id="{{'tr'+d.id}}">
             <td valign="top">{{d.id}}.&nbsp;</td>
-            <td><p>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-            <i>{{getCancion(d.tipoDanza,d.danza,d.cancion).disco}}-{{getCancion(d.tipoDanza,d.danza,d.cancion).pista}}&nbsp;</i>
-            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor}}</span>: <br>
-            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span></p>
+            <td><p>{{ d.odanza.nombre }}<br>
+            <i>{{d.omusica.disco}}-{{d.omusica.pista}}&nbsp;</i><span class="autor">{{d.omusica.autor}}</span>: <br>
+            <span class="cancion">{{d.omusica.nombre}}</span></p>
             </td>
             <td valign="top" align="center"><b>{{d.evolucion}}</b><br>{{d.min}}:{{(d.seg<10) ? '0'+d.seg : d.seg}}</td>
-            <td valign="top"><button type="button" class="btn btn-success" ng-click="playColor(d.id);playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>&nbsp;</td>
+            <td valign="top"><button type="button" class="btn btn-success" ng-click="playDanza(d.id);" ng-disabled="prueba || ejecucion">&#9835;</button>&nbsp;</td>
             <td valign="top"><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
         </tr>
         <tr><td colspan="5"><hr></td></tr>
@@ -196,105 +191,163 @@ title="El número consta máximo 3 dígitos.">
 <script>
 
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
-    $scope.objAudio = document.getElementById("audio");
+    $scope.tema ="";
+    $scope.autor = "";
+    $scope.desde='1';
+    $scope.hasta='1';
+    $scope.danzaAnt = null;
+    $scope.danzas = [];
+    $scope.prueba = false;
+    $scope.ejecucion = false;
+    $scope.recuperarSesion =    function()  {
+        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
+        const inicio = -7;
+        var getQueryStringValue = function (key) {  
+                return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+        }
+        $scope.tema = getQueryStringValue("tema");
+        $scope.autor = getQueryStringValue("autor");
+        
+        var codDanzas = getQueryStringValue("danzas");
+        
+        for (var i = 0; i<codDanzas.length;i+=5)    {
+            var danza = {};
+            danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
+            danza.tipoDanza =valores.indexOf(codDanzas.substr(i+1,1))+inicio;
+            danza.danza     =valores.indexOf(codDanzas.substr(i+2,1))+inicio;
+            danza.musica    =valores.indexOf(codDanzas.substr(i+3,1))+inicio;
+            danza.evolucion =valores.indexOf(codDanzas.substr(i+4,1))+inicio;
+            danza.duracion  =0;
+            danza.min       =0;
+            danza.seg       =0;
+            danza.otd       =arrTiposDanzas[danza.tipoDanza-1];
+            danza.odanza    =danza.otd.arrDanzas[danza.danza-1];
+            danza.omusica   =danza.odanza.arrCanciones[danza.musica-1];
+            if (danza.omusica.disco == '00' && danza.omusica.pista == '00') {
+                danza.omusica.nombre    = "No Aplica"; 
+                danza.omusica.autor     = "No Aplica";
+                danza.omusica.ogg       = "";
+                danza.omusica.mp3       = "";
+            }   else    {
+                var resultado = arrayCanciones.find(song => song.disco===danza.omusica.disco && song.pista===danza.omusica.pista)
+                if (resultado == undefined) {
+                    danza.omusica.nombre    = "No Encontrada"; 
+                    danza.omusica.autor     = "";
+                    danza.omusica.ogg       = "";
+                    danza.omusica.mp3       = "";    
+                }   else    {
+                    danza.omusica.nombre    = resultado.nombre; 
+                    danza.omusica.autor     = resultado.autor;
+                    danza.omusica.ogg       = resultado.archivo.replace('.mp3','.ogg');
+                    danza.omusica.mp3       = resultado.archivo;                    
+                }                
+            }
+            danza.oAudio = null;
+            $scope.danzas.push(danza);
+        }
+        if ($scope.danzas.length > 0)   
+            setTimeout(function(){
+                $scope.desde=$scope.danzas[0].id
+                $scope.hasta=$scope.danzas[$scope.danzas.length-1].id
+                for (var i=0; i<$scope.danzas.length; i++)  {
+                    $scope.danzas[i].oAudio = document.getElementById("audio_"+$scope.danzas[i].id);
+                    $scope.danzas[i].oAudio.preload="metadata";
+                    $scope.danzas[i].oAudio.ondurationchange   =   function()  {
+                        var i = this.id.substr(6)-1;
+                        $scope.danzas[i].duracion = this.duration;
+                        $scope.danzas[i].min = Math.trunc(this.duration / 60);
+                        $scope.danzas[i].seg = Math.round(this.duration - $scope.danzas[i].min * 60);
+                        $scope.$digest();
+                    }
+                }
+            }, 1000);
+    }
+    $scope.recuperarSesion();
+    $scope.playDanza =   function    (id)    {
+        $scope.stopDanza();
+        $scope.danzaAnt = id;
+        document.getElementById('tr'+id).style.backgroundColor="#D0D0FF";
+        $scope.danzas[id-1].oAudio.controls = true;
+        $scope.danzas[id-1].oAudio.play();
+    }
+    $scope.stopDanza =  function    ()    {
+        if ($scope.danzaAnt != null) {
+            document.getElementById('tr'+$scope.danzaAnt).style.backgroundColor='white';
+            $scope.danzas[$scope.danzaAnt-1].oAudio.controls = false;
+            $scope.danzas[$scope.danzaAnt-1].oAudio.pause();
+            $scope.danzas[$scope.danzaAnt-1].oAudio.currentTime=0;
+            $scope.danzas[$scope.danzaAnt-1].oAudio.onended = function() {};
+            $scope.danzas[$scope.danzaAnt-1].oAudio.ontimeupdate = function() {};
+        }
+        $scope.danzaAnt = null;
+    }
     $scope.iniciarPrueba   =   function    ()  {
-        var idObj = document.getElementById("ejIniciar")
-        $scope.objAudio.pause();
-        idObj.innerHTML = "Iniciar";
-        idObj.className = "btn btn-success";
-        $scope.objAudio.onended = function() {};
-
-        var idObj = document.getElementById("prIniciar")
-        if (idObj.innerHTML == "Iniciar") {
-            idObj.innerHTML = "Detener"
-            idObj.className = "btn btn-danger";
-        }   else    {
-            $scope.objAudio.pause();
-            idObj.innerHTML = "Iniciar";
-            idObj.className = "btn btn-success";
-            $scope.objAudio.ontimeupdate = function()  {};
-            $scope.objAudio.onended = function() {};
+        if ($scope.prueba)  {
+            $scope.prueba = false;
+            $scope.stopDanza()
+            for (var i=($scope.desde+0); i<=($scope.hasta+0); i++) {
+                $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {}
+                $scope.danzas[i-1].oAudio.onended = function() {}
+            }
             return
         }
+        $scope.prueba = true;
         var prueba  =   new Object();
         prueba.pos = $scope.desde+0;
         prueba.end = $scope.hasta+0;
-        prueba.duracion = 0;
         prueba.durInicio = Number($scope.durInicio);
         prueba.durMedio = Number($scope.durMedio);
         prueba.durFinal = Number($scope.durFinal);
-
-        $scope.objAudio.ontimeupdate    =   function()  {
-            
-            var ct  =   $scope.objAudio.currentTime
-            prueba.duracion = $scope.objAudio.duration;
-            var tm  =   Math.trunc(prueba.duracion/2-prueba.durMedio/2);
-            if ((ct > Number(prueba.durInicio)) && (ct < tm) )  {
-                $scope.objAudio.currentTime = tm
-            }
-            else    if ((ct > (tm + prueba.durMedio)) && (ct < (prueba.duracion - prueba.durFinal)))  {
-                $scope.objAudio.currentTime = prueba.duracion - prueba.durFinal;
-            }
+        for (var i=prueba.pos; i<=prueba.end; i++) {
+            $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {
+                prueba.duracion = this.duration;
+                prueba.tm   =  Math.trunc(prueba.duracion/2-prueba.durMedio/2);
+                var ct  =   this.currentTime;
+                if ((ct > Number(prueba.durInicio)) && (ct < prueba.tm) )  {
+                    this.currentTime = prueba.tm
+                }
+                else    if ((ct > (prueba.tm + prueba.durMedio)) && (ct < (prueba.duracion - prueba.durFinal)))  {
+                    this.currentTime = prueba.duracion - prueba.durFinal;
+                }            
+            };
+            $scope.danzas[i-1].oAudio.onended = function() {
+                prueba.pos++;
+                if (prueba.pos > prueba.end) {
+                    $scope.prueba = false;
+                    $scope.$digest();
+                    $scope.stopDanza();
+                }   else    {
+                    $scope.playDanza(prueba.pos);
+                }
+            };
         }
-        $scope.objAudio.onended = function() {
-            prueba.barra = new Array();
-            prueba.pos++;
-            if (prueba.pos > prueba.end) {
-                $scope.objAudio.pause();
-                idObj.innerHTML = "Iniciar";
-                idObj.className = "btn btn-success";
-                $scope.objAudio.ontimeupdate = function() {};
-                $scope.objAudio.onended = function() {};
-            }   else    prueba.play();
-        };
-        prueba.play = function ()  {
-            $scope.playColor(prueba.pos)
-            $scope.loadMusica(
-                $scope.danzas[prueba.pos-1].tipoDanza,
-                $scope.danzas[prueba.pos-1].danza,
-                $scope.danzas[prueba.pos-1].cancion,
-                "audio");
-            $scope.objAudio.play();
-        }
-        prueba.play();
+        $scope.playDanza(prueba.pos);
     }
     $scope.iniciarSesion   =   function    ()  {
-        var sesion  =   new Object();
-        var idObj = document.getElementById("prIniciar")
-        $scope.objAudio.pause();
-        idObj.innerHTML = "Iniciar";
-        idObj.className = "btn btn-success";
-        $scope.objAudio.ontimeupdate = function() {};
-
-        var idObj = document.getElementById("ejIniciar")
-        if (idObj.innerHTML == "Iniciar") {
-            idObj.innerHTML = "Detener"
-            idObj.className = "btn btn-danger";
-        }   else    {
-            $scope.objAudio.pause();
-            idObj.innerHTML = "Iniciar";
-            idObj.className = "btn btn-success";
-            $scope.objAudio.onended = function() {};
+        if ($scope.ejecucion)  {
+            $scope.ejecucion = false;
+            $scope.stopDanza()
+            for (var i=($scope.desde+0); i<=($scope.hasta+0); i++)
+                $scope.danzas[i-1].oAudio.onended = function() {}
             return
         }
-    
+        $scope.ejecucion = true;
+        var sesion  =   new Object();    
         sesion.pos = $scope.desde+0;
         sesion.end = $scope.hasta+0;
-        $scope.objAudio.onended = function() {
-            sesion.pos++;
-            if (sesion.pos <= sesion.end) sesion.play() 
-            else {
-                idObj.innerHTML = "Iniciar";
-                idObj.className = "btn btn-success";
-                $scope.objAudio.onended = function() {};
-            }
-        };
+        for (var i=sesion.pos; i<=sesion.end; i++) {
+            $scope.danzas[i-1].oAudio.onended = function() {
+                sesion.pos++;
+                if (sesion.pos <= sesion.end) sesion.play() 
+                else {
+                    $scope.ejecucion = false;
+                    $scope.$digest();
+                    $scope.stopDanza();
+                }
+            };
+        }
         sesion.play = function ()  {
-            $scope.playColor(sesion.pos);
-            $scope.loadMusica($scope.danzas[sesion.pos-1].tipoDanza,
-                              $scope.danzas[sesion.pos-1].danza,
-                              $scope.danzas[sesion.pos-1].cancion, "audio");
-            var d = $scope.tiposDanzas[$scope.danzas[sesion.pos-1].tipoDanza-1].arrDanzas[$scope.danzas[sesion.pos-1].danza-1];
+            var d = $scope.danzas[sesion.pos-1].odanza;
             var descripcion = d.descripcion.substr(0, d.descripcion.indexOf('Música'));
             var descripcion = descripcion.replaceAll('<h5>','\n');
             descripcion = descripcion.replaceAll('</h5>','\n');
@@ -307,23 +360,24 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             if (mostrar)    {
                 alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
                 setTimeout(function(){ 
-                    $scope.objAudio.play();    
+                    $scope.playDanza(sesion.pos)
+//                    $scope.danzas[sesion.pos-1].oAudio.play();
                     setTimeout(function(){ 
                         alert('click para detener la musica');
-                        var volumen = $scope.objAudio.volume;
-                        fade('audio',3);
+                        var volumen = $scope.danzas[sesion.pos-1].oAudio.volume;
+                        fade('audio_'+sesion.pos,3);
                         setTimeout(function(){
-                            $scope.objAudio.pause()
-                            $scope.objAudio.currentTime = 0;
-                            $scope.objAudio.volume=volumen;
+                            $scope.danzas[sesion.pos-1].oAudio.pause()
+                            $scope.danzas[sesion.pos-1].oAudio.currentTime = 0;
+                            $scope.danzas[sesion.pos-1].oAudio.volume=volumen;
                             alert('Invite a danzar');
-                            $scope.objAudio.play();    
+                            $scope.danzas[sesion.pos-1].oAudio.play();    
                         }, 3500);
                     }, 15000);
                 }, 10000);
             }   else    {
                 alert('Invite a danzar')
-                $scope.objAudio.play();
+                $scope.playDanza(sesion.pos);
             }
         }
         sesion.play();
@@ -351,7 +405,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     }
     $scope.desde=null;
     $scope.hasta=null;
-    $scope.prueba=false;
     $scope.durInicio = 10;
     $scope.durMedio = 20;
     $scope.durFinal = 15;
@@ -360,11 +413,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.danza = 0;
     $scope.cancion = 0;
     $scope.evolucion = 0;
-    $scope.tema ="";
-    $scope.autor = "";
     $scope.min = 0;
     $scope.seg = 0;
-    $scope.danzas   = [];
     $scope.loadMusica =  function    (td,d,c,id)    {
         var sufijo = (id == "audio") ? "":"2";
         cancion = $scope.getCancion(td,d,c);
@@ -375,60 +425,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         objAudio = document.getElementById(id);
         objAudio.load();
     }
-    $scope.recuperarSesion =    function()  {
-        var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
-        const inicio = -7;
-        var getQueryStringValue = function (key) {  
-                return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
-        }
-        $scope.tema = getQueryStringValue("tema");
-        $scope.autor = getQueryStringValue("autor");
-        
-        var codDanzas = getQueryStringValue("danzas");
-        
-        for (var i = 0; i<codDanzas.length;i+=5)    {
-            var danza = {id:0, tipoDanza:0, danza:0, cancion:0, evolucion:0};
-            danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
-            danza.tipoDanza =valores.indexOf(codDanzas.substr(i+1,1))+inicio;
-            danza.danza     =valores.indexOf(codDanzas.substr(i+2,1))+inicio;
-            danza.cancion   =valores.indexOf(codDanzas.substr(i+3,1))+inicio;
-            danza.evolucion =valores.indexOf(codDanzas.substr(i+4,1))+inicio;
-            danza.min       =0;
-            danza.seg       =0;
-            danza.nombre    =danza.id+'. '+$scope.tiposDanzas[danza.tipoDanza-1].arrDanzas[danza.danza-1].nombre+' ('+danza.evolucion+')'
-            $scope.danzas.push(danza);
-        }
-        if  (codDanzas.length>0)    {
-            $scope.getDuracion();
-            $scope.desde=$scope.danzas[0].id
-            $scope.hasta=$scope.danzas[$scope.danzas.length-1].id
-        }
-    }
-    $scope.getDuracion  =   function()  {
-        var loadlist = new Object();
-        loadlist.objAudio = document.getElementById('audio2');
-        loadlist.objAudio.oncanplay = function() {
-            var duracion = loadlist.objAudio.duration;
-            $scope.danzas[loadlist.pos].min = Math.trunc(duracion / 60);
-            $scope.danzas[loadlist.pos].seg = Math.trunc(duracion - (Math.trunc(duracion/60) * 60));
-            loadlist.pos++;
-            if (loadlist.pos < $scope.danzas.length) 
-                loadlist.load()
-            else    {
-                Highcharts.chart('grafico', $scope.opciones);
-                $scope.$digest();
-                loadlist = null;
-            }
-        };
-        loadlist.load = function ()  {
-            $scope.loadMusica($scope.danzas[loadlist.pos].tipoDanza,
-                              $scope.danzas[loadlist.pos].danza,
-                              $scope.danzas[loadlist.pos].cancion, 'audio2');
-        }
-        loadlist.pos = 0;
-        loadlist.load();
-    }
-    $scope.recuperarSesion();
     $scope.valores = [0,1,2,3,4,5,-1,-2,-3,-4,-5];
 
     var myArrayMax = function(arr) {
@@ -527,20 +523,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             }
         }
         $scope.idplay = id;
-    }
-    $scope.playDanza =   function    (td,d,c)    {
-        $scope.objAudio.pause();
-        var idObj = document.getElementById("prIniciar")
-        idObj.innerHTML = "Iniciar";
-        idObj.className = "btn btn-success";
-        var idObj = document.getElementById("ejIniciar")
-        $scope.objAudio.pause();
-        idObj.innerHTML = "Iniciar";
-        idObj.className = "btn btn-success";
-        $scope.objAudio.ontimeupdate = function() {};
-        $scope.objAudio.onended = function() {};
-        $scope.loadMusica(td,d,c,'audio');
-        $scope.objAudio.play();
     }
     $scope.getCancion  =   function(td, d, c)  {
         var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
