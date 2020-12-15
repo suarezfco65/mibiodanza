@@ -35,11 +35,10 @@
 
 </head>
 <body>
+<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
+<div class="container">
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
     
-<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
-<div class="w3-container">
-
     <h3 style="color:red; font-weight: bold; margin-bottom: 80px ">Preparación de Sesión Biodanza</h3>
 
     <script>inicioContenido('Registro de datos', 4, 'datos',false)</script>
@@ -50,22 +49,6 @@
                 <source id="ogg" src="" type="audio/ogg">
                 <source id="mp3" src="" type="audio/mpeg">
             </audio>
-<!--  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="item active">
-      <h6><small id="Cdanza"></small></h6>
-      </div> 
-
-      <div class="item">
-      <h6><small class="cancion" id="Ccancion"></small></h6>
-      </div>
-    
-      <div class="item">
-      <h6><small class="autor" id="Cautor"></small></h6>
-      </div>
-    </div>
-  </div> -->
-
             <audio id="audio2">
                 <source id="ogg2" src="" type="audio/ogg">
                 <source id="mp32" src="" type="audio/mpeg">
@@ -75,18 +58,20 @@
         </tr>
     </table>
 
-    <form>
-        <div class="form-group">
-            <input ng-model="tema" type="text" class="form-control" id="tema" placeholder="Tema de la Sesión">
-        </div>    
-        <div class="form-group">
-            <input ng-model="autor" type="text" class="form-control" id="autor" placeholder="Autor o autores de la Sesión">
-        </div>    
-    </form>
-    
-    <!--<table class="w3-table w3-bordered">-->
-    <table class="table table-sm" id="tablaDanzas">
+    <center>    
+    <table id="tablaDanzas" style="max-width: 700px">
     <thead class="thead-light">
+        <tr><td colspan="3">
+                <form>
+                    <div class="form-group">
+                        <input ng-model="tema" type="text" class="form-control" id="tema" placeholder="Tema de la Sesión">
+                    </div>    
+                    <div class="form-group">
+                        <input ng-model="autor" type="text" class="form-control" id="autor" placeholder="Autor o autores de la Sesión">
+                    </div>    
+                </form>
+            </td>
+        </tr>
         <tr>
             <th>Danza</th>
             <th>Evolución</th>
@@ -116,42 +101,13 @@
         </tr>
     </tbody>
     </table>
-    <hr>
-    <script>finContenido()</script>
-
-    <script>inicioContenido('Resultados', 4, 'resultados')</script>
-    <center><button style="margin-bottom: 4px" type="button" class="btn btn-danger" ng-click="salvarSesion()">Copiar URL de la Sesión</button>
     </center>
-    <hr>
+    <script>finContenido()</script>
+    <script>inicioContenido('Resultados', 4, 'resultados')</script>
     <center>
+    <button style="margin-bottom: 4px" type="button" class="btn btn-danger" ng-click="salvarSesion()">Copiar URL de la Sesión</button>
     
-    <h1>{{tema}}</h1>
-    <p style="margin-bottom: 6px">Realizado por: {{autor}}</p>
-    <table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Danza</th>
-            <th>Evolución<br>Duración</th>
-        </tr>
-        <tr><td colspan="4"><hr></td></tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="d in danzas">
-            <td valign="top">{{d.id}}.&nbsp;</td>
-            <td>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-            <i>{{getCancion(d.tipoDanza,d.danza,d.cancion).disco}}-{{getCancion(d.tipoDanza,d.danza,d.cancion).pista}}&nbsp;</i>
-            <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor}}</span>: <br>
-            <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre}}</span>
-            </td>
-            <td valign="top" align="center">{{d.evolucion}}<br>{{d.min}}:{{(d.seg<10) ? '0'+d.seg : d.seg }}</td>
-        </tr>
-    </tbody>
-    </table>
-    <br>
-    <hr>
-    <br>
-    <div id="grafico"></div>
+    <div id="grafico" style="max-width:700px"></div>
     </center>
     <script>finContenido()</script>
 
@@ -207,7 +163,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="danza">Cancion:</label>
+                <label for="danza">Música:</label>
                 <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).disco+'-'+getCancion(tipoDanza,danza,c.cod).pista+' '+getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
                 </select>
             </div>

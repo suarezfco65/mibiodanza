@@ -1,3 +1,6 @@
+String.prototype.replaceAll = function(target, replacement) {
+  return this.split(target).join(replacement);
+};
 var arrDocumento = [	['T', `LAS RONDAS`],	
 	['P', `Todas las Rondas de Biodanza son ejercicios de comunicación afectiva. Tienen siempre un doble efecto: la integración del grupo y la estimulación de la afectividad.`],	
 	['P', `Lo que cambia es la cualidad de la vivencia, que varia según la consigna. En la práctica, en Biodanza tenemos varios tipos de Rondas, como por ejemplo: Ronda de Integración Inicial, Ronda de Comunicación, Ronda de Contacto Múltiple, Ronda de Mecimiento, Ronda Sinuosa, Ronda de Solidaridad, Ronda de Celebración.`],	
