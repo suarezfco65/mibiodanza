@@ -444,7 +444,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         });
     }
 
-    setTimeout($scope.grafico(),5000);
+    setTimeout(function ()  { $scope.grafico() },5000);
 
     $scope.mobilecheck = isMobile.mobilecheck();
 })
