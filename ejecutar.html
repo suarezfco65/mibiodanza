@@ -95,7 +95,7 @@
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Inicio</span>
-        <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3" required pattern="[0-9]{3}"
+        <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3" 
 title="El número consta máximo 3 dígitos.">
     </div>
     <div class="input-group">
@@ -279,8 +279,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.danzas[$scope.danzaAnt-1].oAudio.controls = false;
             $scope.danzas[$scope.danzaAnt-1].oAudio.pause();
             $scope.danzas[$scope.danzaAnt-1].oAudio.currentTime=0;
-            $scope.danzas[$scope.danzaAnt-1].oAudio.onended = function() {};
-            $scope.danzas[$scope.danzaAnt-1].oAudio.ontimeupdate = function() {};
+            $scope.danzas[$scope.danzaAnt-1].oAudio.onended = null;
+            $scope.danzas[$scope.danzaAnt-1].oAudio.ontimeupdate = null;
         }
         $scope.danzaAnt = null;
     }
@@ -289,28 +289,24 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.prueba = false;
             $scope.stopDanza()
             for (var i=0; i<$scope.danzas.length; i++) {
-                $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {}
-                $scope.danzas[i-1].oAudio.onended = function() {}
+                $scope.danzas[i].oAudio.ontimeupdate   =   null
+                $scope.danzas[i].oAudio.onended = null
             }
             return
         }
         $scope.prueba = true;
         var prueba  =   new Object();
         prueba.pos = Number($scope.desde);
-        prueba.durInicio = Number($scope.durInicio);
-        prueba.durMedio = Number($scope.durMedio);
-        prueba.durFinal = Number($scope.durFinal);
         for (var i=prueba.pos; i<=Number($scope.hasta); i++) {
             $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {
                 prueba.duracion = this.duration;
-                prueba.tm   =  Math.trunc(prueba.duracion/2-prueba.durMedio/2);
+                prueba.tm   =  Math.trunc( (prueba.duracion/2) - (Number($scope.durMedio)/2) );
                 var ct  =   this.currentTime;
-                if ((ct > Number(prueba.durInicio)) && (ct < prueba.tm) )  {
+                if ((ct > Number($scope.durInicio)) && (ct < prueba.tm) )  {
                     this.currentTime = prueba.tm
+                } else    if ((ct > (prueba.tm + Number($scope.durMedio))) && (ct < (prueba.duracion - Number($scope.durFinal))))  {
+                    this.currentTime = prueba.duracion - Number($scope.durFinal);
                 }
-                else    if ((ct > (prueba.tm + prueba.durMedio)) && (ct < (prueba.duracion - prueba.durFinal)))  {
-                    this.currentTime = prueba.duracion - prueba.durFinal;
-                }            
             };
             $scope.danzas[i-1].oAudio.onended = function() {
                 prueba.pos++;
@@ -319,8 +315,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     $scope.$digest();
                     $scope.stopDanza();
                     for (var i=0; i<$scope.danzas.length; i++) {
-                        $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {}
-                        $scope.danzas[i-1].oAudio.onended = function() {}
+                        $scope.danzas[i].oAudio.ontimeupdate   =   function()    {}
+                        $scope.danzas[i].oAudio.onended = function() {}
                     }
                 }   else    {
                     $scope.playDanza(prueba.pos);
@@ -334,7 +330,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.ejecucion = false;
             $scope.stopDanza()
             for (var i=0; i<$scope.danzas.length; i++)
-                $scope.danzas[i-1].oAudio.onended = function() {}
+                $scope.danzas[i].oAudio.onended = function() {}
             return
         }
         $scope.ejecucion = true;
@@ -349,7 +345,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     $scope.$digest();
                     $scope.stopDanza();
                     for (var i=0; i<$scope.danzas.length; i++)
-                        $scope.danzas[i-1].oAudio.onended = function() {}
+                        $scope.danzas[i].oAudio.onended = null
                 }
             };
         }
@@ -358,25 +354,27 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             var descripcion = d.descripcion.substr(0, d.descripcion.indexOf('Música'));
             var descripcion = descripcion.replaceAll('<h5>','\n');
             descripcion = descripcion.replaceAll('</h5>','\n');
+            descripcion = descripcion.replaceAll('<i>','<<');
+            descripcion = descripcion.replaceAll('</i>','>>');
             descripcion = descripcion.replaceAll('<p>','');
             descripcion = descripcion.replaceAll('</p>','\n');
-            alert('Indique la consigna, para la danza\n\n'+sesion.pos+'. '+
+            alert('Indique la consigna, para la siguiente danza...\n\n'+sesion.pos+'. '+
                   d.nombre+'\n'+
                   descripcion);
-            var mostrar = confirm('¿Va a realizar muestra para ésta danza?');
+            var mostrar = confirm('¿Acepta realizar muestra para ésta danza?');
             if (mostrar)    {
                 alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
                 setTimeout(function(){ 
                     $scope.playDanza(sesion.pos)
                     setTimeout(function(){ 
-                        alert('click para detener la musica');
+                        alert('De click para detener la musica, una vez haya terminado la muestra de la danza');
                         var volumen = $scope.danzas[sesion.pos-1].oAudio.volume;
                         fade('audio_'+sesion.pos,3);
                         setTimeout(function(){
                             $scope.danzas[sesion.pos-1].oAudio.pause()
                             $scope.danzas[sesion.pos-1].oAudio.currentTime = 0;
                             $scope.danzas[sesion.pos-1].oAudio.volume=volumen;
-                            alert('Invite a danzar');
+                            alert('A continuación, invite a danzar...');
                             $scope.danzas[sesion.pos-1].oAudio.play();    
                         }, 3500);
                     }, 15000);
