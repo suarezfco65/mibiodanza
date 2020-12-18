@@ -31,7 +31,8 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Metodología II (La Sesión de Biodanza)', href:'23 Metodología II.html', hijos:[]},
           {titulo:'Metodología III (La Sesión de Biodanza II)', href:'24 Metodología III.html', hijos:[]},
           {titulo:'Metodología IV (Profundización)', href:'25 Metodología IV.html', hijos:[]},
-          {titulo:'Metodología V (El Grupo de Biodanza)', href:'26 Metodología V.html', hijos:[]}
+          {titulo:'Metodología V (El Grupo de Biodanza)', href:'26 Metodología V.html', hijos:[]},
+          {titulo:'Metodología VI (Criterios de Evaluación)', href:'27 Metodología VI.html', hijos:[]}
         ]},
         {titulo:'Sesión', href:'#', hijos:[
           {titulo:'Catalogo de Danzas', href:'catalogo.html', hijos:[]},
