@@ -76,10 +76,10 @@
     <div class="col-12 text-info">Realizado por: <b>{{autor}}</b></div>
   </div>
 </div>
-<!-- <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div ng-hide="mobilecheck"> -->
- <script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div>
+ <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div ng-hide="mobilecheck">
+<!-- <script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+    <div> -->
 <form class="form-inline">
     <div class="input-group">
         <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
@@ -111,8 +111,8 @@ title="El número consta máximo 3 dígitos.">
     </div>
 </form>
 </div>
-<!-- <script>if (!isMobile.mobilecheck()) finContenido();</script> -->
-<script>finContenido();</script>
+<script>if (!isMobile.mobilecheck()) finContenido();</script>
+<!-- <script>finContenido();</script> -->
 <script>inicioContenido('Ejecución Controlada', 4, 'divEjecucion');</script>
 <form class="form-inline">
     <div class="input-group">
@@ -299,13 +299,12 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         prueba.pos = Number($scope.desde);
         for (var i=prueba.pos; i<=Number($scope.hasta); i++) {
             $scope.danzas[i-1].oAudio.ontimeupdate   =   function()    {
-                prueba.duracion = this.duration;
-                prueba.tm   =  Math.trunc( (prueba.duracion/2) - (Number($scope.durMedio)/2) );
+                var tm   =  (this.duration/2) - (Number($scope.durMedio)/2) ;
                 var ct  =   this.currentTime;
-                if ((ct > Number($scope.durInicio)) && (ct < prueba.tm) )  {
-                    this.currentTime = prueba.tm
-                } else    if ((ct > (prueba.tm + Number($scope.durMedio))) && (ct < (prueba.duracion - Number($scope.durFinal))))  {
-                    this.currentTime = prueba.duracion - Number($scope.durFinal);
+                if ((ct > Number($scope.durInicio)) && (ct < tm) )  {
+                    this.currentTime = tm;
+                } else    if ((ct > (tm + Number($scope.durMedio))) && (ct < (this.duration - Number($scope.durFinal))))  {
+                    this.currentTime = this.duration - Number($scope.durFinal);
                 }
             };
             $scope.danzas[i-1].oAudio.onended = function() {
