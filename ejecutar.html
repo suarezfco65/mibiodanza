@@ -20,6 +20,7 @@
     <script src="dir.js"></script>
     <script src="navbar.js"></script>
     <style>
+        .bg         {fill: red}
         .autor      {color: crimson;}
         .cancion    {color: darkslateblue;}
         .desc       {color: green; font-weight: bold}
@@ -155,7 +156,7 @@ title="El número consta máximo 3 dígitos.">
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" id="grafico">
+            <td colspan="5" id="grafico" style="height:500px">
     <div></div>
             </td>
         </tr>
@@ -195,7 +196,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.autor = "";
     $scope.desde='1';
     $scope.hasta='1';
-    $scope.danzaAnt = null;
+    $scope.danzaAnt = -1;
     $scope.danzas = [];
     $scope.prueba = false;
     $scope.ejecucion = false;
@@ -272,9 +273,14 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         document.getElementById('tr'+id).style.backgroundColor="#D0D0FF";
         $scope.danzas[id-1].oAudio.controls = true;
         $scope.danzas[id-1].oAudio.play();
+//        var oPunto = document.querySelector("#"+document.getElementById('grafico').childNodes[0].id+" > svg > g.highcharts-series-group > g.highcharts-markers.highcharts-series-0.highcharts-spline-series.highcharts-color-0.highcharts-tracker > path:nth-child("+(id+1)+")")
+//        oPunto.classList.add("bg");
+        $scope.grafico();
     }
     $scope.stopDanza =  function    ()    {
-        if ($scope.danzaAnt != null) {
+        if ($scope.danzaAnt >= 0) {
+//            var oPunto = document.querySelector("#"+document.getElementById('grafico').childNodes[0].id+" > svg > g.highcharts-series-group > g.highcharts-markers.highcharts-series-0.highcharts-spline-series.highcharts-color-0.highcharts-tracker > path:nth-child("+($scope.danzaAnt+1)+")")
+//            oPunto.classList.remove("bg")
             document.getElementById('tr'+$scope.danzaAnt).style.backgroundColor='white';
             $scope.danzas[$scope.danzaAnt-1].oAudio.controls = false;
             $scope.danzas[$scope.danzaAnt-1].oAudio.pause();
@@ -282,7 +288,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             $scope.danzas[$scope.danzaAnt-1].oAudio.onended = null;
             $scope.danzas[$scope.danzaAnt-1].oAudio.ontimeupdate = null;
         }
-        $scope.danzaAnt = null;
+        $scope.danzaAnt < 0;
     }
     $scope.iniciarPrueba   =   function    ()  {
         if ($scope.prueba)  {
@@ -387,11 +393,29 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     }
     $scope.grafico  =   function()  {
         $scope.cat  =   ["ESTADO INICIAL"];
-        $scope.dat  =   [0];
+        if (($scope.ejecucion || $scope.prueba) && ($scope.desde == 1))
+            $scope.dat  =   [{y:0,color:"darksalmon"}]
+        else
+            $scope.dat  =   [0];
         for(var i=0; i<$scope.danzas.length;i++)    {
             var danza = arrTiposDanzas[$scope.danzas[i].tipoDanza-1].arrDanzas[$scope.danzas[i].danza-1].nombre;
             $scope.cat.push(danza.length < 30 ? danza : danza.substr(0, 27)+'...');
-            $scope.dat.push($scope.danzas[i].evolucion);
+            if ($scope.ejecucion || $scope.prueba)  {
+                if (i >= ($scope.desde-1))
+                    if (i < ($scope.danzaAnt-1))
+                        $scope.dat.push({y:$scope.danzas[i].evolucion, color:"darksalmon"})
+                    else if (i == ($scope.danzaAnt-1))
+                        $scope.dat.push({y:$scope.danzas[i].evolucion, color:"red"})
+                    else
+                        $scope.dat.push($scope.danzas[i].evolucion)
+                else
+                    $scope.dat.push($scope.danzas[i].evolucion)
+            }   else    {
+                if (i == ($scope.danzaAnt-1))
+                    $scope.dat.push({y:$scope.danzas[i].evolucion, color:"red"})
+                else
+                    $scope.dat.push($scope.danzas[i].evolucion)
+            }
         }
         Highcharts.chart('grafico', {
             chart: {
@@ -443,7 +467,9 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         });
     }
 
-    setTimeout(function ()  { $scope.grafico() },5000);
+    setTimeout(function ()  { 
+        document.getElementById('grafico').style.height = Math.trunc(1.25*document.getElementById('grafico').offsetWidth)+'px';
+        $scope.grafico() },5000);
 
     $scope.mobilecheck = isMobile.mobilecheck();
 })
