@@ -391,6 +391,13 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         }
         sesion.play();
     }
+    $scope.descTitle = "";
+    $scope.descDanza    =   function    (id)    {
+        var danza = $scope.danzas.find(e => e.id == id);
+        var d = arrTiposDanzas[danza.tipoDanza-1].arrDanzas[danza.danza-1]
+        $scope.descTitle = d.nombre
+        document.getElementById("descBody").innerHTML = d.descripcion.substr(0, d.descripcion.indexOf('Música'))
+    }
     $scope.grafico  =   function()  {
         $scope.cat  =   ["ESTADO INICIAL"];
         if (($scope.ejecucion || $scope.prueba) && ($scope.desde == 1))
