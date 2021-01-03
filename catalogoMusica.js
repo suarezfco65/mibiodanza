@@ -6,18 +6,18 @@ const catalogoMusica = {
         const omusica = this.musicas[codigo];
         const oaudio = document.createElement("audio");
         var osource = document.createElement("source");
-        osource.setAttribute('src',omusica.archivo.substr(0,omusica.archivo.length-3)+'ogg');
+        osource.setAttribute('src',carpeta+omusica.archivo.substr(0,omusica.archivo.length-3)+'ogg');
         osource.setAttribute('type','audio/ogg');
         oaudio.appendChild(osource);
         osource = document.createElement("source");
-        osource.setAttribute('src',omusica.archivo);
+        osource.setAttribute('src',carpeta+omusica.archivo);
         osource.setAttribute('type','audio/mpeg');
         oaudio.appendChild(osource);
         return oaudio
     },
-    agregarAudio : function(codigo) {
+    agregarAudio : function(carpeta, codigo) {
         if (this.musicas[codigo].audio == null)    {
-            this.musicas[codigo].audio = this.crearAudio(codigo);
+            this.musicas[codigo].audio = this.crearAudio(carpeta, codigo);
             this.miLista.push(codigo);
         }
     },
@@ -96,6 +96,9 @@ const catalogoMusica = {
             };
         }
         this.play('bd-id-danza-'+prueba.pos, this.miLista[prueba.pos-1]);
+    },
+    ejecucionControlada:    function()  {
+
     },
     sonando:null,
     idActual:null,

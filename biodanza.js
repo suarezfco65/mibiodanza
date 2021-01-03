@@ -17,7 +17,7 @@ class sesionBiodanza extends HTMLElement {
             </div>
             `,
             pruebas:`
-            <h4><span data-target="#bd-prueba" onclick="bd_toggleCollapse(this, 'bd-prueba')" style="color:red; cursor:pointer">❥</span> Prueba Controlada</h4>
+            <h4><span onclick="bd_toggleCollapse(this, 'bd-prueba')" style="color:red; cursor:pointer">❥</span> Prueba Controlada</h4>
             <div id="bd-prueba" class="collapse">
                 <form class="form-inline">
                     <div class="input-group">
@@ -46,6 +46,28 @@ class sesionBiodanza extends HTMLElement {
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-success" onclick="catalogoMusica.pruebaControlada()" id="bd-id-prueba-Iniciar">Iniciar</button>
+                    </div>
+                </form>
+            </div>
+            `,
+            ejecucion:`
+            <h4><span onclick="bd_toggleCollapse(this, 'bd-ejecutar')" style="color:red; cursor:pointer">❥</span> Ejecución Controlada</h4>
+            <div id="bd-ejecutar" class="collapse">
+                <form class="form-inline">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
+                        <select class="form-control input-sm" id="bd-id-ejecutar-desde"></select>
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
+                        <select class="form-control input-sm" id="bd-id-ejecutar-hasta"></select>
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success" onclick="catalogoMusica.ejecucionControlada()" id="bd-id-ejecutar-Iniciar">Iniciar</button>
                     </div>
                 </form>
             </div>
@@ -80,7 +102,8 @@ class sesionBiodanza extends HTMLElement {
             for (const key in danza)    danza[key] = danza[key] == null ? '' : danza[key];
             const otbody = document.getElementById('bd-id-danzas');
             const contador = (otbody.children.length/2)+1;
-            const musica = catalogoMusica.musicas[danza.musica];
+            var musica = catalogoMusica.musicas[danza.musica];
+            if (musica == undefined) musica = {autor:"<b>MUSICA NO ENCONTRADA<b>", nombre:"<b>MUSICA NO ENCONTRADA<b>"}
             otbody.innerHTML = otbody.innerHTML+`
             <tr id="bd-id-danza-${contador}">
                 <td valign="top">${contador}</td>
@@ -118,6 +141,8 @@ class sesionBiodanza extends HTMLElement {
                 }
             document.getElementById('bd-id-prueba-desde').innerHTML=opcionesDesde;
             document.getElementById('bd-id-prueba-hasta').innerHTML=opcionesHasta;
+            document.getElementById('bd-id-ejecutar-desde').innerHTML=opcionesDesde;
+            document.getElementById('bd-id-ejecutar-hasta').innerHTML=opcionesHasta;
             Highcharts.chart('bd-id-chart', {
                 chart:    { type: 'spline' },
                 title:    { text: tema     },
@@ -142,23 +167,26 @@ class sesionBiodanza extends HTMLElement {
                     data: datos
                 }]
             });
-            catalogoMusica.agregarAudio(danza.musica);
+            catalogoMusica.agregarAudio(this.carpeta_musica, danza.musica);
             document.getElementById('bd-id-audios').appendChild(catalogoMusica.audio(danza.musica));
             return contador;
         }
         for (const key in html)    this.innerHTML += html[key];
     }
     attributeChangedCallback(nameAtr, oldValue, newValue)    {
-        document.getElementById("bd-id-"+nameAtr).innerHTML = newValue;
+        if (nameAtr == "carpeta-musica")    {
+            this.carpeta_musica = newValue;
+        } else
+            document.getElementById("bd-id-"+nameAtr).innerHTML = newValue;
     }
     static  get observedAttributes()    {
-        return ["tema", "autor"];
+        return ["tema", "autor", "carpeta-musica"];
     }
 }
 class danzaBiodanza extends HTMLElement {
     static get observedAttributes() {
         return ["nombre", "musica", "evolucion", "presenta"];
-    } 
+    }
     constructor()   {
         super();
     }
