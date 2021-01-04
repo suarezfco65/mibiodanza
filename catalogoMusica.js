@@ -2,7 +2,7 @@ const catalogoMusica = {
     audio: function (codigo)    {
         return this.musicas[codigo].audio
     },
-    crearAudio : function (codigo)    {
+    crearAudio : function (carpeta,codigo)    {
         const omusica = this.musicas[codigo];
         const oaudio = document.createElement("audio");
         var osource = document.createElement("source");
@@ -60,8 +60,10 @@ const catalogoMusica = {
             this.prueba=false;
             obutton.innerHTML = 'Iniciar';
             obutton.setAttribute('class','btn btn-success');
+            document.getElementById('bd-id-ejecutar-Iniciar').disabled =false;
             return
         }
+        document.getElementById('bd-id-ejecutar-Iniciar').disabled =true;
         for (var i=0; i<this.miLista.length; i++)   document.getElementById('bd-play-'+(i+1)).disabled =true;
         this.prueba = true;
         obutton.innerHTML = 'Detener';
@@ -87,7 +89,6 @@ const catalogoMusica = {
             };
             this.musicas[this.miLista[i-1]].audio.onended = function() {
                 prueba.pos++;
-                console.log(prueba.pos);
                 if (prueba.pos > prueba.hasta) {
                     catalogoMusica.pruebaControlada();
                 }   else    {
@@ -97,12 +98,101 @@ const catalogoMusica = {
         }
         this.play('bd-id-danza-'+prueba.pos, this.miLista[prueba.pos-1]);
     },
+    ejecucion: false,
     ejecucionControlada:    function()  {
+        this.stop();
+        obutton = document.getElementById('bd-id-ejecutar-Iniciar');
+        if (this.ejecutar) {
+            for (var i=0; i<this.miLista.length; i++)   {
+                this.musicas[this.miLista[i]].audio.onended = null;
+                document.getElementById('bd-play-'+(i+1)).disabled =false;
+            }
+            this.ejecutar=false;
+            obutton.innerHTML = 'Iniciar';
+            obutton.setAttribute('class','btn btn-success');
+            document.getElementById('bd-id-prueba-Iniciar').disabled =false;
+            return
+        }
+        document.getElementById('bd-id-prueba-Iniciar').disabled =true;
+        for (var i=0; i<this.miLista.length; i++)   document.getElementById('bd-play-'+(i+1)).disabled =true;
+        this.ejecutar = true;
+        obutton.innerHTML = 'Detener';
+        obutton.setAttribute('class','btn btn-danger');
+        const oDesde = document.getElementById('bd-id-ejecutar-desde');
+        const oHasta = document.getElementById('bd-id-ejecutar-hasta');
+        var ejecucion  =   new Object();
+        ejecucion.desde = Number(oDesde.options[oDesde.selectedIndex].value);
+        ejecucion.hasta = Number(oHasta.options[oHasta.selectedIndex].value);
+        ejecucion.pos = ejecucion.desde;
+        for (var i=ejecucion.pos; i<=ejecucion.hasta; i++) {
+            this.musicas[this.miLista[i-1]].audio.onended = function() {
+                ejecucion.pos++;
+                if (ejecucion.pos > ejecucion.hasta) {
+                    catalogoMusica.ejecucionControlada();
+                }   else    {
+                    ejecucion.play();
+                }
+            };
+        }
 
+        ejecucion.play = function ()  {
+            const oBt = document.getElementById('bd-tg-consigna-'+ejecucion.pos);
+            if (oBt.innerHTML == '❥')    bd_toggleCollapse(oBt, 'bd-consigna-'+ejecucion.pos);
+            alert('Indique la consigna, para la siguiente danza...');
+            var mostrar = confirm('¿Acepta realizar muestra para ésta danza?');
+            if (mostrar)    {
+                alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
+                setTimeout(function(){ 
+                    catalogoMusica.play('bd-id-danza-'+ejecucion.pos, catalogoMusica.miLista[ejecucion.pos-1])
+                    setTimeout(function(){ 
+                        alert('De click para detener la musica, una vez haya terminado la muestra de la danza');
+                        var volumen = catalogoMusica.musicas[catalogoMusica.miLista[ejecucion.pos-1]].audio.volume;
+                        catalogoMusica.fade(catalogoMusica.miLista[ejecucion.pos-1],3);
+                        setTimeout(function(){
+                            catalogoMusica.musicas[catalogoMusica.miLista[ejecucion.pos-1]].audio.pause()
+                            catalogoMusica.musicas[catalogoMusica.miLista[ejecucion.pos-1]].audio.currentTime = 0;
+                            catalogoMusica.musicas[catalogoMusica.miLista[ejecucion.pos-1]].audio.volume=volumen;
+                            alert('A continuación, invite a danzar...');
+                            catalogoMusica.musicas[catalogoMusica.miLista[ejecucion.pos-1]].audio.play();    
+                        }, 3500);
+                    }, 15000);
+                }, 10000);
+            }   else    {
+                alert('Invite a danzar')
+                catalogoMusica.play('bd-id-danza-'+ejecucion.pos, catalogoMusica.miLista[ejecucion.pos-1]);
+            }
+        }        
+        ejecucion.play();
     },
     sonando:null,
     idActual:null,
     bgcolor:null,
+    fade : function (codigo, segundos)   {
+        var audioElement = catalogoMusica.musicas[codigo].audio;
+        var subir = (audioElement.volume < 0.2); 
+        var decimo = audioElement.volume / 10;
+        var decima = segundos * 1000 / 10
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.1 : 9*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.2 : 8*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.3 : 7*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.4 : 6*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.5 : 5*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.6 : 4*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.7 : 3*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.8 : 2*decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 0.9 : decimo;
+        setTimeout(function() {  audioElement.volume = (subir) ? 1 : 0;
+          }, decima);
+          }, decima);                                   
+          }, decima);                                   
+          }, decima);                                   
+          }, decima);                                   
+          }, decima);                                   
+          }, decima);                                   
+          }, decima);                                   
+          }, decima);                       
+          }, decima);
+    },    
     musicas : {
         "IBF01-01":{nombre:"Free As a Bird",autor:"The Beatles",archivo:"IBF01 - 01 - The Beatles - Free As a Bird.mp3"},
         "IBF01-02":{nombre:"Let It Be",autor:"The Beatles",archivo:"IBF01 - 02 - The Beatles - Let It Be.mp3"},

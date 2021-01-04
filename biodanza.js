@@ -114,7 +114,7 @@ class sesionBiodanza extends HTMLElement {
                 </td>
                 <td valign="top" align="center"><b>${danza.evolucion}</b><br><span id="bd-id-duracion-${contador}"></span></td>
                 <td valign="top"><button id="bd-play-${contador}" type="button" class="btn btn-success" onclick="catalogoMusica.play('bd-id-danza-${contador}','${danza.musica}');">&#9835;</button></td>
-                <td valign="top"><button type="button" class="btn btn-success" onclick="bd_toggleCollapse(this, 'bd-consigna-${contador}')">❥</button></td>
+                <td valign="top"><button id="bd-tg-consigna-${contador}" type="button" class="btn btn-success" onclick="bd_toggleCollapse(this, 'bd-consigna-${contador}')">❥</button></td>
             </tr>
             <tr id="bd-consigna-${contador}" class="collapse"><td>&nbsp;</td>
             <td colspan="4" class="text-justify">${danza.consigna}</td>
