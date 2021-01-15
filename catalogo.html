@@ -10,7 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
     <script src="documento.js"></script>
-    <script src="dir.js"></script>
+<!--    <script src="dir.js"></script> -->
+    <script src="catalogoMusica.js"></script>
     <style>
         .autor      {color: crimson; font-weight: bold}
         .cancion    {color: darkslateblue; font-weight: bold}
@@ -52,8 +53,24 @@
                 document.write(danza.descripcion);
             document.write('<table class="table table-striped">');
             for (var k=0; k<danza.arrCanciones.length;k++)  {
+                var ubicacion = '';
                 var cancion = danza.arrCanciones[k];
-                document.write(oa(cancion.disco,cancion.pista,cancion.descripcion));
+                var musica = catalogoMusica[cancion.codigo];
+                var	s = '<tr style="vertical-align:top">';
+                if (musica == undefined) {
+                    s += '<th nowrap width="100">'+cancion.codigo+'&nbsp;</th>';
+                    s += '<th colspan="3"><span  class="cancion">'+cancion.texto+'</span></th>';
+                }   else    {
+                    s += '<th nowrap width="100">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic(`'+ubicacion+musica.archivos[0].nombre+'`)">&#9835;</button>&nbsp;</th>';
+                    s += '<td colspan ="2"><p><span class="autor">'+musica.autor+'&nbsp;<br>';
+                    s += '<span class="cancion">'+musica.nombre;
+                    if (cancion.descripcion.length > 5)
+                        s +='<br><small>'+cancion.descripcion+'</small>'
+                    s +='</p></td>';
+                }
+                s += '</tr>';
+                document.write(s);
+//                document.write(oa(cancion.disco,cancion.pista,cancion.descripcion, cancion.texto));
             }
             document.write('</table>');
             finContenido()
