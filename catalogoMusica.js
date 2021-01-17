@@ -1,7 +1,7 @@
 const catalogoMusica = {
     'SBE': {
-        carpeta:'',
-        '01': '',
+        carpeta:'SuArez Biocentric Enterprice',
+        '01': 'SBE 01',
     },
     'SBE01-01':	{	nombre: `Baroque and Blue`,	autor:	`Jean-Pierre Rampal y Claude Bolling`,	archivos:	[	{	nombre:	`SBE 01 - 01 - Jean-Pierre Rampal y Claude Bolling - Baroque and Blue.mp3`, tipo:   `audio/mpeg`    	}	]	},
     'SBE01-02':	{	nombre: `Combinación 5ª sinfonía y Mambo número 5`,	autor:	`L. V. Beethoven / D. Pérez Prado`,	archivos:	[	{	nombre:	`SBE 01 - 02 - 5ta Sinfonia Mambo No 5. - Beethoven PErez Prado.mp3`, tipo:   `audio/mpeg`    	}	]	},
