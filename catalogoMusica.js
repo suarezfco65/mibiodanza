@@ -1,6 +1,6 @@
 const catalogoMusica = {
     'SBE': {
-        carpeta:'suArezBiocentricEnterprice/',
+        carpeta:'',
         '01': '',
     },
     'SBE01-01':	{	nombre: `Baroque and Blue`,	autor:	`Jean-Pierre Rampal y Claude Bolling`,	archivos:	[	{	nombre:	`SBE 01 - 01 - Jean-Pierre Rampal y Claude Bolling - Baroque and Blue.mp3`, tipo:   `audio/mpeg`    	}	]	},
