@@ -1,8 +1,13 @@
 const procesaMusica = {
+    tiempoTotal: 0,
     audio: function (codigo)    {
         return catalogoMusica[codigo].audio
     },
-    crearAudio : function (carpeta,codigo, contador)    {
+    crearAudio : function (codigo, contador)    {
+        var coleccion = codigo.substr(0,codigo.indexOf('-')-2);
+        var album = codigo.substr(codigo.indexOf('-')-2,2);
+        var carpeta = catalogoMusica[coleccion].carpeta;
+        carpeta += catalogoMusica[coleccion][album];
         const omusica = catalogoMusica[codigo];
         const oaudio = document.createElement("audio");
         for (var i=0; i<catalogoMusica[codigo].archivos.length; i++)    {
@@ -14,15 +19,21 @@ const procesaMusica = {
         oaudio['idDuracion'] = 'bd-id-duracion-'+contador; 
         oaudio.ondurationchange = function() {
             var segs = Math.round(this.duration);
+            procesaMusica.tiempoTotal += segs + 60;
             const mins = Math.trunc(segs / 60);
             segs = segs - (mins * 60);
+            var minutos = Math.trunc(procesaMusica.tiempoTotal / 60);
+            const segundos = procesaMusica.tiempoTotal - minutos * 60;
+            const horas = Math.trunc(minutos/60);
+            minutos = minutos - horas * 60;
             document.getElementById(oaudio['idDuracion']).innerHTML = mins+':'+(segs < 10 ? ("0"+segs) : segs);
+            document.getElementById("bd-id-tiempoTotal").innerHTML = horas+":"+(minutos < 10 ? ("0"+ minutos) : minutos)+":"+(segundos < 10 ? ("0"+segundos) : segundos);
           };
         return oaudio
     },
-    agregarAudio : function(carpeta, codigo, contador) {
+    agregarAudio : function(codigo, contador) {
         if (catalogoMusica[codigo].audio == null)    {
-            catalogoMusica[codigo].audio = this.crearAudio(carpeta, codigo, contador);
+            catalogoMusica[codigo].audio = this.crearAudio(codigo, contador);
             this.miLista.push(codigo);
         }
     },
@@ -225,6 +236,9 @@ class sesionBiodanza extends HTMLElement {
             <div class="row">
                 <div class="col-12 text-info">Realizado por: <b id="bd-id-autor"></b></div>
             </div>
+            <div class="row">
+                <div class="col-12 text-info">Duración Estimada: <b id="bd-id-tiempoTotal"></b></div>
+            </div>
             `,
             pruebas:`
             <div class="no-imprimir">
@@ -381,7 +395,7 @@ class sesionBiodanza extends HTMLElement {
                     data: datos
                 }]
             });
-            procesaMusica.agregarAudio(this.carpeta_musica, danza.musica, contador);
+            procesaMusica.agregarAudio(danza.musica, contador);
             document.getElementById('bd-id-audios').appendChild(procesaMusica.audio(danza.musica));
             return contador;
         }

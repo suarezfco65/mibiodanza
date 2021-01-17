@@ -18,7 +18,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>    
     <script src="documento.js"></script>
-    <script src="dir.js"></script>
+    <script src="catalogoMusica.js"></script>
     <script src="navbar.js"></script>
     <style>
         .autor      {color: crimson;}
@@ -86,7 +86,7 @@
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
                 <button type="button" class="btn btn-success btn-xs" ng-click="playColor(d.id);playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
-                <i>{{ getCancion(d.tipoDanza,d.danza,d.cancion).disco+'-'+getCancion(d.tipoDanza,d.danza,d.cancion).pista+' '}}</i>
+                <i>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].arrCanciones[d.cancion-1].codigo+' '}}</i>
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
             </td>
             <td><div class="form-group">
@@ -164,7 +164,7 @@
             </div>
             <div class="form-group">
                 <label for="danza">Música:</label>
-                <select ng-model="cancion" ng-options="c.cod as getCancion(tipoDanza,danza,c.cod).disco+'-'+getCancion(tipoDanza,danza,c.cod).pista+' '+getCancion(tipoDanza,danza,c.cod).autor+': '+getCancion(tipoDanza,danza,c.cod).nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
+                <select ng-model="cancion" ng-options="c.cod as c.codigo+' '+catalogoMusica[c.codigo].autor+': '+catalogoMusica[c.codigo].nombre for c in tiposDanzas[tipoDanza-1].arrDanzas[danza-1].arrCanciones" class="form-control form-control-sm" id="danza">
                 </select>
             </div>
                 </form>
@@ -184,19 +184,13 @@
 <script>
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.tiposDanzas = arrTiposDanzas;
-    $scope.canciones = arrayCanciones;
+    $scope.catalogoMusica = catalogoMusica;
     $scope.play =   function    (td,d,c)    {
         cancion = $scope.getCancion(td,d,c);
         $scope.archivo= cancion.archivo;
     }
     $scope.getCancion  =   function(td, d, c)  {
-        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-        if (cancion.disco == '00' && cancion.pista == '00')
-            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
-        var resultado = $scope.canciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
-        if (resultado == undefined)
-            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
-        return resultado;
+        return catalogoMusica[$scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1].codigo]
     }
     $scope.getDanzas    =   function()  {
         var arr = [];
@@ -216,19 +210,18 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.danzas   = [];
     $scope.loadMusica =  function    (td,d,c,id)    {
         var sufijo = (id == "audio") ? "":"2";
-        cancion = $scope.getCancion(td,d,c);
-        objAudio = document.getElementById('mp3'+sufijo);
-        objAudio.src =cancion.archivo;
-        objAudio = document.getElementById('ogg'+sufijo);
-        objAudio.src =cancion.archivo.substr(0,cancion.archivo.length-3)+'ogg';
-        objAudio = document.getElementById(id);
-        objAudio.load();
-/*        if (id=="audio")    {
-        document.getElementById('Cdanza').innerHTML = $scope.tiposDanzas[td-1].arrDanzas[d-1].nombre.substr(0,60)
-        document.getElementById('Ccancion').innerHTML = cancion.nombre.substr(0,60)
-        document.getElementById('Cautor').innerHTML = cancion.autor.substr(0,60)
-        }
-*/
+        var cancion = $scope.getCancion(td,d,c);
+        var codigo = arrTiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1].codigo;
+        var coleccion = codigo.substr(0,codigo.indexOf('-')-2);
+	    var album = codigo.substr(codigo.indexOf('-')-2,2);
+	    var ubicacion = catalogoMusica[coleccion].carpeta;
+    	ubicacion += catalogoMusica[coleccion][album];
+    	var obj = document.getElementById(id);
+    	var sources = "";
+    	for (var i = 0; i<cancion.archivos.length; i++)	
+	    	sources += '<source type="'+cancion.archivos[i].tipo+'" src="'+ubicacion+cancion.archivos[i].nombre+'"></source>';
+    	obj.innerHTML = sources;
+    	obj.load();
     }
     $scope.recuperarSesion =    function()  {
         var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
@@ -378,8 +371,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             danzas += valores.substr($scope.danzas[i].danza+(inicio*-1),1);
             danzas += valores.substr($scope.danzas[i].cancion+(inicio*-1),1);
             danzas += valores.substr($scope.danzas[i].evolucion+(inicio*-1),1);
-//            danzas += valores.substr($scope.danzas[i].min+(inicio*-1),1);
-//            danzas += valores.substr($scope.danzas[i].seg+(inicio*-1),1);
         }
         var url = document.URL;
         var pos = url.indexOf('?');
@@ -472,17 +463,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         objAudio = document.getElementById('audio');
         objAudio.play();
     }
-
-    $scope.getCancion  =   function(td, d, c)  {
-        var cancion = $scope.tiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1];
-        if (cancion.disco == '00' && cancion.pista == '00')
-            return {nombre:"No Aplica", autor:"No Aplica", archivo:""};
-        var resultado = arrayCanciones.find(song => song.disco===cancion.disco && song.pista===cancion.pista)
-        if (resultado == undefined)
-            return {nombre:"No Encontrada ("+cancion.disco+"-"+cancion.pista+")", autor:"", archivo:""};
-        return resultado;
-    }
-    
     $scope.cambios = [];
     $scope.cambiarPosicion = function(id)   {
         $scope.cambios.push(id);

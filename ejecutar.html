@@ -17,7 +17,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>    
     <script src="documento.js"></script>
-    <script src="dir.js"></script>
+    <script src="catalogoMusica.js"></script>
     <script src="navbar.js"></script>
     <style>
         .bg         {fill: red}
@@ -62,8 +62,7 @@
     </nav>
     <div class="rb" id="audios">
         <audio ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none"> <!--  ondurationchange="getDuracion(d.id)" -->
-            <source id="{{'ogg_'+d.id}}" src="{{d.omusica.ogg}}" type="audio/ogg">
-            <source id="{{'mp3_'+d.id}}" src="{{d.omusica.mp3}}" type="audio/mpeg">
+            <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
     </div>
@@ -145,7 +144,7 @@ title="El número consta máximo 3 dígitos.">
         <tr ng-repeat="d in danzas"  id="{{'tr'+d.id}}">
             <td valign="top">{{d.id}}.&nbsp;</td>
             <td><p>{{ d.odanza.nombre }}<br>
-            <i>{{d.omusica.disco}}-{{d.omusica.pista}}&nbsp;</i><span class="autor">{{d.omusica.autor}}</span>: <br>
+            <i>{{d.omusica.codigo}}&nbsp;</i><span class="autor">{{d.omusica.autor}}</span>: <br>
             <span class="cancion">{{d.omusica.nombre}}</span></p>
             </td>
             <td valign="top" align="center"><b>{{d.evolucion}}</b><br>{{d.min}}:{{(d.seg<10) ? '0'+d.seg : d.seg}}</td>
@@ -213,7 +212,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         $scope.autor = getQueryStringValue("autor");
         
         var codDanzas = getQueryStringValue("danzas");
-        
+        var j=1;
         for (var i = 0; i<codDanzas.length;i+=5)    {
             var danza = {};
             danza.id        =valores.indexOf(codDanzas.substr(i,1))+inicio;
@@ -227,23 +226,29 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             danza.otd       =arrTiposDanzas[danza.tipoDanza-1];
             danza.odanza    =danza.otd.arrDanzas[danza.danza-1];
             danza.omusica   =danza.odanza.arrCanciones[danza.musica-1];
-            if (danza.omusica.disco == '00' && danza.omusica.pista == '00') {
+            if (danza.omusica == undefined) {
+                danza.omusica={};
                 danza.omusica.nombre    = "No Aplica"; 
                 danza.omusica.autor     = "No Aplica";
-                danza.omusica.ogg       = "";
-                danza.omusica.mp3       = "";
+                danza.omusica.archivos  = [];
             }   else    {
-                var resultado = arrayCanciones.find(song => song.disco===danza.omusica.disco && song.pista===danza.omusica.pista)
+                var resultado = catalogoMusica[danza.omusica.codigo];
                 if (resultado == undefined) {
                     danza.omusica.nombre    = "No Encontrada"; 
                     danza.omusica.autor     = "";
-                    danza.omusica.ogg       = "";
-                    danza.omusica.mp3       = "";    
+                    danza.omusica.archivos  = [];
                 }   else    {
                     danza.omusica.nombre    = resultado.nombre; 
                     danza.omusica.autor     = resultado.autor;
-                    danza.omusica.ogg       = resultado.archivo.replace('.mp3','.ogg');
-                    danza.omusica.mp3       = resultado.archivo;                    
+                    danza.omusica.archivos  = resultado.archivos;
+                    var codigo = danza.omusica.codigo;
+                    var coleccion = codigo.substr(0,codigo.indexOf('-')-2);
+	                var album = codigo.substr(codigo.indexOf('-')-2,2);
+	                var ubicacion = catalogoMusica[coleccion].carpeta;
+                    ubicacion += catalogoMusica[coleccion][album];
+
+                    for (var k = 0; k<danza.omusica.archivos.length; k++)	
+                        danza.omusica.archivos[k].archivo = ubicacion+danza.omusica.archivos[k].nombre;
                 }                
             }
             danza.oAudio = null;
@@ -273,14 +278,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         document.getElementById('tr'+id).style.backgroundColor="#D0D0FF";
         $scope.danzas[id-1].oAudio.controls = true;
         $scope.danzas[id-1].oAudio.play();
-//        var oPunto = document.querySelector("#"+document.getElementById('grafico').childNodes[0].id+" > svg > g.highcharts-series-group > g.highcharts-markers.highcharts-series-0.highcharts-spline-series.highcharts-color-0.highcharts-tracker > path:nth-child("+(id+1)+")")
-//        oPunto.classList.add("bg");
         $scope.grafico();
     }
     $scope.stopDanza =  function    ()    {
         if ($scope.danzaAnt >= 0) {
-//            var oPunto = document.querySelector("#"+document.getElementById('grafico').childNodes[0].id+" > svg > g.highcharts-series-group > g.highcharts-markers.highcharts-series-0.highcharts-spline-series.highcharts-color-0.highcharts-tracker > path:nth-child("+($scope.danzaAnt+1)+")")
-//            oPunto.classList.remove("bg")
             document.getElementById('tr'+$scope.danzaAnt).style.backgroundColor='white';
             $scope.danzas[$scope.danzaAnt-1].oAudio.controls = false;
             $scope.danzas[$scope.danzaAnt-1].oAudio.pause();
