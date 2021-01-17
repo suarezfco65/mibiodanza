@@ -947,7 +947,7 @@ const catalogoMusica = {
     'BA54-18':	{	nombre:	`The Battle`,	autor:	`Harry Gregson`,	archivos:	[	{	nombre:	`BA 54 - 18 - The Battle - Harry Gregson William - ConexiOn y ExpresiOn de la Potencia.m4a`,	tipo:	`audio/mpeg`	}	]	},
     'BA54-11':	{	nombre:	`Happiness Is`,	autor:	`Yungchen Lhamo`,	archivos:	[	{	nombre:	`Ba 54 - 11 - Happiness Is - Yunchen Inamo - Danza al Viento.m4a`,	tipo:	`audio/mpeg`	}	]	},
     'BA54-12':	{	nombre:	`Tajabone`,	autor:	`Ismael Lo`,	archivos:	[	{	nombre:	`Ba 54 - 12 - Tajabone - Ismael Lo - Ronda de Bienvenida.m4a`,	tipo:	`audio/mpeg`	}	]	},
-    'IBF': { 
+/*    'IBF': { 
         carpeta:'Internacional Biocentric Foundation/',
         '01': 'IBF01/',
         '02': 'IBF02/',
@@ -968,6 +968,33 @@ const catalogoMusica = {
         '17': 'IBF17/',
         '18': 'IBF18/',
         '19': 'IBF19/'
+    },
+    'IBFC': {
+        carpeta:'Internacional Biocentric Foundation/',
+        '20': 'IBFC20/',
+        '21': 'IBFC21/'
+    },
+*/    'IBF': { 
+        carpeta:'',
+        '01': '',
+        '02': '',
+        '03': '',
+        '04': '',
+        '05': '',
+        '06': '',
+        '07': '',
+        '08': '',
+        '09': '',
+        '10': '',
+        '11': '',
+        '12': '',
+        '13': '',
+        '14': '',
+        '15': '',
+        '16': '',
+        '17': '',
+        '18': '',
+        '19': ''
     },
     'IBFC': {
         carpeta:'Internacional Biocentric Foundation/',
