@@ -36,7 +36,8 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
         ]},
         {titulo:'Sesión', href:'#', hijos:[
           {titulo:'Catalogo de Danzas', href:'catalogo.html', hijos:[]},
-          {titulo:'BIODANZA. Vida y Plenitud', href:'mariaPessoa.html', hijos:[]},
+          {titulo:'M. Pessoa - Vida y Plenitud', href:'mariaPessoa.html', hijos:[]},
+          {titulo:'Musica - Danza - Línea de Vivencia', href:'musicaCruce.html', hijos:[]},
           {titulo:'Preparar Sesión', href:'sesion.html', hijos:[]}
         ]}
     ];

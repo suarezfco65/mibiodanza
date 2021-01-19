@@ -281,18 +281,6 @@ return  [
     
     <table class="table table-striped table-hover">
       <thead>
-      <tr>
-<!--        <th class="id"><a ng-click="sort_by('id')">Id <i class="fa fa-sort"></i></a></th> -->
-        <th class="danza"><a ng-click="sort_by('danza')">Danza <i class="fa fa-sort"></i></a></th>
-        <th class="linea"><a ng-click="sort_by('linea')">Línea de Vivencia<i class="fa fa-sort"></i></a></th>
-        <th class="evolucion" title="Evolución en la curva"><a ng-click="sort_by('evolucion')">Evolución<i class="fa fa-sort"></i></a></th>
-<!--        <th class="evolucion"><a ng-click="sort_by('evolucion')">Link <i class="fa fa-sort"></i></a></th>
-        <th class="field4"><a ng-click="sort_by('field4')">Field 4 <i class="fa fa-sort"></i></a></th>
-        <th class="field5"><a ng-click="sort_by('field5')">Field 5 <i class="fa fa-sort"></i></a></th> -->
-        <th>Mostrar</th>
-      </tr>
-      </thead>
-      <tfoot>
         <tr><td colspan="7">{{sizes}}
           <div class="text-center">
             <ul class="pagination">
@@ -309,6 +297,18 @@ return  [
           </div>
         </td>
       </tr>
+      <tr>
+<!--        <th class="id"><a ng-click="sort_by('id')">Id <i class="fa fa-sort"></i></a></th> -->
+        <th class="danza"><a ng-click="sort_by('danza')">Danza <i class="fa fa-sort"></i></a></th>
+        <th class="linea"><a ng-click="sort_by('linea')">Línea de Vivencia<i class="fa fa-sort"></i></a></th>
+        <th class="evolucion" title="Evolución en la curva"><a ng-click="sort_by('evolucion')">Evolución<i class="fa fa-sort"></i></a></th>
+<!--        <th class="evolucion"><a ng-click="sort_by('evolucion')">Link <i class="fa fa-sort"></i></a></th>
+        <th class="field4"><a ng-click="sort_by('field4')">Field 4 <i class="fa fa-sort"></i></a></th>
+        <th class="field5"><a ng-click="sort_by('field5')">Field 5 <i class="fa fa-sort"></i></a></th> -->
+        <th>Mostrar</th>
+      </tr>
+      </thead>
+      <tfoot>
     </tfoot>
       <tbody>
         <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
@@ -340,10 +340,12 @@ function initApp($scope, $filter) {
   $scope.reverse = false;
   $scope.filteredItems = [];
   $scope.groupedItems = [];
-  $scope.itemsPerPage = 5;
   $scope.pagedItems = [];
   $scope.currentPage = 0;
   $scope.items = generateData();
+  const entre10 = ""+(Math.round($scope.items.length / 5));
+  $scope.itemsPerPage = Number(entre10.substr(0,1)+'000000000'.substr(0,entre10.length-1))
+  $scope.pageSizes.push($scope.itemsPerPage);
   $scope.itemMostrar = {};
 
   var searchMatch = function (haystack, needle) {

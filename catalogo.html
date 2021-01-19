@@ -57,10 +57,10 @@
                 var musica = catalogoMusica[cancion.codigo];
                 var	s = '<tr style="vertical-align:top">';
                 if (musica == undefined) {
-                    s += '<th nowrap width="100">'+cancion.codigo+'&nbsp;</th>';
+                    s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;</th>';
                     s += '<th colspan="3"><span  class="cancion">'+cancion.texto+'</span></th>';
                 }   else    {
-                    s += '<th nowrap width="100">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic(`'+cancion.codigo+'`)">&#9835;</button>&nbsp;</th>';
+                    s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic(`'+cancion.codigo+'`)">&#9835;</button>&nbsp;</th>';
                     s += '<td colspan ="2"><p><span class="autor">'+musica.autor+'&nbsp;<br>';
                     s += '<span class="cancion">'+musica.nombre;
                     if (cancion.descripcion.length > 5)

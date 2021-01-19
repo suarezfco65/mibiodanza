@@ -241,15 +241,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                     danza.omusica.nombre    = resultado.nombre; 
                     danza.omusica.autor     = resultado.autor;
                     danza.omusica.archivos  = resultado.archivos;
-                    var codigo = danza.omusica.codigo;
-                    var coleccion = codigo.substr(0,codigo.indexOf('-')-2);
-	                var album = codigo.substr(codigo.indexOf('-')-2,2);
-	                var ubicacion = catalogoMusica[coleccion].carpeta;
-                    ubicacion += catalogoMusica[coleccion][album];
-
-                    for (var k = 0; k<danza.omusica.archivos.length; k++)	
-                        danza.omusica.archivos[k].archivo = ubicacion+danza.omusica.archivos[k].nombre;
-                }                
+                }
             }
             danza.oAudio = null;
             $scope.danzas.push(danza);

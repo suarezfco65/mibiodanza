@@ -211,15 +211,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.loadMusica =  function    (td,d,c,id)    {
         var sufijo = (id == "audio") ? "":"2";
         var cancion = $scope.getCancion(td,d,c);
-        var codigo = arrTiposDanzas[td-1].arrDanzas[d-1].arrCanciones[c-1].codigo;
-        var coleccion = codigo.substr(0,codigo.indexOf('-')-2);
-	    var album = codigo.substr(codigo.indexOf('-')-2,2);
-	    var ubicacion = catalogoMusica[coleccion].carpeta;
-    	ubicacion += catalogoMusica[coleccion][album];
     	var obj = document.getElementById(id);
     	var sources = "";
     	for (var i = 0; i<cancion.archivos.length; i++)	
-	    	sources += '<source type="'+cancion.archivos[i].tipo+'" src="'+ubicacion+cancion.archivos[i].nombre+'"></source>';
+	    	sources += '<source type="'+cancion.archivos[i].tipo+'" src="'+cancion.archivos[i].archivo+'"></source>';
     	obj.innerHTML = sources;
     	obj.load();
     }
