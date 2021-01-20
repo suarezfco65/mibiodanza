@@ -204,7 +204,13 @@
 
             </div>
         </div>
-    </div>    
+    </div>
+    <h4 ng-show="!imprimir"><script>
+        var url = document.URL;
+        var pos = url.indexOf('/amobiodanza');
+        url = 'https://suarezfco65.github.io'+url.substr(pos);
+        document.write(url)
+    </script></h4>
 <script>
 
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
@@ -504,7 +510,10 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             '*'+musica.codigo+'*: '+musica.autor+'\n'+
             musica.nombre+'\n\n';
         }
-        strMensaje += document.URL;
+        var url = document.URL;
+        var pos = url.indexOf('/amobiodanza');
+        url = 'https://suarezfco65.github.io'+url.substr(pos);
+        strMensaje += url;
         var otext = document.createElement('textarea');
         otext.innerHTML=strMensaje;
         document.body.appendChild(otext);
