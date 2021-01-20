@@ -504,6 +504,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
             '*'+musica.codigo+'*: '+musica.autor+'\n'+
             musica.nombre+'\n\n';
         }
+        strMensaje += document.URL;
         var otext = document.createElement('textarea');
         otext.innerHTML=strMensaje;
         document.body.appendChild(otext);
