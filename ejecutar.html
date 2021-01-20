@@ -42,9 +42,9 @@
 
 </head>
 <body>
-<div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
+<div ng-app="myApp" ng-controller="sesionCrtl">
 <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav ng-show="imprimir" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -61,82 +61,99 @@
       </div>
     </nav>
     <div class="rb" id="audios">
-        <audio ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none"> <!--  ondurationchange="getDuracion(d.id)" -->
+        <audio ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none">
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
     </div>
     
 <div class="container-fluid">
-    <h3 style="color:red; font-weight: bold; margin-bottom: 40px ">Ejecutar Sesión</h3>
+   <h3 style="color:red; font-weight: bold; margin-top: 60px ">Ejecutar Sesión</h3>
   <div class="row">
     <div class="col-12 text-primary"><h1><b>{{tema}}</b></h1></div>
   </div>
   <div class="row">
     <div class="col-12 text-info">Realizado por: <b>{{autor}}</b></div>
   </div>
+  <div class="row">
+    <div class="col-12 text-info">Duración Estimada: <b>{{duracionHMS}}</b></div>
+  </div>
 </div>
- <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div ng-hide="mobilecheck">
-<!-- <script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
-    <div> -->
-<form class="form-inline">
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
-        <select ng-model="desde" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="desde"></select>
+<div ng-show="imprimir">
+    <script>if (!isMobile.mobilecheck()) inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+        <div ng-hide="mobilecheck">
+    <!-- <script>inicioContenido('Prueba Controlada', 4, 'divPrueba');</script>
+        <div> -->
+    <form class="form-inline">
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
+            <select ng-model="desde" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="desde"></select>
+        </div>
+    </form>
+    <form class="form-inline">
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
+            <select ng-model="hasta" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="hasta"></select>
+        </div>
+    </form>
+    <form class="form-inline">
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Inicio</span>
+            <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3" 
+    title="El número consta máximo 3 dígitos.">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Medio&nbsp;</span>
+            <input id="durMedio" type="text" class="form-control input-sm" ng-model="durMedio" size="3">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Final&nbsp;</span>
+            <input id="durFinal" type="text" class="form-control input-sm" ng-model="durFinal" size="3">
+        </div>
+        <div class="form-group">
+            <button type="button" class="{{prueba || playTodo ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="iniciarPrueba()" id="prIniciar" ng-disabled="ejecucion">{{prueba ? 'Detener' : 'Iniciar'}}</button>
+        </div>
+    </form>
     </div>
-</form>
-<form class="form-inline">
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
-        <select ng-model="hasta" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="hasta"></select>
-    </div>
-</form>
-<form class="form-inline">
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Inicio</span>
-        <input id="durInicio" type="text" class="form-control input-sm" ng-model="durInicio" size="3" 
-title="El número consta máximo 3 dígitos.">
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Medio&nbsp;</span>
-        <input id="durMedio" type="text" class="form-control input-sm" ng-model="durMedio" size="3">
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Final&nbsp;</span>
-        <input id="durFinal" type="text" class="form-control input-sm" ng-model="durFinal" size="3">
-    </div>
-    <div class="form-group">
-        <button type="button" class="{{prueba ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="iniciarPrueba()" id="prIniciar" ng-disabled="ejecucion">{{prueba ? 'Detener' : 'Iniciar'}}</button>
-    </div>
-</form>
+    <script>if (!isMobile.mobilecheck()) finContenido();</script>
+    <!-- <script>finContenido();</script> -->
 </div>
-<script>if (!isMobile.mobilecheck()) finContenido();</script>
-<!-- <script>finContenido();</script> -->
-<script>inicioContenido('Ejecución Controlada', 4, 'divEjecucion');</script>
-<form class="form-inline">
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
-        <select ng-model="desde" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="desde"></select>
-    </div>
-</form>
-<form class="form-inline">
-    <div class="input-group">
-        <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
-        <select ng-model="hasta" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="hasta"></select>
-    </div>
-    <div class="form-group">
-        <button type="button" class="{{ejecucion ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="iniciarSesion()" id="ejIniciar" ng-disabled="prueba">{{ejecucion ? 'Detener' : 'Iniciar'}}</button>
-    </div>
-</form>
-<script>finContenido();</script>
-    <table style="max-width:470px">
+<div ng-show="imprimir">
+    <script>inicioContenido('Ejecución Controlada', 4, 'divEjecucion');</script>
+    <form class="form-inline">
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Desde&nbsp;</span>
+            <select ng-model="desde" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="desde"></select>
+        </div>
+    </form>
+    <form class="form-inline">
+        <div class="input-group">
+            <span class="input-group-addon" style="font-family:monospace;">Hasta&nbsp;</span>
+            <select ng-model="hasta" ng-options="d.id as d.id+'. '+d.odanza.nombre+' ('+d.evolucion+')' for d in danzas" class="form-control input-sm" id="hasta"></select>
+        </div>
+        <div class="form-group">
+            <button type="button" class="{{ejecucion || playTodo ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="iniciarSesion()" id="ejIniciar" ng-disabled="prueba">{{ejecucion ? 'Detener' : 'Iniciar'}}</button>
+        </div>
+    </form>
+    <script>finContenido();</script>
+</div>
+<div ng-show="imprimir">
+    <script>inicioContenido('Otros Controles', 4, 'bd-otrosctrls');</script>
+        <div class="btn-group">
+<!--            <button type="button" class="{{ejecucion || prueba  ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="playAll()">{{playTodo ? 'Detener' : 'Escuchar Todas'}}</button> -->
+            <button type="button" class="btn btn-success" ng-click="copiarWhatsApp()">Copiar para WhatsApp</button>
+            <button type="button" class="btn btn-success" ng-click="imprimir=false">Modo Documento</button>
+        </div>
+    <script>finContenido();</script>
+</div>
+
+<table style="max-width:470px">
     <thead>
         <tr>
             <th>#</th>
             <th>Danza</th>
             <th>Evolución</th>
-            <th colspan="2">&nbsp;Controles</th>
+            <th ng-show="imprimir" colspan="2">&nbsp;Controles</th>
         </tr>
         <tr><td colspan="5"><hr></td></tr>
     </thead>
@@ -148,12 +165,12 @@ title="El número consta máximo 3 dígitos.">
             <span class="cancion">{{d.omusica.nombre}}</span></p>
             </td>
             <td valign="top" align="center"><b>{{d.evolucion}}</b><br>{{d.min}}:{{(d.seg<10) ? '0'+d.seg : d.seg}}</td>
-            <td valign="top"><button type="button" class="btn btn-success" ng-click="playDanza(d.id);" ng-disabled="prueba || ejecucion">&#9835;</button>&nbsp;</td>
-            <td valign="top"><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
+            <td ng-show="imprimir" valign="top"><button type="button" class="btn btn-success" ng-click="playDanza(d.id);" ng-disabled="prueba || ejecucion">&#9835;</button>&nbsp;</td>
+            <td ng-show="imprimir" valign="top"><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
         </tr>
         <tr><td colspan="5"><hr></td></tr>
     </tbody>
-    <tfoot>
+    <tfoot ng-show="imprimir">
         <tr>
             <td colspan="5" id="grafico" style="height:500px">
     <div></div>
@@ -191,6 +208,7 @@ title="El número consta máximo 3 dígitos.">
 <script>
 
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
+    $scope.imprimir=true;
     $scope.tema ="";
     $scope.autor = "";
     $scope.desde='1';
@@ -202,6 +220,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.durInicio = 10;
     $scope.durMedio = 20;
     $scope.durFinal = 15;
+    $scope.duracionTotal = 0;
+    $scope.duracionHMS= '0:00:00';
     $scope.recuperarSesion =    function()  {
         var valores = 'mnbvcxzlkjhgfdsapoiuytrewq0987654321MNBVCXZLKJHGFDSAPOIUYTREWQ|-,.;:';
         const inicio = -7;
@@ -258,6 +278,13 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                         $scope.danzas[i].duracion = this.duration;
                         $scope.danzas[i].min = Math.trunc(this.duration / 60);
                         $scope.danzas[i].seg = Math.round(this.duration - $scope.danzas[i].min * 60);
+                        $scope.duracionTotal+=this.duration + 90;
+                        var segs = $scope.duracionTotal;
+                        var horas = Math.trunc(segs/3600);
+                        segs = $scope.duracionTotal - horas * 3600;
+                        var mins = Math.trunc(segs / 60);
+                        var segs = Math.trunc(segs - mins * 60);
+                        $scope.duracionHMS = horas+":"+(mins < 10 ? "0"+mins : mins)+":"+(segs < 10 ? "0"+segs : segs);
                         $scope.$digest();
                     }
                 }
@@ -466,6 +493,26 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 
         });
     }
+
+    $scope.copiarWhatsApp= function ()  {
+        var strMensaje = '*'+$scope.tema+'* \n'+
+        'Realizado por: '+$scope.autor+'\n'+
+        'Duración Estimada: '+$scope.duracionHMS+'\n\n';
+        for (var i=0;i<$scope.danzas.length;i++)    {
+            const musica = $scope.danzas[i].omusica;
+            strMensaje += '_'+(i+1)+'. '+$scope.danzas[i].odanza.nombre+'_\n'+
+            '*'+musica.codigo+'*: '+musica.autor+'\n'+
+            musica.nombre+'\n\n';
+        }
+        var otext = document.createElement('textarea');
+        otext.innerHTML=strMensaje;
+        document.body.appendChild(otext);
+        otext.select();
+        document.execCommand("copy");
+        document.body.removeChild(otext);
+        alert('Copiado el texto, con el formato para el WhatsApp')        
+    }
+
 
     setTimeout(function ()  { 
         document.getElementById('grafico').style.height = Math.trunc(1.25*document.getElementById('grafico').offsetWidth)+'px';
