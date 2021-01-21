@@ -523,12 +523,49 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         alert('Copiado el texto, con el formato para el WhatsApp')        
     }
 
-
     setTimeout(function ()  { 
         document.getElementById('grafico').style.height = Math.trunc(1.25*document.getElementById('grafico').offsetWidth)+'px';
         $scope.grafico() },5000);
 
     $scope.mobilecheck = isMobile.mobilecheck();
+
+    fade = function (codigo, segundos)   {
+        var audioElement = document.getElementById(codigo);
+        var subir = (audioElement.volume < 0.2); 
+        var decimo = audioElement.volume / 10;
+        var decima = segundos * 1000 / 10
+        setTimeout(function() {
+            audioElement.volume = (subir) ? 0.1 : 9*decimo;
+            setTimeout(function() {
+                audioElement.volume = (subir) ? 0.2 : 8*decimo;
+                setTimeout(function() {
+                    audioElement.volume = (subir) ? 0.3 : 7*decimo;
+                    setTimeout(function() {
+                        audioElement.volume = (subir) ? 0.4 : 6*decimo;
+                        setTimeout(function() {
+                            audioElement.volume = (subir) ? 0.5 : 5*decimo;
+                            setTimeout(function() {
+                                audioElement.volume = (subir) ? 0.6 : 4*decimo;
+                                setTimeout(function() {
+                                    audioElement.volume = (subir) ? 0.7 : 3*decimo;
+                                    setTimeout(function() {
+                                        audioElement.volume = (subir) ? 0.8 : 2*decimo;
+                                        setTimeout(function() {
+                                            audioElement.volume = (subir) ? 0.9 : decimo;
+                                            setTimeout(function() {
+                                                audioElement.volume = (subir) ? 1 : 0;
+                                            }, decima);
+                                        }, decima);                                   
+                                    }, decima);                                   
+                                }, decima);                                   
+                            }, decima);                                   
+                        }, decima);                                   
+                    }, decima);                                   
+                }, decima);                                   
+            }, decima);                       
+        }, decima);
+    }
+
 })
 </script>
         </div>
