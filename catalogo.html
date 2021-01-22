@@ -24,7 +24,47 @@
             font-size: 20px;
         }
     </style>
-
+    <script>
+    var d_abiertas = false;
+    function cerrarAbrir(obj) {
+        var str = obj.innerHTML;
+        var tipo_danza = (str.indexOf('Tipos') > 0);
+        var abrir = (str.indexOf('Abrir') == 0)
+        var td;
+        var spans = document.getElementsByTagName('span');
+        for (var i = 0; i < spans.length; i++)  {
+            if (dt = spans[i].getAttribute('data-target'))    {
+                if (tipo_danza)  {
+                    if (!abrir)    {
+                        if (spans[i].innerHTML === "❤") {
+                            if (dt.indexOf('#ctd') == 0)
+                                spans[i].click()
+                        }
+                    }   else    {
+                        if (spans[i].innerHTML === "❥") {
+                            if (dt.indexOf('#ctd') == 0)
+                                spans[i].click()
+                        }
+                    }
+                }   else    {
+                    if (!abrir)    {
+                        if (spans[i].innerHTML === "❤") {
+                            if (dt.indexOf('#cd') == 0)
+                                spans[i].click()
+                        }
+                    }   else    {
+                        if (spans[i].innerHTML === "❥") {
+                            if (dt.indexOf('#cd') == 0)
+                                spans[i].click()
+                        }
+                    }
+                }
+            }
+        }
+        if (abrir) obj.innerHTML = str.replace('Abrir','Cerrar')
+        else obj.innerHTML = str.replace('Cerrar','Abrir')
+    }
+</script>
 </head>
 <body>
     <div class="rb">
@@ -40,6 +80,11 @@
 <div class="container" style="margin-top:50px">
 <h3 style="color:red; font-weight: bold">Catálogo de Danzas</h3>
 <p>Lista Oficial de ejercicios, músicas y consignas correspondiente a los años 2012 y 2018 de la "Internacional Biocentric Foundation", Centros de Investigación de Música y Ejercicios de Biodanza CIMEB</p>
+<div class="btn-group">
+    <button type="button" class="btn btn-success" onclick="cerrarAbrir(this)">Abrir Tipos de Danzas</button>
+    <button type="button" class="btn btn-success" onclick="cerrarAbrir(this)">Abrir Danzas</button>
+</div>
+    
 <script>
     for (var i=0; i<arrTiposDanzas.length; i++)  {
         var tipoDanza = arrTiposDanzas[i]
