@@ -106,53 +106,24 @@ function endContenido() {
 function finContenido() {
     document.write(endContenido())
 }
-/*
-var n1, n2;
-function inicioNivel1(titulo)	{
-	n1 = nivel1;
-	var s='';
-	s += '  <div class="panel panel-default">';
-	s += '    <div class="panel-heading" role="tab" id="heading'+nivel1+'">';
-	s += '      <h4 class="panel-title">';
-	s += '        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+nivel1+'" aria-expanded="false" aria-controls="collapse'+nivel1+'">';
-	s += '          '+nivel1+'. '+titulo;
-	s += '        </a>';
-	s += '      </h4>';
-	s += '    </div>';
-	s += '    <div id="collapse'+nivel1+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+nivel1+'">';
-	s += '      <div class="panel-body">';
-	return s;
+function cerrarAbrir(obj, h) {
+	var str = obj.innerHTML;
+	var abrir = (str.indexOf('Abrir') == 0)
+	var td;
+	var spans = document.getElementsByTagName('span');
+	for (var i = 0; i < spans.length; i++)  {
+		if (dt = spans[i].getAttribute('data-target'))    {
+			if (spans[i].parentElement.nodeName == 'H'+h)	{
+				if ((spans[i].innerHTML === "❥" && abrir)	||
+					(spans[i].innerHTML === "❤" && !abrir)	)
+					spans[i].click()
+			}
+		}
+	}
+	if (abrir) obj.innerHTML = str.replace('Abrir','Cerrar')
+	else obj.innerHTML = str.replace('Cerrar','Abrir')
 }
-function finNivel1()	{
-	var s='';
-	s += '      </div>';
-	s += '    </div>';
-	s += '  </div>';
-	return s;
-}
-function inicioNivel2(nivel2, titulo)	{
-	n2 = nivel2;
-	var s = '';
-	s += '          <div class="panel panel-default">';
-	s += '            <div class="panel-heading" role="tab" id="subHeading'+nivel1+'-'+nivel2+'">';
-	s += '              <h4 class="panel-title">';
-	s += '                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sub-accordion" href="#collapseSub'+nivel1+'-'+nivel2+'" aria-expanded="false" aria-controls="collapseSub'+nivel1+'-'+nivel2+'">';
-	s += '                  '+nivel2+'. '+titulo;
-	s += '                </a>';
-	s += '              </h4>';
-	s += '            </div>';
-	s += '            <div id="collapseSub'+nivel1+'-'+nivel2+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSub'+nivel1+'-'+nivel2+'">';
-	s += '              <div class="panel-body">';
-	return s;
-}
-function finNivel2()	{
-	var s='';
-	s += '              </div>';
-	s += '            </div>';
-	s += '          </div>';
-	return s;
-}
-*/
+
 function longMaxima(aTexto)	{
 	var max = 0;
 	for (var i=0; i<aTexto.length; i++)
