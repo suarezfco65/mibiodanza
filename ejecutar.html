@@ -143,6 +143,7 @@
 <!--            <button type="button" class="{{ejecucion || prueba  ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="playAll()">{{playTodo ? 'Detener' : 'Escuchar Todas'}}</button> -->
             <button type="button" class="btn btn-success" ng-click="copiarWhatsApp()">Copiar para WhatsApp</button>
             <button type="button" class="btn btn-success" ng-click="imprimir=false">Modo Documento</button>
+            <button type="button" class="btn btn-success" ng-click="editarSesion()">Editar Sesión</button>
         </div>
     <script>finContenido();</script>
 </div>
@@ -506,7 +507,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         'Duración Estimada: '+$scope.duracionHMS+'\n\n';
         for (var i=0;i<$scope.danzas.length;i++)    {
             const musica = $scope.danzas[i].omusica;
-            strMensaje += '_'+(i+1)+'. '+$scope.danzas[i].odanza.nombre+'_\n'+
+            const danza = $scope.danzas[i].odanza.nombre;
+            strMensaje += '_'+(i+1)+'. '+danza+' (Pag. '+indice[danza]+')_\n'+
             '*'+musica.codigo+'*: '+musica.autor+'\n'+
             musica.nombre+'\n\n';
         }
@@ -521,6 +523,51 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         document.execCommand("copy");
         document.body.removeChild(otext);
         alert('Copiado el texto, con el formato para el WhatsApp')        
+    }
+
+    $scope.editarSesion =   function    ()  {
+        var html = 
+`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.highcharts.com/highcharts.js"></`+`script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></`+`script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></`+`script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></`+`script>
+    <script src="catalogoMusica.js"></`+`script>
+
+    <title>`+$scope.tema+`</title>
+  </head>
+  <body>
+        <div class="container">
+        <bd-sesion tema="`+$scope.tema+`" autor="`+$scope.autor+`">
+`;
+for (var i=0;i<$scope.danzas.length;i++)    {
+    const musica = $scope.danzas[i].omusica;
+    html +=
+`            <bd-danza nombre='`+$scope.danzas[i].odanza.nombre+`'  musica='`+musica.codigo+`'  evolucion='`+$scope.danzas[i].evolucion+`'  presenta=""></bd-danza>
+`;
+}
+html +=
+`        </bd-sesion>
+    </div>
+    <script src="biodanza.js"></`+`script>
+</body>
+</html>
+`;
+        var otext = document.createElement('textarea');
+        otext.innerHTML=html;
+        document.body.appendChild(otext);
+        otext.select();
+        document.execCommand("copy");
+        document.body.removeChild(otext);
+        var url = document.URL;
+        url = url.replace('ejecutar', 'sesion');
+        location.href = url;
     }
 
     setTimeout(function ()  { 

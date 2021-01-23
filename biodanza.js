@@ -1,29 +1,25 @@
-const procesaMusica = {
+const procesaSesion = {
     tiempoTotal: 0,
     audio: function (codigo)    {
         return catalogoMusica[codigo].audio
     },
     crearAudio : function (codigo, contador)    {
-        var coleccion = codigo.substr(0,codigo.indexOf('-')-2);
-        var album = codigo.substr(codigo.indexOf('-')-2,2);
-        var carpeta = catalogoMusica[coleccion].carpeta;
-        carpeta += catalogoMusica[coleccion][album];
         const omusica = catalogoMusica[codigo];
         const oaudio = document.createElement("audio");
         for (var i=0; i<catalogoMusica[codigo].archivos.length; i++)    {
             const osource = document.createElement("source");
-            osource.setAttribute('src',carpeta+omusica.archivos[i].nombre);
+            osource.setAttribute('src',omusica.archivos[i].archivo);
             osource.setAttribute('type',omusica.archivos[i].tipo);
             oaudio.appendChild(osource);
         }
         oaudio['idDuracion'] = 'bd-id-duracion-'+contador; 
         oaudio.ondurationchange = function() {
             var segs = Math.round(this.duration);
-            procesaMusica.tiempoTotal += segs + 60;
+            procesaSesion.tiempoTotal += segs + 60;
             const mins = Math.trunc(segs / 60);
             segs = segs - (mins * 60);
-            var minutos = Math.trunc(procesaMusica.tiempoTotal / 60);
-            const segundos = procesaMusica.tiempoTotal - minutos * 60;
+            var minutos = Math.trunc(procesaSesion.tiempoTotal / 60);
+            const segundos = procesaSesion.tiempoTotal - minutos * 60;
             const horas = Math.trunc(minutos/60);
             minutos = minutos - horas * 60;
             document.getElementById(oaudio['idDuracion']).innerHTML = mins+':'+(segs < 10 ? ("0"+segs) : segs);
@@ -77,9 +73,11 @@ const procesaMusica = {
             obutton.innerHTML = 'Iniciar';
             obutton.setAttribute('class','btn btn-success');
             document.getElementById('bd-id-ejecutar-Iniciar').disabled =false;
+            document.getElementById('bd-id-playAll').disabled = false;
             return
         }
         document.getElementById('bd-id-ejecutar-Iniciar').disabled =true;
+        document.getElementById('bd-id-playAll').disabled = true;
         for (var i=0; i<this.miLista.length; i++)   document.getElementById('bd-play-'+(i+1)).disabled =true;
         this.prueba     = true;
         obutton.innerHTML   = 'Detener';
@@ -94,7 +92,7 @@ const procesaMusica = {
         prueba.final    = Number(document.getElementById('bd-id-prueba-durFinal').value);
         prueba.pos      = prueba.desde;
         for (var i  = prueba.pos; i<=prueba.hasta; i++) {
-            catalogoMusica[procesaMusica.miLista[i-1]].audio.ontimeupdate   =   function()    {
+            catalogoMusica[procesaSesion.miLista[i-1]].audio.ontimeupdate   =   function()    {
                 var tm  = (this.duration/2) - (prueba.medio/2) ;
                 var ct  = this.currentTime;
                 if ((ct > prueba.inicio) && (ct < tm) )  {
@@ -106,9 +104,9 @@ const procesaMusica = {
             catalogoMusica[this.miLista[i-1]].audio.onended = function() {
                 prueba.pos++;
                 if (prueba.pos > prueba.hasta) {
-                    procesaMusica.pruebaControlada();
+                    procesaSesion.pruebaControlada();
                 }   else    {
-                    procesaMusica.play('bd-id-danza-'+prueba.pos, procesaMusica.miLista[prueba.pos-1]);
+                    procesaSesion.play('bd-id-danza-'+prueba.pos, procesaSesion.miLista[prueba.pos-1]);
                 }
             };
         }
@@ -127,9 +125,11 @@ const procesaMusica = {
             obutton.innerHTML   = 'Iniciar';
             obutton.setAttribute('class', 'btn btn-success');
             document.getElementById('bd-id-prueba-Iniciar').disabled    = false;
+            document.getElementById('bd-id-playAll').disabled = false;
             return
         }
         document.getElementById('bd-id-prueba-Iniciar').disabled =true;
+        document.getElementById('bd-id-playAll').disabled = true;
         for (var i  = 0; i < this.miLista.length; i++)  document.getElementById('bd-play-'+(i+1)).disabled = true;
         this.ejecutar       = true;
         obutton.innerHTML   = 'Detener';
@@ -144,7 +144,7 @@ const procesaMusica = {
             catalogoMusica[this.miLista[i-1]].audio.onended = function() {
                 ejecucion.pos++;
                 if (ejecucion.pos > ejecucion.hasta) {
-                    procesaMusica.ejecucionControlada();
+                    procesaSesion.ejecucionControlada();
                 }   else    {
                     ejecucion.play();
                 }
@@ -153,7 +153,7 @@ const procesaMusica = {
 
         ejecucion.play = function ()  {
             var obt;
-            for (var i = 0; i < procesaMusica.miLista.length; i++) {
+            for (var i = 0; i < procesaSesion.miLista.length; i++) {
                 oBt = document.getElementById('bd-tg-consigna-'+(i+1));
                 if (ejecucion.pos != (i+1))
                     if (oBt.innerHTML != '❥')
@@ -167,26 +167,64 @@ const procesaMusica = {
             if (mostrar)    {
                 alert('Al darle Click, la música iniciará en 10 segundos, y podrá iniciar la muestra de la danza')
                 setTimeout(function(){ 
-                    procesaMusica.play('bd-id-danza-'+ejecucion.pos, procesaMusica.miLista[ejecucion.pos-1])
+                    procesaSesion.play('bd-id-danza-'+ejecucion.pos, procesaSesion.miLista[ejecucion.pos-1])
                     setTimeout(function(){ 
                         alert('De click para detener la musica, una vez haya terminado la muestra de la danza');
-                        var volumen = catalogoMusica[procesaMusica.miLista[ejecucion.pos-1]].audio.volume;
-                        procesaMusica.fade(procesaMusica.miLista[ejecucion.pos-1],3);
+                        var volumen = catalogoMusica[procesaSesion.miLista[ejecucion.pos-1]].audio.volume;
+                        procesaSesion.fade(procesaSesion.miLista[ejecucion.pos-1],3);
                         setTimeout(function(){
-                            catalogoMusica[procesaMusica.miLista[ejecucion.pos-1]].audio.pause()
-                            catalogoMusica[procesaMusica.miLista[ejecucion.pos-1]].audio.currentTime = 0;
-                            catalogoMusica[procesaMusica.miLista[ejecucion.pos-1]].audio.volume=volumen;
+                            catalogoMusica[procesaSesion.miLista[ejecucion.pos-1]].audio.pause()
+                            catalogoMusica[procesaSesion.miLista[ejecucion.pos-1]].audio.currentTime = 0;
+                            catalogoMusica[procesaSesion.miLista[ejecucion.pos-1]].audio.volume=volumen;
                             alert('A continuación, invite a danzar...');
-                            catalogoMusica[procesaMusica.miLista[ejecucion.pos-1]].audio.play();    
+                            catalogoMusica[procesaSesion.miLista[ejecucion.pos-1]].audio.play();    
                         }, 3500);
                     }, 15000);
                 }, 10000);
             }   else    {
                 alert('Invite a danzar')
-                procesaMusica.play('bd-id-danza-'+ejecucion.pos, procesaMusica.miLista[ejecucion.pos-1]);
+                procesaSesion.play('bd-id-danza-'+ejecucion.pos, procesaSesion.miLista[ejecucion.pos-1]);
             }
         }        
         ejecucion.play();
+    },
+    playAllSt:false,
+    playAll: function () {
+        this.stop();
+        obutton = document.getElementById('bd-id-playAll');
+        if (this.playAllSt) {
+            for (var i  = 0; i<this.miLista.length; i++)   {
+                catalogoMusica[this.miLista[i]].audio.onended = null;
+                document.getElementById('bd-play-'+(i+1)).disabled =false;
+            }
+            this.playAllSt      = false;
+            obutton.innerHTML   = 'Escuchar Todas';
+            obutton.setAttribute('class', 'btn btn-success');
+            document.getElementById('bd-id-prueba-Iniciar').disabled    = false;
+            document.getElementById('bd-id-ejecutar-Iniciar').disabled  = false;
+            return
+        }
+        document.getElementById('bd-id-prueba-Iniciar').disabled    = true;
+        document.getElementById('bd-id-ejecutar-Iniciar').disabled  = true;
+        for (var i  = 0; i < this.miLista.length; i++)  document.getElementById('bd-play-'+(i+1)).disabled = true;
+        this.playAllSt      = true;
+        obutton.innerHTML   = 'Detener';
+        obutton.setAttribute('class', 'btn btn-danger');
+        var playAll   = new Object();
+        playAll.desde = 1;
+        playAll.hasta = this.miLista.length;
+        playAll.pos   = playAll.desde;
+        for (var i  = playAll.pos; i <= playAll.hasta; i++) {
+            catalogoMusica[this.miLista[i-1]].audio.onended = function() {
+                playAll.pos++;
+                if (playAll.pos > playAll.hasta) {
+                    procesaSesion.playAll();
+                }   else    {
+                    procesaSesion.play('bd-id-danza-'+playAll.pos, procesaSesion.miLista[playAll.pos-1])
+                }
+            };
+        };
+        procesaSesion.play('bd-id-danza-'+playAll.pos, procesaSesion.miLista[playAll.pos-1])
     },
     sonando:null,
     idActual:null,
@@ -196,26 +234,69 @@ const procesaMusica = {
         var subir = (audioElement.volume < 0.2); 
         var decimo = audioElement.volume / 10;
         var decima = segundos * 1000 / 10
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.1 : 9*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.2 : 8*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.3 : 7*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.4 : 6*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.5 : 5*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.6 : 4*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.7 : 3*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.8 : 2*decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 0.9 : decimo;
-        setTimeout(function() {  audioElement.volume = (subir) ? 1 : 0;
-          }, decima);
-          }, decima);                                   
-          }, decima);                                   
-          }, decima);                                   
-          }, decima);                                   
-          }, decima);                                   
-          }, decima);                                   
-          }, decima);                                   
-          }, decima);                       
-          }, decima);
+        setTimeout(function() {
+            audioElement.volume = (subir) ? 0.1 : 9*decimo;
+            setTimeout(function() {
+                audioElement.volume = (subir) ? 0.2 : 8*decimo;
+                setTimeout(function() {
+                    audioElement.volume = (subir) ? 0.3 : 7*decimo;
+                    setTimeout(function() {
+                        audioElement.volume = (subir) ? 0.4 : 6*decimo;
+                        setTimeout(function() {
+                            audioElement.volume = (subir) ? 0.5 : 5*decimo;
+                            setTimeout(function() {
+                                audioElement.volume = (subir) ? 0.6 : 4*decimo;
+                                setTimeout(function() {
+                                    audioElement.volume = (subir) ? 0.7 : 3*decimo;
+                                    setTimeout(function() {
+                                        audioElement.volume = (subir) ? 0.8 : 2*decimo;
+                                        setTimeout(function() {
+                                            audioElement.volume = (subir) ? 0.9 : decimo;
+                                            setTimeout(function() {
+                                                audioElement.volume = (subir) ? 1 : 0;
+                                            }, decima);
+                                        }, decima);                                   
+                                    }, decima);                                   
+                                }, decima);                                   
+                            }, decima);                                   
+                        }, decima);                                   
+                    }, decima);                                   
+                }, decima);                                   
+            }, decima);                       
+        }, decima);
+    },
+    modoDocumento: function (obj)  {
+        var desplegar ="none";
+        if (obj.innerHTML == "Modo Ejecución") desplegar = "block";  
+        const arrayNoImp = document.getElementsByClassName("no-imprimir");
+        for (var i=0; i<arrayNoImp.length; i++)    arrayNoImp[i].style.display = desplegar;
+        if (desplegar == "none")
+            obj.innerHTML = "Modo Ejecución"
+        else
+            obj.innerHTML = "Modo Documento";
+    },
+    danzas:[],
+    copiarWhatsApp: function    (){
+        var strMensaje = '*'+this.sesion.tema+'* \n'+
+        'Realizado por: '+this.sesion.autor+'\n';
+        var minutos = Math.trunc(this.tiempoTotal / 60);
+        const segundos = this.tiempoTotal - minutos * 60;
+        const horas = Math.trunc(minutos/60);
+        minutos = minutos - horas * 60;
+        strMensaje += 'Duración Estimada: '+(horas>0 ? horas+":" : "")+(minutos < 10 ? ("0"+ minutos) : minutos)+":"+(segundos < 10 ? ("0"+segundos) : segundos)+'\n\n ';
+        for (var i=0;i<this.danzas.length;i++)    {
+            const musica = catalogoMusica[this.danzas[i].musica];
+            strMensaje += '_'+(i+1)+'. '+this.danzas[i].nombre+'_\n'+
+            '*'+this.danzas[i].musica+'*: '+musica.autor+'\n'+
+            musica.nombre+'\n\n';
+        }
+        var otext = document.createElement('textarea');
+        otext.innerHTML=strMensaje;
+        document.body.appendChild(otext);
+        otext.select();
+        document.execCommand("copy");
+        document.body.removeChild(otext);
+        alert('Copiado el texto, con el formato para el WhatsApp')        
     }
 } 
 
@@ -270,7 +351,7 @@ class sesionBiodanza extends HTMLElement {
                             <input id="bd-id-prueba-durFinal" type="text" class="form-control input-sm" size="3" value="40">
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-success" onclick="procesaMusica.pruebaControlada()" id="bd-id-prueba-Iniciar">Iniciar</button>
+                            <button type="button" class="btn btn-success" onclick="procesaSesion.pruebaControlada()" id="bd-id-prueba-Iniciar">Iniciar</button>
                         </div>
                     </form>
                 </div>
@@ -294,9 +375,21 @@ class sesionBiodanza extends HTMLElement {
                     </form>
                     <form class="form-inline">
                         <div class="form-group">
-                            <button type="button" class="btn btn-success" onclick="procesaMusica.ejecucionControlada()" id="bd-id-ejecutar-Iniciar">Iniciar</button>
+                            <button type="button" class="btn btn-success" onclick="procesaSesion.ejecucionControlada()" id="bd-id-ejecutar-Iniciar">Iniciar</button>
                         </div>
                     </form>
+                </div>
+            </div>
+            `,
+            otrosControles:`
+            <div class="no-imprimir">
+                <h4><span onclick="bd_toggleCollapse(this, 'bd-otrosctrls')" style="color:red; cursor:pointer">❥</span> Otros Controles</h4>
+                <div id="bd-otrosctrls" class="collapse">
+                    <div class="btn-group">
+                        <button id="bd-id-playAll" type="button" class="btn btn-success" onclick="procesaSesion.playAll()">Escuchar Todas</button>
+                        <button type="button" class="btn btn-success" onclick="procesaSesion.copiarWhatsApp()">Copiar para WhatsApp</button>
+                        <button type="button" class="btn btn-success" onclick="procesaSesion.modoDocumento(this)">Modo Documento</button>
+                    </div>
                 </div>
             </div>
             `,
@@ -324,6 +417,8 @@ class sesionBiodanza extends HTMLElement {
             <div id="bd-id-audios" style="position:fixed; bottom:10px; right: 5px;"></div>
             `
         }
+        procesaSesion.sesion = {tema:this.getAttribute('tema'), autor:this.getAttribute('autor')};
+        procesaSesion.danzas = [];
         this.danzas =   [];
         this.evolucion = [];
         this.addDanza   =   function(danza) {
@@ -341,13 +436,14 @@ class sesionBiodanza extends HTMLElement {
                     <span class="text-danger">${musica.nombre}</span>
                 </td>
                 <td valign="top" align="center"><b>${danza.evolucion}</b><br><span id="bd-id-duracion-${contador}"></span></td>
-                <td class="no-imprimir" valign="top"><button id="bd-play-${contador}" type="button" class="btn btn-success" onclick="procesaMusica.play('bd-id-danza-${contador}','${danza.musica}');">&#9835;</button></td>
+                <td class="no-imprimir" valign="top"><button id="bd-play-${contador}" type="button" class="btn btn-success" onclick="procesaSesion.play('bd-id-danza-${contador}','${danza.musica}');">&#9835;</button></td>
                 <td class="no-imprimir" valign="top"><button id="bd-tg-consigna-${contador}" type="button" class="btn btn-success" onclick="bd_toggleCollapse(this, 'bd-consigna-${contador}')">❥</button></td>
             </tr>
             <tr id="bd-consigna-${contador}" class="collapse"><td>&nbsp;</td>
             <td colspan="4" class="text-justify">${danza.consigna}</td>
             </tr>
             `;
+            procesaSesion.danzas.push(danza);
             this.danzas.push(danza.nombre);
             this.evolucion.push(Number(danza.evolucion));
             const cats = this.danzas;
@@ -395,20 +491,17 @@ class sesionBiodanza extends HTMLElement {
                     data: datos
                 }]
             });
-            procesaMusica.agregarAudio(danza.musica, contador);
-            document.getElementById('bd-id-audios').appendChild(procesaMusica.audio(danza.musica));
+            procesaSesion.agregarAudio(danza.musica, contador);
+            document.getElementById('bd-id-audios').appendChild(procesaSesion.audio(danza.musica));
             return contador;
         }
         for (const key in html)    this.innerHTML += html[key];
     }
     attributeChangedCallback(nameAtr, oldValue, newValue)    {
-        if (nameAtr == "carpeta-musica")    {
-            this.carpeta_musica = newValue;
-        } else
-            document.getElementById("bd-id-"+nameAtr).innerHTML = newValue;
+        document.getElementById("bd-id-"+nameAtr).innerHTML = newValue;
     }
     static  get observedAttributes()    {
-        return ["tema", "autor", "carpeta-musica"];
+        return ["tema", "autor"];
     }
 }
 class danzaBiodanza extends HTMLElement {
@@ -433,4 +526,3 @@ class danzaBiodanza extends HTMLElement {
 }
 customElements.define('bd-sesion', sesionBiodanza);
 customElements.define('bd-danza', danzaBiodanza);
-
