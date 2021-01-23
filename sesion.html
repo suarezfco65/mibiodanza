@@ -435,7 +435,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         });
     }
 
-    $scope.grafico();
+    setTimeout( $scope.grafico, 5000);
     
     $scope.maxCar    =   function()  {
         var total = screen.width;
