@@ -140,10 +140,9 @@
 <div ng-show="imprimir">
     <script>inicioContenido('Otros Controles', 4, 'bd-otrosctrls');</script>
         <div class="btn-group">
-<!--            <button type="button" class="{{ejecucion || prueba  ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="playAll()">{{playTodo ? 'Detener' : 'Escuchar Todas'}}</button> -->
             <button type="button" class="btn btn-success" ng-click="copiarWhatsApp()">Copiar para WhatsApp</button>
             <button type="button" class="btn btn-success" ng-click="imprimir=false">Modo Documento</button>
-            <button type="button" class="btn btn-success" ng-click="editarSesion()">Editar Sesión</button>
+            <button type="button" class="btn btn-success" ng-click="editarSesion()">Modo Edición</button>
         </div>
     <script>finContenido();</script>
 </div>
@@ -548,8 +547,9 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 `;
 for (var i=0;i<$scope.danzas.length;i++)    {
     const musica = $scope.danzas[i].omusica;
+    const danza = $scope.danzas[i].odanza;
     html +=
-`            <bd-danza nombre='`+$scope.danzas[i].odanza.nombre+`'  musica='`+musica.codigo+`'  evolucion='`+$scope.danzas[i].evolucion+`'  presenta=""></bd-danza>
+`            <bd-danza nombre='`+danza.nombre+`'  musica='`+musica.codigo+`'  evolucion='`+$scope.danzas[i].evolucion+`'  presenta=""></bd-danza>
 `;
 }
 html +=
