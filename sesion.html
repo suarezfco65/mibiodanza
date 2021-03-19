@@ -41,7 +41,8 @@
     
     <h3 style="color:red; font-weight: bold; margin-bottom: 80px ">Preparación de Sesión Biodanza</h3>
 
-    <table class="rb"><tr>
+    <table class="rb" id="audios" draggable="true">
+        <tr>
         <td>
             <audio id="audio" controls>
                 <source id="ogg" src="" type="audio/ogg">
@@ -165,7 +166,6 @@
             </div>
                 </form>
                 <br>
-
             </div>
 
             <!-- Modal footer -->
@@ -478,6 +478,29 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         }
     }
 })
+function drag_start(event) {
+    var style = window.getComputedStyle(event.target, null);
+    event.dataTransfer.setData("text/plain",
+    (parseInt(style.getPropertyValue("left"),10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"),10) - event.clientY));
+} 
+function drag_over(event) { 
+    event.preventDefault(); 
+    return false; 
+} 
+function drop(event) { 
+    var offset = event.dataTransfer.getData("text/plain").split(',');
+    var dm = document.getElementById('audios');
+    dm.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
+    dm.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
+    dm.style.bottom = 'auto';
+    event.preventDefault();
+    return false;
+} 
+var dm = document.getElementById('audios'); 
+dm.addEventListener('dragstart',drag_start,false); 
+document.body.addEventListener('dragover',drag_over,false); 
+document.body.addEventListener('drop',drop,false);        
+
 </script>
 
 </div>
