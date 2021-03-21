@@ -25,6 +25,9 @@ const catalogoMusica = {
     "SC02-05":{nombre:"The Darktown Strutter's Ball Brown",autor:"Dixiland",archivos:[{nombre:"SC02 - 05 - The Darktown Strutter's Ball Brown - Dixiland.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA SINÉRGICA","MARCHA FISIÓLOGICA"]},
     "SC02-07":{nombre:"Tour",autor:"Clarlinhos Brown",archivos:[{nombre:"SC02 - 07 - Tour - Clarlinhos Brown.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA ALEGRE"]},
     "SC02-08":{nombre:"Good Old Fashion Lover Boy",autor:"Queen",archivos:[{nombre:"SC02 - 08 - Good Old Fashion Lover Boy - Queen.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA ALEGRE"]},
+    "SC06-14":{nombre:"Breath In The Air",autor:"Pink Floyd",archivos:[{nombre:"SC06 - 14 - Breath In The Air - Pink Floyd.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA LIBRE DE FLUIDEZ"]},
+    "SC06-17":{nombre:"Romance",autor:"Kitaro",archivos:[{nombre:"SC06 - 17 - Romance - Kitaro.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA LIBRE DE FLUIDEZ"]},
+    "SC10-06":{nombre:"What a Wonderfull World",autor:"Louis Armstrong",archivos:[{nombre:"SC10 - 06 - What a Wonderfull World - Louis Armstrong.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["ENCUENTRO CON ABRAZO"]},
     "SM":{
         carpeta:"Sin Musica/",
         "00":"SM00/"
