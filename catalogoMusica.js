@@ -23,6 +23,8 @@ const catalogoMusica = {
     "SC01-08":{nombre:"Sleep War",autor:"Paul Williams",archivos:[{nombre:"SC01 - 08 - Sleep War - Paul Williams.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA LIGERA"]},
     "SC01-11":{nombre:"Quero",autor:"Elis Regina",archivos:[{nombre:"SC01 - 11 - Quero - Elis Regina.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA LIGERA"]},
     "SC02-05":{nombre:"The Darktown Strutter's Ball Brown",autor:"Dixiland",archivos:[{nombre:"SC02 - 05 - The Darktown Strutter's Ball Brown - Dixiland.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA SINÉRGICA","MARCHA FISIÓLOGICA"]},
+    "SC02-07":{nombre:"Tour",autor:"Clarlinhos Brown",archivos:[{nombre:"SC02 - 07 - Tour - Clarlinhos Brown.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA ALEGRE"]},
+    "SC02-08":{nombre:"Good Old Fashion Lover Boy",autor:"Queen",archivos:[{nombre:"SC02 - 08 - Good Old Fashion Lover Boy - Queen.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA ALEGRE"]},
     "SM":{
         carpeta:"Sin Musica/",
         "00":"SM00/"
