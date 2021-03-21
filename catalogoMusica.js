@@ -19,6 +19,9 @@ const catalogoMusica = {
     "SC01-02":{nombre:"Zamba para Pamela",autor:"El Trio Vitale-Baraj-GonzAlez",archivos:[{nombre:"SC01 - 02 - Zamba para Pamela - El Trio Vitale-Baraj-GonzAlez.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA LENTA"]},
     "SC01-03":{nombre:"El Danubio Azul",autor:"Johann Strauss",archivos:[{nombre:"SC01 - 03 - Johann Strauss - El Danubio Azul.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA DE CELEBRACIÓN"]},
     "SC01-04":{nombre:"The Day of the Dancing",autor:"Marie Brennan",archivos:[{nombre:"SC01 - 04 - The Day of the Dancing - Marie Brennan.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN"]},
+    "SC01-06":{nombre:"Ordinary Fool",autor:"Paul Williams",archivos:[{nombre:"SC01 - 06 - Ordinary Fool  - Paul Williams.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA PROFUNDA"]},
+    "SC01-08":{nombre:"Sleep War",autor:"Paul Williams",archivos:[{nombre:"SC01 - 08 - Sleep War - Paul Williams.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA LIGERA"]},
+    "SC01-11":{nombre:"Quero",autor:"Elis Regina",archivos:[{nombre:"SC01 - 11 - Quero - Elis Regina.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA LIGERA"]},
     "SM":{
         carpeta:"Sin Musica/",
         "00":"SM00/"
