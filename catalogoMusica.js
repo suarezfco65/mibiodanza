@@ -22,6 +22,7 @@ const catalogoMusica = {
     "SC01-06":{nombre:"Ordinary Fool",autor:"Paul Williams",archivos:[{nombre:"SC01 - 06 - Ordinary Fool  - Paul Williams.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA PROFUNDA"]},
     "SC01-08":{nombre:"Sleep War",autor:"Paul Williams",archivos:[{nombre:"SC01 - 08 - Sleep War - Paul Williams.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA LIGERA"]},
     "SC01-11":{nombre:"Quero",autor:"Elis Regina",archivos:[{nombre:"SC01 - 11 - Quero - Elis Regina.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA MELODICA AFECTIVA LIGERA"]},
+    "SC02-05":{nombre:"The Darktown Strutter's Ball Brown",autor:"Dixiland",archivos:[{nombre:"SC02 - 05 - The Darktown Strutter's Ball Brown - Dixiland.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA SINÉRGICA","MARCHA FISIÓLOGICA"]},
     "SM":{
         carpeta:"Sin Musica/",
         "00":"SM00/"
