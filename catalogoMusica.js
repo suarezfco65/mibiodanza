@@ -1,4 +1,24 @@
 const catalogoMusica = {
+    "SC":{
+        carpeta:"Sergio Cruz/",
+        "01": "SC01/",
+        "02": "SC02/",
+        "03": "SC03/",
+        "04": "SC04/",
+        "05": "SC05/",
+        "06": "SC06/",
+        "07": "SC07/",
+        "08": "SC08/",
+        "09": "SC09/",
+        "10": "SC10/",
+        "11": "SC11/",
+        "12": "SC12/",
+        "13": "SC13/"
+    },
+    "SC01-01":{nombre:"Cannon",autor:"Johann Pachelbel",archivos:[{nombre:"SC01 - 01 - Johann Pachelbel - Cannon.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC01-02":{nombre:"Zamba para Pamela",autor:"El Trio Vitale-Baraj-GonzAlez",archivos:[{nombre:"SC01 - 02 - Zamba para Pamela - El Trio Vitale-Baraj-GonzAlez.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA LENTA"]},
+    "SC01-03":{nombre:"El Danubio Azul",autor:"Johann Strauss",archivos:[{nombre:"SC01 - 03 - Johann Strauss - El Danubio Azul.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA DE CELEBRACIÓN"]},
+    "SC01-04":{nombre:"The Day of the Dancing",autor:"Marie Brennan",archivos:[{nombre:"SC01 - 04 - The Day of the Dancing - Marie Brennan.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN"]},
     "SM":{
         carpeta:"Sin Musica/",
         "00":"SM00/"
