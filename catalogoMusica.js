@@ -1,4 +1,9 @@
 const catalogoMusica = {
+    "JE":{
+        carpeta:"Juegos Expresivos/",
+        "01": "JE01/"
+    },
+    "JE01-01":{nombre:"Golpe de mestre",autor:"The Entertainer",archivos:[{nombre:"JE01 - 01 - Golpe de mestre - The Entertainer.mpeg",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["LIBERACIÓN DEL MOVIMIENTO"]},
     "SC":{
         carpeta:"Sergio Cruz/",
         "01": "SC01/",
@@ -25,14 +30,26 @@ const catalogoMusica = {
     "SC02-05":{nombre:"The Darktown Strutter's Ball Brown",autor:"Dixiland",archivos:[{nombre:"SC02 - 05 - The Darktown Strutter's Ball Brown - Dixiland.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA SINÉRGICA","MARCHA FISIÓLOGICA"]},
     "SC02-07":{nombre:"Tour",autor:"Clarlinhos Brown",archivos:[{nombre:"SC02 - 07 - Tour - Clarlinhos Brown.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA ALEGRE"]},
     "SC02-08":{nombre:"Good Old Fashion Lover Boy",autor:"Queen",archivos:[{nombre:"SC02 - 08 - Good Old Fashion Lover Boy - Queen.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA ALEGRE"]},
+    "SC02-09":{nombre:"Canto para Senegal",autor:"Banda Reflexu's",archivos:[{nombre:"SC02 - 09 - Canto para Senegal - Banda Reflexu's.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA SENSUAL"]},
+    "SC02-10":{nombre:"End Title",autor:"Blade Runner",archivos:[{nombre:"SC02 - 10 - End Title - Blade Runner.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["MARCHA CON DETERMINACIÓN"]},
+
     "SC06-14":{nombre:"Breath In The Air",autor:"Pink Floyd",archivos:[{nombre:"SC06 - 14 - Breath In The Air - Pink Floyd.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA LIBRE DE FLUIDEZ"]},
     "SC06-17":{nombre:"Romance",autor:"Kitaro",archivos:[{nombre:"SC06 - 17 - Romance - Kitaro.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA LIBRE DE FLUIDEZ"]},
+
     "SC10-06":{nombre:"What a Wonderfull World",autor:"Louis Armstrong",archivos:[{nombre:"SC10 - 06 - What a Wonderfull World - Louis Armstrong.m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["ENCUENTRO CON ABRAZO"]},
+
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SC02-01":{nombre:"",autor:"",archivos:[{nombre:".m4a",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
     "SM":{
         carpeta:"Sin Musica/",
         "00":"SM00/"
     },
-    "SM00-00":{nombre:"Sin Musica",autor:"Sin Musica",archivos:[{nombre:"SM00 - 00 - Sin Musica - Sin Musica.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
+    "SM00-00":{nombre:"Sin Musica", autor:"Sin Musica", archivos:[{nombre:"SM00 - 00 - Sin Musica - Sin musica.mp3", tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]},
     "SBE":{
         carpeta:"SuArez Biocentric Enterprice/",
         "01":"SBE 01/"
@@ -998,31 +1015,31 @@ const catalogoMusica = {
     "BA54-12":{nombre:"Tajabone",autor:"Ismael Lo",archivos:[{nombre:"Ba 54 - 12 - Tajabone - Ismael Lo - Ronda de Bienvenida.m4a",tipo:"audio/mpeg"}],lineaVivencia:"Vitalidad - Creatividad",danzas:["Ronda de Bienvenida"]},
     "BA68-13":{nombre:"Carousel",autor:"Evanthia Reboutsika",archivos:[{nombre:"Ba 68 - 13 - Carousel - Evanthia Reboutsika.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA CIRCULAR A DOS "]},
     "IBF":{
-        carpeta:"",
-        "01":"",
-        "02":"",
-        "03":"",
-        "04":"",
-        "05":"",
-        "06":"",
-        "07":"",
-        "08":"",
-        "09":"",
-        "10":"",
-        "11":"",
-        "12":"",
-        "13":"",
-        "14":"",
-        "15":"",
-        "16":"",
-        "17":"",
-        "18":"",
-        "19":""
+        carpeta:"Internacional Biocentric Foundation/",
+        "01":"IBF01/",
+        "02":"IBF02/",
+        "03":"IBF03/",
+        "04":"IBF04/",
+        "05":"IBF05/",
+        "06":"IBF06/",
+        "07":"IBF07/",
+        "08":"IBF08/",
+        "09":"IBF09/",
+        "10":"IBF10/",
+        "11":"IBF11/",
+        "12":"IBF12/",
+        "13":"IBF13/",
+        "14":"IBF14/",
+        "15":"IBF15/",
+        "16":"IBF16/",
+        "17":"IBF17/",
+        "18":"IBF18/",
+        "19":"IBF19/"
     },
     "IBFC":{
-        carpeta:"",
-        "20":"",
-        "21":""
+        carpeta:"Internacional Biocentric Foundation/",
+        "20":"IBFC20/",
+        "21":"IBFC21/"
     },
     "IBF01-01":{nombre:"Free As a Bird",autor:"The Beatles",archivos:[{nombre:"IBF01 - 01 - The Beatles - Free As a Bird.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 01 - The Beatles - Free As a Bird.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN ","FLUIDEZ : SERIE I"]},
     "IBF01-02":{nombre:"Let It Be",autor:"The Beatles",archivos:[{nombre:"IBF01 - 02 - The Beatles - Let It Be.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 02 - The Beatles - Let It Be.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE ACTIVACIÓN LENTA","RONDA DE ACTIVACIÓN"]},
@@ -1326,7 +1343,7 @@ const catalogoMusica = {
     "IBF15-10":{nombre:"The More I See You",autor:"Montez, Chris",archivos:[{nombre:"IBF15 - 10 - Montez, Chris - The More I See You.mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 10 - Montez, Chris - The More I See You.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["JUEGO DE PALMAS EN PARES","JUEGOS DE VITALIDAD","SINCRONIZACIÓN RÍTMICA EN PARES"]},
     "IBF15-11":{nombre:"Crime Of The Century [Part, long]",autor:"Supertramp",archivos:[{nombre:"IBF15 - 11 - Supertramp - Crime Of The Century [Part, long].mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 11 - Supertramp - Crime Of The Century [Part, long].ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["DANZA DE OPOSICIÓN ARMÓNICA","DANZA YANG"]},
     "IBF15-12":{nombre:"Presto - Concerto 'L'estate' in sol minore - 3 (Le quattro stagioni Op.8-2, RV 315)",autor:"Vivaldi (The Royal Vivaldi Symphony)",archivos:[{nombre:"IBF15 - 12 - Vivaldi (The Royal Vivaldi Symphony) - Presto - Concerto 'L'estate' in sol minore - 3 (Le quattro stagioni Op.8-2, RV 315).mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 12 - Vivaldi (The Royal Vivaldi Symphony) - Presto - Concerto 'L'estate' in sol minore - 3 (Le quattro stagioni Op.8-2, RV 315).ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["DANZA YANG","CONEXIÓN CON LA PROPIA FUERZA"]},
-    "IBF15-13":{nombre:"Danze Polovesiane del Principe",autor:"Igor Borodin",archivos:[{nombre:"IBF15 - 13 - Igor  Borodin - Danze Polovesiane del Principe.mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 13 - Igor  Borodin - Danze Polovesiane del Principe.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["DANZA YANG","DANZA DEL ÁNGEL DE LA FUERZA"]},
+    "IBF15-13":{nombre:"Danze Polovesiane del Principe",autor:"Igor Borodin",archivos:[{nombre:"IBF15 - 13 - Igor Borodin - Danze Polovesiane del Principe.mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 13 - Igor Borodin - Danze Polovesiane del Principe.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["DANZA YANG","DANZA DEL ÁNGEL DE LA FUERZA"]},
     "IBF15-14":{nombre:"Allegro con brio [Part] - Sinfonie 5 c-moll op.67 - 1",autor:"Beethoven (William Bowles & Royal Festival Orchestra)",archivos:[{nombre:"IBF15 - 14 - Beethoven (William Bowles & Royal Festival Orchestra) - Allegro con brio [Part] - Sinfonie 5 c-moll op.67 - 1.mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 14 - Beethoven (William Bowles & Royal Festival Orchestra) - Allegro con brio [Part] - Sinfonie 5 c-moll op.67 - 1.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["DANZA DE INTEGRACIÓN YIN~YANG"]},
     "IBF15-15":{nombre:"Argo La Primavera",autor:"Vivaldi",archivos:[{nombre:"IBF15 - 15 - Vivaldi - Argo La Primavera.mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 15 - Vivaldi - Argo La Primavera.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN ","RESPIRACIÓN DANZANTE","DANZA YIN"]},
     "IBF15-16":{nombre:"Adagio L Autunno",autor:"Vivaldi",archivos:[{nombre:"IBF15 - 16 - Vivaldi - Adagio L Autunno.mp3",tipo:"audio/mpeg"},{nombre:"IBF15 - 16 - Vivaldi - Adagio L Autunno.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["DANZA YIN"]},
