@@ -1525,7 +1525,7 @@ const catalogoMusica = {
 	'BA76-05':{nombre:`De Joshua Bell`, autor:`Hans Zimmer`, archivos:[{nombre:`BA76 - 05 - Hans Zimmer - De Joshua Bell.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`PREPARAR EL VUELO`]},
 	'BA76-06':{nombre:`Krishna das`, autor:`Baba Hanuman`, archivos:[{nombre:`BA76 - 06 - Baba Hanuman - Krishna das.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`ENTREGA Y CONTENCION`]},
 	'BA76-07':{nombre:`Eternal Love`, autor:`Abel Korzeniowski`, archivos:[{nombre:`BA76 - 07 - Abel Korzeniowski - Eternal Love.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`ABRIR PUERTAS AL PERDON`]},
-	'BA76-08':{nombre:`Old Souls`, autor:`Hans Zimmer`, archivos:[{nombre:`BA76 - 08 - Hans Zimmer - Old Souls.aiff`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`EUTONIA DE VIENTRES`]},
+	'BA76-08':{nombre:`Old Souls`, autor:`Hans Zimmer`, archivos:[{nombre:`BA76 - 08 - Hans Zimmer - Old Souls.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`EUTONIA DE VIENTRES`]},
 	'BA76-09':{nombre:`Four Dimensions`, autor:`Ludovico Einaudi`, archivos:[{nombre:`BA76 - 09 - Ludovico Einaudi - Four Dimensions.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`ABANDONO Y EXPLORACION EN PAR`]},
 	'BA76-10':{nombre:`A Way of Life`, autor:`The Last Samurai`, archivos:[{nombre:`BA76 - 10 - The Last Samurai - A Way of Life.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`AMOR Y REVERENCIA`]},
 	'BA76-11':{nombre:`When all is forgiven`, autor:`Ashana`, archivos:[{nombre:`BA76 - 11 - Ashana - When all is forgiven.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`RONDA SALIENDO DE REGRESION  MIRADAS`]},
