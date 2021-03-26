@@ -1567,7 +1567,7 @@ const catalogoMusica = {
 	'BA77-22':{nombre:`Waters Of March`, autor:`Al Jarreau, Oleta Adams`, archivos:[{nombre:`BA77 - 22 - Al Jarreau, Oleta Adams - Waters Of March.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`DANZAR A DOS ACTIVANDO`]},
 	'BA77-23':{nombre:`Carlito Marrón`, autor:`Carlinhos Brown`, archivos:[{nombre:`BA77 - 23 - Carlinhos Brown - Carlito MarrOn.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`DANZAR A DOS ACTIVANDO`]},
 	'BA77-24':{nombre:`Ela So Quer (Xote Das Meninas)`, autor:`O Karaiva`, archivos:[{nombre:`BA77 - 24 - O Karaiva - Ela So Quer (Xote Das Meninas).mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`FORRO LENTO `]},
-	'BA77-25':{nombre:`Valente Nordeste`, autor:`Nazare Pereira`, archivos:[{nombre:`BA77 - 25 - Nazare Pereira - Valente Nordeste.wav`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`FORRO MEDIO`]},
+	'BA77-25':{nombre:`Valente Nordeste`, autor:`Nazare Pereira`, archivos:[{nombre:`BA77 - 25 - Nazare Pereira - Valente Nordeste.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`FORRO MEDIO`]},
 	'BA78-01':{nombre:`Heart Of Mine`, autor:`Peter Salett`, archivos:[{nombre:`BA78 - 01 - Peter Salett - Heart Of Mine.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`RONDA INICIAL   CAMINAR A DOS PASEANDO`]},
 	'BA78-02':{nombre:`Hacer un puente `, autor:`La Franela`, archivos:[{nombre:`BA78 - 02 - La Franela - Hacer un puente.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`RONDA INICIAL`]},
 	'BA78-03':{nombre:`Langa Mo`, autor:`Aura Msimang`, archivos:[{nombre:`BA78 - 03 - Aura Msimang - Langa Mo.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`RONDA INICIAL RONDA ACTIVACION`]},
