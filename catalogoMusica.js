@@ -1576,7 +1576,7 @@ const catalogoMusica = {
 	'BA78-06':{nombre:`Lose yourself to dance`, autor:`Daft Punk & Pharrell Williams`, archivos:[{nombre:`BA78 - 06 - Daft Punk Y Pharrell Williams - Lose yourself to dance.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`CAMINAR Y DANZAR`]},
 	'BA78-07':{nombre:`Dinata`, autor:`Eleftheria Arvanitaki`, archivos:[{nombre:`BA78 - 07 - Eleftheria Arvanitaki - Dinata.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`DANZAR AL CENTRO DE LA RONDA`]},
 	'BA78-08':{nombre:`Bahia`, autor:`Angelique Kidjo`, archivos:[{nombre:`BA78 - 08 - Angelique Kidjo - Bahia.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`DANZAR AL CENTRO DE LA RONDA`]},
-	'BA78-09':{nombre:`El dorado negro`, autor:`Gilberto Gil`, archivos:[{nombre:`BA78 - 09 - Gilberto Gil - El dorado negro.wav`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`JUEGO GRUPALES`]},
+	'BA78-09':{nombre:`El dorado negro`, autor:`Gilberto Gil`, archivos:[{nombre:`BA78 - 09 - Gilberto Gil - El dorado negro.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`JUEGO GRUPALES`]},
 	'BA78-10':{nombre:`Chega mais `, autor:`Rita Lee`, archivos:[{nombre:`BA78 - 10 - Rita Lee - Chega mais.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`SINCRONIZACION GESTUAL`]},
 	'BA78-11':{nombre:`Pemba Laka`, autor:`Playing For Change`, archivos:[{nombre:`BA78 - 11 - Playing For Change - Pemba Laka.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`RESONANCIA RITMICA`]},
 	'BA78-12':{nombre:`Ajaja`, autor:`Babatunde Olatunji`, archivos:[{nombre:`BA78 - 12 - Babatunde Olatunji - Ajaja.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Vitalidad`, danzas:[`DANZA TRIBAL EN RONDA Y MIGRAR`]},
