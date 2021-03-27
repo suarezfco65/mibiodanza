@@ -1424,7 +1424,7 @@ const catalogoMusica = {
 	'BA71-16':{nombre:`Kokopelli's Ritual`, autor:`Anugama`, archivos:[{nombre:`BA71 - 16 - Anugama - Kokopelli's Ritual.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`CAMINAR TRIBAL`]},
 	'BA71-17':{nombre:`Forest Veil`, autor:`Lisa Gerrard`, archivos:[{nombre:`BA71 - 17 - Lisa Gerrard - Forest Veil.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`PG DE COCORAS`]},
 	'BA71-18':{nombre:`Full Album`, autor:`Buddha Bar VIII`, archivos:[{nombre:`BA71 - 18 - Buddha Bar VIII - Full Album.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`TRANCE`]},
-	'BA71-19':{nombre:`La Luna `, autor:`Mirabai Ceiba`, archivos:[{nombre:`BA71 - 19 - Mirabai Ceiba - La Luna.aiff`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`RONDA FINAL`]},
+	'BA71-19':{nombre:`La Luna `, autor:`Mirabai Ceiba`, archivos:[{nombre:`BA71 - 19 - Mirabai Ceiba - La Luna.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`RONDA FINAL`]},
 	'BA71-20':{nombre:`Blue Planet`, autor:`Terry Devine King`, archivos:[{nombre:`BA71 - 20 - Terry Devine King - Blue Planet.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[``]},
 	'BA72-01':{nombre:`Slide`, autor:`Dido (Dido no angel)`, archivos:[{nombre:`BA72 - 01 - Dido (Dido no angel) - Slide.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Sexualidad`, danzas:[`SINCRONIZACION SENSUAL`]},
 	'BA72-02':{nombre:`My life`, autor:`Dido (Dido no angel)`, archivos:[{nombre:`BA72 - 02 - Dido (Dido no angel) - My life.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Sexualidad`, danzas:[`INTEGRACION TRES CENTROS `]},
