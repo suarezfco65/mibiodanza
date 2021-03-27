@@ -1353,7 +1353,7 @@ const catalogoMusica = {
 	'BA68-15':{nombre:`Stefan Nilsson / Helen Sjöholm`, autor:`Kraftverket (The Power Plant) [Denis Mix]`, archivos:[{nombre:`BA68 - 15 - Kraftverket (The Power Plant) [Denis Mix] - Stefan Nilsson Helen Sjöholm.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA APOLINEA`]},
 	'BA68-16':{nombre:`Paulo Coracao`, autor:`Agradecemos`, archivos:[{nombre:`BA68 - 16 - Agradecemos - Paulo Coracao.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA FINAL`]},
 	'BA68-17':{nombre:`Marisa Monte`, autor:`Give me love`, archivos:[{nombre:`BA68 - 17 - Give me love - Marisa Monte.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA DE ACTIVACION `]},
-	'BA68-18':{nombre:`Vinícius de Moraes e Toquinho`, autor:`Turbilhao`, archivos:[{nombre:`BA68 - 18 - Turbilhao - VinIcius de Moraes e Toquinho.aiff`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[``]},
+	'BA68-18':{nombre:`Vinícius de Moraes e Toquinho`, autor:`Turbilhao`, archivos:[{nombre:`BA68 - 18 - Turbilhao - VinIcius de Moraes e Toquinho.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[``]},
 	'BA68-19':{nombre:`Tonolec`, autor:`So Caayolec (Mi Caballito)`, archivos:[{nombre:`BA68 - 19 - So Caayolec (Mi Caballito) - Tonolec.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA TRIBAL DE ACTIVACION`]},
 	'BA68-20':{nombre:`Waldemar Bastos`, autor:`Rainha Ginga`, archivos:[{nombre:`BA68 - 20 - Rainha Ginga - Waldemar Bastos.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA DE ACTIVACION Y FINAL`]},
 	'BA68-21':{nombre:`K'Koustik`, autor:`Asya`, archivos:[{nombre:`BA68 - 21 - Asya - K'Koustik.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA FINAL`]},
