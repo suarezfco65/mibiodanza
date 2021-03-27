@@ -1543,7 +1543,7 @@ const catalogoMusica = {
 	'BA76-23':{nombre:`Kounandi`, autor:`Rokia Traoré`, archivos:[{nombre:`BA76 - 23 - Rokia TraorE - Kounandi.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`RONDA TRIBAL LENTA`]},
 	'BA76-24':{nombre:`Cosecha Kikuyo`, autor:`Allan Phillips`, archivos:[{nombre:`BA76 - 24 - Allan Phillips - Cosecha Kikuyo.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`RONDAS TRIBALES`]},
 	'BA76-25':{nombre:`Waipi o Paka alana`, autor:`Keola Beamer`, archivos:[{nombre:`BA76 - 25 - Keola Beamer - Waipi o Paka alana.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Trascendencia`, danzas:[`RONDA DE BINEVENIDA (NEOCHAMANISMO)`]},
-	'BA77-01':{nombre:`All you want`, autor:`Dido`, archivos:[{nombre:`BA77 - 01 - Dido - All you want.aiff`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`RONDA DE BIENVENIDA`]},
+	'BA77-01':{nombre:`All you want`, autor:`Dido`, archivos:[{nombre:`BA77 - 01 - Dido - All you want.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`RONDA DE BIENVENIDA`]},
 	'BA77-02':{nombre:`Mania de Você`, autor:`Rita Lee`, archivos:[{nombre:`BA77 - 02 - Rita Lee - Mania de VocE.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`RONDA DE BIENVENIDA`]},
 	'BA77-03':{nombre:`Happy`, autor:`Flora Martínez `, archivos:[{nombre:`BA77 - 03 - Flora Marti´nez - Happy.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`SINCRONIZAION SENSUAL`]},
 	'BA77-04':{nombre:`Quando, Quando, Quando`, autor:`Michael Bublé ft Nelly Furtado`, archivos:[{nombre:`BA77 - 04 - Michael BublE ft Nelly Furtado - Quando, Quando, Quando.m4a`, tipo:`audio/mpeg`}], lineaVivencia:`Sexualidad`, danzas:[`SINCRONIZACION SENSUAL`]},
@@ -2043,3 +2043,32 @@ const catalogoMusica = {
     }
 }
 catalogoMusica.inicio();
+/*
+    "IBF":{
+        carpeta:"Internacional Biocentric Foundation/",
+        "01":"IBF01/",
+        "02":"IBF02/",
+        "03":"IBF03/",
+        "04":"IBF04/",
+        "05":"IBF05/",
+        "06":"IBF06/",
+        "07":"IBF07/",
+        "08":"IBF08/",
+        "09":"IBF09/",
+        "10":"IBF10/",
+        "11":"IBF11/",
+        "12":"IBF12/",
+        "13":"IBF13/",
+        "14":"IBF14/",
+        "15":"IBF15/",
+        "16":"IBF16/",
+        "17":"IBF17/",
+        "18":"IBF18/",
+        "19":"IBF19/"
+    },
+    "IBFC":{
+        carpeta:"Internacional Biocentric Foundation/",
+        "20":"IBFC20/",
+        "21":"IBFC21/"
+    },
+*/
