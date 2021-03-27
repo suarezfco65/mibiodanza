@@ -1461,7 +1461,7 @@ const catalogoMusica = {
 	'BA73-13':{nombre:`Here Comes The Sun`, autor:`Bossa in Beatles`, archivos:[{nombre:`BA73 - 13 - Bossa in Beatles - Here Comes The Sun.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA INICIAL`]},
 	'BA73-14':{nombre:`Detalles`, autor:`Chambao / Con otro aire`, archivos:[{nombre:`BA73 - 14 - Chambao Con otro aire - Detalles.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA INICIAL `]},
 	'BA73-15':{nombre:`Aquele Abraço`, autor:`Eliane Elias`, archivos:[{nombre:`BA73 - 15 - Eliane Elias - Aquele AbraZo.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA DE BIENVENIDA`]},
-	'BA73-16':{nombre:`Ciranda`, autor:`Marcio Faracao`, archivos:[{nombre:`BA73 - 16 - Marcio Faracao - Ciranda.aiff`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA INICIAL ALEGRE`]},
+	'BA73-16':{nombre:`Ciranda`, autor:`Marcio Faracao`, archivos:[{nombre:`BA73 - 16 - Marcio Faracao - Ciranda.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA INICIAL ALEGRE`]},
 	'BA73-17':{nombre:`Há Mulheres`, autor:`Rita Ribeiro`, archivos:[{nombre:`BA73 - 17 - Rita Ribeiro - HA Mulheres.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA RITMICA`]},
 	'BA73-19':{nombre:`Here Comes The Sun / The Inner Light (Love Remix)`, autor:`The Beatles (Love)`, archivos:[{nombre:`BA73 - 19 - The Beatles (Love) - Here Comes The Sun The Inner Light (Love Remix).mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA DE ACTIVACION`]},
 	'BA73-20':{nombre:`Bailes de la Vida`, autor:`Mercedes Sosa`, archivos:[{nombre:`BA73 - 20 - Mercedes Sosa - Bailes de la Vida.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad`, danzas:[`RONDA DE ACTIVACION`]},
