@@ -1131,7 +1131,7 @@ const catalogoMusica = {
 	'BA58-12':{nombre:`Hayalname`, autor:`Racines`, archivos:[{nombre:`BA58 - 12 - Racines - Hayalname.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA TIERRA FUEGO`]},
 	'BA58-13':{nombre:`Kais Wa Leila`, autor:`Oliver Shanti`, archivos:[{nombre:`BA58 - 13 - Oliver Shanti - Kais Wa Leila.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA DE FUEGO`]},
 	'BA58-14':{nombre:`Kais Wa Leila`, autor:`Peter Gabriel`, archivos:[{nombre:`BA58 - 14 - Peter Gabriel - Kais Wa Leila.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA DE FUEGO`]},
-	'BA58-15':{nombre:`Beyond I `, autor:`Adham Shaikh`, archivos:[{nombre:`BA58 - 15 - Adham Shaikh - Beyond I.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA ENVOLVENTE `]},
+	'BA58-15':{nombre:`Beyond I `, autor:`Adham Shaikh`, archivos:[{nombre:`BA58 - 15 - Adham Shaikh - Beyond I.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA ENVOLVENTE `]},
 	'BA58-16':{nombre:`Adiós Nonino`, autor:`Bebo Valdés `, archivos:[{nombre:`BA58 - 16 - Bebo ValdEs - AdiOs Nonino.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA EXPRESIVA`]},
 	'BA58-17':{nombre:`Lawrence Of Arabia`, autor:`Maurice Jarre`, archivos:[{nombre:`BA58 - 17 - Maurice Jarre - Lawrence Of Arabia.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`RITMOS DIFERENTES`]},
 	'BA58-18':{nombre:`Hello`, autor:`Cristina Aguilera`, archivos:[{nombre:`BA58 - 18 - Cristina Aguilera - Hello.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA EXPRESIVA`]},
