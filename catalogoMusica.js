@@ -1129,7 +1129,7 @@ const catalogoMusica = {
 	'BA58-10':{nombre:`Ochosssi`, autor:`Ramiro Musotto`, archivos:[{nombre:`BA58 - 10 - Ramiro Musotto - Ochosssi.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`EUTONIA DE PECHO`]},
 	'BA58-11':{nombre:`Lundu`, autor:`Banda de Pífanos`, archivos:[{nombre:`BA58 - 11 - Banda de PIfanos - Lundu.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA TIERRA AIRE`]},
 	'BA58-12':{nombre:`Hayalname`, autor:`Racines`, archivos:[{nombre:`BA58 - 12 - Racines - Hayalname.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA TIERRA FUEGO`]},
-	'BA58-13':{nombre:`Kais Wa Leila`, autor:`Oliver Shanti`, archivos:[{nombre:`BA58 - 13 - Oliver Shanti - Kais Wa Leila.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA DE FUEGO`]},
+	'BA58-13':{nombre:`Kais Wa Leila`, autor:`Oliver Shanti`, archivos:[{nombre:`BA58 - 13 - Oliver Shanti - Kais Wa Leila.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA DE FUEGO`]},
 	'BA58-14':{nombre:`Kais Wa Leila`, autor:`Peter Gabriel`, archivos:[{nombre:`BA58 - 14 - Peter Gabriel - Kais Wa Leila.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA DE FUEGO`]},
 	'BA58-15':{nombre:`Beyond I `, autor:`Adham Shaikh`, archivos:[{nombre:`BA58 - 15 - Adham Shaikh - Beyond I.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA ENVOLVENTE `]},
 	'BA58-16':{nombre:`Adiós Nonino`, autor:`Bebo Valdés `, archivos:[{nombre:`BA58 - 16 - Bebo ValdEs - AdiOs Nonino.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA EXPRESIVA`]},
