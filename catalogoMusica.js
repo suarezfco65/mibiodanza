@@ -1122,7 +1122,7 @@ const catalogoMusica = {
 	'BA58-03':{nombre:`Cuca Maluca`, autor:`Martinho Da Vila`, archivos:[{nombre:`BA58 - 03 - Martinho Da Vila - Cuca Maluca.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`INTERACCION GRUPAL`]},
 	'BA58-04':{nombre:`Eu é meu amor`, autor:`Quarteto Jobim-Morelenbaum`, archivos:[{nombre:`BA58 - 04 - Quarteto Jobim-Morelenbaum - Eu E meu amor.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`INTERACCION GRUPAL`]},
 	'BA58-05':{nombre:`Haragana`, autor:`Fafa de Belem`, archivos:[{nombre:`BA58 - 05 - Fafa de Belem - Haragana.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`JUEGOS DE SAMBA`]},
-	'BA58-06':{nombre:`Que Pena`, autor:`Gal Costa é Caetano Veloso`, archivos:[{nombre:`BA58 - 06 - Gal Costa E Caetano Veloso - Que Pena.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`JUEGOS DE SAMBA`]},
+	'BA58-06':{nombre:`Que Pena`, autor:`Gal Costa é Caetano Veloso`, archivos:[{nombre:`BA58 - 06 - Gal Costa E Caetano Veloso - Que Pena.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`JUEGOS DE SAMBA`]},
 	'BA58-07':{nombre:`Cria`, autor:`Maria Rita`, archivos:[{nombre:`BA58 - 07 - Maria Rita - Cria.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`JUEGOS DE SAMBA`]},
 	'BA58-08':{nombre:`O Amanhã`, autor:`Simone`, archivos:[{nombre:`BA58 - 08 - Simone - O AmanhA.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`JUEGOS DE SAMBA`]},
 	'BA58-09':{nombre:`Gwyea_Mi`, autor:`Ramiro Musotto`, archivos:[{nombre:`BA58 - 09 - Ramiro Musotto - Gwyea_Mi.m4a`, tipo:`audio/mpeg`}], lineaVivencia: `Creatividad y Vitalidad`, danzas:[`DANZA DE TIERRA`]},
