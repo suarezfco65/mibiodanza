@@ -1,10 +1,12 @@
 const catalogoMusica = {
     "JE":{
         carpeta:"Juegos Expresivos/",
-        "01": "JE01/"
+        "01": "JE01/",
+	"05": "JE05/",
     },
     "JE01-01":{nombre:"Golpe de mestre",autor:"The Entertainer",archivos:[{nombre:"JE01 - 01 - Golpe de mestre - The Entertainer.mpeg",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA DE EXPRESIVIDAD"]},
     "JE01-02":{nombre:"Chuchuwa",autor:"CantaJuego",archivos:[{nombre:"JE01 - 02 - Chuchuwa - CantaJuego.mpeg",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["JUEGO DE CHUCHUWA"]},
+    "JE05-05":{nombre:"Seaside rendez vous",autor:"Queen",archivos:[{nombre:"JE05 - 05 Queen - Seaside rendez vous.mp3",tipo:"audio/mpeg"}],lineaVivencia:"Creatividad",danzas:["JUEGO DE EXPRESIONES"]},
     "SC":{
         carpeta:"Sergio Cruz/",
         "01": "SC01/",
