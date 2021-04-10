@@ -351,6 +351,7 @@ var indice= {
 	'RONDA MELODICA AFECTIVA LIGERA': 2,
 	'JUEGOS EXPRESIVOS': 1,
 	'JUEGO DE CHUCHUWA': 1,
+	'EXPRESIONES NO CONVENCIONALES': 1,
 }
 var arrDocumento = [	['T', `LAS RONDAS`],	
 	['P', `Todas las Rondas de Biodanza son ejercicios de comunicación afectiva. Tienen siempre un doble efecto: la integración del grupo y la estimulación de la afectividad.`],	
@@ -6332,6 +6333,10 @@ var arrDocumento = [	['T', `LAS RONDAS`],
 	['P',	`Sin Descripción`],	
 	['H',	`Música :`],
 	['C',	`JE01-02   Chuchuwa - CantaJuego`],
+	['D',   `EXPRESIONES CONVENCIONALES`],	
+	['P',	`Todos caminan por la sala, y se observan unos con otros, el facilitador indicará una emoción (alegría, tristeza, euforia, lucha, rabia, etc) y todos mostraran su expresión facial y corporal`],	
+	['H',	`Música :`],
+	['C',	`JE05-05   Queen - Seaside rendez vous`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
