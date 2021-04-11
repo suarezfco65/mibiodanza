@@ -6337,6 +6337,7 @@ var arrDocumento = [	['T', `LAS RONDAS`],
 	['P',	`Todos caminan por la sala, y se observan unos con otros, el facilitador indicará una emoción (alegría, tristeza, euforia, lucha, rabia, etc) y todos mostraran su expresión facial y corporal`],	
 	['H',	`Música :`],
 	['C',	`JE05-05   Queen - Seaside rendez vous`],
+	['C',	`IBF05-20   Costa Gal - Festa do interior`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
