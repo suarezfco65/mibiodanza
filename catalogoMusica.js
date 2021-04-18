@@ -1485,7 +1485,7 @@ const catalogoMusica = {
 	'BA74-12':{nombre:`Djole`, autor:`Mamady Keïta & Sewa Kan (Wassolon)`, archivos:[{nombre:`BA74 - 12 - Mamady Kei¨ta Y Sewa Kan (Wassolon) - Djole.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[`SEGMENTARIO PIERNAS`]},
 	'BA74-13':{nombre:`Sambadouro`, autor:`Sergio Mendes`, archivos:[{nombre:`BA74 - 13 - Sergio Mendes - Sambadouro.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[`JUEGOS GRUPALES`]},
 	'BA74-14':{nombre:`Baba`, autor:`Adrián / Martinez Andy Palacio `, archivos:[{nombre:`BA74 - 14 - AdriAn Martinez Andy Palacio - Baba.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[`RONDA TRIBAL`]},
-	'BA74-15':{nombre:`Tsie`, autor:`Serankure Music Arts`, archivos:[{nombre:`BA74 - 15 - Serankure Music Arts - Tsie.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[``]},
+	'BA74-15':{nombre:`Tsie`, autor:`Serankure Music Arts`, archivos:[{nombre:`BA74 - 15 - Serankure Music Arts - Tsie.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[`RONDA TRIBAL`]},
 	'BA74-16':{nombre:`No Pulsar De Gaya`, autor:`Marcus Viana`, archivos:[{nombre:`BA74 - 16 - Marcus Viana - No Pulsar De Gaya.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[``]},
 	'BA74-17':{nombre:`Set your house in order`, autor:`Mychael Danna`, archivos:[{nombre:`BA74 - 17 - Mychael Danna - Set your house in order.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[``]},
 	'BA74-18':{nombre:`Africando`, autor:`African Music`, archivos:[{nombre:`BA74 - 18 - African Music - Africando.mp3`, tipo:`audio/mpeg`}], lineaVivencia:`Creatividad`, danzas:[`PENDULO A 5`]},
