@@ -2263,32 +2263,3 @@ const catalogoMusica = {
     }
 }
 catalogoMusica.inicio();
-/*
-    "IBF":{
-        carpeta:"Internacional Biocentric Foundation/",
-        "01":"IBF01/",
-        "02":"IBF02/",
-        "03":"IBF03/",
-        "04":"IBF04/",
-        "05":"IBF05/",
-        "06":"IBF06/",
-        "07":"IBF07/",
-        "08":"IBF08/",
-        "09":"IBF09/",
-        "10":"IBF10/",
-        "11":"IBF11/",
-        "12":"IBF12/",
-        "13":"IBF13/",
-        "14":"IBF14/",
-        "15":"IBF15/",
-        "16":"IBF16/",
-        "17":"IBF17/",
-        "18":"IBF18/",
-        "19":"IBF19/"
-    },
-    "IBFC":{
-        carpeta:"Internacional Biocentric Foundation/",
-        "20":"IBFC20/",
-        "21":"IBFC21/"
-    },
-*/
