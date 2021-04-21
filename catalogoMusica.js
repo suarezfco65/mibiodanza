@@ -4,10 +4,10 @@ const catalogoMusica = {
         "01": "JE01/",
 	"05": "JE05/",
     },
-    "JE01-01":{nombre:"Golpe de mestre",autor:"The Entertainer",archivos:[{nombre:"JE01 - 01 - Golpe de mestre - The Entertainer.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA DE EXPRESIVIDAD"]},
-    "JE01-02":{nombre:"Chuchuwa",autor:"CantaJuego",archivos:[{nombre:"JE01 - 02 - Chuchuwa - CantaJuego.mpeg",tipo:"audio/mp3"}],lineaVivencia:"",danzas:["JUEGO DE CHUCHUWA"]},
+    "JE01-22":{nombre:"Golpe de mestre",autor:"The Entertainer",archivos:[{nombre:"JE01 - 22 - Golpe de mestre - The Entertainer.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["DANZA DE EXPRESIVIDAD"]},
+    "JE01-21":{nombre:"Chuchuwa",autor:"CantaJuego",archivos:[{nombre:"JE01 - 21 - Chuchuwa - CantaJuego.mp3",tipo:"audio/mp3"}],lineaVivencia:"",danzas:["JUEGO DE CHUCHUWA"]},
     "JE01-17":{nombre:"Calango longo",autor:"Martinho Da Vila",archivos:[{nombre:"JE01 - 17 - Martinho Da Vila - Calango longo.mp3",tipo:"audio/mpeg"}],lineaVivencia:"Vitalidad Sexualidad",danzas:["BAMBOLÉ"]},
-    "JE05-05":{nombre:"Seaside rendez vous",autor:"Queen",archivos:[{nombre:"JE05 - 05 Queen - Seaside rendez vous.mp3",tipo:"audio/mpeg"}],lineaVivencia:"Creatividad",danzas:["JUEGO DE EXPRESIONES"]},
+    "JE05-05":{nombre:"Seaside rendez vous",autor:"Queen",archivos:[{nombre:"JE05 - 05 - Queen - Seaside rendez vous.mp3",tipo:"audio/mpeg"}],lineaVivencia:"Creatividad",danzas:["JUEGO DE EXPRESIONES"]},
     "SC":{
         carpeta:"Sergio Cruz/",
         "01": "SC01/",
