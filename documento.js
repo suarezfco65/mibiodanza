@@ -6476,9 +6476,9 @@ var arrDocumento = [
 	['P',	`Vitalidad`],
 	['H',	'Consigna'],
 	['P',	`Animo. Energía. Alegría. Movimiento. Vitalidad. `],
-	['H',	'Curva']
+	['H',	'Curva'],
 	['P',	`Activación media`],
-	['H',	'Música']
+	['H',	'Música'],
 	['C',	`JE01-05         Cidade vazia (milton banana trío) MEDIA`],
 	['D',   `ANIMALES: CACHORRO.`],
 	['H',   'Objetivo'],
@@ -6489,9 +6489,9 @@ var arrDocumento = [
 	['P',   `Creatividad, afectividad.`],
 	['H',   'Consigna'],
 	['P',   `Jugar, expresarse, oliéndose, afectividad, compañerismo, alegría.`],
-	['H',   'Curva']
+	['H',   'Curva'],
 	['P',   `Activación media.`],
-	['H',   'Música']
+	['H',   'Música'],
 	['C',   `JE01-06       Seamus (Pink Floyd).ALTA`],
         ['D',   `ANIMALES: CABALLO.`],
         ['H',   'Objetivo'],
@@ -6502,9 +6502,9 @@ var arrDocumento = [
         ['P',    `Creatividad. Vitalidad.`],
         ['H',   'Consigna'],
         ['P',   `Libertad. Coordinación. Vitalidad. Potencia. Autorregulación. Impulso.`],
-        ['H',   'Curva']
+        ['H',   'Curva'],
         ['P',   `Activación alta.`],
-        ['H',   'Música']
+        ['H',   'Música'],
         ['C',   `JE01-08       Dark Horse (George Harrison).ALTA`],
         ['D',   `ANIMALES: FAMILIA ECOLÓGICA`],
         ['H',   'Objetivo'],
@@ -6515,9 +6515,9 @@ var arrDocumento = [
         ['P',   `Afectividad y Vitalidad.`],
         ['H',   'Consigna'],
         ['P',   `Familia, comunicación, identificación, alegría, expresión sonora.`],
-        ['H',   'Curva']
+        ['H',   'Curva'],
         ['P',   `Activación media, creciente.`],
-        ['H',   'Música']
+        ['H',   'Música'],
         ['C',   `JE01-10       Bicharada (Os saltimbancos). ALTA`],
 	['T',`BUENOS AIRES - CAMINARES`],	
 	['D',   `CAMINARES RÍTMICOS`],	
