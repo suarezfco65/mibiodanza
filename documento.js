@@ -6493,6 +6493,32 @@ var arrDocumento = [
 	['P',   `Activación media.`],
 	['H',   'Música']
 	['C',   `JE01-06       Seamus (Pink Floyd).ALTA`],
+        ['D',   `ANIMALES: CABALLO.`],
+        ['H',   'Objetivo'],
+        ['P',   `Entrar en contacto con la potencia y la libertad. Tomar las riendas de la vida.`],
+        ['H',   'Descripción'],
+        ['P',   `En grupo. De pie, cabeza levemente erguida, brazos como si estuviesen sosteniendo una rienda, las piernas marcando el trote. Cuidar la autorregulación (cuidar la fuerza del trote). Puede ser sugerido al final, soltar las riendas y convertirse en una sola cosa: caballo y jinete.`],
+        ['H',   'Línea de Vivencia'],
+        ['P',    `Creatividad. Vitalidad.`],
+        ['H',   'Consigna'],
+        ['P',   `Libertad. Coordinación. Vitalidad. Potencia. Autorregulación. Impulso.`],
+        ['H',   'Curva']
+        ['P',   `Activación alta.`],
+        ['H',   'Música']
+        ['C',   `JE01-08       Dark Horse (George Harrison).ALTA`],
+        ['D',   `ANIMALES: FAMILIA ECOLÓGICA`],
+        ['H',   'Objetivo'],
+        ['P',   `Vivenciar sentimiento de pertenecer e identificarse con su especie.`],
+        ['H',   'Descripción'],
+        ['P',   `Todos. Mínimo 16 personas. El facilitador elije animales cuyos sonidos sean fáciles de reproducir (gato, perro, vaca, gallina, burro, etc). La cantidad de animales va a depender del tamaño del grupo, que debe ser dividido, no máximo de 4 subgrupos. Se hace una ronda. El facilitador en secreto dice a cada persona cuál es su animal. Después, a una señal, cada animal emitiendo sonido y movimientos encuentra a su grupo. Iniciar la música e ir bajando de a poco hasta terminar.`],
+        ['H',   'Línea de Vivencia'],
+        ['P',   `Afectividad y Vitalidad.`],
+        ['H',   'Consigna'],
+        ['P',   `Familia, comunicación, identificación, alegría, expresión sonora.`],
+        ['H',   'Curva']
+        ['P',   `Activación media, creciente.`],
+        ['H',   'Música']
+        ['C',   `JE01-10       Bicharada (Os saltimbancos). ALTA`],
 	['T',`BUENOS AIRES - CAMINARES`],	
 	['D',   `CAMINARES RÍTMICOS`],	
 	['P',	`Sin Descripción`],	
