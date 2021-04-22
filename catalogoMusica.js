@@ -2,9 +2,9 @@ const catalogoMusica = {
     "JE":{
         carpeta:"Juegos Expresivos/",
         "01": "JE01/",
-        "01": "JE02/",
-        "01": "JE03/",
-        "01": "JE04/",
+        "02": "JE02/",
+        "03": "JE03/",
+        "04": "JE04/",
 	"05": "JE05/"
     },
     "JE01-01":	{nombre: "Floral Dance",	autor:	"Zamfir",	archivos:[{nombre: "JE01 - 01 - Zamfir - Floral Dance.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Afectividad y Vitalidad",	danzas:[	"EL ÁRBOL Y EL PÁJARO"]},
