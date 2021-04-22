@@ -6455,17 +6455,17 @@ var arrDocumento = [
 	['H',	`Música :`],
 	['C',	`JE01-17   Calango longo - Martinho Da Vila`],
 	['D',	`APROVECHAR LA OPORTUNIDAD`],
-	['H',	'Objetivo']
+	['H',	'Objetivo'],
 	['P',	`Favorecer una acción inmediata y disfrutarla`],
-	['H',	'Descripción']
+	['H',	'Descripción'],
 	['P',	`Mínimo: 10. Realizada en grupo (todos). Se inicia caminar solo y alegre y en  varias direcciones. Ante pausa de música, se toma a otro para danzar a dos. Y luego despidiéndose.`],
-	['H',	'Línea de Vivencia']
+	['H',	'Línea de Vivencia'],
 	['P',	`Vitalidad`],
-	['H',	'Consigna']
+	['H',	'Consigna'],
 	['P',	`Oportunidad, rapidez, dinamismo, energía, disfrutar aquí y ahora`],
-	['H',	'Curva']
+	['H',	'Curva'],
 	['P',	`Activación media, creciente`],
-	['H',	'Música']
+	['H',	'Música'],
 	['C',	`JE01-04         Para tirar coco (Messias Holanda) ALTA`],	
 	['T',`BUENOS AIRES - CAMINARES`],	
 	['D',   `CAMINARES RÍTMICOS`],	
