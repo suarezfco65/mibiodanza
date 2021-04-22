@@ -2,7 +2,10 @@ const catalogoMusica = {
     "JE":{
         carpeta:"Juegos Expresivos/",
         "01": "JE01/",
-	"05": "JE05/",
+        "01": "JE02/",
+        "01": "JE03/",
+        "01": "JE04/",
+	"05": "JE05/"
     },
     "JE01-01":	{nombre: "Floral Dance",	autor:	"Zamfir",	archivos:[{nombre: "JE01 - 01 - Zamfir - Floral Dance.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Afectividad y Vitalidad",	danzas:[	"EL ÁRBOL Y EL PÁJARO"]},
     "JE01-02":	{nombre: "Borboleta",	autor:	"Marisa Monte",	archivos:[{nombre: "JE01 - 02 - Marisa Monte - Borboleta.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Afectividad y Vitalidad",	danzas:[	"FLOR Y MARIPOSA"]},
