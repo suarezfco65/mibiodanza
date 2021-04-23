@@ -2298,6 +2298,7 @@ var arrDocumento = [
 	['C', `IBF13-07     O que será     Simone     4:49`],	
 	['OBS', `     Sexualidad (Auto-erotismo)        `],	
 	['C', `IBF12-09     Simples carinho     Simone     4:10`],	
+	['C', `BA39-07     Ancient Pines - Lorena Mackennit`],	
 	['D', `CARICIAS SENSIBLES DE CABELLOS EN PARES`],	
 	['P', `Si una persona aprende a acariciar sensiblemente los cabellos, aprende el secreto de la caricia y en el futuro puede tocar cualquier parte del cuerpo con sensibilidad.`],	
 	['H', `Descripción :`],	
