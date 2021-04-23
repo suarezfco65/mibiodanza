@@ -108,7 +108,7 @@ const catalogoMusica = {
     "JE05-16":	{nombre: "Jambalaya on the bayou",	autor:	"Pat Boone",	archivos:[{nombre: "JE05 - 16 - Pat Boone - Jambalaya on the bayou.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Trascendencia y Vitalidad",	danzas:[	"SOSTENER LA BURBUJA"]},
     "JE05-17":	{nombre: "South Mt Sinai parade",	autor:	"Instrumental",	archivos:[{nombre: "JE05 - 17 - Instrumental - South Mt Sinai parade.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad",	danzas:[	"TIMIDO Y ATREVIDO"]},
     "JE05-18":	{nombre: "Pandeiro",	autor:	"Carlinho Brown",	archivos:[{nombre: "JE05 - 18 - Carlinho Brown - Pandeiro.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad y Vitalidad",	danzas:[	"TOCAR Y RESPONDER"]},
-    "JE05-19":	{nombre: "Feira de Mangalo",	autor:	"Clara Nunes",	archivos:[{nombre: "JE05 - 19 - Clara Nunes - Feira de Mangalo.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad y Vitalidad",	danzas:[	"TOQUES NO CONVENCIONALES"]},
+    "JE05-19":	{nombre: "Feira de Mangalo",	autor:	"Clara Nunes",	archivos:[{nombre: "JE05 - 19 - Clara Nunes - Feira de Mangalo.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad y Vitalidad",	danzas:[	"TOQUES NO CONVENCIONALES", "ESPEJO EN RONDA"]},
     "JE05-20":	{nombre: "Farofa fA",	autor:	"Orquestra e Coro Carroussell",	archivos:[{nombre: "JE05 - 20 - Orquestra e Coro Carroussell - Farofa fA.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad y Sexualidad",	danzas:[	"TRENCITO"]},
     "SC":{
         carpeta:"Sergio Cruz/",
