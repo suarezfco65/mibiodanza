@@ -49,6 +49,7 @@ const catalogoMusica = {
     "JE02-18":	{nombre: "Trashin' the camp",	autor:	"Phil Collins",	archivos:[{nombre: "JE02 - 18 - Phil Collins - Trashin' the camp.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"",	danzas:[	"CAMINAR ENTRANDO EN CONTACTO CON EL RITMO"]},
     "JE02-19":	{nombre: "If you're happy and you know it",	autor:	"Larry Grace",	archivos:[{nombre: "JE02 - 19 - Larry Grace - If you're happy and you know it.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"",	danzas:[	"CAMINAR AL RITMO DE LAS PALMAS"]},
     "JE02-20":	{nombre: "Mocking bird",	autor:	"Dixieland",	archivos:[{nombre: "JE02 - 20 - Dixieland - Mocking bird.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"",	danzas:[	"CAMINAR NO CONVENCIONAL"]},
+    "JE02-21":	{nombre: "Lindo balAo azul",	autor:	"Guilherme Arantes",	archivos:[{nombre: "JE02 - 21 - Guilherme Arantes - Lindo balAo azul.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Vitalidad y Creatividad",	danzas:[	"JUEGO CON GLOBOS"]},
     "JE03-01":	{nombre: "Essa ciranda quem me deu foi Lia",	autor:	"Popular",	archivos:[{nombre: "JE03 - 01 - Popular - Essa ciranda quem me deu foi Lia.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Vitalidad",	danzas:[	"CIRANDA"]},
     "JE03-02":	{nombre: "Abertura do circo",	autor:	"Instrumental",	archivos:[{nombre: "JE03 - 02 - Instrumental - Abertura do circo.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad",	danzas:[	"CIRCO"]},
     "JE03-03":	{nombre: "Alouette",	autor:	"Lary Groce",	archivos:[{nombre: "JE03 - 03 - Lary Groce - Alouette.mp3",	tipo:"audio/mpeg"}],lineaVivencia:	"Creatividad",	danzas:[	"CIRCO"]},
