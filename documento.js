@@ -6774,6 +6774,7 @@ var arrDocumento = [
         ['P',   `Activación media, creciente. `],
         ['H',   'Música'],
         ['C',   `JE04-06       Boquita de Cereza`],
+        ['C',   `JE05-19       Feira de Mangaio`],
         ['D',   `ESPERAR AL OTRO EN LA ESTACIÓN`],
         ['H',   'Objetivo'],
         ['P',   `Expresar sentimientos de alegría, deseos, amor, amistad. Elaborar la espera.`],
