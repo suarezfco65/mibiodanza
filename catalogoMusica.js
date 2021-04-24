@@ -615,7 +615,7 @@ const catalogoMusica = {
 	'BA08-13':{nombre:`La Musgaña`, autor:`La Musgaña`, archivos:[{nombre:`BA08 - 13 - La MusgaNIa - La MusgaNIa.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad y Creatividad`, danzas:[`DANZA CIRC EN PAR`]},
 	'BA08-14':{nombre:`Betty Blue`, autor:`Betty Blue`, archivos:[{nombre:`BA08 - 14 - Betty Blue - Betty Blue.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad y Creatividad`, danzas:[`CAMINAR SIGILOSO`]},
 	'BA08-15':{nombre:`Have a cigar`, autor:`Pink Floyd`, archivos:[{nombre:`BA08 - 15 - Pink Floyd - Have a cigar.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Vitalidad y Creatividad`, danzas:[`TIGRE`]},
-	'BA09-01':{nombre:`Whisper in a hur.`, autor:`Heart Beat`, archivos:[{nombre:`BA09 - 01 - Heart Beat - Whisper in a hur.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`GIRO Y ENTREGA`]},
+	'BA09-01':{nombre:`Whisper in a hurricane`, autor:`Heart Beat`, archivos:[{nombre:`BA09 - 01 - Heart Beat - Whisper in a hur.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`GIRO Y ENTREGA`,`DANZA SUFI`]},
 	'BA09-02':{nombre:`Moxica and the ...`, autor:`Vangelis`, archivos:[{nombre:`BA09 - 02 - Vangelis - Moxica and the.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`GIRO SUFI`]},
 	'BA09-03':{nombre:`Maybe god is tryin...`, autor:`El Color Purpura`, archivos:[{nombre:`BA09 - 03 - El Color Purpura - Maybe god is tryin.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`AUTORREGULACIÓN`, `TRANCE RITMICO`]},
 	'BA09-04':{nombre:`Monastery of ...`, autor:`Vangelis`, archivos:[{nombre:`BA09 - 04 - Vangelis - Monastery of.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`ENTREGA`, `SENSIBILIDAD`]},
