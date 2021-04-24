@@ -405,6 +405,7 @@ var indice= {
 	'BAMBOLÉ': 1,
 	'BUENOS AIRES - CAMINARES': 1,
 	'CAMINARES RÍTMICOS':1,
+	'CAMINAR ENAMORADO DE LA VIDA':1,	
 }
 var arrDocumento = [
 	['T', `LAS RONDAS`],	
@@ -7062,6 +7063,11 @@ var arrDocumento = [
 	['H',	`Música :`],
 	['C',	`BA41-01   Emilio Santiago - Beija Flor`],
 	['C',	`BA48-01   MarIa de Barros - Riberozinha - Wuelele`],
+	['D',   `CAMINAR ENAMORADO DE LA VIDA`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Creatividad y Vitalidad`],	
+	['H',	`Música :`],
+	['C',	`BA13-08   Caminando por la calle yo te vi - Gipsy King`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
