@@ -1274,7 +1274,7 @@ const catalogoMusica = {
 	'BA49-01':{nombre:`Red song`, autor:`J Pook`, archivos:[{nombre:`BA49 - 01 - J Pook - Red song.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`DANZA DE LA LUNA`]},
 	'BA49-02':{nombre:`Necre et V`, autor:`Laurent Dury`, archivos:[{nombre:`BA49 - 02 - Laurent Dury - Necre et V.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`DANZA AL MISTERIO`]},
 	'BA49-03':{nombre:`Sol`, autor:`Aurio Corra`, archivos:[{nombre:`BA49 - 03 - Aurio Corra - Sol.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`DANZA DE VISHNU`]},
-	'BA49-04':{nombre:`Claro de luna`, autor:`Noa`, archivos:[{nombre:`BA49 - 04 - Noa - Claro de luna.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`FLORECER SEMILLA`]},
+	'BA49-04':{nombre:`Claro de luna`, autor:`Noa`, archivos:[{nombre:`BA49 - 04 - Noa - Claro de luna.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`FLORECER SEMILLA`, `BASE SEGURA`]},
 	'BA49-05':{nombre:`Instrumental`, autor:`Bohren y der Club of Gore`, archivos:[{nombre:`BA49 - 05 - Bohren y der Club of Gore - Instrumental.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`ENTREGA EN EL PISO`]},
 	'BA49-06':{nombre:`Lorena Mackennit`, autor:`Lorena Mackennit`, archivos:[{nombre:`BA49 - 06 - Lorena Mackennit - Lorena Mackennit.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`CURACION CHAMANICA`]},
 	'BA49-07':{nombre:`Pearl Harbour`, autor:`H. Zimmer`, archivos:[{nombre:`BA49 - 07 - H Zimmer - Pearl Harbour.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`ENCUENTROS`]},
