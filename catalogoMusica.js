@@ -958,7 +958,7 @@ const catalogoMusica = {
 	'BA29-08':{nombre:`Metello`, autor:`Main theme`, archivos:[{nombre:`BA29 - 08 - Main theme - Metello.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`ENCUENTROS`]},
 	'BA29-09':{nombre:`Heaven is a Wild Fly`, autor:`P. Dam...`, archivos:[{nombre:`BA29 - 09 - P Dam - Heaven is a Wild Fly.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`FUSION COSMICA`]},
 	'BA29-10':{nombre:`Dreams Ederlezi`, autor:`Dreams Ederlezi `, archivos:[{nombre:`BA29 - 10 - Dreams Ederlezi - Dreams Ederlezi.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`ENCUENTRO CON LO SAGRADO`]},
-	'BA29-11':{nombre:`Ave Maria`, autor:`Aaron Neville`, archivos:[{nombre:`BA29 - 11 - Aaron Neville - Ave Maria.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`BAUTISMO DE LUZ`]},
+	'BA29-11':{nombre:`Ave Maria`, autor:`Aaron Neville`, archivos:[{nombre:`BA29 - 11 - Aaron Neville - Ave Maria.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`BAUTISMO DE LUZ`, `CEREMONIA DE SACRALIDAD`]},
 	'BA29-12':{nombre:`Preludio `, autor:`Chopin`, archivos:[{nombre:`BA29 - 12 - Chopin - Preludio.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`INTIMIDAD`, `P.G. DARSE`, `P.G. INTIMIDAD`]},
 	'BA29-13':{nombre:`The Untouchables`, autor:`Main theme`, archivos:[{nombre:`BA29 - 13 - Main theme - The Untouchables.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`DAR Y RECIBIR`, `P.G. DAR - RECIBIR`]},
 	'BA29-14':{nombre:`Adagio`, autor:`Albinoni`, archivos:[{nombre:`BA29 - 14 - Albinoni - Adagio.mp3`, tipo:`audio/mpeg`}], lineaVivencia: `Trascendencia`, danzas:[`ENCUENTROS ACTIVANDO`]},
