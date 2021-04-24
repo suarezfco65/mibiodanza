@@ -5648,6 +5648,7 @@ var arrDocumento = [
 	['P',	`Verónica Toro y Raúl Terrén.`],
 	['H',	`Música :`],
 	['C',	`BA61-13      Título: A hundred thousand angels (100.000); Artista: Bliss ; Duración: 6,05; Colección: Bs As 61-13`],
+	['C',	`BA31-02      Songbird - Eva Cassidy`],
 	['D',	`LIBERTAD CON CONTENCIÓN`],
 	['H',	`Resumen`],
 	['P',	`Una persona danza con los ojos cerrados sostenida por otra.`],
