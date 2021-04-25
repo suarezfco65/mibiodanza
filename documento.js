@@ -3210,6 +3210,7 @@ var arrDocumento = [
 	['P', `La PG se realiza una vez y luego la danza comienza con, como referencia, la elevación, la conexión hacia arriba. En la danza, a fin de establecer una pulsación, hay momentos de retorno a la posición de identidad alternando con variaciones que sugieren la ascensión.`],	
 	['H', `Música :`],	
 	['C', `IBF18-01 Shine On You Crazy Diamond, P1 [Part 1]   Pink Floyd     3:54`],	
+	['C', `SC09-15  Heaven and Hell - Vangelis`],	
 	['D', `INTIMIDAD`],	
 	['P', `Las manos se acercan al pecho lentamente, como para proteger el mundo íntimo; la cabeza se inclina con devoción. Este gesto genera una vivencia de intimidad consigo mismo, como si uno se disolviera en su interior. Pies unidos. Los ojos se cierran cuando se intensifica la vivencia.`],	
 	['P', `La posición de intimidad genera danzas de recogimiento e interioridad que tienden a un estado de intasis.`],	
