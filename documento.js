@@ -6487,7 +6487,7 @@ var arrDocumento = [
         ['H',   'Curva'],
         ['P',   `Activacion media.`],
         ['H',   'Música'],
-        ['C',   `JE01-17       Bambolé (Martinho da Vila) ALTA`],
+        ['C',   `JE01-01     Floral Dance - Zamfir`],
         ['D',   `ULA ULA (BAMBOLÉ)`],
         ['H',   'Objetivo'],
         ['P',   `Facilitar a través de lo lúdico la liberación de movimientos pélvicos`],
