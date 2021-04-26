@@ -7222,6 +7222,11 @@ var arrDocumento = [
 	['P',	`Creatividad y Vitalidad`],	
 	['H',	`Música :`],
 	['C',	`BA13-08   Caminando por la calle yo te vi - Gipsy King`],
+	['D',   `CAMINAR ALEGRE`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Vitalidad y Creatividad`],	
+	['H',	`Música :`],
+	['C',	`BA08-01 Meia Lua Inteira - Caetano Veloso`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
