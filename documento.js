@@ -6464,15 +6464,7 @@ var arrDocumento = [
 	['I',	`  Sinergismo, coordinación y ritmo`],	
 	['I',	`  Relaciones Interactivas`],	
 	['I',	`  Aumento de la comunicación`],	
-	['D',   `JUEGO DE CHUCHUWA`],	
-	['P',	`Sin Descripción`],	
-	['H',	`Música :`],
-	['C',	`JE01-21   Chuchuwa - CantaJuego`],
-	['D',   `JUEGO DE EXPRESIONES`],	
-	['P',	`Todos caminan por la sala, y se observan unos con otros, el facilitador indicará una emoción (alegría, tristeza, euforia, lucha, rabia, etc) y todos mostraran su expresión facial y corporal`],	
-	['H',	`Música :`],
-	['C',	`JE05-05   Queen - Seaside rendez vous`],
-	['C',	`IBF05-20   Costa Gal - Festa do interior`],
+
 	
 	['D',   `EL ÁRBOL Y EL PÁJARO`],	
         ['H',   'Línea de Vivencia'],
@@ -6722,7 +6714,8 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `IBF07-15       Ensaio Geral (Os ritmistas brasileiros)MEDIA DISMINUYENDO`],
-        ['D',   `JUEGO CON GLOBOS`],
+
+	['D',   `JUEGO CON GLOBOS`],
         ['H',   'Objetivo'],
         ['P',   `Estimular el juego en grupo`],
         ['H',   'Descripción'],
@@ -6735,7 +6728,8 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `JE02-21       Guilherme Arantes - Lindo balAo azul`],
-        ['D',   `ABANICO CHINO`],
+
+	['D',   `ABANICO CHINO`],
         ['H',   'Objetivo'],
         ['P',   `Revelarse al otro progresivamente`],
         ['H',   'Descripción'],
@@ -6749,6 +6743,7 @@ var arrDocumento = [
         ['H',   'Música'],
         ['C',   `JE02-05       Banana Boat (Dinho Nascimento)`],
         ['C',   `JE02-06       Urubatan (Pixinguinha) ALTA`],
+	
         ['D',   `JUEGOS INFANTILES`],
         ['H',   'Objetivo'],
         ['P',   `Favorecer integración grupal`],
@@ -6763,6 +6758,7 @@ var arrDocumento = [
         ['H',   'Música'],
         ['C',   `JE02-07       É brincadeira (G Azevedo)`],
         ['C',   `JE02-08       Pula, brinca, agita! (Sergio Malandro) ALTA`],
+	
         ['D',   `CAMINAR CON GLOBOS.`],
         ['H',   'Objetivo'],
         ['P',   `Estimular la integración lúdica con otro`],
@@ -6776,6 +6772,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE02-15       Dona Felicidade (Trem da alegria) ALTA`],
+	
         ['D',   `CAMINANDO CON PARADA`],
         ['H',   'Objetivo'],
         ['P',   `Promover la desestruración, la integración del grupo y el contacto corporal`],
@@ -6789,7 +6786,8 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE02-16       Filá (Chico César)ALTA`],
-        ['D',   `CAMINAR ENTRANDO EN CONTACTO CON EL RITMO`],
+
+	['D',   `CAMINAR ENTRANDO EN CONTACTO CON EL RITMO`],
         ['H',   'Objetivo'],
         ['P',   `Sintonizarse con el ritmo, consigo y con otro.`],
         ['H',   'Descripción'],
@@ -6802,6 +6800,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE02-18       Trashin´the camp (Phill Collins) ALTA`],
+	
         ['D',   `SALUDOS NO CONVENCIONALES.`],
         ['H',   'Objetivo'],
         ['P',   `Favorecer el contacto personal`],
@@ -6814,6 +6813,7 @@ var arrDocumento = [
         ['H',   'Curva'],
         ['P',   `Activacion media.`],
         ['H',   'Música'],
+	
         ['C',   `JE03-10       Nem se despediu de mim (Dominghinhos)ALTA`],
         ['D',   `DANZA DE LAS MANOS`],
         ['H',   'Objetivo'],
@@ -6827,6 +6827,7 @@ var arrDocumento = [
         ['H',   'Curva'],
         ['P',   `Activacion media.`],
         ['H',   'Música'],
+	
         ['C',   `JE03-11       Jau dales adjes (Grupo encanto cigano) ALTA`],
         ['D',   `ESCRIBIR UNA HISTORIA`],
         ['H',   'Objetivo'],
@@ -6841,6 +6842,7 @@ var arrDocumento = [
         ['P',   `Activacion baja`],
         ['H',   'Música'],
         ['C',   `SM00-00       Sin musica. ALTA`],
+	
         ['D',   `ESPEJO CON MOVIMIENTOS DEL CUERPO`],
         ['H',   'Objetivo'],
         ['P',   `Estimular la percepción corporal`],
@@ -6854,6 +6856,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE04-02       A la Molina no voy más (Tarancón)`],
+	
         ['D',   `ESPEJO CON MOVIMIENTOS DE LA CARA`],
         ['H',   'Objetivo'],
         ['P',   `Proporcionar la percepción corporal y la libertad de tensión facial. `],
@@ -6867,7 +6870,8 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE04-03       Ruido y ruiditos.`],
-        ['D',   `ESPEJOS EN RONDA`],
+	
+	['D',   `ESPEJOS EN RONDA`],
         ['H',   'Objetivo'],
         ['P',   `abordar la desinhibición (agente activo) e incorporar un nuevo repertorio gestual (agente pasivo)`],
         ['H',   'Descripción'],
@@ -6881,7 +6885,8 @@ var arrDocumento = [
         ['H',   'Música'],
         ['C',   `JE04-06       Boquita de Cereza`],
         ['C',   `JE05-19       Feira de Mangaio`],
-        ['D',   `ESPERAR AL OTRO EN LA ESTACIÓN`],
+
+	['D',   `ESPERAR AL OTRO EN LA ESTACIÓN`],
         ['H',   'Objetivo'],
         ['P',   `Expresar sentimientos de alegría, deseos, amor, amistad. Elaborar la espera.`],
         ['H',   'Descripción'],
@@ -6894,6 +6899,7 @@ var arrDocumento = [
         ['P',   `Activación media, creciente. `],
         ['H',   'Música'],
         ['C',   `JE04-07       Tiger Rag (Dixieland)`],
+	
         ['D',   `EXPLORACIÓN ESPACIAL`],
         ['H',   'Objetivo'],
         ['P',   `Estimular a descubrir y ampliar el propio espacio vital`],
@@ -6907,6 +6913,7 @@ var arrDocumento = [
         ['P',   `Activacion alta `],
         ['H',   'Música'],
         ['C',   `JE04-08       La Bastringue (Tipica do Canadá) ALTA`],
+	
         ['D',   `FOTOGRAFIA`],
         ['H',   'Objetivo'],
         ['P',   `Despertar nuevas formas de mirar. Aprender del instante de los detalles que nos llegan en pequeños flashes. Mirar sin expectativas.`],
@@ -6920,6 +6927,7 @@ var arrDocumento = [
         ['P',   `Activación media, decreciente`],
         ['H',   'Música'],
         ['C',   `BA73-12       Souvenir de Chine (Jean Michel Jarre) MEDIA`],
+	
 	['T',`JUEGOS EXPRESIVOS - PARTE 2`],	
         ['D',   `GESTOS DE ASUNTOS POLÉMICOS.`],
         ['H',   'Objetivo'],
@@ -6934,7 +6942,8 @@ var arrDocumento = [
         ['P',   `Activacion alta `],
         ['H',   'Música'],
         ['C',   `SM00-00       Sin musica. ALTA`],
-        ['D',   `MIRADA INDISCRETA`],
+
+	['D',   `MIRADA INDISCRETA`],
         ['H',   'Objetivo'],
         ['P',   `Abrirse para mirar al otro, sin censura`],
         ['H',   'Descripción'],
@@ -6947,7 +6956,8 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE04-10       Vamos funir (Elba Ramalho ALTA`],
-        ['D',   `DIRECTOR DE ORQUESTA`],
+
+	['D',   `DIRECTOR DE ORQUESTA`],
         ['H',   'Objetivo'],
         ['P',   `Vivenciar la posibilidad de liderar y de ser liderado. Estimular la creatividad existencial.`],
         ['H',   'Descripción'],
@@ -6960,7 +6970,8 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE04-13       Sinfonía N* 5. Allegro con brío. (Beethoven) ALTA`],
-        ['D',   `OJOS DE AGUILA`],
+
+	['D',   `OJOS DE AGUILA`],
         ['H',   'Objetivo'],
         ['P',   `Ejercitar la percepción sistémica y favorecer la liberación de la tensión ocular`],
         ['H',   'Descripción'],
@@ -6974,6 +6985,7 @@ var arrDocumento = [
         ['H',   'Música'],
         ['C',   `JE04-15       Jardim de fantasia (Paulinho Pedra Azul)`],
         ['C',   `JE04-16       The lonely shepherd (Nana Mouskori) MEDIA`],
+	
         ['D',   `PALMAS`],
         ['H',   'Objetivo'],
         ['P',   `Favorecer la integración y la descontracción grupal`],
@@ -6987,6 +6999,7 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `JE04-17       Tired of midnight blue (G. Harrison) ALTA`],
+	
         ['D',   `PASAR LA PELOTA`],
         ['H',   'Objetivo'],
         ['P',   `Disfrutar lo que llega a las manos, entregar su creación y estar pronto a recibir.`],
@@ -7000,6 +7013,7 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `JE04-18       The more I see you (Chris Montez) ALTA`],
+	
         ['D',   `PASARELA`],
         ['H',   'Objetivo'],
         ['P',   `Mostrarse al grupo y recibir elogios`],
@@ -7013,6 +7027,7 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `JE04-19       Paranpanpan (Ney Matogrosso) ALTA`],
+	
         ['D',   `EL PUENTE`],
         ['H',   'Objetivo'],
         ['P',   `Expresarse de forma creativa, buscando la cooperación`],
@@ -7026,6 +7041,7 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `JE04-20       Colonel Hathi´s march (Sherman/Sherman) ALTA`],
+	
         ['D',   `SEGUIR Y SALTAR`],
         ['H',   'Objetivo'],
         ['P',   `Establecer una relación de confianza y cuidado`],
@@ -7039,6 +7055,7 @@ var arrDocumento = [
         ['P',   `Activación alta.`],
         ['H',   'Música'],
         ['C',   `JE05-01       Ping pong sous les arbres (Richard Clayderman) ALTA`],
+	
         ['D',   `CUATRO MOVIMIENTOS`],
         ['H',   'Objetivo'],
         ['P',   `Trabajar a ritmo, coordinación, atención a sincronía.`],
@@ -7052,6 +7069,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE05-03       A novidade (Gilberto Gil) ALTA`],
+	
         ['D',   `LA ISLA, REFUGIO`],
         ['H',   'Objetivo'],
         ['P',   `Estimular la solidaridad en los momentos difíciles. Propiciar un contacto mayor entre las personas, ejercitar la preparación`],
@@ -7065,7 +7083,19 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE05-04       South rampart street parade (The big band sound) ALTA`],
-        ['D',   `RONDA CONCENTRICA DE GESTOS FACIALES`],
+	
+
+	['D',   `JUEGO DE CHUCHUWA`],	
+	['P',	`Sin Descripción`],	
+	['H',	`Música :`],
+	['C',	`JE01-21   Chuchuwa - CantaJuego`],
+	['D',   `JUEGO DE EXPRESIONES`],	
+	['P',	`Todos caminan por la sala, y se observan unos con otros, el facilitador indicará una emoción (alegría, tristeza, euforia, lucha, rabia, etc) y todos mostraran su expresión facial y corporal`],	
+	['H',	`Música :`],
+	['C',	`JE05-05   Queen - Seaside rendez vous`],
+	['C',	`IBF05-20   Costa Gal - Festa do interior`],
+
+	['D',   `RONDA CONCENTRICA DE GESTOS FACIALES`],
         ['H',   'Objetivo'],
         ['P',   `Permitir la liberación de expresiones no usuales y al desbloquedo de la tensión fácil.`],
         ['H',   'Descripción'],
@@ -7078,6 +7108,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE05-05       Seaside rendezvous (Queen) ALTA`],
+	
         ['D',   `RONDA DE TRANSFORMACIÓN CON ANIMALES`],
         ['H',   'Objetivo'],
         ['P',   `Ejercitar el cambio y la expresión verbal`],
@@ -7091,6 +7122,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE05-09       Orquesta dos bichos (Trem da alegria)ALTA`],
+	
         ['D',   `SEGUIR AL JEFE`],
         ['H',   'Objetivo'],
         ['P',   `Trabajar el liderazgo (liderar y ser liderado)`],
@@ -7105,6 +7137,7 @@ var arrDocumento = [
         ['H',   'Música'],
         ['C',   `JE05-14       Tá na hora (Raul Seixas)`],
         ['C',   `JE05-15       The business of love (Trilha: Mascara) ALTA`],
+	
         ['D',   `SONIDOS NO CONVENCIONALES`],
         ['H',   'Objetivo'],
         ['P',   `Permitir la manifestación de diversas expresiones`],
@@ -7118,6 +7151,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `SM00-00       Sin musica. ALTA`],
+	
         ['D',   `TOCAR Y RESPONDER`],
         ['H',   'Objetivo'],
         ['P',   `Estimular la capacidad de responder y desbloquear el movimiento.`],
@@ -7131,6 +7165,7 @@ var arrDocumento = [
         ['P',   `Activacion media.`],
         ['H',   'Música'],
         ['C',   `JE05-18       Pandeiro (Tocar y responder) Carlinhos Brown. ALTA`],
+	
         ['D',   `TOQUES NO CONVENCIONALES`],
         ['H',   'Objetivo'],
         ['P',   `Favorecer la desinhibición y el permiso para ser tocado en diversas partes del cuerpo en forma lúdica.`],
@@ -7144,6 +7179,7 @@ var arrDocumento = [
         ['P',   `activación media, creciente`],
         ['H',   'Música'],
         ['C',   `JE05-19       Feira de Mangaio (Clara Nunes) ALTA`],
+	
         ['D',   `TRENCITO`],
         ['H',   'Objetivo'],
         ['P',   `Elaborar el liderazgo, la desinhibición frente a un grupo y la coordinación grupal. Ampliar el repertorio gestual. Cuidar y ser cuidado.`],
@@ -7157,6 +7193,7 @@ var arrDocumento = [
         ['P',   `Activación media`],
         ['H',   'Música'],
         ['C',   `JE05-20       1.- Circo Marimbondo (Milton Nascimento). 2.-Farofa-fá (Orquestra e coro Carroussell)3.- , O trenzinho (cinc in pon o pon) 4.- Turma do balao mágico)`],
+	
 	['T',`BUENOS AIRES - CAMINARES`],	
 	['D',   `CAMINARES RÍTMICOS`],	
 	['P',	`Sin Descripción`],	
