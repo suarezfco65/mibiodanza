@@ -1081,7 +1081,9 @@ var arrDocumento = [
 	['C', `IBF08-10     Unforgettable     Franklin, Aretha     3:42`],	
 	['C', `IBF08-09     Unforgettable (duet with Nat King Cole)     Cole, Natalie     3:29`],	
 	['C', `IBF14-17     What A Diff'rence A Day Made     Franklin, Aretha     3:31`],	
-	['C', `IBF06-09 Who's Sorry Now     The New Orleans Banjo Band     4:22`],	
+	['C', `IBF06-09     Who's Sorry Now     The New Orleans Banjo Band     4:22`],	
+	['C', `BA08-01      Meia Lua Inteira - Caetano Veloso`],	
+	['OBS', `     Sugerida por el elnco de Buenos Aires - Caminar con Alegria        `],	
 	['D', `DANZA EN FEEDBACK EN PARES`],	
 	['H', `Descripción :`],	
 	['P', `Dos participantes inician la danza en la posición convencional, o sea uno de los dos toma con la mano derecha la izquierda del compañero, y apoya la propia mano izquierda alrededor de la cintura de este último; al contrario, el compañero apoya la otra mano en la espalda del primero.`],	
@@ -6631,7 +6633,7 @@ var arrDocumento = [
         ['P',   `Trabajar la identidad grupal, fortaleciendo el guerrero interior`],
         ['H',   'Curva'],
         ['P',   `Activacion media.`],
-        ['H',   'Música'],
+        ['H',   'Música: '],
         ['C',   `JE01-15       The final countdown (Europe)`],
 
 	['D',   `ULA ULA (BAMBOLÉ)`],
@@ -6645,7 +6647,7 @@ var arrDocumento = [
         ['P',   `Ula ula, juego de niños, alegría, movimiento, continuidad, ritmo`],
         ['H',   'Curva'],
         ['P',   `Activacion media.`],
-        ['H',   'Música'],
+        ['H',   'Música: '],
         ['C',   `JE01-17       Bambolé (Martinho da Vila) ALTA`],
 	
         ['D',   `UN DOS TRES CUATRO`],
@@ -6659,7 +6661,7 @@ var arrDocumento = [
         ['P',   `Alegría, comunicación, presencia, disfrutar, grupo, pertenecer.`],
         ['H',   'Curva'],
         ['P',   `Activacion media.`],
-        ['H',   'Música'],
+        ['H',   'Música: '],
         ['C',   `JE02-08       1.-  Pula, brinca, agita! (S. Malandro)`],
         ['C',   `JE02-17       2.-  Pipoca (Areketu) ALTA`],
 
