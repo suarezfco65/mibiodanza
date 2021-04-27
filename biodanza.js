@@ -1,4 +1,5 @@
 const procesaSesion = {
+    carpeta : 'https://suarezfco65.github.io/amobiodanza/',
     tiempoTotal: 0,
     audio: function (codigo)    {
         return catalogoMusica[codigo].audio
@@ -8,7 +9,7 @@ const procesaSesion = {
         const oaudio = document.createElement("audio");
         for (var i=0; i<catalogoMusica[codigo].archivos.length; i++)    {
             const osource = document.createElement("source");
-            osource.setAttribute('src',omusica.archivos[i].archivo);
+            osource.setAttribute('src',procesaSesion.carpeta+omusica.archivos[i].archivo);
             osource.setAttribute('type',omusica.archivos[i].tipo);
             oaudio.appendChild(osource);
         }
