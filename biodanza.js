@@ -9,7 +9,7 @@ const procesaSesion = {
         const oaudio = document.createElement("audio");
         for (var i=0; i<catalogoMusica[codigo].archivos.length; i++)    {
             const osource = document.createElement("source");
-            osource.setAttribute('src',procesaSesion.carpeta+omusica.archivos[i].archivo);
+            osource.setAttribute('src',omusica.archivos[i].archivo);
             osource.setAttribute('type',omusica.archivos[i].tipo);
             oaudio.appendChild(osource);
         }
@@ -287,7 +287,7 @@ const procesaSesion = {
         strMensaje += 'Duración Estimada: '+(horas>0 ? horas+":" : "")+(minutos < 10 ? ("0"+ minutos) : minutos)+":"+(segundos < 10 ? ("0"+segundos) : segundos)+'\n\n ';
         for (var i=0;i<this.danzas.length;i++)    {
             const musica = catalogoMusica[this.danzas[i].musica];
-            strMensaje += '_'+(i+1)+'. '+this.danzas[i].nombre+'_\n'+
+            strMensaje += '_'+(i+1)+'. '+this.danzas[i].nombre+' ('+this.danzas[i].presenta+')_\n'+
             '*'+this.danzas[i].musica+'*: '+musica.autor+'\n'+
             musica.nombre+'\n\n';
         }
@@ -307,6 +307,26 @@ function bd_toggleCollapse(obj, id)  {
     const attr = oId.getAttribute('class');
     oId.setAttribute('class', (attr == "collapse") ? "collapse in" : "collapse")
 }
+
+function drag_start(event) {
+    var style = window.getComputedStyle(event.target, null);
+    event.dataTransfer.setData("text/plain",
+    (parseInt(style.getPropertyValue("left"),10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"),10) - event.clientY));
+} 
+function drag_over(event) { 
+    event.preventDefault(); 
+    return false; 
+} 
+function drop(event) { 
+    var offset = event.dataTransfer.getData("text/plain").split(',');
+    var dm = document.getElementById('bd-id-audios');
+    dm.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
+    dm.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
+    dm.style.bottom = 'auto';
+    event.preventDefault();
+    return false;
+} 
+
 class sesionBiodanza extends HTMLElement {
     constructor() {
         super();
@@ -406,7 +426,7 @@ class sesionBiodanza extends HTMLElement {
             </thead>
             <tbody id="bd-id-danzas">
             </tbody>
-            <tfoot class="no-imprimir">
+            <tfoot>
                 <tr>
                     <td colspan="5" id="bd-id-chart" style="height:700px">
                     </td>
@@ -415,7 +435,7 @@ class sesionBiodanza extends HTMLElement {
             </table>
             `,
             audios:`
-            <div id="bd-id-audios" style="position:fixed; bottom:10px; right: 5px;"></div>
+            <div id="bd-id-audios" draggable="true" style="position:fixed; bottom:10px; right: 5px;"></div>
             `
         }
         procesaSesion.sesion = {tema:this.getAttribute('tema'), autor:this.getAttribute('autor')};
@@ -431,7 +451,7 @@ class sesionBiodanza extends HTMLElement {
             otbody.innerHTML = otbody.innerHTML+`
             <tr id="bd-id-danza-${contador}">
                 <td valign="top">${contador}</td>
-                <td><span>${danza.nombre}</span>&nbsp;<span style="float:right" class="bg-primary">${danza.presenta}</span><br>
+                <td><span>${danza.nombre}</span>&nbsp;<div style="float:right; text-align:right"><span class="bg-primary">${danza.presenta}</span><br><small>${danza.linea}</small><br><small>${danza.clasificacion}</small><br><small class="text-info">${danza.objetivo}</small></div><br>
                     <i>${danza.musica}</i>;
                     <span class="text-success">${musica.autor}</span><br>
                     <span class="text-danger">${musica.nombre}</span>
@@ -497,6 +517,10 @@ class sesionBiodanza extends HTMLElement {
             return contador;
         }
         for (const key in html)    this.innerHTML += html[key];
+        var dm = document.getElementById('bd-id-audios'); 
+        dm.addEventListener('dragstart',drag_start,false); 
+        document.body.addEventListener('dragover',drag_over,false); 
+        document.body.addEventListener('drop',drop,false);        
     }
     attributeChangedCallback(nameAtr, oldValue, newValue)    {
         document.getElementById("bd-id-"+nameAtr).innerHTML = newValue;
@@ -507,7 +531,7 @@ class sesionBiodanza extends HTMLElement {
 }
 class danzaBiodanza extends HTMLElement {
     static get observedAttributes() {
-        return ["nombre", "musica", "evolucion", "presenta"];
+        return ["nombre", "musica", "evolucion", "presenta", "linea-vivencia", "clasificacion", "objetivo"];
     }
     constructor()   {
         super();
@@ -521,6 +545,9 @@ class danzaBiodanza extends HTMLElement {
             musica :    this.getAttribute('musica'),
             evolucion : this.getAttribute('evolucion'),
             presenta :  this.getAttribute('presenta'),
+            linea :  this.getAttribute('linea-vivencia'),
+            clasificacion :  this.getAttribute('clasificacion'),
+            objetivo :  this.getAttribute('objetivo'),
             consigna :  consigna
         })
     }
