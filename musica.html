@@ -16,7 +16,7 @@
     </style>
     <script>
         function buscarCancion(form)    {
-            const musica = catalogoMusica[form.elements.namedItem("codigo").value]; 
+            const musica = catalogoMusica[form.elements.namedItem("codigo").value.toUpperCase()]; 
             if (musica) {
             obj = document.getElementById("audio");
                 var sources= "";
