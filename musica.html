@@ -29,6 +29,11 @@
                 document.getElementById('autor').innerHTML=musica.autor;
                 document.getElementById('lineaVivencia').innerHTML=musica.lineaVivencia;
                 document.getElementById('danzas').innerHTML=musica.danzas.join();
+            } else {
+                document.getElementById('nombre').innerHTML='';
+                document.getElementById('autor').innerHTML='Código no encontrado';
+                document.getElementById('lineaVivencia').innerHTML='';
+                document.getElementById('danzas').innerHTML='';
             }
         }
     </script>
@@ -70,7 +75,7 @@
             -webkit-animation: Rofa 10s infinite ease-in-out;
             animation: Rofa 10s infinite ease-in-out;
             bottom: 0;
-        }
+        } 
         .lb {
             position: fixed;
             width: 100%;
