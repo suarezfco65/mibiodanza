@@ -28,7 +28,7 @@
                 document.getElementById('nombre').innerHTML=musica.nombre;
                 document.getElementById('autor').innerHTML=musica.autor;
                 document.getElementById('lineaVivencia').innerHTML=musica.lineaVivencia;
-                document.getElementById('danzas').innerHTML=musica.danzas.join();
+                document.getElementById('danzas').innerHTML='<li>'+musica.danzas.join('</li><li>')+'</li>';
             } else {
                 document.getElementById('nombre').innerHTML='';
                 document.getElementById('autor').innerHTML='Código no encontrado';
@@ -87,9 +87,16 @@
 </head>
 <body>
 <div class="container">
-<center>
     <img src="logo300x291.png" height="145" width="145"><br>
     <h2>Música de Biodanza</h2>
+
+    <ul>
+        <li>International Biocentric Foundation <b>IBF</b> (ej. IBF01-11) e <b>IBFC</b> (ej. IBFC20-01) </li>
+        <li>Sergio Cruz <b>SC</b> (ej. SC01-05) </li>
+        <li>Buenos Aires <b>BA</b> (Ej. BA01-05)</li>
+        <li>Nuevo Elenco <b>BA</b> (Ej. NE01-03)</li>
+        <li>Juegos Expresivos <b>JE</b> (Ej. JE03-04)</li>
+    </ul>
     <form>
         <div class="form-group">
           <label for="codigo">Código de la Música:</label>
@@ -98,12 +105,11 @@
         <button type="button" class="btn" onclick="buscarCancion(this.form)">Buscar</button>
     </form>
     <br>
-    <p><span id ="nombre" style="color:blue"></span><br>
+    <div><span id ="nombre" style="color:blue"></span><br>
         <span id ="autor" style="color:red"></span><br>
         <span id="lineaVivencia" style="color:green"></span><br>
-        <span id="danzas" style="color:purple"></span>
-    </p>
-</center>
+        <ul id="danzas" style="color:purple"></ul>
+    </div>
 <div class="lb">
     <div class="container-audio">
         <audio id="audio" controls>
