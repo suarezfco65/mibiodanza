@@ -7,12 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!--
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
--->
-    <script src="dir.js"></script>
+   <script src="https://suarezfco65.github.io/amobiodanza/catalogoMusica.js"></script>
     <style>
         .autor      {color: crimson; font-weight: bold}
         .cancion    {color: darkslateblue; font-weight: bold}
@@ -21,12 +16,20 @@
     </style>
     <script>
         function buscarCancion(form)    {
-            var disco = form.elements.namedItem("disco").value; 
-            var pista = form.elements.namedItem("pista").value;
-            if(disco.length==1) disco   =   '0'+disco;
-            if(pista.length==1) pista   =   '0'+pista;
-            objMusica = document.getElementById("musica")
-            objMusica.innerHTML=oa(disco,pista)
+            const musica = catalogoMusica[form.elements.namedItem("codigo").value]; 
+            if (musica) {
+            obj = document.getElementById("audio");
+                var sources= "";
+                for (var i = 0; i<musica.archivos.length; i++)	
+                    sources += '<source type="'+musica.archivos[i].tipo+'" src="'+musica.archivos[i].archivo+'"></source>';
+                obj.innerHTML = sources;
+                obj.load();
+                obj.play();
+                document.getElementById('nombre').innerHTML=musica.nombre;
+                document.getElementById('autor').innerHTML=musica.autor;
+                document.getElementById('lineaVivencia').innerHTML=musica.lineaVivencia;
+                document.getElementById('danzas').innerHTML=musica.danzas.join();
+            }
         }
     </script>
     <style>
@@ -82,26 +85,23 @@
 <center>
     <img src="logo300x291.png" height="145" width="145"><br>
     <h2>Música de Biodanza</h2>
-    <form class="form-inline">
+    <form>
         <div class="form-group">
-            <label for="email">Disco</label>
-            <input type="text" class="form-control" id="disco" placeholder="Indique el disco" name="disco">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Pista:</label>
-            <input type="text" class="form-control" id="pista" placeholder="Indique la pista" name="pista">
+          <label for="codigo">Código de la Música:</label>
+          <input type="text" class="form-control" name="codigo" id="codigo">
         </div>
         <button type="button" class="btn" onclick="buscarCancion(this.form)">Buscar</button>
     </form>
     <br>
-    <table id="musica">
-    </table>
+    <p><span id ="nombre" style="color:blue"></span><br>
+        <span id ="autor" style="color:red"></span><br>
+        <span id="lineaVivencia" style="color:green"></span><br>
+        <span id="danzas" style="color:purple"></span>
+    </p>
 </center>
 <div class="lb">
     <div class="container-audio">
         <audio id="audio" controls>
-            <source id="ogg" src="" type="audio/ogg">
-            <source id="mp3" src="" type="audio/mpeg">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
     </div>
