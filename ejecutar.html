@@ -537,28 +537,34 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     <script src="https://code.highcharts.com/modules/series-label.js"></`+`script>
     <script src="https://code.highcharts.com/modules/exporting.js"></`+`script>
     <script src="https://code.highcharts.com/modules/export-data.js"></`+`script>
-    <script src="catalogoMusica.js"></`+`script>
+    <script src="https://suarezfco65.github.io/amobiodanza/catalogoMusica.js"></`+`script>
 
     <title>`+$scope.tema+`</title>
   </head>
   <body>
         <div class="container">
-        <bd-sesion tema="`+$scope.tema+`" autor="`+$scope.autor+`">
-`;
-for (var i=0;i<$scope.danzas.length;i++)    {
-    const musica = $scope.danzas[i].omusica;
-    const danza = $scope.danzas[i].odanza;
-    html +=
-`            <bd-danza nombre='`+danza.nombre+`'  musica='`+musica.codigo+`'  evolucion='`+$scope.danzas[i].evolucion+`'  presenta=""></bd-danza>
-`;
-}
-html +=
-`        </bd-sesion>
-    </div>
-    <script src="biodanza.js"></`+`script>
+        <bd-sesion tema="`+$scope.tema+`" autor="`+$scope.autor+`">`;
+        for (var i=0;i<$scope.danzas.length;i++)    {
+            const musica = $scope.danzas[i].omusica;
+            const danza = $scope.danzas[i].odanza;
+            html +=
+`
+            <bd-danza nombre="`+danza.nombre+`"
+                musica="`+musica.codigo+`"  
+                evolucion="`+$scope.danzas[i].evolucion+`"
+                presenta=""
+                linea-vivencia="" 
+                clasificacion=""
+                objetivo="">
+                `+danza.descripcion+`
+            </bd-danza>`;
+        }
+        html +=`
+        </bd-sesion>
+	</div>
 </body>
 </html>
-`;
+<script src="https://suarezfco65.github.io/amobiodanza/biodanza.js"></`+`script>`;
         var otext = document.createElement('textarea');
         otext.innerHTML=html;
         document.body.appendChild(otext);
