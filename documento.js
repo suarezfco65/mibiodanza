@@ -4094,7 +4094,7 @@ var arrDocumento = [
 	['P',	`Este ejercicio fue creado por Rolando Toro Araneda pero no lo hemos encontrado reflejado en otros elencos, lo que nos ha animado a incluirlo en este. Sugerimos otras propuestas de temas musicales además del que indicó Rolando.`],
 	['H',	`Música :`],
 	['P',	`Tema musical seleccionado por Rolando Toro Araneda:`],
-	['C',	`SBE01-01      Título: Baroque and Blue; Artista: Jean-Pierre Rampal y Claude Bolling; Álbum: Suite for flute and jazz piano trio; Duración: 5,20`],
+	['C',	`BA15-03      Título: Baroque and Blue; Artista: Jean-Pierre Rampal y Claude Bolling; Álbum: Suite for flute and jazz piano trio; Duración: 5,20`],
 	['I',	`   Música propuesta por: Rolando Toro Araneda; Colección: Bs As 15-03`],
 	['P',	`Otros temas musicales sugeridos:`],
 	['C',	`NE02-15      Título: Saludo final (selección instrumental) de “Drácula”, el musical.; Artista: Pepe Cibrian y Ángel Mahler.; Álbum: Drácula, el musical.; Duración: 4,32`],
