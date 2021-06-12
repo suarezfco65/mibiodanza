@@ -6104,6 +6104,7 @@ var arrDocumento = [
 	['P',	`Ricardo Spreafico y Cony Bisio.`],
 	['H',	`Música :`],
 	['C',	`BA74-08      Título: “Bethoven´s 5 Secrets”; Artista: The Piano Guys; Duración: 5,09 (se puede acortar a 4,11)`],
+	['C',	`BA74-07      Les Contes D'Hoffmann: Barcarole - Royal Philharmonic Orchestra and Frank Shipway`],
 	['D',	`DANZA DE LA GRANDEZA`],
 	['H',	`Resumen`],
 	['P',	`Desplegar una danza pulsante, conectando con la grandeza interior y exterior.`],
