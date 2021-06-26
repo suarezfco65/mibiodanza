@@ -3282,6 +3282,8 @@ var arrDocumento = [
 	['C', `IBF17-16     Ave Maria (after Johann Sebastian Bach)     Gounod, Charles (1818-1893)     3:23`],	
 	['OBS', `     Profundización en Proyecto Minotauro.        `],	
 	['C', `IBF17-05     Ponteio     Branco, Waltel     2:21`],	
+	['C', `BA33-09 Berceuse - Brahms`],	
+	['OBS', `Música sugerida por el elenco Buenos Aires para P. G. Proteger la vida`],	
 	['D', `TRABAJOS PRIMORDIALES`],	
 	['P', `Brazo derecho atrás en acto de lanzar un objeto. El gesto consiste en dar un impulso vigoroso a algo que se encuentra en la mano. El brazo izquierdo acompaña naturalmente el movimiento, moderando la fuerza del brazo opuesto. La pierna derecha está hacia atrás en perfecto sinergismo. La posición favorece los movimientos de los trabajos manuales, agrícolas y movimientos del deporte.`],	
 	['P', `Es interesante la utilización de esta posición para estimular la sincronización y euritmia del grupo. Las coreografías libres que se inducen se relacionan con ceremonias colectivas de trabajo.`],	
