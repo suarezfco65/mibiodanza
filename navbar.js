@@ -1,5 +1,5 @@
 var crearNavBar =   function (pagWeb, opcionActiva) {
-    var opciones =  [
+    var opciones = { 'Yo<span style="color:red">❤</span>Biodanza' : [
         {titulo:'Inicio', href:'index.html', hijos:[]},
         {titulo:'1er año', href:'#', hijos:[
           {titulo:'Definición y Modelo Teórico', href:'01 Definición y Modelo Teórico.html', hijos:[]},
@@ -40,7 +40,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Música - Danza - Línea de Vivencia', href:'musicaCruce.html', hijos:[]},
           {titulo:'Preparar Sesión', href:'sesion.html', hijos:[]}
         ]}
-    ];
+    ]};
     document.write('<nav class="navbar navbar-inverse navbar-fixed-top">');
     document.write('  <div class="container-fluid">');
     document.write('    <div class="navbar-header">');
@@ -53,23 +53,23 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
     document.write('    </div>');
     document.write('    <div class="collapse navbar-collapse" id="myNavbar">');
     document.write('      <ul class="nav navbar-nav">');
-    for (var i=0; i<opciones.length; i++)   {
+    for (var i=0; i<opciones[pagWeb].length; i++)   {
         var s = '<li';
         var cls = '';
-        if (opciones[i].titulo == opcionActiva)     cls = ' class="active';
-        if (opciones[i].hijos.length > 0)   {
+        if (opciones[pagWeb][i].titulo == opcionActiva)     cls = ' class="active';
+        if (opciones[pagWeb][i].hijos.length > 0)   {
             if (cls == "") cls = ' class="dropdown">'
             else    cls += ' dropdown">'
             s += cls
-            s+= '<a class="dropdown-toggle" data-toggle="dropdown" href="'+opciones[i].href+'">'+opciones[i].titulo+'<span class="caret"></span></a>'
+            s+= '<a class="dropdown-toggle" data-toggle="dropdown" href="'+opciones[pagWeb][i].href+'">'+opciones[pagWeb][i].titulo+'<span class="caret"></span></a>'
             s+= '<ul class="dropdown-menu">';
-            for (var j=0; j<opciones[i].hijos.length; j++)  
-                s+='<li><a href="'+opciones[i].hijos[j].href+'">'+opciones[i].hijos[j].titulo+'</a></li>';
+            for (var j=0; j<opciones[pagWeb][i].hijos.length; j++)  
+                s+='<li><a href="'+opciones[pagWeb][i].hijos[j].href+'">'+opciones[pagWeb][i].hijos[j].titulo+'</a></li>';
             s+= '</ul></li>';
         }
         else   {
             if (cls!='') s+=cls+'"';
-            s += '><a href="'+opciones[i].href+'">'+opciones[i].titulo+'</li>';   
+            s += '><a href="'+opciones[pagWeb][i].href+'">'+opciones[pagWeb][i].titulo+'</li>';   
         }
         document.write(s);
     }
