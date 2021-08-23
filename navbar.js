@@ -2,28 +2,28 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
     var opciones = [
         {titulo:'Inicio', href:'index.html', hijos:[]},
         {titulo:'1er año', href:'#', hijos:[
-          {titulo:'Definición y Modelo Teórico', href:'01 Definición y Modelo Teórico.html', hijos:[]},
-          {titulo:'Inconsciente Vital y Principio Biocéntrico', href:'02 Inconsciente Vital y Principio Biocéntrico.html', hijos:[]},
-          {titulo:'La Vivencia', href:'03 La Vivencia.html', hijos:[]},
-          {titulo:'Aspectos Biológicos', href:'04 Aspectos Biológicos de la Biodanza.html', hijos:[]},
-          {titulo:'Aspectos Fisiológicos', href:'05 Aspectos Fisiológicos de la Biodanza.html', hijos:[]},
-          {titulo:'Aspectos Psicológicos', href:'06 Aspectos Psicológicos de la Biodanza.html', hijos:[]},
-          {titulo:'Antecedentes Míticos y Filosoficos', href:'07 Antecedentes Míticos y Filosóficos.html', hijos:[]},
-          {titulo:'Identidad e Integración', href:'08 Identidad e Integración.html', hijos:[]},
-          {titulo:'Trance y Regresión', href:'09 Trance y Regresión.html', hijos:[]},
-          {titulo:'Contacto y Caricias', href:'10 Contacto y Caricias.html', hijos:[]}
+          {titulo:'01 Definición y Modelo Teórico', href:'01 Definición y Modelo Teórico.html', hijos:[]},
+          {titulo:'02 Inconsciente Vital y Principio Biocéntrico', href:'02 Inconsciente Vital y Principio Biocéntrico.html', hijos:[]},
+          {titulo:'03 La Vivencia', href:'03 La Vivencia.html', hijos:[]},
+          {titulo:'04 Aspectos Biológicos', href:'04 Aspectos Biológicos de la Biodanza.html', hijos:[]},
+          {titulo:'05 Aspectos Fisiológicos', href:'05 Aspectos Fisiológicos de la Biodanza.html', hijos:[]},
+          {titulo:'06 Aspectos Psicológicos', href:'06 Aspectos Psicológicos de la Biodanza.html', hijos:[]},
+          {titulo:'07 Antecedentes Míticos y Filosoficos', href:'07 Antecedentes Míticos y Filosóficos.html', hijos:[]},
+          {titulo:'08 Identidad e Integración', href:'08 Identidad e Integración.html', hijos:[]},
+          {titulo:'09 Trance y Regresión', href:'09 Trance y Regresión.html', hijos:[]},
+          {titulo:'10 Contacto y Caricias', href:'10 Contacto y Caricias.html', hijos:[]}
         ]},
         {titulo:'2do año', href:'#', hijos:[
-          {titulo:'Movimiento Humano', href:'11 Movimiento Humano.html', hijos:[]},
-          {titulo:'Vitalidad', href:'12 Vitalidad.html', hijos:[]},
-          {titulo:'Sexualidad', href:'13 Sexualidad.html', hijos:[]},
-          {titulo:'Creatividad', href:'14 Creatividad.html', hijos:[]},
-          {titulo:'Afectividad', href:'15 Afectividad.html', hijos:[]},
-          {titulo:'Trascendencia', href:'16 Trascendencia.html', hijos:[]},
-          {titulo:'Mecanismos de Acción', href:'17 Mecanismos de Acción.html', hijos:[]},
-          {titulo:'Biodanza y Acción Social', href:'18 Biodanza y Acción Social.html', hijos:[]},
-          {titulo:'Aplicaciones y Extensiones', href:'19 Aplicaciones y Extensiones.html', hijos:[]},
-          {titulo:'Biodanza Ars Magna', href:'20 Biodanza Ars Magna.html', hijos:[]}
+          {titulo:'11 Movimiento Humano', href:'11 Movimiento Humano.html', hijos:[]},
+          {titulo:'12 Vitalidad', href:'12 Vitalidad.html', hijos:[]},
+          {titulo:'13 Sexualidad', href:'13 Sexualidad.html', hijos:[]},
+          {titulo:'14 Creatividad', href:'14 Creatividad.html', hijos:[]},
+          {titulo:'15 Afectividad', href:'15 Afectividad.html', hijos:[]},
+          {titulo:'16 Trascendencia', href:'16 Trascendencia.html', hijos:[]},
+          {titulo:'17 Mecanismos de Acción', href:'17 Mecanismos de Acción.html', hijos:[]},
+          {titulo:'18 Biodanza y Acción Social', href:'18 Biodanza y Acción Social.html', hijos:[]},
+          {titulo:'19 Aplicaciones y Extensiones', href:'19 Aplicaciones y Extensiones.html', hijos:[]},
+          {titulo:'20 Biodanza Ars Magna', href:'20 Biodanza Ars Magna.html', hijos:[]}
         ]},
         {titulo:'3er año', href:'#', hijos:[
           {titulo:'La Música', href:'21 La Música.html', hijos:[]},
