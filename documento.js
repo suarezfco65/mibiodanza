@@ -727,6 +727,8 @@ var arrDocumento = [
 	['OBS', `     Sugerida por elenco Buenos Aires para Ronda de Besos Final`],	
 	['C', `BA73-21    `],	
 	['OBS', `     Música propuesta en el elenco de Buenos Aires para Ronda Final `],	
+	['C', `BA26-03    `],	
+	['OBS', `     Música propuesta en el elenco de Buenos Aires para Ronda Final `],	
 	['T', `LA MARCHA`],	
 	['P', `La rehabilitación del hombre "normal" debería comenzar con el aprendizaje de la marcha.`],	
 	['P', `La marcha es la expresión más evidente y más clara de la actitud de un ser humano frente a la vida.`],	
