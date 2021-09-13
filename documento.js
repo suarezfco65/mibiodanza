@@ -1173,6 +1173,8 @@ var arrDocumento = [
 	['C', `IBF07-06 When You're Smiling     Maddox, Johnny     1:59`],	
 	['C', `IBF16-01     Zorba's Dance     Theodorakis, Mikis (ìûüö† °¢î£§ôêüö†)     4:18`],	
 	['C', `IBFC21-17     Zorba's Dance (OST)     Theodorakis, Mikis (ìûüö† °¢î£§ôêüö†)     4:07`],	
+	['C', `BA48-01     María de Barros - Riberozinha - Wuelele`],	
+	['OBS', `     Elenco Buenos Aires - Caminares Ritmicos.`],	
 	['D', `DANZA RÍTMICA CON MOVIMIENTOS PERIFÉRICOS`],	
 	['H', `Descripción :`],	
 	['P', `Sobre una música rítmica, expresiva y muy vital, las personas son invitadas a responder al ritmo de la música con movimientos periféricos (brazos y piernas).`],	
