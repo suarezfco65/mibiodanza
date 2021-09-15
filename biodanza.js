@@ -157,10 +157,10 @@ const procesaSesion = {
             for (var i = 0; i < procesaSesion.miLista.length; i++) {
                 oBt = document.getElementById('bd-tg-consigna-'+(i+1));
                 if (ejecucion.pos == (i+1)) {
-                    if (oBt.innerHTML == '❤')
+                    if (oBt.innerHTML == '❥')
                         bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1))
                 } else {
-                    if (oBt.innerHTML == '❥')
+                    if (oBt.innerHTML == '❤')
                         bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1));
                 }
             }
