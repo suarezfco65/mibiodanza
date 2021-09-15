@@ -156,12 +156,13 @@ const procesaSesion = {
             var obt;
             for (var i = 0; i < procesaSesion.miLista.length; i++) {
                 oBt = document.getElementById('bd-tg-consigna-'+(i+1));
-                if (ejecucion.pos == (i+1))
+                if (ejecucion.pos == (i+1)) {
                     if (oBt.innerHTML == '❤')
                         bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1))
-                else
+                } else {
                     if (oBt.innerHTML == '❥')
                         bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1));
+                }
             }
             alert('Indique la consigna, para la siguiente danza...');
             var mostrar = confirm('¿Acepta realizar muestra para ésta danza?');
