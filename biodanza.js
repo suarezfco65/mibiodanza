@@ -154,7 +154,7 @@ const procesaSesion = {
 
         ejecucion.play = function ()  {
             var obt;
-            alert('Apertura de la consigna');
+            /*
             for (var i = 0; i < procesaSesion.miLista.length; i++) {
                 oBt = document.getElementById('bd-tg-consigna-'+(i+1));
                 if (ejecucion.pos == (i+1)) {
@@ -165,6 +165,7 @@ const procesaSesion = {
                         bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1));
                 }
             }
+            */
             alert('Indique la consigna, para la siguiente danza...');
             var mostrar = confirm('¿Acepta realizar muestra para ésta danza?');
             if (mostrar)    {
