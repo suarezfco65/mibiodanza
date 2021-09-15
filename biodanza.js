@@ -143,8 +143,8 @@ const procesaSesion = {
         ejecucion.pos   = ejecucion.desde;
         for (var i  = ejecucion.pos; i <= ejecucion.hasta; i++) {
             const oBt = document.getElementById('bd-tg-consigna-'+(i+1));
-            if (oBt.innerHTML == '❤')
-                 bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1));
+            if (oBt.innerHTML == '❥')
+                bd_toggleCollapse(oBt, 'bd-consigna-'+(i+1));
             catalogoMusica[this.miLista[i-1]].audio.onended = function() {
                 ejecucion.pos++;
                 if (ejecucion.pos > ejecucion.hasta) {
