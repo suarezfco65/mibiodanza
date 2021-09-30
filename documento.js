@@ -3495,6 +3495,7 @@ var arrDocumento = [
 	['C', `IBF17-09     Méditation - Entracte de l'acte II (Opéra     Massenet, Jules (1842-1912)     5:12`],	
 	['C', `IBF15-18     Reigen Seliger Geister (From 'Orfeo ed     Van Leer, Thijs     7:49`],	
 	['C', `IBF09-06     Rosa     Poyares, Carlos     3:47`],	
+	['C', `BA09-10      Hold On - Chris de Burgh`],	
 	['D', `DANZA DE LA AMISTAD`],	
 	['P', `La amistad es uno de los sentimientos más profundos y nobles del ser humano. En la amistad se combinan la afectividad, el sentimiento estético, la lealtad y la sintonía de la conciencia.`],	
 	['P', `Cuando se preguntó a Ronald Laing: <i>©Qué es un hombre enfermo?</i>, él respondió: <i>Un hombre enfermo es quien no tiene amigos</i>.`],	
