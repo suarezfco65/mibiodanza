@@ -3496,6 +3496,7 @@ var arrDocumento = [
 	['C', `IBF15-18     Reigen Seliger Geister (From 'Orfeo ed     Van Leer, Thijs     7:49`],	
 	['C', `IBF09-06     Rosa     Poyares, Carlos     3:47`],	
 	['C', `BA09-10      Hold On - Chris de Burgh`],	
+	['OBS', `Música sugerida por el elenco Buenos Aires para Dar y Recibir la Flor`],	
 	['D', `DANZA DE LA AMISTAD`],	
 	['P', `La amistad es uno de los sentimientos más profundos y nobles del ser humano. En la amistad se combinan la afectividad, el sentimiento estético, la lealtad y la sintonía de la conciencia.`],	
 	['P', `Cuando se preguntó a Ronald Laing: <i>©Qué es un hombre enfermo?</i>, él respondió: <i>Un hombre enfermo es quien no tiene amigos</i>.`],	
