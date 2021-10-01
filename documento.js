@@ -834,6 +834,7 @@ var arrDocumento = [
 	['C', `SC02-08     Good Old Fashion Lover Boy - Queen`],	
 	['OBS', `     Sugerida por Sergio Cruz para Marcha Alegre.`],	
 	['C',	`BA08-01    Meia Lua Inteira - Caetano Veloso`],
+        ['C',	`BA54-05   Meia Lua Inteira`],
 	['D', `MARCHA CON LENTITUD (Marcha del astronauta)`],	
 	['P', `La percepción de nuestro entorno se nutre de la percepción sensible de nuestro desplazamiento en el mundo. Ser sensibles en un mundo sensible. Esta "marcha" no tiene ningún propósito, nos permite un simple deambular libre de cualquier preocupación por "llegar a alguna parte", sino más bien dejandose llevar por la corriente transporte actual. Un fluir en el mundo.`],	
 	['P', `Las palabras clave son: Fluidez, Deslizamiento, Lentitud, Errar, Deambular, Rozar el aire.`],	
