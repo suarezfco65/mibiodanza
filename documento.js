@@ -409,7 +409,8 @@ var indice= {
 	'BAMBOLÉ': 1,
 	'BUENOS AIRES - CAMINARES': 1,
 	'CAMINARES RÍTMICOS':1,
-	'CAMINAR ENAMORADO DE LA VIDA':1,	
+	'CAMINAR ENAMORADO DE LA VIDA':1,
+	'CAMINAR VITAL':1,
 }
 var arrDocumento = [
 	['T', `LAS RONDAS`],	
@@ -1260,6 +1261,7 @@ var arrDocumento = [
 	['C', `IBF07-03     Tiger Rag     The New Orleans Banjo Band     3:11`],	
 	['OBS', `     Excelente para debutantes.        `],	
 	['C', `IBF07-06     When You're Smiling     Maddox, Johnny     1:59`],	
+	['C', `IBF05-20     Festa do interior     Costa, Gal`],	
 	['D', `DANZA DEL CABALLO`],	
 	['H', `Descripción :`],	
 	['P', `Es un trote brioso de desplazamiento en el espacio. La música tiene el ritmo del trote de un caballo: <i>Dark horse </i>, interpretada por George Harrison. Es una danza de activación y también alegre. Pertenece a la Línea de la Vitalidad.`],	
