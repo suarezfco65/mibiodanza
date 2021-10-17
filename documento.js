@@ -479,6 +479,8 @@ var arrDocumento = [
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Inicial Caminar a dos Paseando`],	
 	['C', `BA21-11       Heart Of Mine - Peter Salett`],	
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Inicial Caminar a dos Paseando`],	
+	['C', `BA73-13       Hear comes the sun`],	
+	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Inicial`],	
 	['D', `RONDA SINUOSA`],	
 	['P', `La Ronda Sinuosa puede adquirir características distintas dependiendo de la música. Con una música lenta y dulce (por ejemplo: <i>Tema de amor para Gabriela</i> interpretada por Gal Costa y Tom Jobim u <i>Ordinary fool</i> por Paul Williams) se da la oportunidad a las personas de realizar un contacto y una vinculación mayores, por eso hay que proponerla en grupos de profundización. En cambio, esta misma Ronda, con una música alegre y euforizante (como <i>Aquarela Brasileira</i> interpretada por Emilio Santiago), es útil especialmente para los cursos de inicio; la música más activa reduce las posibilidades de contacto, de esta manera el alumno nuevo no se siente cohibido, sino más libre y al mismo tiempo en conexión con sus compañeros.`],	
 	['P', `La Ronda Sinuosa puede proponerse como segundo ejercicio después de la Ronda de Iniciación.`],	
@@ -7269,6 +7271,11 @@ var arrDocumento = [
 	['H',	`Música :`],
 	['C',	`BA13-08   Caminando por la calle yo te vi - Gipsy King`],
 	['C',	`BA68-07  `],
+	['D',   `CAMINAR VITAL`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Vitalidad`],	
+	['H',	`Música :`],
+	['C',	`BA78-04   GOOD OLD FASHIONED LOVER BOY - QUEEN`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
