@@ -141,7 +141,7 @@ const procesaSesion = {
         ejecucion.desde = Number(oDesde.options[oDesde.selectedIndex].value);
         ejecucion.hasta = Number(oHasta.options[oHasta.selectedIndex].value);
         ejecucion.pos   = ejecucion.desde;
-        for (var i  = ejecucion.pos; i <= ejecucion.hasta; i++) {
+        for (var i  = ejecucion.pos; i < ejecucion.hasta; i++) {
             const oBt = document.getElementById('bd-tg-consigna-'+(i));
             if (oBt.innerHTML == '❥')
                 bd_toggleCollapse(oBt, 'bd-consigna-'+(i));
