@@ -411,6 +411,7 @@ var indice= {
 	'CAMINARES RÍTMICOS':1,
 	'CAMINAR ENAMORADO DE LA VIDA':1,
 	'CAMINAR VITAL':1,
+	'CAMINAR TRIBAL':1,
 }
 var arrDocumento = [
 	['T', `LAS RONDAS`],	
@@ -7280,6 +7281,11 @@ var arrDocumento = [
 	['P',	`Vitalidad`],	
 	['H',	`Música :`],
 	['C',	`BA78-04   GOOD OLD FASHIONED LOVER BOY - QUEEN`],
+	['D',   `CAMINAR TRIBAL`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Vitalidad`],	
+	['H',	`Música :`],
+	['C',	`BA73-07   Four Circles of Life - [Indians music] - Gaia`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
