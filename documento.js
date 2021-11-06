@@ -1192,6 +1192,8 @@ var arrDocumento = [
 	['C', `IBFC21-17     Zorba's Dance (OST)     Theodorakis, Mikis (ìûüö† °¢î£§ôêüö†)     4:07`],	
 	['C', `BA48-01     María de Barros - Riberozinha - Wuelele`],	
 	['OBS', `     Elenco Buenos Aires - Caminares Ritmicos.`],	
+	['C', `BA22-03     Pepa Nzac gnom ma - Lamba Africa`],	
+	['OBS', `     Elenco Buenos Aires - Danzas Rítmicas.`],	
 	['D', `DANZA RÍTMICA CON MOVIMIENTOS PERIFÉRICOS`],	
 	['H', `Descripción :`],	
 	['P', `Sobre una música rítmica, expresiva y muy vital, las personas son invitadas a responder al ritmo de la música con movimientos periféricos (brazos y piernas).`],	
