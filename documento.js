@@ -670,6 +670,8 @@ var arrDocumento = [
 	['C', `IBF04-18     Um Canto de Afoxé Para O Bloco do Ilê     Veloso, Caetano     3:03`],	
 	['C', `IBF11-17     Vltava (Die Moldau) [Part] - Symphonic     Smetana, Bedúich (1824-1884)     3:52`],	
 	['C', `IBF02-21     Xote das meninas     Monte, Marisa     4:07`],	
+	['C', `BA68-19      Tonolec - So Caayolec (Mi Caballito`],
+	['OBS', `     Sugerida por Elenco Buenos Aires para Rondas de Tribal de Activación.`],	
 	['D', `RONDA DE CELEBRACIÓN`],	
 	['P', `Se propone después de un acto importante como <i>el Renacimiento</i>, de un Desafío o al final de una clase semanal o un taller. Perfectamente se pueden usan músicas clásicas y alegres, como los <i>Allegri</i> de Vivaldi. Las personas giran tomadas de las manos y con los brazos en alto. Esta Ronda es especialmente indicada para el final de una clase o taller sobre Afectividad, donde se estimula la fraternidad. Los alumnos quedan en un estado de humor triunfante.`],	
 	['P', `Para la Ronda de Celebración realizada en cursos dedicados a profundizar la Masculinidad Profunda se utiliza la música <i>Zorba</i>, interpretada por Mikis Theodorakis, en la cual todos los hombres danzan con mucha fuerza.`],	
