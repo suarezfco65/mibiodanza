@@ -53,7 +53,7 @@ var generateData = function(){
 }
 </script>
 <body>
-<script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
+<script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Algunas Sesiones')</script>
 <div class="rb">
   <audio id="audio" controls>
       <source id="ogg" type="audio/ogg">
@@ -140,7 +140,8 @@ var generateData = function(){
     </tfoot>
       <tbody>
         <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-          <td><button class="btn btn-success btn-xs" ng-click="play(item.pagina)">&#9835;</button></td>
+          <td><button class="btn btn-success btn-xs" ng-click="play(item.pagina)">❤</button>
+		  <a href="{{item.pagina}}" target="_blank" role="button" class="btn btn-success btn-xs">❤</a></td>
           <td>{{item.fecha}}</td>
           <td>{{item.tema}}</td>
           <td>{{item.autor}}</td>
