@@ -34,7 +34,8 @@ var generateData = function(){
     var resultado = [
         {
             id:1, 
-            pagina:"visitandoLaJungla.html", 
+            pagina:"sesiones/visitandoLaJungla.html", 
+            fecha:"2021-11-10",
             titulo:"Visitando la jungla", 
             autor:"Francisco Suárez", 
             Danzas: `RONDA DE INICIACIÓN, BA25-05; MARCHA ALEGRE, BA08-01; DANZA RÍTMICA, BA22-03; DANZA DE FLUIDEZ CON IMAGENES, IBF07-15; CAMINAR TRIBAL, BA73-07; DANZA DEL TIGRE, IBF15-03; DANZA DE LA GARZA, IBF19-18; DANZA DEL HIPOPÓTAMO, IBF15-05; CONEXIÓN CON LOS ANCESTROS, BA36-01; DANZA A LAS ESTRELLAS, BA57-12; ENCUENTROS TRASCENDENTES, IBF10-20; RONDA FINAL, BA68-19`
@@ -131,6 +132,7 @@ var generateData = function(){
       <tbody>
         <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
           <td><button class="btn btn-success btn-xs" ng-click="play(item.pagina)">&#9835;</button></td>
+          <td>{{item.fecha}}</td>
           <td>{{item.tema}}</td>
           <td>{{item.autor}}</td>
           <td>{{item.danzas}}</td>
@@ -149,14 +151,14 @@ var generateData = function(){
 </html>
 <script>
     
-var sortingOrder = 'tema'; //default sort
+var sortingOrder = 'fecha'; //default sort
 
 function initApp($scope, $filter) {
  
   // init
   $scope.sortingOrder = sortingOrder;
   $scope.pageSizes = [5,10,25,50];
-  $scope.reverse = false;
+  $scope.reverse = true;
   $scope.filteredItems = [];
   $scope.groupedItems = [];
   $scope.pagedItems = [];
@@ -189,7 +191,7 @@ function initApp($scope, $filter) {
       for (var i=0; i<query.length; i++)  {
         res = false;
         for(var attr in item) {
-          if ('*autor*tema*danzas*'.indexOf(attr) !== -1 ) {
+          if ('*autor*tema*danzas*fecha*'.indexOf(attr) !== -1 ) {
             var iguales = query[i].split('/');
             for (var j=0; j<iguales.length; j++)
               iguales[j]="searchMatch(item[attr],'"+iguales[j]+"')";
