@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Música - Danza - Línea de Vivencia</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="corazon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+    <script src="documento.js"></script>
+    <script src="catalogoMusica.js"></script>
+    
+    <script src="navbar.js"></script>
+    <style>
+      .autor      {color: crimson; font-weight: bold}
+      .cancion    {color: darkslateblue; font-weight: bold}
+      .desc       {color: green; font-weight: bold}
+      .consigna   {color: orangered}
+      .rb {
+          position: fixed;
+          bottom: 5px;
+          right: 5px;
+          font-size: 20px;
+      }
+    </style>
+</head>
+<script>
+var generateData = function(){
+    var resultado = [
+        {
+            id:1, 
+            pagina:"visitandoLaJungla.html", 
+            titulo:"Visitando la jungla", 
+            autor:"Francisco Suárez", 
+            Danzas: `RONDA DE INICIACIÓN, BA25-05; MARCHA ALEGRE, BA08-01; DANZA RÍTMICA, BA22-03; DANZA DE FLUIDEZ CON IMAGENES, IBF07-15; CAMINAR TRIBAL, BA73-07; DANZA DEL TIGRE, IBF15-03; DANZA DE LA GARZA, IBF19-18; DANZA DEL HIPOPÓTAMO, IBF15-05; CONEXIÓN CON LOS ANCESTROS, BA36-01; DANZA A LAS ESTRELLAS, BA57-12; ENCUENTROS TRASCENDENTES, IBF10-20; RONDA FINAL, BA68-19`
+        }
+    ];
+    return  resultado;
+}
+</script>
+<body>
+<script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
+<div class="rb">
+  <audio id="audio" controls>
+      <source id="ogg" type="audio/ogg">
+      <source id="mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<div class="container" ng-app="">
+<h3 style="color:red; font-weight: bold;margin-top:70px">Algunas Sesiones de Biodanza</h3>
+  <div ng-controller="initApp">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="input-group input-group-lg add-on">
+          <input type="text" class="form-control search-query" ng-model="query" ng-change="search()" placeholder="Buscar">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+      	<h4 class="text-center"></h4>
+      </div>
+      <div class="col-md-3">
+        <select class="form-control input-lg pull-right" ng-model="itemsPerPage" ng-change="perPage()" ng-options="('Mostrar '+size+' por página') for size in pageSizes"></select>
+      </div>
+    </div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 id="myModalLabel">{{itemMostrar.danza}}</h4>
+	</div>
+	<div class="modal-body">
+        <p><b>Objetivo: </b>{{itemMostrar.objetivo}}</p>
+        <p><b>Descripcion: </b>{{itemMostrar.descripcion}}</p>
+        <p><b>Línea de Vivencia: </b>{{itemMostrar.linea}}</p>
+        <p><b>Evolución en la Curva: </b>{{itemMostrar.evolucion}}</p>
+        <p><b>Significado Existencial: </b>{{itemMostrar.significado}}</p>
+        <p><b>Efecto Regulador: </b>{{itemMostrar.efecto}}</p>	  
+        <p><b>Consigna Sugerida: </b>{{itemMostrar.consigna}}</p>	  
+        <p><b>Música: </b>{{itemMostrar.musica}}</p> 
+    </div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+<!--		<button class="btn btn-primary">Save changes</button> -->
+	</div>
+</div>
+</div>
+</div>
+    
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr><td colspan="7">{{sizes}}
+            <div class="text-center">
+              <ul class="pagination">
+                <li ng-class="{disabled: currentPage == 0}">
+                  <a href="javascript:;" ng-click="prevPage()">« Prev</a>
+                </li>
+                <li ng-repeat="n in range(pagedItems.length)" ng-class="{active: n == currentPage}" ng-click="setPage()">
+                  <a href="javascript:;" ng-bind="n + 1">1</a>
+                </li>
+                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                  <a href="javascript:;" ng-click="nextPage()">Prox »</a>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <!--        <th class="id"><a ng-click="sort_by('id')">Id <i class="fa fa-sort"></i></a></th> -->
+        <th class="Tema"><a ng-click="sort_by('tema')">Tema <i class="fa fa-sort"></i></a></th>
+        <th class="Autor"><a ng-click="sort_by('autor')">Autor <i class="fa fa-sort"></i></a></th>
+        <th class="Danzas"><a ng-click="sort_by('Danzas')">Danzas<i class="fa fa-sort"></i></a></th>
+<!--        <th class="evolucion"><a ng-click="sort_by('evolucion')">Link <i class="fa fa-sort"></i></a></th>
+        <th class="field4"><a ng-click="sort_by('field4')">Field 4 <i class="fa fa-sort"></i></a></th>
+        <th class="field5"><a ng-click="sort_by('field5')">Field 5 <i class="fa fa-sort"></i></a></th> -->
+      </tr>
+      </thead>
+      <tfoot>
+    </tfoot>
+      <tbody>
+        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+          <td><button class="btn btn-success btn-xs" ng-click="play(item.pagina)">&#9835;</button></td>
+          <td>{{item.tema}}</td>
+          <td>{{item.autor}}</td>
+          <td>{{item.danzas}}</td>
+<!--          <td><a href="#">{{item.field3}}</a></td>
+          <td>{{item.field4}}</td>
+          <td>{{item.field5}}</td>
+          <td><a href="#" ng-click="deleteItem($index)">x</a></td> -->
+<!--            <td><a href="#myModal" role="button" class="btn btn-success btn-xs" data-toggle="modal" ng-click="mostrarItem(item.id)"><i class="fa fa-book"></i></a></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+    
+    </body>
+</html>
+<script>
+    
+var sortingOrder = 'tema'; //default sort
+
+function initApp($scope, $filter) {
+ 
+  // init
+  $scope.sortingOrder = sortingOrder;
+  $scope.pageSizes = [5,10,25,50];
+  $scope.reverse = false;
+  $scope.filteredItems = [];
+  $scope.groupedItems = [];
+  $scope.pagedItems = [];
+  $scope.currentPage = 0;
+  $scope.items = generateData();
+  const entre10 = ""+(Math.round($scope.items.length / 10));
+  $scope.itemsPerPage = Number(entre10.substr(0,1)+'000000000'.substr(0,entre10.length-1))
+  $scope.pageSizes.push($scope.itemsPerPage);
+  $scope.itemMostrar = {};
+
+  var searchMatch = function (haystack, needle) {
+    if (!needle) {
+      return true;
+    }
+    if (typeof haystack == "string")
+      return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1
+    else return false;
+  };
+
+  //
+  $scope.play = function  (codigo)  {
+    playMusic(codigo);
+  }
+  // init the filtered items
+  $scope.search = function () {
+    if ($scope.query == undefined) $scope.query = "";
+    var query = $scope.query.split(' ');
+    $scope.filteredItems = $filter('filter')($scope.items, function (item) {
+      resultado = true;
+      for (var i=0; i<query.length; i++)  {
+        res = false;
+        for(var attr in item) {
+          if ('*autor*tema*danzas*'.indexOf(attr) !== -1 ) {
+            var iguales = query[i].split('/');
+            for (var j=0; j<iguales.length; j++)
+              iguales[j]="searchMatch(item[attr],'"+iguales[j]+"')";
+            iguales = iguales.join(' || ');
+            if (eval(iguales))
+              res = true;
+          }
+        }
+        resultado = resultado && res;
+      }
+      return resultado;
+    });
+    // take care of the sorting order
+    if ($scope.sortingOrder !== '') {
+      $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+    }
+    $scope.currentPage = 0;
+    // now group by pages
+    $scope.groupToPages();
+  };
+  
+  // show items per page
+  $scope.perPage = function () {
+    $scope.groupToPages();
+  };
+  
+  // calculate page in place
+  $scope.groupToPages = function () {
+    $scope.pagedItems = [];
+    
+    for (var i = 0; i < $scope.filteredItems.length; i++) {
+      if (i % $scope.itemsPerPage === 0) {
+        $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
+      } else {
+        $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+      }
+    }
+  };
+  
+   $scope.deleteItem = function (idx) {
+        var itemToDelete = $scope.pagedItems[$scope.currentPage][idx];
+        var idxInItems = $scope.items.indexOf(itemToDelete);
+        $scope.items.splice(idxInItems,1);
+        $scope.search();
+        
+        return false;
+    };
+    $scope.mostrarItem = function (idx) {
+        for (var i=0; i<$scope.items.length;i++) if ($scope.items[i].id == idx) $scope.itemMostrar = $scope.items[i];
+    }
+  
+  $scope.range = function (start, end) {
+    var ret = [];
+    if (!end) {
+      end = start;
+      start = 0;
+    }
+    for (var i = start; i < end; i++) {
+      ret.push(i);
+    }
+    return ret;
+  };
+  
+  $scope.prevPage = function () {
+    if ($scope.currentPage > 0) {
+      $scope.currentPage--;
+    }
+  };
+  
+  $scope.nextPage = function () {
+    if ($scope.currentPage < $scope.pagedItems.length - 1) {
+      $scope.currentPage++;
+    }
+  };
+  
+  $scope.setPage = function () {
+    $scope.currentPage = this.n;
+  };
+  
+  // functions have been describe process the data for display
+  $scope.search();
+ 
+  
+  // change sorting order
+  $scope.sort_by = function(newSortingOrder) {
+    if ($scope.sortingOrder == newSortingOrder)
+      $scope.reverse = !$scope.reverse;
+    
+    $scope.sortingOrder = newSortingOrder;
+  };
+
+};
+
+initApp.$inject = ['$scope', '$filter'];
+
+</script>
