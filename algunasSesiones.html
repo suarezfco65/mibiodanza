@@ -32,21 +32,21 @@
 <script>
 var generateData = function(){
     var resultado = [
-        {
+    {
             id:1, 
             pagina:"sesiones/visitandoLaJungla.html", 
-            fecha:"2021-11-10",
-            titulo:"Visitando la jungla", 
+            fecha:"2021/11/10",
+            tema:"Visitando la jungla", 
             autor:"Francisco Suárez", 
-            Danzas: `RONDA DE INICIACIÓN, BA25-05; MARCHA ALEGRE, BA08-01; DANZA RÍTMICA, BA22-03; DANZA DE FLUIDEZ CON IMAGENES, IBF07-15; CAMINAR TRIBAL, BA73-07; DANZA DEL TIGRE, IBF15-03; DANZA DE LA GARZA, IBF19-18; DANZA DEL HIPOPÓTAMO, IBF15-05; CONEXIÓN CON LOS ANCESTROS, BA36-01; DANZA A LAS ESTRELLAS, BA57-12; ENCUENTROS TRASCENDENTES, IBF10-20; RONDA FINAL, BA68-19`
+            danzas: `RONDA DE INICIACIÓN, BA25-05; MARCHA ALEGRE, BA08-01; DANZA RÍTMICA, BA22-03; DANZA DE FLUIDEZ CON IMAGENES, IBF07-15; CAMINAR TRIBAL, BA73-07; DANZA DEL TIGRE, IBF15-03; DANZA DE LA GARZA, IBF19-18; DANZA DEL HIPOPÓTAMO, IBF15-05; CONEXIÓN CON LOS ANCESTROS, BA36-01; DANZA A LAS ESTRELLAS, BA57-12; ENCUENTROS TRASCENDENTES, IBF10-20; RONDA FINAL, BA68-19`
         },
         {
             id:2, 
             pagina:"sesiones/elCaosComoImpulsoDeVida.html", 
-            fecha:"2021-11-03",
-            titulo:"El caos como impulso de vida", 
+            fecha:"2021/11/03",
+            tema:"El caos como impulso de vida", 
             autor:"Francisco Suárez", 
-            Danzas: `RONDA DE INICIACIÓN, BA73-16; MARCHA ALEGRE, IBF05-02; JUEGO SIN INSTRUCCIONES, NE01-17; LIBERACIÓN DEL MOVIMIENTO, IBF07-11; DANZA YANG, IBF15-11; DANZA DE FLUIDEZ CON IMÁGENES, IBF17-01; INSPIRACIÓN, IBF17-15; ILUMINACIÓN, IBF11-14; DANZA YIN, IBF17-15; ENCUENTRO CON ABRAZO, BA31-09; RONDA FINAL, BA68-16`
+            danzas: `RONDA DE INICIACIÓN, BA73-16; MARCHA ALEGRE, IBF05-02; JUEGO SIN INSTRUCCIONES, NE01-17; LIBERACIÓN DEL MOVIMIENTO, IBF07-11; DANZA YANG, IBF15-11; DANZA DE FLUIDEZ CON IMÁGENES, IBF17-01; INSPIRACIÓN, IBF17-15; ILUMINACIÓN, IBF11-14; DANZA YIN, IBF17-15; ENCUENTRO CON ABRAZO, BA31-09; RONDA FINAL, BA68-16`
         }
     ];
     return  resultado;
@@ -130,7 +130,7 @@ var generateData = function(){
         <th class="Fecha"><a ng-click="sort_by('fecha')">Fecha <i class="fa fa-sort"></i></a></th>
         <th class="Tema"><a ng-click="sort_by('tema')">Tema <i class="fa fa-sort"></i></a></th>
         <th class="Autor"><a ng-click="sort_by('autor')">Autor <i class="fa fa-sort"></i></a></th>
-        <th class="Danzas"><a ng-click="sort_by('Danzas')">Danzas<i class="fa fa-sort"></i></a></th>
+        <th class="Danzas"><a ng-click="sort_by('danzas')">Danzas<i class="fa fa-sort"></i></a></th>
 <!--        <th class="evolucion"><a ng-click="sort_by('evolucion')">Link <i class="fa fa-sort"></i></a></th>
         <th class="field4"><a ng-click="sort_by('field4')">Field 4 <i class="fa fa-sort"></i></a></th>
         <th class="field5"><a ng-click="sort_by('field5')">Field 5 <i class="fa fa-sort"></i></a></th> -->
