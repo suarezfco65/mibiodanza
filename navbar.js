@@ -38,7 +38,8 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
           {titulo:'Catálogo de Danzas', href:'catalogo.html', hijos:[]},
           {titulo:'M. Pessoa - Vida y Plenitud', href:'mariaPessoa.html', hijos:[]},
           {titulo:'Música - Danza - Línea de Vivencia', href:'musicaCruce.html', hijos:[]},
-          {titulo:'Preparar Sesión', href:'sesion.html', hijos:[]}
+          {titulo:'Preparar Sesión', href:'sesion.html', hijos:[]},
+          {titulo:'Algunas Sesiones de Biodanza', href:'algunasSesiones.html', hijos:[]}
         ]}
     ];
     document.write('<nav class="navbar navbar-inverse navbar-fixed-top">');
