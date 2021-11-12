@@ -172,8 +172,7 @@ var generateData = function(){
     </tfoot>
       <tbody>
         <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-          <td><button class="btn btn-success btn-xs" ng-click="play(item.pagina)">❤</button>
-		  <a href="{{item.pagina}}" target="_blank" role="button" class="btn btn-success btn-xs">❤</a></td>
+          <td><a href="{{item.pagina}}" target="_blank" role="button" class="btn btn-success btn-xs">❤</a></td>
           <td>{{item.fecha}}</td>
           <td>{{item.tema}}</td>
           <td>{{item.autor}}</td>
