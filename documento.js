@@ -7296,6 +7296,11 @@ var arrDocumento = [
 	['P',	`Vitalidad`],	
 	['H',	`Música :`],
 	['C',	`BA73-07   Four Circles of Life - [Indians music] - Gaia`],
+	['D',   `CAMINAR`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Vitalidad`],	
+	['H',	`Música :`],
+	['C',	`BA56-17 Preto, Con Preta - Jorge Aragão`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
