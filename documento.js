@@ -3876,6 +3876,8 @@ var arrDocumento = [
 	['C', `IBF14-16     Libertango     Piazzolla, Astor     2:54`],	
 	['OBS', `     Con desplazamientos.        `],	
 	['C', `IBF14-15     Uomo del Sud (Violin)     Piazzolla, Astor / Agri, Antonio     3:58`],	
+	['C', `BA58-13      Kais Wa Leila - Oliver Shanti`],	
+	['OBS', `     Música del elenco de Buenos Aires para Danza del Fuego.        `],	
 	['D', `DANZA DEL AGUA`],	
 	['H', `Descripción :`],	
 	['P', `El agua es el elemento asociado a la comida, el abrigo, la matriz de las aguas primordiales, la emoción, la sensualidad cenestésica (las aguas interiores), la profundidad. También se asocia con la fluidez, lo que evita los obstáculos y que es redondo y cuya forma se adapta a todos los contenedores. La danza, según la música, evoca las cualidades predominantes del agua.`],	
