@@ -7303,6 +7303,7 @@ var arrDocumento = [
 	['P',	`Vitalidad`],	
 	['H',	`Música :`],
 	['C',	`BA56-17 Preto, Con Preta - Jorge Aragão`],
+	['C',	`BA35-09 I want to break free - Queen`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
