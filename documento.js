@@ -819,6 +819,7 @@ var arrDocumento = [
 	['P', `Este ejercicio exalta la seguridad en sí mismo y permite de manifestar la fuerza de la identidad.`],	
 	['H', `Objetivo :`],	
 	['P', `El ejercicio de marcha con exaltación de la propia presencia estimula la expresión de la identidad. No se trata de manifestar el ego, sino, al contrario, de mostrar con plenitud nuestra identidad, que se manifiesta a través de la seguridad y confianza en uno mismo.`],	
+	['H', `Música :`],	
 	['C', `IBF19-13     Les Voici, les voici, voici la quadrille!     Bizet, Georges (1838-1875)     3:57`],	
 	['C', `IBF17-13     Suo Gan (Vocal Ambrosian Junior Choir)     OST Empire Of The Sun     2:18`],	
 	['D', `MARCHA CON DETERMINACIÓN`],	
