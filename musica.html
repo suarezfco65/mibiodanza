@@ -25,6 +25,7 @@
                 obj.innerHTML = sources;
                 obj.load();
                 obj.play();
+                document.getElementById('dl').href=musica.archivos[0].archivo;
                 document.getElementById('nombre').innerHTML=musica.nombre;
                 document.getElementById('autor').innerHTML=musica.autor;
                 document.getElementById('lineaVivencia').innerHTML=musica.lineaVivencia;
@@ -104,7 +105,8 @@
         <button type="button" class="btn" onclick="buscarCancion(this.form)">Buscar</button>
     </form>
     <br>
-    <div><span id ="nombre" style="color:blue"></span><br>
+    <div><a id="dl" href="#"  download="apple"><span class="glyphicon glyphicon-download-alt"></span></a>&nbsp;
+        <span id ="nombre" style="color:blue"></span><br>
         <span id ="autor" style="color:red"></span><br>
         <span id="lineaVivencia" style="color:green"></span><br>
         <ul id="danzas" style="color:purple"></ul>
