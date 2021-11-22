@@ -26,6 +26,8 @@
                 obj.load();
                 obj.play();
                 document.getElementById('dl').href=musica.archivos[0].archivo;
+                document.getElementById('dl').download=form.elements.namedItem("codigo").value.toUpperCase()+' - '+musica.autor+ " - "+musica.nombre;
+                document.getElementById('dl').innerHTML=`<span class="glyphicon glyphicon-download-alt"></span> Descargar`;
                 document.getElementById('nombre').innerHTML=musica.nombre;
                 document.getElementById('autor').innerHTML=musica.autor;
                 document.getElementById('lineaVivencia').innerHTML=musica.lineaVivencia;
@@ -110,8 +112,8 @@
         <span id ="autor" style="color:red"></span><br>
         <span id="lineaVivencia" style="color:green"></span><br>
         <ul id="danzas" style="color:purple"></ul>
-        <a id="dl" href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-download-alt"></span> Descargar
+        <a id="dl" href="#" class="btn btn-info btn-lg"  download="#">
+          
         </a>
     </div>
     <div class="container-audio">
