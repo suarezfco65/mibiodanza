@@ -553,8 +553,8 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 musica="`+musica.codigo+`"  
                 evolucion="`+$scope.danzas[i].evolucion+`"
                 presenta=""
-                linea-vivencia="" 
-                clasificacion=""
+                linea-vivencia="Vitalidad/Sexualidad/Creatividad/Afrectividad/Trascendencia" 
+                clasificacion="Integración Motora/Integración Afectivo-Motora/Comunicación Afectiva y Comunión/Expresión de los Potenciales Genéticos"
                 objetivo="">
                 `+danza.descripcion+`
             </bd-danza>`;
@@ -564,7 +564,16 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 	</div>
 </body>
 </html>
-<script src="https://suarezfco65.github.io/amobiodanza/biodanza.js"></`+`script>`;
+<script src="https://suarezfco65.github.io/amobiodanza/biodanza.js"></`+`script>
+<!--
+Clasificación:
+--------------
+Integración Motora: Son ejercicios que se caracterizan por su acción integradora, particularmente eficaz a nivel motor.
+Integración Afectivo-Motora: Son ejercicios que tienen el objetivo de integrar los gestos a las emociones, en el sentido de reducir progresivamente la disociación afectivo-motora.∗Hess, W. R.: Die Funktionelle Organisation des Vegetativen Nervensystems. Schawabe, Basel 1948.
+Comunicación Afectiva y Comunión: Son ejercicios que evocan vivencias de comunión a partir de la comunicación de los propios sentimientos y emociones entre los participantes del grupo, a través de los gestos, la mirada y el contacto sensible en feed-back. Las vivencias de comunión contribuyen notablemente a la integración de grupo.
+Ejercicios Específicos de Expresión de los Potenciales Genéticos: Son ejercicios de profundización en las cinco líneas de vivencia y su realización requiere una mayor madurez vivencial del grupo y de cada uno de sus participantes.
+-->
+`;
         var otext = document.createElement('textarea');
         otext.innerHTML=html;
         document.body.appendChild(otext);
