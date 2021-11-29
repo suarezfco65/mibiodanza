@@ -7303,10 +7303,11 @@ var arrDocumento = [
 	['C',	`BA73-07   Four Circles of Life - [Indians music] - Gaia`],
 	['D',   `CAMINAR`],	
 	['H',	`Línea de Vivencia`],
-	['P',	`Vitalidad`],	
+	['P',	`Vitalidad y Creatividad`],	
 	['H',	`Música :`],
 	['C',	`BA56-17 Preto, Con Preta - Jorge Aragão`],
 	['C',	`BA35-09 I want to break free - Queen`],
+	['C',	`BA56-20 Hey soul sista - Train`],
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
