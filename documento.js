@@ -407,11 +407,12 @@ var indice= {
 	'COSQUILLAS AL COMPAÑERO': 1,
 	'LA BELLA POLENTA': 1,
 	'BAMBOLÉ': 1,
-	'BUENOS AIRES - CAMINARES': 1,
+	'BUENOS AIRES': 1,
 	'CAMINARES RÍTMICOS':1,
 	'CAMINAR ENAMORADO DE LA VIDA':1,
 	'CAMINAR VITAL':1,
 	'CAMINAR TRIBAL':1,
+	'VIDA Y PLENITUD': 1,
 }
 var arrDocumento = [
 	['T', `LAS RONDAS`],	
@@ -7279,7 +7280,7 @@ var arrDocumento = [
         ['H',   'Música'],
         ['C',   `JE05-20       1.- Circo Marimbondo (Milton Nascimento). 2.-Farofa-fá (Orquestra e coro Carroussell)3.- , O trenzinho (cinc in pon o pon) 4.- Turma do balao mágico)`],
 	
-	['T',`BUENOS AIRES - CAMINARES`],	
+	['T',`BUENOS AIRES`],	
 	['D',   `CAMINARES RÍTMICOS`],	
 	['P',	`Sin Descripción`],	
 	['H',	`Música :`],
@@ -7308,6 +7309,28 @@ var arrDocumento = [
 	['C',	`BA56-17 Preto, Con Preta - Jorge Aragão`],
 	['C',	`BA35-09 I want to break free - Queen`],
 	['C',	`BA56-20 Hey soul sista - Train`],
+
+	['T',`VIDA Y PLENITUD`],	
+	['D',   `CAMINAR POR LA LÍNEA IMAGINARIA`],
+	['H',	`Objetivo`],
+	['P',	`Despertar lo lúdico. Promover el equilibrio`],	
+	['H',	`Descripción`],
+	['P',	`Imaginar una línea en el suelo o en el aire y caminar sobre ella, manteniendo el equilibrio`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Vitalidad y creatividad`],	
+	['H',	`Evolución en la Curva`],
+	['P',	`Activación moderada`],	
+	['H',	`Significado Existencial`],
+	['P',	`Mantener el equilibrio y el sentido de humor en situaciones inesperadas`],	
+	['H',	`Efecto Regulador`],
+	['P',	`Activar las sinergias de los músculos involucrados`],	
+	['H',	`Consigna Sugerida`],
+	['P',	`Van a imaginarse caminando por una cuerda floja, como en el circo y usar recursos de su cuerpo para mantenerse en equilibrio`],	
+	['H',	`Música :`],
+	['C',	`IBF06-08 Honey Pie [Part] - The Beatles`],
+	['OBS', `     Grupos de Iniciación`],	
+	['C',	`IBF06-18 Oh! Lady Be Good - Goodman, Benny`],
+	['OBS', `     Grupos de Profundización`],	
 ];
 var arrTiposDanzas = [];
 var contTipoDanza = 0;
