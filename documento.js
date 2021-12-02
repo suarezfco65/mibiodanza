@@ -1733,6 +1733,7 @@ var arrDocumento = [
 	['C', `IBF17-10     Caravansary     Kitaro (ÍÁÓ)     4:36`],	
 	['C', `IBF17-01     La petite fille de la mer     Vangelis     5:54`],	
 	['C', `IBF09-05     She     Zamfir, Gheorghe     4:01`],	
+	['C', `IBF07-15     Ensaio Geral     Os Ritmistas Brasileiros / Luciano Perrone     2:31`],	
 	['D', `DANZA DE FLUIDEZ EN PARES`],	
 	['H', `Descripción :`],	
 	['P', `Este es el ejercicio más importante de ajustamiento corporal entre dos personas, porque en cada momento de la danza permite una adaptación dinámica de los cuerpos. Cuando dos personas se encuentran corporalmente y una es fluida, mientras la otra es rígida, se puede hablar de "desencuentro". La "Fluidez en apres" representa la más perfecta comunión y reciprocidad en el encuentro corporal.`],	
