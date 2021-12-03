@@ -272,8 +272,14 @@ var generateData = function(){
     </tfoot>
       <tbody>
         <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-          <td><a href="{{item.enlace}}" target="_blank" role="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list"></span></a><br>
-		  <a href="{{item.pagina}}" target="_blank" role="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td>
+		  <div *ngIf="item.enlace!=''">
+		  <a href="{{item.enlace}}" target="_blank" role="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-list"></span></a><br>
+		  </div>
+		  <div *ngIf="item.pagina!=''">
+		  <a href="{{item.pagina}}" target="_blank" role="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-file"></span></a>
+		  </div>
+	  </td>
           <td>{{item.descripcion}}</td>
           <td>{{item.danzas}}</td>
 <!--          <td><a href="#">{{item.field3}}</a></td>
