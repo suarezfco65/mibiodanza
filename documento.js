@@ -6732,6 +6732,7 @@ var arrDocumento = [
         ['H',   'Música: '],
         ['C',   `JE02-08       1.-  Pula, brinca, agita! (S. Malandro)`],
         ['C',   `JE02-17       2.-  Pipoca (Areketu) ALTA`],
+        ['C',   `IBF05-20      Festa do Interior - Costa Gal`],
 
 	['D',   `BANDA`],
         ['H',   'Objetivo'],
