@@ -602,6 +602,8 @@ var arrDocumento = [
 	['C', `IBF14-14     Você abusou     Creuza, Maria     3:57`],	
 	['C', `BA68-19      Tonolec - So Caayolec (Mi Caballito`],
 	['OBS', `     Sugerida por Elenco Buenos Aires para Rondas de Tribal de Activación.`],	
+	['C', `BA31-05      Tu - Mecano`],
+	['OBS', `     Sugerida por Elenco Buenos Aires para Rondas.`],	
 	['D', `RONDA DE ACTIVACIÓN`],	
 	['P', `Al final de la clase, para mantener la cohesión grupal, conviene proponer una activación en ronda. La intensidad de la activación debe tener en cuenta la fisiología y la vivencia de las personas, de manera de ser lo más progresiva posible, para que no haya ruptura en la vivencia.`],	
 	['H', `Descripción :`],	
