@@ -142,8 +142,8 @@
         <div class="btn-group">
 <!--            <button type="button" class="btn btn-success" ng-click="imprimir=false">Documento</button> -->
             <button type="button" class="btn btn-success" ng-click="editarSesion()">Modo Edición</button>
-            <button type="button" class="btn btn-success" ng-click="copiarWhatsApp()">Copiar a WhatsApp</button>
-            <button type="button" class="{{todas ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="tocarTodas()" id="ejTodos" ng-disabled="(ejecucion || prueba)">{{todas ? 'Detener' : 'Tocar todas'}}</button>
+            <button type="button" class="btn btn-success" ng-click="copiarWhatsApp()"><span class="glyphicon glyphicon-copy"></span> WhatsApp</button>
+            <button type="button" class="{{todas ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="tocarTodas()" id="ejTodos" ng-disabled="(ejecucion || prueba)">{{todas ? 'Detener' : '<span class="glyphicon glyphicon-copy"></span> todas'}}</button>
         </div>
     <script>finContenido();</script>
 </div>
