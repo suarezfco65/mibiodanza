@@ -437,7 +437,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 sesion.pos++;
                 if (sesion.pos <= Number($scope.hasta)) sesion.play() 
                 else {
-                    $scope.ejecucion = false;
+                    $scope.todas = false;
                     $scope.$digest();
                     $scope.stopDanza();
                     for (var i=0; i<$scope.danzas.length; i++)
