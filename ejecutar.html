@@ -141,7 +141,7 @@
     <script>inicioContenido('Otros Controles', 4, 'bd-otrosctrls');</script>
         <div class="btn-group">
 <!--            <button type="button" class="btn btn-success" ng-click="imprimir=false">Documento</button> -->
-            <button type="button" class="btn btn-success" ng-click="editarSesion()">Modo Edición</button>
+            <button type="button" class="btn btn-success" ng-click="editarSesion()"><span class="glyphicon glyphicon-th-list"></span> <span class="glyphicon glyphicon-pencil"></span></button>
             <button type="button" class="btn btn-success" ng-click="copiarWhatsApp()"><span class="glyphicon glyphicon-copy"></span> WhatsApp</button>
             <button type="button" class="{{todas ? 'btn btn-danger' : 'btn btn-success'}}" ng-click="tocarTodas()" id="ejTodos" ng-disabled="(ejecucion || prueba)">{{todas ? 'Detener' : `<span class='glyphicon glyphicon-music'></span> todas`}}</button>
         </div>
