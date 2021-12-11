@@ -79,9 +79,19 @@
     <tbody>
         <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}" ng-dblclick="cambiarPosicion(d.id)">
             <td id="{{'td'+d.id}}">
-                <button type="button" class="btn btn-success btn-xs" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button>
+                <button data-toggle="tooltip"
+		    	title="Descripción de la danza"
+		    	type="button" 
+		    	class="btn btn-success btn-xs" 
+			ng-click="descDanza(d.id)" 
+			data-toggle="modal" 
+			data-target="#descModal"><i class="fa fa-book"></i></button>
                 {{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].nombre }}<br>
-                <button type="button" class="btn btn-success btn-xs" ng-click="playColor(d.id);playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
+                <button data-toggle="tooltip"
+		    	title="Escuchar la danza"
+		    	type="button" 
+			class="btn btn-success btn-xs" 
+			ng-click="playColor(d.id);playDanza(d.tipoDanza,d.danza,d.cancion)">&#9835;</button>
                 <span class="autor">{{getCancion(d.tipoDanza,d.danza,d.cancion).autor.substr(0,maxCar()<28?28:maxCar())}}</span>: <br>
                 <i>{{ tiposDanzas[d.tipoDanza-1].arrDanzas[d.danza-1].arrCanciones[d.cancion-1].codigo+' '}}</i>
                 <span class="cancion">{{getCancion(d.tipoDanza,d.danza,d.cancion).nombre.substr(0,maxCar()<28?28:maxCar())}}</span><br>
@@ -92,8 +102,18 @@
                 </div>
             </td>
             <td style="text-align: center">
-                <button type="button" class="btn btn-success" ng-click="editDanza(d.id)" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-danger" ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
+                <button data-toggle="tooltip"
+		    	title="Editar la danza"
+		    	type="button" 
+			class="btn btn-success" 
+			ng-click="editDanza(d.id)" 
+			data-toggle="modal" 
+			data-target="#editModal"><i class="fa fa-edit"></i></button>
+                <button data-toggle="tooltip"
+		    	title="Eliminar la danza"
+		    	type="button" 
+			class="btn btn-danger" 
+			ng-click="deleteDanza(d.id)"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     </tbody>
