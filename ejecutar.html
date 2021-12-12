@@ -115,7 +115,7 @@
 		    class="{{prueba ? 'btn btn-danger' : 'btn btn-success'}}" 
 		    ng-click="iniciarPrueba()" 
 		    id="prIniciar" 
-		    ng-disabled="(ejecucion || todas)"><span class="glyphicon glyphicon-th-list"></span> <span class="glyphicon glyphicon-{{prueba ? 'pause' : 'play'}}"></span></button>
+		    ng-disabled="(ejecucion || todas)"><span class="glyphicon glyphicon-th-list"></span> <span class="glyphicon glyphicon-{{prueba ? 'pause' : 'music'}}"></span></button>
         </div>
     </form>
     </div>
@@ -140,7 +140,7 @@
 		    class="{{ejecucion ? 'btn btn-danger' : 'btn btn-success'}}" 
 		    ng-click="iniciarSesion()" 
 		    id="ejIniciar" 
-		    ng-disabled="(prueba || todas)"><span class="glyphicon glyphicon-th-list"></span> <span class="glyphicon glyphicon-{{ejecucion ? 'pause' : 'play'}}"></span></button>
+		    ng-disabled="(prueba || todas)"><span class="glyphicon glyphicon-th-list"></span> <span class="glyphicon glyphicon-{{ejecucion ? 'pause' : 'music'}}"></span></button>
         </div>
     </form>
     <script>finContenido();</script>
