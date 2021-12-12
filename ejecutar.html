@@ -191,8 +191,17 @@
             <span class="cancion">{{d.omusica.nombre}}</span></p>
             </td>
             <td valign="top" align="center"><b>{{d.evolucion}}</b><br>{{d.min}}:{{(d.seg<10) ? '0'+d.seg : d.seg}}</td>
-            <td ng-show="imprimir" valign="top"><button type="button" class="btn btn-success" ng-click="playDanza(d.id);" ng-disabled="prueba || ejecucion">&#9835;</button>&nbsp;</td>
-            <td ng-show="imprimir" valign="top"><button type="button" class="btn btn-success" ng-click="descDanza(d.id)" data-toggle="modal" data-target="#descModal"><i class="fa fa-book"></i></button></td>
+            <td ng-show="imprimir" 
+		valign="top"><button type="button" 
+				     class="btn btn-success btn-xs" 
+				     ng-click="playDanza(d.id);" 
+				     ng-disabled="prueba || ejecucion"><span class="glyphicon glyphicon-music"></span></button>&nbsp;</td>
+            <td ng-show="imprimir" 
+		valign="top"><button type="button" 
+				     class="btn btn-success btn-xs" 
+				     ng-click="descDanza(d.id)" 
+				     data-toggle="modal" 
+				     data-target="#descModal"><i class="fa fa-book"></i></button></td>
         </tr>
         <tr><td colspan="5"><hr></td></tr>
     </tbody>
