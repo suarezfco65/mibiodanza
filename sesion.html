@@ -79,8 +79,7 @@
     <tbody>
         <tr ng-repeat="d in danzas" id="{{'tr'+d.id}}" ng-dblclick="cambiarPosicion(d.id)">
             <td id="{{'td'+d.id}}">
-                <button data-toggle="tooltip"
-		    	title="Descripción de la danza"
+                <button title="Descripción de la danza"
 		    	type="button" 
 		    	class="btn btn-success btn-xs" 
 			ng-click="descDanza(d.id)" 
