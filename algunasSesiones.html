@@ -19,10 +19,6 @@
       .cancion    {color: darkslateblue; font-weight: bold}
       .desc       {color: green; font-weight: bold}
       .consigna   {color: orangered}
-      .petit { font-size:.875em;} 
-      @media only screen and (max-width: 768px) {
-        /* For mobile phones: */
-        .petit { font-size:.65em;}
       }      
     </style>
 </head>
@@ -282,7 +278,7 @@ var generateData = function(){
       </thead>
       <tfoot>
     </tfoot>
-      <tbody class="petit">
+      <tbody>
         <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
           <td>
 		  <div ng-If="item.enlace!=''">
@@ -293,7 +289,7 @@ var generateData = function(){
 		  </div>
 	  </td>
           <td>{{item.descripcion}}</td>
-          <td>{{item.danzas}}</td>
+          <td class="small">{{item.danzas}}</td>
 <!--          <td><a href="#">{{item.field3}}</a></td>
           <td>{{item.field4}}</td>
           <td>{{item.field5}}</td>
