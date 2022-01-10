@@ -16,6 +16,7 @@ class audible extends HTMLElement {
         text-align: center;
         user-select: none;
         padding: 0.3rem 0.75rem;
+        margin: 3px 3px 3px 3px;
         font-size: 1rem;
         border-radius: 0.25rem;
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -28,6 +29,7 @@ class audible extends HTMLElement {
         text-align: center;
         user-select: none;
         padding: 0.3rem 0.75rem;
+        margin: 3px 3px 3px 3px;
         font-size: 1rem;
         border-radius: 0.25rem;
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -54,25 +56,57 @@ class audible extends HTMLElement {
         top:20px;
         left:5px;
       }
+
+      .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+      .dropup {
+        position: relative;
+        display: inline-block;
+      }
+      .dropup-content {
+        display: none; right:0;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        bottom: 20px;
+        z-index: 1;
+      }
+      .dropup-content a {
+        color: black;
+        padding: 6px 10px;
+        text-decoration: none;
+        display: block;
+        text-align:left;
+      }
+      .dropup-content a:hover {background-color: #ccc}
+      .dropup:hover .dropup-content {
+        display: block;
+      }
+      .dropup:hover .dropbtn {
+        background-color: #2980B9;
+      }
     </style>
     <audio id="audible-id-audio">
        <source src="" id="audible-id-enlace">
     </audio>
-    <table id="audible-id-posicion" style="border: 1px solid #ADADAD; background-color:white">
-    <thead style="padding: 0.5rem 1rem; background-color: rgba(0,0,0,.03); border-top: 1px solid rgba(0,0,0,.125);">
+    <table id="audible-id-posicion" style="padding: 0;border: 1px solid #ADADAD; background-color:#f1f1f1">
+    <thead style="padding: 0; background-color: #f1f1f1; border: 0px solid;">
         <tr>
-            <th colspan="6" id="audible-id-musica">&nbsp;</th>
+            <th colspan="6" id="audible-id-musica" style="text-align:left">&nbsp;</th>
         </tr>
     </thead>
-    <tbody style="padding: 0.5rem 1rem; margin-bottom: 0; background-color: white; border-bottom: 1px solid rgba(0,0,0,.125);">
+    <tbody style="padding: 0.5rem 1rem; margin-bottom: 0; background-color: white;">
         <tr>
-            <td colspan="6" style="color:red"><sub id="audible-id-nombre"></sub></td>
-        </tr>
-        <tr>
-            <td colspan="6" style="color:blue"><sup id="audible-id-autor"></sup></td>
+            <td colspan="6"><sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub>
+            <br><sup  style="color:red" id="audible-id-autor">&nbsp;</sup></td>
         </tr>
     </tbody>
-    <tfoot style="padding: 0.5rem 1rem; background-color: rgba(0,0,0,.03); border-top: 1px solid rgba(0,0,0,.125);">
+    <tfoot style="padding: 0.5rem 1rem;  background-color:#f1f1f1">
         <tr>
             <td colspan="6">
                 <input style="width: 100%" type="range" id="audible-id-avance" min="0" step="1" onchange="this.click(this.value)"/>
@@ -127,7 +161,7 @@ class audible extends HTMLElement {
             </td>
         </tr>
         <tr>
-            <td colspan="3">
+            <td colspan="3" style="text-align:center;">
                 <small><sub id="audible-id-avanceDuracion">&nbsp;</sub></small>
             </td>
             <td colspan="3">
@@ -249,6 +283,7 @@ class audible extends HTMLElement {
       obj.innerHTML = newValue;
       const oMusica = catalogoMusica[newValue];
       if (oMusica) {
+        obj.innerHTML = oMusica.elenco + ' - ' + newValue;
         document.getElementById('audible-id-nombre').innerHTML = oMusica.nombre;
         document.getElementById('audible-id-autor').innerHTML = oMusica.autor;
         //          document.getElementById('lineaVivencia').innerHTML=oMusica.lineaVivencia;
