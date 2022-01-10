@@ -35,22 +35,22 @@ class audible extends HTMLElement {
         cursor:pointer;
       }
       .bottomRight{
-        position:absolute;
+        position: fixed;
         bottom:5px;
         right:5px;
       }
       .bottomLeft{
-        position:absolute;
+        position: fixed;
         bottom:5px;
         left:5px;
       }
       .topRight{
-        position:absolute;
+        position: fixed;
         top:20px;
         right:5px;
       }
       .topLeft{
-        position:absolute;
+        position: fixed;
         top:20px;
         left:5px;
       }
