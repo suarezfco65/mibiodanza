@@ -58,7 +58,7 @@ class audible extends HTMLElement {
     <audio id="audible-id-audio">
        <source src="" id="audible-id-enlace">
     </audio>
-    <table id="audible-id-posicion" style="border: 1px solid #ADADAD;">
+    <table id="audible-id-posicion" style="border: 1px solid #ADADAD; background-color:white">
     <thead style="padding: 0.5rem 1rem; background-color: rgba(0,0,0,.03); border-top: 1px solid rgba(0,0,0,.125);">
         <tr>
             <th colspan="6" id="audible-id-musica">&nbsp;</th>
