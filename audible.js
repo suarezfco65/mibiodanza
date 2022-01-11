@@ -57,53 +57,59 @@ class audible extends HTMLElement {
         left:5px;
       }
 
-      .dropbtn {
-        background-color: #3498DB;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        width: 100%;
         border: none;
+        text-align: left;
+        outline: none;
+        transition: 0.4s;
       }
-      .dropup {
-        position: relative;
-        display: inline-block;
+      .active, .accordion:hover {
+        background-color: #ccc;
       }
-      .dropup-content {
-        display: none; right:0;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        bottom: 20px;
-        z-index: 1;
+      .accordion:after {
+        content: '❥';
+        color: red;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
       }
-      .dropup-content a {
-        color: black;
-        padding: 6px 10px;
-        text-decoration: none;
-        display: block;
-        text-align:left;
+      .active:after {
+        content: "❤";
       }
-      .dropup-content a:hover {background-color: #ccc}
-      .dropup:hover .dropup-content {
-        display: block;
+      .panel {
+        padding: 0 9px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
       }
-      .dropup:hover .dropbtn {
-        background-color: #2980B9;
-      }
+      
     </style>
+
     <audio id="audible-id-audio">
        <source src="" id="audible-id-enlace">
     </audio>
     <table id="audible-id-posicion" style="padding: 0;border: 1px solid #ADADAD; background-color:#f1f1f1">
     <thead style="padding: 0; background-color: #f1f1f1; border: 0px solid;">
         <tr>
-            <th colspan="6" id="audible-id-musica" style="text-align:left">&nbsp;</th>
+            <th colspan="6" style="text-align:left"><button  id="audible-id-musica" class="accordion">&nbsp;</button></th>
         </tr>
     </thead>
     <tbody style="padding: 0.5rem 1rem; margin-bottom: 0; background-color: white;">
         <tr>
-            <td colspan="6"><sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub>
-            <br><sup  style="color:red" id="audible-id-autor">&nbsp;</sup></td>
+            <td colspan="6">
+              <div class="panel" id="audible-id-panel">
+                <sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub><br>
+                <sup  style="color:red" id="audible-id-autor">&nbsp;</sup><br>
+                <small id="audible-id-elenco" style="font-weight: bold;"></small><br>
+                <small id="audible-id-lineavivencia"></small>
+                <small><ul id="audible-id-danzas" style="color:purple"></ul></small>
+              </div>
+          </td>
         </tr>
     </tbody>
     <tfoot style="padding: 0.5rem 1rem;  background-color:#f1f1f1">
@@ -172,6 +178,23 @@ class audible extends HTMLElement {
     </table>
         `;
     this.innerHTML = html;
+    // Acordion script
+
+    var acc = document.getElementsByClassName('accordion');
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener('click', function () {
+        this.classList.toggle('active');
+        var panel = document.getElementById('audible-id-panel');
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    }
+
     var oAudio = document.getElementById('audible-id-audio');
     oAudio.preload = 'auto';
 
@@ -283,11 +306,14 @@ class audible extends HTMLElement {
       obj.innerHTML = newValue;
       const oMusica = catalogoMusica[newValue];
       if (oMusica) {
-        obj.innerHTML = oMusica.elenco + ' - ' + newValue;
+        obj.innerHTML = newValue;
+        document.getElementById('audible-id-elenco').innerHTML = oMusica.elenco;
         document.getElementById('audible-id-nombre').innerHTML = oMusica.nombre;
         document.getElementById('audible-id-autor').innerHTML = oMusica.autor;
-        //          document.getElementById('lineaVivencia').innerHTML=oMusica.lineaVivencia;
-        //          document.getElementById('danzas').innerHTML='<li>'+oMusica.danzas.join('</li><li>')+'</li>';
+        document.getElementById('audible-id-lineavivencia').innerHTML =
+          oMusica.lineaVivencia;
+        document.getElementById('audible-id-danzas').innerHTML =
+          '<li>' + oMusica.danzas.join('</li><li>') + '</li>';
         const oAudio = document.getElementById('audible-id-audio');
         oAudio.playPause.pauseAudio();
         var sources = '';
@@ -303,11 +329,12 @@ class audible extends HTMLElement {
         oAudio.load();
         oAudio.playPause.playAudio();
       } else {
+        document.getElementById('audible-id-elenco').innerHTML = '';
         document.getElementById('audible-id-nombre').innerHTML = '';
         document.getElementById('audible-id-autor').innerHTML =
           'Código no encontrado';
-        //          document.getElementById('lineaVivencia').innerHTML='';
-        //          document.getElementById('danzas').innerHTML='';
+        document.getElementById('audible-id-lineavivencia').innerHTML = '';
+        document.getElementById('audible-id-danzas').innerHTML = '';
       }
     }
   }
