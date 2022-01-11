@@ -66,6 +66,7 @@ class audible extends HTMLElement {
         text-align: left;
         outline: none;
         transition: 0.4s;
+        font-weight:bold;
       }
       .active, .accordion:hover {
         background-color: #ccc;
@@ -96,17 +97,17 @@ class audible extends HTMLElement {
     <table id="audible-id-posicion" style="padding: 0;border: 1px solid #ADADAD; background-color:#f1f1f1">
     <thead style="padding: 0; background-color: #f1f1f1; border: 0px solid;">
         <tr>
-            <th colspan="6" style="text-align:left"><button  id="audible-id-musica" class="accordion">&nbsp;</button></th>
+            <th colspan="6" style="text-align:left;"><button  id="audible-id-musica" class="accordion">&nbsp;</button></th>
         </tr>
     </thead>
     <tbody style="padding: 0.5rem 1rem; margin-bottom: 0; background-color: white;">
         <tr>
-            <td colspan="6">
+            <td colspan="6" style="padding:0px">
               <div class="panel" id="audible-id-panel">
+                <small id="audible-id-elenco" style="font-weight: bold;"></small><br>
                 <sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub><br>
                 <sup  style="color:red" id="audible-id-autor">&nbsp;</sup><br>
-                <small id="audible-id-elenco" style="font-weight: bold;"></small><br>
-                <small id="audible-id-lineavivencia"></small>
+                <small>Línea de Vivencia: </small><small id="audible-id-lineavivencia"></small>
                 <small><ul id="audible-id-danzas" style="color:purple"></ul></small>
               </div>
           </td>
