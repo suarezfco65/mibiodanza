@@ -57,7 +57,7 @@ class audible extends HTMLElement {
         left:5px;
       }
 
-      .accordion {
+      .miAccordion {
         background-color: #eee;
         color: #444;
         cursor: pointer;
@@ -68,10 +68,10 @@ class audible extends HTMLElement {
         transition: 0.4s;
         font-weight:bold;
       }
-      .activing, .accordion:hover {
+      .activing, .miAccordion:hover {
         background-color: #ccc;
       }
-      .accordion:after {
+      .miAccordion:after {
         content: '❥';
         color: red;
         font-weight: bold;
@@ -81,7 +81,7 @@ class audible extends HTMLElement {
       .activing:after {
         content: "❤";
       }
-      .panel {
+      .miPanel {
         padding: 0 9px;
         background-color: white;
         max-height: 0;
@@ -89,7 +89,17 @@ class audible extends HTMLElement {
         transition: max-height 0.2s ease-out;
       }
       
-    </style>
+      .espera {
+        align-content: center;
+        color: red;
+        animation: miEspera 1s infinite;
+      }
+      @keyframes miEspera {
+        from {font-size: 50%;}
+        to {font-size: 100%;}
+      }
+
+     </style>
 
     <audio id="audible-id-audio">
        <source src="" id="audible-id-enlace">
@@ -97,13 +107,13 @@ class audible extends HTMLElement {
     <table id="audible-id-posicion" style="padding: 0;border: 1px solid #ADADAD; background-color:#f1f1f1">
     <thead style="padding: 0; background-color: #f1f1f1;">
         <tr>
-            <th colspan="6" style="text-align:left;"><button  id="audible-id-musica" class="accordion">&nbsp;</button></th>
+            <th colspan="6" style="text-align:left;"><button  id="audible-id-musica" class="miAccordion">&nbsp;</button></th>
         </tr>
     </thead>
     <tbody style="padding: 0; margin-bottom: 0; background-color: white;">
         <tr>
             <td colspan="6" style="padding:0px">
-              <div class="panel" id="audible-id-panel">
+              <div class="miPanel" id="audible-id-miPanel">
                 <small id="audible-id-elenco" style="font-weight: bold;"></small><br>
                 <sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub><br>
                 <sup  style="color:red" id="audible-id-autor">&nbsp;</sup><br>
@@ -168,7 +178,8 @@ class audible extends HTMLElement {
             </td>
         </tr>
         <tr>
-            <td colspan="3" style="text-align:center;">
+            <td class="espera" style="text-align:center;" id="audible-id-espera"></td>
+            <td colspan="2" style="text-align:center;">
                 <small><sub id="audible-id-avanceDuracion">&nbsp;</sub></small>
             </td>
             <td colspan="3">
@@ -184,11 +195,11 @@ class audible extends HTMLElement {
     var acc = document.getElementById('audible-id-musica');
     acc.addEventListener('click', function () {
       this.classList.toggle('activing');
-      var panel = document.getElementById('audible-id-panel');
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
+      var miPanel = document.getElementById('audible-id-miPanel');
+      if (miPanel.style.maxHeight) {
+        miPanel.style.maxHeight = null;
       } else {
-        panel.style.maxHeight = panel.scrollHeight + 'px';
+        miPanel.style.maxHeight = miPanel.scrollHeight + 'px';
       }
     });
 
@@ -293,6 +304,9 @@ class audible extends HTMLElement {
       oAudio.volume = 0;
       oAudio['rangoVolumen'].value = 0;
     };
+    oAudio.onloadeddata = function () {
+      document.getElementById('audible-id-espera').innerHTML = '';
+    };
   }
   attributeChangedCallback(nameAtr, oldValue, newValue) {
     var obj = document.getElementById('audible-id-' + nameAtr);
@@ -304,6 +318,7 @@ class audible extends HTMLElement {
       const oMusica = catalogoMusica[newValue];
       if (oMusica) {
         obj.innerHTML = newValue;
+        document.getElementById('audible-id-espera').innerHTML = '❤';
         document.getElementById('audible-id-elenco').innerHTML = oMusica.elenco;
         document.getElementById('audible-id-nombre').innerHTML = oMusica.nombre;
         document.getElementById('audible-id-autor').innerHTML = oMusica.autor;
