@@ -108,7 +108,7 @@ class audible extends HTMLElement {
                 <sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub><br>
                 <sup  style="color:red" id="audible-id-autor">&nbsp;</sup><br>
                 <small>Línea de Vivencia: </small><small id="audible-id-lineavivencia"></small>
-                <small><ul id="audible-id-danzas" style="color:purple"></ul></small>
+                <sub><ul id="audible-id-danzas" style="color:purple"></ul></sub>
               </div>
           </td>
         </tr>
