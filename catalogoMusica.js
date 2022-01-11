@@ -1979,7 +1979,7 @@ const catalogoMusica = {
         "20":"IBFC20/",
         "21":"IBFC21/"
     },
-    "IBF01-01":{nombre:"Free As a Bird",autor:"The Beatles",archivos:[{nombre:"IBF01 - 01 - The Beatles - Free As a Bird.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 01 - The Beatles - Free As a Bird.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN ","FLUIDEZ : SERIE I"]},
+    "IBF01-01":{nombre:"Free As a Bird",autor:"The Beatles",archivos:[{nombre:"IBF01 - 01 - The Beatles - Free As a Bird.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 01 - The Beatles - Free As a Bird.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN ","FLUIDEZ : SERIE I", "RONDA MELODICA AFECTIVA LIGERA"]},
     "IBF01-02":{nombre:"Let It Be",autor:"The Beatles",archivos:[{nombre:"IBF01 - 02 - The Beatles - Let It Be.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 02 - The Beatles - Let It Be.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE ACTIVACIÓN LENTA","RONDA DE ACTIVACIÓN"]},
     "IBF01-03":{nombre:"I Me Mine",autor:"The Beatles",archivos:[{nombre:"IBF01 - 03 - The Beatles - I Me Mine.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 03 - The Beatles - I Me Mine.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN "]},
     "IBF01-04":{nombre:"(Just Like) Starting Over",autor:"Lennon, John",archivos:[{nombre:"IBF01 - 04 - Lennon, John - (Just Like) Starting Over.mp3",tipo:"audio/mpeg"},{nombre:"IBF01 - 04 - Lennon, John - (Just Like) Starting Over.ogg",tipo:"audio/ogg"}],lineaVivencia:"",danzas:["RONDA DE INICIACIÓN "]},
