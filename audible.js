@@ -244,7 +244,14 @@ class audible extends HTMLElement {
       oAudio.pause();
     };
 
-    oAudio['avance'] = document.getElementById('audible-id-avance');
+    oAudio.avance = document.getElementById('audible-id-avance');
+    oAudio.avance.click = function (valor) {
+      oAudio.currentTime = valor;
+      oAudio.avanceDuracion.innerHTML =
+        formatTime(valor) + ' / ' + formatTime(oAudio.duration);
+      oAudio.avance.max = oAudio.duration;
+    };
+
     oAudio['avanceDuracion'] = document.getElementById(
       'audible-id-avanceDuracion'
     );
@@ -257,15 +264,6 @@ class audible extends HTMLElement {
 
     oAudio.avance.max = oAudio.duration;
     oAudio.avance.value = oAudio.currentTime;
-    oAudio.avanceDuracion.innerHTML =
-      formatTime(oAudio.currentTime) + ' / ' + formatTime(oAudio.duration);
-
-    oAudio['cambioAvance'] = function (valor) {
-      oAudio.currentTime = valor;
-      oAudio.avanceDuracion.innerHTML =
-        formatTime(valor) + ' / ' + formatTime(oAudio.duration);
-      oAudio.avance.max = oAudio.duration;
-    };
 
     oAudio.addEventListener(
       'timeupdate',
@@ -306,6 +304,8 @@ class audible extends HTMLElement {
     };
     oAudio.onloadeddata = function () {
       document.getElementById('audible-id-espera').innerHTML = '';
+      oAudio.avanceDuracion.innerHTML =
+        formatTime(oAudio.currentTime) + ' / ' + formatTime(oAudio.duration);
     };
   }
   attributeChangedCallback(nameAtr, oldValue, newValue) {
