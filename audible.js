@@ -68,7 +68,7 @@ class audible extends HTMLElement {
         transition: 0.4s;
         font-weight:bold;
       }
-      .active, .accordion:hover {
+      .activing, .accordion:hover {
         background-color: #ccc;
       }
       .accordion:after {
@@ -78,7 +78,7 @@ class audible extends HTMLElement {
         float: right;
         margin-left: 5px;
       }
-      .active:after {
+      .activing:after {
         content: "❤";
       }
       .panel {
@@ -183,7 +183,7 @@ class audible extends HTMLElement {
 
     var acc = document.getElementById('audible-id-musica');
     acc.addEventListener('click', function () {
-      this.classList.toggle('active');
+      this.classList.toggle('activing');
       var panel = document.getElementById('audible-id-panel');
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
