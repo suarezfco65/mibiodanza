@@ -2396,7 +2396,7 @@ const catalogoMusica = {
                 const coleccion = codigo.substr(0,codigo.indexOf('-')-2);
                 const album = codigo.substr(codigo.indexOf('-')-2,2);
                 const carpeta = catalogoMusica[coleccion].carpeta + catalogoMusica[coleccion][album];
-		this[codigo].elenco = catalogoMusica[coleccion].carpeta.substring(0,catalogoMusica[coleccion].carpeta.lenght-1);
+		this[codigo].elenco = catalogoMusica[coleccion].carpeta.substring(0,catalogoMusica[coleccion].carpeta.length-1);
                 for (var i = 0; i < this[codigo].archivos.length; i++)
                     this[codigo].archivos[i].archivo = carpeta+this[codigo].archivos[i].nombre;
             }
