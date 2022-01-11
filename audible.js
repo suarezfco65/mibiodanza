@@ -95,12 +95,12 @@ class audible extends HTMLElement {
        <source src="" id="audible-id-enlace">
     </audio>
     <table id="audible-id-posicion" style="padding: 0;border: 1px solid #ADADAD; background-color:#f1f1f1">
-    <thead style="padding: 0; background-color: #f1f1f1; border: 0px solid;">
+    <thead style="padding: 0; background-color: #f1f1f1;">
         <tr>
             <th colspan="6" style="text-align:left;"><button  id="audible-id-musica" class="accordion">&nbsp;</button></th>
         </tr>
     </thead>
-    <tbody style="padding: 0.5rem 1rem; margin-bottom: 0; background-color: white;">
+    <tbody style="padding: 0; margin-bottom: 0; background-color: white;">
         <tr>
             <td colspan="6" style="padding:0px">
               <div class="panel" id="audible-id-panel">
@@ -113,7 +113,7 @@ class audible extends HTMLElement {
           </td>
         </tr>
     </tbody>
-    <tfoot style="padding: 0.5rem 1rem;  background-color:#f1f1f1">
+    <tfoot style="padding: 0;  background-color:#f1f1f1">
         <tr>
             <td colspan="6">
                 <input style="width: 100%" type="range" id="audible-id-avance" min="0" step="1" onchange="this.click(this.value)"/>
