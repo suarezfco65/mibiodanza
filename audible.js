@@ -117,8 +117,8 @@ class audible extends HTMLElement {
                 <small id="audible-id-elenco" style="font-weight: bold;"></small><br>
                 <sub  style="color:blue" id="audible-id-nombre">&nbsp;</sub><br>
                 <sup  style="color:red" id="audible-id-autor">&nbsp;</sup><br>
-                <small>Línea de Vivencia: </small><small id="audible-id-lineavivencia"></small>
-                <sub><ul id="audible-id-danzas" style="color:purple"></ul></sub>
+                <small>Línea de Vivencia: </small><small id="audible-id-lineavivencia"></small><br>
+                <small><div id="audible-id-danzas" style="color:purple;line-height:normal;"></div></small>
               </div>
           </td>
         </tr>
@@ -324,8 +324,9 @@ class audible extends HTMLElement {
         document.getElementById('audible-id-autor').innerHTML = oMusica.autor;
         document.getElementById('audible-id-lineavivencia').innerHTML =
           oMusica.lineaVivencia;
-        document.getElementById('audible-id-danzas').innerHTML =
-          '<li>' + oMusica.danzas.join('</li><li>') + '</li>';
+        document.getElementById('audible-id-danzas').innerHTML = (
+          '- ' + oMusica.danzas.join('</br>- ')
+        ).toLowerCase();
         const oAudio = document.getElementById('audible-id-audio');
         oAudio.playPause.pauseAudio();
         var sources = '';
