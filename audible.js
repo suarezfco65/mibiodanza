@@ -1,10 +1,9 @@
-formatTime = function (seconds) {
-  let minutes = Math.floor(seconds / 60);
-  let secs = Math.floor(seconds % 60);
-  if (minutes < 10) minutes = '0' + minutes;
-  if (secs < 10) secs = '0' + secs;
-  return minutes + ':' + secs;
-};
+const formatTime = (segundos) => {
+  const mins = Math.floor(segundos / 60);
+  const segs = Math.floor(segundos % 60);
+  segs = segs < 10 ? `0${segs}` : `${segs}`;
+  return `${mins}:${segs}`;
+}
 class audible extends HTMLElement {
   constructor() {
     super();
@@ -324,9 +323,22 @@ class audible extends HTMLElement {
         document.getElementById('audible-id-autor').innerHTML = oMusica.autor;
         document.getElementById('audible-id-lineavivencia').innerHTML =
           oMusica.lineaVivencia;
-        document.getElementById('audible-id-danzas').innerHTML = (
-          '- ' + oMusica.danzas.join('</br>- ')
-        ).toLowerCase();
+        let auxString = '- ' + oMusica.danzas.join('</br>- ');
+        console.log(auxString);
+        let sDanzas = '',
+          pos = 0,
+        for (let x in auxString) {
+          x = parseInt(x);
+          if (auxString[x] == '-') {
+            pos = x+2;
+            sDanzas += auxString[x];
+          } else if (x == pos) {
+            sDanzas += auxString[x].toUpperCase();
+          } else {
+            sDanzas += auxString[x].toLowerCase();
+          }
+        }
+        document.getElementById('audible-id-danzas').innerHTML = sDanzas;
         const oAudio = document.getElementById('audible-id-audio');
         oAudio.playPause.pauseAudio();
         var sources = '';
