@@ -326,7 +326,7 @@ class audible extends HTMLElement {
         let auxString = '- ' + oMusica.danzas.join('</br>- ');
         console.log(auxString);
         let sDanzas = '',
-          pos = 0,
+          pos = 0;
         for (let x in auxString) {
           x = parseInt(x);
           if (auxString[x] == '-') {
