@@ -1,6 +1,6 @@
 const formatTime = (segundos) => {
   const mins = Math.floor(segundos / 60);
-  const segs = Math.floor(segundos % 60);
+  let segs = Math.floor(segundos % 60);
   segs = segs < 10 ? `0${segs}` : `${segs}`;
   return `${mins}:${segs}`;
 }
