@@ -7,6 +7,7 @@ const procesaSesion = {
     crearAudio : function (codigo, contador)    {
         const omusica = catalogoMusica[codigo];
         const oaudio = document.createElement("audio");
+        oaudio.setAttribute("is","amo-biodanza-audio");
         for (var i=0; i<catalogoMusica[codigo].archivos.length; i++)    {
             const osource = document.createElement("source");
             osource.setAttribute('src',procesaSesion.carpeta+omusica.archivos[i].archivo);
@@ -561,3 +562,7 @@ class danzaBiodanza extends HTMLElement {
 }
 customElements.define('bd-sesion', sesionBiodanza);
 customElements.define('bd-danza', danzaBiodanza);
+
+var script = document.createElement("script");  // create a script DOM node
+script.src = "amoBiodanzaAudio.js";  // set its src to the provided URL
+document.head.appendChild(script);
