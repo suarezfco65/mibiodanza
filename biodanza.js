@@ -1,7 +1,3 @@
-var script = document.createElement("script");  // create a script DOM node
-script.src = "../amoBiodanzaAudio.js";  // set its src to the provided URL
-document.head.appendChild(script);
-
 const procesaSesion = {
     carpeta : 'https://suarezfco65.github.io/amobiodanza/',
     tiempoTotal: 0,
