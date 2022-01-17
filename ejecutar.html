@@ -15,7 +15,8 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>    
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="amoBiodanzaAudio.js"></script>
     <script src="documento.js"></script>
     <script src="catalogoMusica.js"></script>
     <script src="navbar.js"></script>
@@ -61,7 +62,7 @@
       </div>
     </nav>
     <div class="rb" id="audios" draggable="true">
-        <audio ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none">
+        <audio is="amo-biodanza-audio" ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none">
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
@@ -609,6 +610,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     <script src="https://code.highcharts.com/modules/series-label.js"></`+`script>
     <script src="https://code.highcharts.com/modules/exporting.js"></`+`script>
     <script src="https://code.highcharts.com/modules/export-data.js"></`+`script>
+    <script src="https://suarezfco65.github.io/amobiodanza/amoBiodanzaAudio.js"></`+`script>
     <script src="https://suarezfco65.github.io/amobiodanza/catalogoMusica.js"></`+`script>
 
     <title>`+$scope.tema+`</title>
