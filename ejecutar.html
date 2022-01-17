@@ -61,7 +61,7 @@
         </div>
       </div>
     </nav>
-    <div class="rb" id="audios" draggable="true">
+    <div class="rb" id="audios">
         <audio is="amo-biodanza-audio" ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none">
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
