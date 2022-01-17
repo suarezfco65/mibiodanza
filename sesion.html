@@ -16,7 +16,6 @@
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="amoBiodanzaAudio.js"></script>
     <script src="documento.js"></script>
     <script src="catalogoMusica.js"></script>
     <script src="navbar.js"></script>
@@ -35,6 +34,7 @@
 
 </head>
 <body>
+	<!--
 	<script>
 		const oDiv = document.createElement('div', {id:'audios', class:'rb'});
 		const oAudio = document.createElement('audio', {is:'amo-biodanza-audio', id:'audio'});
@@ -45,8 +45,8 @@
 		oDiv.appendChild(oAudio);
 		document.body.appendChild(oDiv);
 	</script>
-	
-<!--	<div class="rb" id="audios">
+	-->
+	<div class="rb" id="audios">
 	<audio is="amo-biodanza-audio" id="audio" controls>
 		<source id="ogg" src="" type="audio/ogg">
 		<source id="mp3" src="" type="audio/mpeg">
@@ -55,7 +55,7 @@
 		<source id="ogg2" src="" type="audio/ogg">
 		<source id="mp32" src="" type="audio/mpeg">
 	</audio>
-	</div> -->
+	</div> 
 <div ng-app="myApp" ng-controller="sesionCrtl" style="margin-top:50px">
 <div class="container">
 <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
@@ -552,3 +552,4 @@ document.body.addEventListener('drop',drop,false);
   </script>
   </ul> 
 -->
+    <script src="amoBiodanzaAudio.js"></script>
