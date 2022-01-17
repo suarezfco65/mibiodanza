@@ -3491,7 +3491,7 @@ var arrDocumento = [
 	['P', `Esta posición, acompañada de música adecuada, induce una vivencia de eternidad, o sea la percepción del tiempo dilatado. Por eso la posición generatriz de atemporalidad puede ser considerada una forma de meditación.`],	
 	['P', `Se trata de una vivencia "fuera del tiempo", donde el tiempo se libera de cualquier medida. Se inspira en el yoga y la vivencia surge de la sensación muy sutil de la concentración de energía llevada a cabo sin ningún esfuerzo. Para la gente que tiene dificultades posturales, se debera invitarlas a adaptarse a sus posibilidades motrices (incluyendo hacerla sentado en una silla). Sin embargo, la demostración del facilitador debe cumplir con la consigna. Esta posición no es seguida de una danza generada.`],	
 	['H', `Música :`],	
-	['C', `IBF18-05 Daphnis et Chloé (Levine) - Danse lente et  Ravel, Maurice (1875-1937)     2:06`],	
+	['C', `IBF18-05     Daphnis et Chloé (Levine) - Danse lente et  Ravel, Maurice (1875-1937)     2:06`],	
 	['D', `CONEXIÓN CON LO PRIMORDIAL`],	
 	['P', `Con los ojos abiertos y agachado, con las rodillas flexionadas, se acaricia el suelo con las manos. La mirada está dirigida hacia las propias manos.`],	
 	['P', `Esta posición evoca el artesano con la arcilla, la selección de semillas y la preparación de alimentos. En el plano visceral y fisiológico evoca el parto natural, la micción y la defecación.`],	
