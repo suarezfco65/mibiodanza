@@ -6,7 +6,7 @@ const procesaSesion = {
     },
     crearAudio : function (codigo, contador)    {
         const omusica = catalogoMusica[codigo];
-        const oaudio = document.createElement("audio", {is:"amo-biodanza-audio"});
+        const oaudio = document.createElement("audio", {is:'amo-biodanza-audio'});
         for (var i=0; i<catalogoMusica[codigo].archivos.length; i++)    {
             const osource = document.createElement("source");
             osource.setAttribute('src',procesaSesion.carpeta+omusica.archivos[i].archivo);
