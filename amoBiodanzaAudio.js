@@ -1,7 +1,7 @@
 class miAudio extends HTMLAudioElement {
   constructor() {
     super();
-    this.aplicar = function () {
+    this.aplicar = function (oAudio) {
       const html = {
         style: `
             .yamp-button {
@@ -238,11 +238,10 @@ class miAudio extends HTMLAudioElement {
       const oStyle = document.createElement('style');
       oStyle.setAttribute('id', 'yab-style');
       oStyle.innerHTML = html.style;
-      this.parentElement.appendChild(oStyle);
-      this.parentElement.appendChild(oDiv);
-      this.style.display = 'none';
+      oAudio.parentElement.appendChild(oStyle);
+      oAudio.parentElement.appendChild(oDiv);
+      oAudio.style.display = 'none';
 
-      const oAudio = this;
       oAudio['playPause'] = document.getElementById('yab-playPause');
       oAudio['playPause'].play = function () {
         this.innerHTML = `<svg
@@ -389,7 +388,7 @@ class miAudio extends HTMLAudioElement {
         `El atributo ${name} ha sido modificado de ${old} a <<${now}>>.`
       );
       if (!this.aplicado) {
-        this.aplicar();
+        this.aplicar(this);
         this.aplicado = true;
       }
     } else {
