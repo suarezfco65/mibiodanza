@@ -24,8 +24,9 @@ class miAudio extends HTMLAudioElement {
                 margin: 20px;
                 width: 95%;
                 max-width: 320px;
-                height: 132px;
+                height: 122px;
                 background: #fff;
+                border-radius:20px;
               }
               #audio-player-container::before {
                 position: absolute;
@@ -36,6 +37,7 @@ class miAudio extends HTMLAudioElement {
                 top: -2px;
                 background: linear-gradient(to left, #007db5, #ff8a00);
                 z-index: -1;
+                border-radius:20px;
               }
               #yoAmoMiPlayer {
                 position: absolute;
