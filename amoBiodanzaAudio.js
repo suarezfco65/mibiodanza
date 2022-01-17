@@ -238,7 +238,7 @@ class miAudio extends HTMLAudioElement {
       oStyle.innerHTML = html.style;
       this.parentElement.appendChild(oStyle);
       this.parentElement.appendChild(oDiv);
-      this.style.visibility = 'hidden';
+      this.style.display = 'none';
 
       const oAudio = this;
       oAudio['playPause'] = document.getElementById('yab-playPause');
