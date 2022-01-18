@@ -295,6 +295,7 @@ class miAudio extends HTMLAudioElement {
              oAudio.avance.value = (valor * 100) / oAudio.duration;
              oAudio.duracion.innerHTML = oAudio.avance.formatTime(oAudio.duration);
           }
+          if (!oAudio.paused) oAudio['playPause'].play();
         },
         false
       );
