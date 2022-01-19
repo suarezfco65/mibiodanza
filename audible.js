@@ -125,7 +125,7 @@ class audible extends HTMLElement {
     <tfoot style="padding: 0;  background-color:#f1f1f1">
         <tr>
             <td colspan="6">
-                <input style="width: 100%" type="range" id="audible-id-avance" min="0" step="1" onchange="this.click(this.value)"/>
+                <input style="margin:5px; width:90%" type="range" id="audible-id-avance" min="0" step="1" onchange="this.click(this.value)"/>
             </td>
         </tr>
         <tr>
@@ -182,7 +182,7 @@ class audible extends HTMLElement {
                 <small><sub id="audible-id-avanceDuracion">&nbsp;</sub></small>
             </td>
             <td colspan="3">
-                <input type="range" id="audible-id-rangoVolumen" min="0" max="1" step="0.1" onchange="this.change(this.value)">
+                <input style="margin:5px; width:90%" type="range" id="audible-id-rangoVolumen" min="0" max="1" step="0.1" onchange="this.change(this.value)">
             </td>
         </tr>
     </tfoot>
