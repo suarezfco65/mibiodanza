@@ -4,7 +4,36 @@ class miAudio extends HTMLAudioElement {
     this.aplicar = function (oAudio) {
       const html = {
         style: `
-            .yamp-button {
+              .yab-modal-todo{
+                background-color:white;
+                width:300px;
+                padding: 10px 20px;
+                position: fixed;
+                left: 50%;
+                top:0;
+                margin-left: -150px;
+                border-radius:6px;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #333;
+              }
+              .yab-modal{
+                background-color: rgba(0,0,0,.8);
+                position:fixed;
+                top:0;
+                right:0;
+                bottom:0;
+                left:0;
+                opacity:0;
+                pointer-events:none;
+                transition: all 1s;
+              }
+              #yab-miModal:target{
+                opacity:1;
+                pointer-events:auto;
+              }
+              .yamp-button {
                 padding: 0;
                 border: 0;
                 background: transparent;
@@ -191,7 +220,7 @@ class miAudio extends HTMLAudioElement {
                 `,
         div: `
             <div id="audio-player-container">
-            <p id="yoAmoMiPlayer">Yo<span style="color: red">❤</span>Biodanza</p>
+            <p id="yoAmoMiPlayer">Yo<a href="#yab-miModal" style="color:red;text-decoration:none;">❤</a>Biodanza</p>
             <button
               id="yab-playPause"
               class="yamp-button"
@@ -228,6 +257,20 @@ class miAudio extends HTMLAudioElement {
             />
             </svg>
             </button>
+          </div>
+          <div id="yab-miModal" class="yab-modal">
+              <div class="yab-modal-todo">
+                <div id="yab-modal-encabezado" style="padding:0 5px; margin: 0; font-size:18px;"></div>
+                <hr>
+                <div id="yab-modal-contenido"></div>
+                <hr>
+                <div style="width:100%; text-align:right">
+                  <a href="#" style="text-decoration:none;padding:0 5px; margin: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg></a>
+                </div>
+              </div>  
           </div>
             `,
       };
@@ -275,6 +318,9 @@ class miAudio extends HTMLAudioElement {
         oAudio.pause();
       };
 
+      document.getElementById('yab-modal-encabezado').innerHTML =
+        this.encabezado;
+      document.getElementById('yab-modal-contenido').innerHTML = this.contenido;
       oAudio.avance = document.getElementById('yab-avance');
       oAudio.avance.mover = true;
       oAudio.cTime = document.getElementById('yab-current-time');
@@ -291,11 +337,15 @@ class miAudio extends HTMLAudioElement {
         (event) => {
           var valor = Math.round(oAudio.currentTime);
           oAudio.cTime.innerHTML = oAudio.avance.formatTime(valor);
-          if (oAudio.avance.mover)  {
-             oAudio.avance.value = (valor * 100) / oAudio.duration;
-             oAudio.duracion.innerHTML = oAudio.avance.formatTime(oAudio.duration);
+          if (oAudio.avance.mover) {
+            oAudio.avance.value = (valor * 100) / oAudio.duration;
+            oAudio.duracion.value = oAudio.avance.formatTime(oAudio.duration);
           }
-          if (!oAudio.paused) oAudio['playPause'].play();
+          if (
+            !oAudio.paused &&
+            oAudio['playPause'].innerHTML.indexOf('M10 ') < 0
+          )
+            oAudio['playPause'].play();
         },
         false
       );
@@ -380,31 +430,35 @@ class miAudio extends HTMLAudioElement {
     this.setAttribute('is', value || this.controles);
   }
   static get observedAttributes() {
-    return ['controls'];
+    return ['controls', 'encabezado', 'contenido'];
   }
 
   attributeChangedCallback(name, old, now) {
-    if (now != null) {
-      console.log(
-        `El atributo ${name} ha sido modificado de ${old} a <<${now}>>.`
-      );
-      if (!this.aplicado) {
-        this.aplicar(this);
-        this.aplicado = true;
+    console.log(
+      `El atributo ${name} ha sido modificado de ${old} a <<${now}>>.`
+    );
+    if (name == 'controls') {
+      if (now != null) {
+        if (!this.aplicado) {
+          this.aplicar(this);
+          this.aplicado = true;
+        }
+      } else {
+        if (this.aplicado) {
+          const yabMain = this.parentElement.querySelector('#yab-main');
+          const yabStyle = this.parentElement.querySelector('#yab-style');
+          if (yabMain) {
+            this.parentElement.removeChild(yabMain);
+            this.parentElement.removeChild(yabStyle);
+          }
+          this.aplicado = false;
+          this.style.display = 'block';
+        }
       }
     } else {
-      console.log(
-        `El atributo ${name} ha sido modificado de ${old} a ((${now})).`
-      );
       if (this.aplicado) {
-        const yabMain = this.parentElement.querySelector('#yab-main');
-        const yabStyle = this.parentElement.querySelector('#yab-style');
-        if (yabMain) {
-          this.parentElement.removeChild(yabMain);
-          this.parentElement.removeChild(yabStyle);
-        }
-        this.aplicado = false;
-      }
+        document.getElementById('yab-modal-' + name).innerHTML = now;
+      } else this[name] = now;
     }
   }
 }
