@@ -82,6 +82,7 @@
     	for (var i = 0; i<cancion.archivos.length; i++)	
 	    	sources += '<source type="'+cancion.archivos[i].tipo+'" src="'+cancion.archivos[i].archivo+'"></source>';
     	obj.innerHTML = sources;
+	obj.load();
         var sContenido = `<small style="font-weight: bold;">`+cancion.elenco+`</small><br>
                 <sub  style="color:blue">`+cancion.nombre+`</sub><br>
                 <sup  style="color:red">`+cancion.autor+`</sup><br>
