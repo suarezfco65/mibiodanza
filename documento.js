@@ -7564,6 +7564,29 @@ var playMusic = function(song)  {
 	for (var i = 0; i<cancion.archivos.length; i++)	
 		sources += '<source type="'+cancion.archivos[i].tipo+'" src="'+cancion.archivos[i].archivo+'"></source>';
 	obj.innerHTML = sources;
+
+        obj.setAttribute('encabezado',song);
+        var sContenido = `<small style="font-weight: bold;">`+cancion.elenco+`</small><br>
+                <sub  style="color:blue">`+cancion.nombre+`</sub><br>
+                <sup  style="color:red">`+cancion.autor+`</sup><br>
+                <sup>`+cancion.lineaVivencia+`</sup><br>`;
+        let auxString = '- ' + cancion.danzas.join('</br>- ');
+        let sDanzas = '',
+        pos = 0;
+        for (let x in auxString) {
+          x = parseInt(x);
+          if (auxString[x] == '-') {
+            pos = x+2;
+            sDanzas += auxString[x];
+          } else if (x == pos) {
+            sDanzas += auxString[x].toUpperCase();
+          } else {
+            sDanzas += auxString[x].toLowerCase();
+          }
+        }
+        sContenido += `<small><div style="line-height:normal;">`+sDanzas+`</div></small>`;
+        obj.setAttribute('contenido',sContenido);	
+	
 	obj.load();
 	obj.play(); 
 }
