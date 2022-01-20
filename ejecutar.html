@@ -342,6 +342,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
                 }
             }
             danza.oAudio = null;
+	    console.log(danza);
             $scope.danzas.push(danza);
         }
         if ($scope.danzas.length > 0)   
