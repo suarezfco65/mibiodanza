@@ -5,19 +5,32 @@ class miAudio extends HTMLAudioElement {
       const html = {
         style: `
               .yab-modal-todo{
-                background-color:white;
+                background-color:#fff;
                 width:300px;
                 padding: 10px 20px;
-                position: fixed;
+                position: relative;
                 left: 50%;
-                top:50px;
+                top:52px;
                 margin-left: -150px;
-                border-radius:6px;
+                border-radius:20px;
                 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
                 font-size: 14px;
                 line-height: 1.42857143;
                 color: #333;
-                z-index:5;
+                --seek-before-width: 0%;
+                --volume-before-width: 100%;
+                --buffered-width: 0%;
+              }
+              .yab-modal-todo::before {
+                position: absolute;
+                content: '';
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                left: -2px;
+                top: -2px;
+                background: linear-gradient(to left, #007db5, #ff8a00);
+                z-index: -1;
+                border-radius:20px;
               }
               .yab-modal{
                 background-color: rgba(0,0,0,.8);
