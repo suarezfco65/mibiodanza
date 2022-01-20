@@ -17,6 +17,7 @@ class miAudio extends HTMLAudioElement {
                 font-size: 14px;
                 line-height: 1.42857143;
                 color: #333;
+                z-index:1;
               }
               .yab-modal{
                 background-color: rgba(0,0,0,.8);
