@@ -250,7 +250,8 @@
 	       id="{{'audio_'+d.id}}" 
 	       preload="none" 
 	       encabezado="{{d.omusica.codigo}}" 
-	       contenido="{{d.omusica.nombre+'<br>'+d.omusica.autor}}">
+	       contenido="{{d.omusica.nombre+'<br>'+d.omusica.autor}}"
+	       onLoadedData="obtenerContenido('{{d.omusica.codigo}}',this)">
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
@@ -258,6 +259,32 @@
 
 <script>
 
+function obtenerContenido(cMusica, obj)  {
+        obj.setAttribute('encabezado',cMusica);
+        const cancion = catalogoMusica[cMusica];
+        var sContenido = `<small style="font-weight: bold;">`+cancion.elenco+`</small><br>
+                <sub  style="color:blue">`+cancion.nombre+`</sub><br>
+                <sup  style="color:red">`+cancion.autor+`</sup><br>
+                <sup>`+cancion.lineaVivencia+`</sup><br>`;
+        let auxString = '- ' + cancion.danzas.join('</br>- ');
+        let sDanzas = '',
+        pos = 0;
+        for (let x in auxString) {
+          x = parseInt(x);
+          if (auxString[x] == '-') {
+            pos = x+2;
+            sDanzas += auxString[x];
+          } else if (x == pos) {
+            sDanzas += auxString[x].toUpperCase();
+          } else {
+            sDanzas += auxString[x].toLowerCase();
+          }
+        }
+        sContenido += `<small><div style="line-height:normal;letter-spacing: -1px;">`+sDanzas+`</div></small>`;
+        obj.setAttribute('contenido',sContenido);                    
+}
+	
+	
 angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     $scope.imprimir=true;
     $scope.tema ="";
