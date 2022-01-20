@@ -248,16 +248,14 @@
         <audio is="amo-biodanza-audio" 
 	       ng-repeat="d in danzas" 
 	       id="{{'audio_'+d.id}}" 
-	       preload="none" 
-	       onloadeddata="obtenerContenido('{{d.omusica.codigo}}',this)" 
-	       >
+	       preload="none">
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
-        <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
+<!--        <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span> -->
     </div>
 
 <script>
-
+// onloadeddata="obtenerContenido('{{d.omusica.codigo}}',this)"
 function obtenerContenido(cMusica, obj)  {
         obj.setAttribute('encabezado',cMusica);
         const cancion = catalogoMusica[cMusica];
@@ -267,7 +265,7 @@ function obtenerContenido(cMusica, obj)  {
                 <sup>`+cancion.lineaVivencia+`</sup><br>`;
         let auxString = '- ' + cancion.danzas.join('</br>- ');
         let sDanzas = '',
-        pos = 0;
+        let pos = 0;
         for (let x in auxString) {
           x = parseInt(x);
           if (auxString[x] == '-') {
