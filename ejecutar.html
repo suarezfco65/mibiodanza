@@ -249,8 +249,8 @@
 	       ng-repeat="d in danzas" 
 	       id="{{'audio_'+d.id}}" 
 	       preload="none" 
-	       encabezado="{{d.omusica.codigo}}" 
-	       contenido="{{d.omusica.nombre+'<br>'+d.omusica.autor}}"
+	       onloadeddata="obtenerContenido('{{d.omusica.codigo}}',this)" 
+	       >
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
