@@ -10,7 +10,7 @@ class miAudio extends HTMLAudioElement {
                 padding: 10px 20px;
                 position: fixed;
                 left: 50%;
-                top:40px;
+                top:50px;
                 margin-left: -150px;
                 border-radius:6px;
                 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
