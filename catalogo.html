@@ -56,8 +56,8 @@
                     s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;</th>';
                     s += '<th colspan="3"><span  class="cancion">'+cancion.texto+'</span></th>';
                 }   else    {
-//                    s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic(`'+cancion.codigo+'`)">&#9835;</button>&nbsp;</th>';
-                    s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="obtenerContenido(`'+cancion.codigo+'`);">&#9835;</button>&nbsp;</th>';
+                    s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="playMusic(`'+cancion.codigo+'`)">&#9835;</button>&nbsp;</th>';
+//                    s += '<th nowrap width="110">'+cancion.codigo+'&nbsp;<button type="button" class="btn btn-success btn-xs" onclick="obtenerContenido(`'+cancion.codigo+'`);">&#9835;</button>&nbsp;</th>';
                     s += '<td colspan ="2"><p><span class="autor">'+musica.autor+'&nbsp;<br>';
                     s += '<span class="cancion">'+musica.nombre;
                     if (cancion.descripcion.length > 5)
@@ -73,7 +73,7 @@
         }
         finContenido()
     }
-
+/*
     function obtenerContenido(cMusica)  {
         const obj = document.getElementById('audio');
         obj.setAttribute('encabezado',cMusica);
@@ -105,6 +105,7 @@
         obj.setAttribute('contenido',sContenido);
         obj.playPause.play()
     }
+ */
 </script>
     <br><br><br><br><br>
 </div>
