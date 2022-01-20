@@ -16,7 +16,6 @@
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="amoBiodanzaAudio.js"></script>
     <script src="documento.js"></script>
     <script src="catalogoMusica.js"></script>
     <script src="navbar.js"></script>
@@ -246,7 +245,12 @@
     </script></h4>
 	<br><br><br><br><br>
     <div class="rb" id="audios">
-        <audio is="amo-biodanza-audio" ng-repeat="d in danzas" id="{{'audio_'+d.id}}"  preload="none">
+        <audio is="amo-biodanza-audio" 
+	       ng-repeat="d in danzas" 
+	       id="{{'audio_'+d.id}}" 
+	       preload="none" 
+	       encabezado="{{d.omusica.codigo}}" 
+	       contenido="{{d.omusica.nombre+'<br>'+d.omusica.autor}}">
             <source ng-repeat="m in d.omusica.archivos" type="{{m.tipo}}" src="{{m.archivo}}">
         </audio>
         <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
@@ -611,7 +615,6 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
     <script src="https://code.highcharts.com/modules/series-label.js"></`+`script>
     <script src="https://code.highcharts.com/modules/exporting.js"></`+`script>
     <script src="https://code.highcharts.com/modules/export-data.js"></`+`script>
-    <script src="https://suarezfco65.github.io/amobiodanza/amoBiodanzaAudio.js"></`+`script>
     <script src="https://suarezfco65.github.io/amobiodanza/catalogoMusica.js"></`+`script>
 
     <title>`+$scope.tema+`</title>
@@ -640,6 +643,7 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 </body>
 </html>
 <script src="https://suarezfco65.github.io/amobiodanza/biodanza.js"></`+`script>
+<script src="https://suarezfco65.github.io/amobiodanza/amoBiodanzaAudio.js"></`+`script>
 <!--
 Clasificación:
 --------------
@@ -731,6 +735,7 @@ document.body.addEventListener('drop',drop,false);
     </div>
 </body>
 </html>
+<script src="amoBiodanzaAudio.js"></script>
 <script>
         /*
         prueba.desde    = 0;
