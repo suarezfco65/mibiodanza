@@ -85,7 +85,7 @@
     function obtenerContenido(cMusica)  {
         const obj = document.getElementById('audio');
         obj.setAttribute('encabezado',cMusica);
-        const cancion = catalogoMusica[cancion.codigo];
+        const cancion = catalogoMusica[cMusica];
         var sContenido = `<small style="font-weight: bold;">`+cancion.elenco+`</small><br>
                 <sub  style="color:blue">`+cancion.nombre+`</sub><br>
                 <sup  style="color:red">`+cancion.autor+`</sup><br>
