@@ -5326,7 +5326,6 @@ var arrDocumento = [
 	['P',	`Jorge Terrén y Betina Ber.`],
 	['H',	`Música :`],
 	['C',	`BA11-08      Título: Light and shadow; Artista: Vangelis; Álbum: Light And Shadow: The Best Of Vangelis; Duración: 3,45`],
-	['C',	`BA66-20      Título: A Thousand Yeart; Artista: Christina Perri`],
 	['D',	`RONDA DEL CAOS Y EL ORDEN`],
 	['H',	`Resumen`],
 	['P',	`Ronda lúdica a modo de juego en la que nos entrelazamos y “desenredamos”.`],
