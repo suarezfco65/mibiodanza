@@ -379,7 +379,7 @@ class miAudio extends HTMLAudioElement {
         segs = segs < 10 ? `0${segs}` : `${segs}`;
         return `${mins}:${segs}`;
       };
-      oAudio.onloadeddata = function () {
+      oAudio.durationchange = function () {
         oAudio.duracion.innerHTML = oAudio.avance.formatTime(oAudio.duration);
       };
 
