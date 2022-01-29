@@ -403,12 +403,11 @@ class miAudio extends HTMLAudioElement {
           </svg>`;
       };
 
-      oAudio.addEventListener("volumechange", {
-         var valor = Math.round(oAudio.volume * 100);
-         oAudio.cVolumen.innerHTML = valor;
-         oAudio.volumenSlider.value = valor;
-      });
-
+      oAudio.onvolumechange=function(){
+        var valor = Math.round(oAudio.volume * 100);
+        oAudio.cVolumen.innerHTML = valor;
+        oAudio.volumenSlider.value = valor;
+      };
       
       oAudio.volumenSlider.click = function () {
         oAudio.volume = this.value / 100;
