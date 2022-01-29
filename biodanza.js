@@ -92,7 +92,7 @@ const procesaSesion = {
         prueba.medio    = Number(document.getElementById('bd-id-prueba-durMedio').value);
         prueba.final    = Number(document.getElementById('bd-id-prueba-durFinal').value);
         prueba.pos      = prueba.desde;
-        for (var i  = prueba.pos; i<prueba.hasta; i++) {
+        for (var i  = prueba.desde; i<=prueba.hasta; i++) {
             catalogoMusica[procesaSesion.miLista[i-1]].audio.ontimeupdate   =   function()    {
                 var tm  = (this.duration/2) - (prueba.medio/2) ;
                 var ct  = this.currentTime;
