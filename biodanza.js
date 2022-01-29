@@ -145,7 +145,7 @@ const procesaSesion = {
             const oBt = document.getElementById('bd-tg-consigna-'+(i));
             if (oBt.innerHTML == '❥')
                 bd_toggleCollapse(oBt, 'bd-consigna-'+(i));
-            console.log(this.miLista[i-1]);
+            console.log(i, this.miLista[i-1]);
             catalogoMusica[this.miLista[i-1]].audio.onended = function() {
                 ejecucion.pos++;
                 if (ejecucion.pos > ejecucion.hasta) {
