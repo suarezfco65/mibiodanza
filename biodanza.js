@@ -442,7 +442,7 @@ class sesionBiodanza extends HTMLElement {
             </table>
             `,
             audios:`
-            <div id="bd-id-audios" draggable="true" style="position:fixed; bottom:0px; right: 0px;"></div>
+            <div id="bd-id-audios" style="position:fixed; bottom:0px; right: 0px;"></div>
             `
         }
         procesaSesion.sesion = {tema:this.getAttribute('tema'), autor:this.getAttribute('autor')};
