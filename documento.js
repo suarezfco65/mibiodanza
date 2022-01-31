@@ -4830,6 +4830,7 @@ var arrDocumento = [
 	['P',	`Jorge Terrén y Betina Ber.`],
 	['H',	`Música :`],
 	['C',	`IBF09-06      Título: Rosa; Artista: Carlos Poyares; Duración: 3,44`],
+	['C',	`NE02-02       De Oruga a Mariposa - Rosa Hamilton de Holanda`],
 	['D',	`DANZA DE LA OPORTUNIDAD PARA CAMBIAR`],
 	['H',	`Resumen`],
 	['P',	`Con una música en la que se repiten las frases melódicas, animamos a danzar cada parte con una característica de movimiento distinto.`],
