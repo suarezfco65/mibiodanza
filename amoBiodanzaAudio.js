@@ -355,6 +355,7 @@ class miAudio extends HTMLAudioElement {
         (event) => {
           var valor = Math.round(oAudio.currentTime);
           oAudio.cTime.innerHTML = oAudio.avance.formatTime(valor);
+          oAudio.duracion.innerHTML = oAudio.avance.formatTime(oAudio.duration);
           if (oAudio.avance.mover) {
             oAudio.avance.value = (valor * 100) / oAudio.duration;
             oAudio.duracion.value = oAudio.avance.formatTime(oAudio.duration);
