@@ -1,5 +1,5 @@
 const procesaSesion = {
-    carpeta : 'https://suarezfco65.github.io/amobiodanza/',
+    carpeta : 'https://suarezfco65.github.io/mibiodanza/',
     tiempoTotal: 0,
     audio: function (codigo)    {
         return catalogoMusica[codigo].audio
