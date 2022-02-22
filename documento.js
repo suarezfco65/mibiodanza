@@ -5128,6 +5128,7 @@ var arrDocumento = [
 	['H',	`Autores de la danza`],
 	['P',	`Verónica Toro y Raúl Terrén.`],
 	['H',	`Música :`],
+	['C',   `SM00-00 Sin Musica - Sin Musica`],	
 	['P',	`Este ejercicio se realiza sin música externa.`],
 	['D',	`INSPIRACIÓN A DOS`],
 	['H',	`Resumen`],
