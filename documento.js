@@ -782,6 +782,8 @@ var arrDocumento = [
 	['OBS', `     Música propuesta en el elenco de Buenos Aires para Ronda Final `],	
 	['C', `BA68-19       Tonolec - So Caayolec (Mi Caballito)`],	
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Tribal de Activación`],	
+	['C', `BA78-05       Cancion de Biodanza - Canción de Biodanza`],	
+	['OBS', `     Sugerida por elenco Buenos Aires para Caminar Ronda Activa`],	
 	['T', `LA MARCHA`],	
 	['P', `La rehabilitación del hombre "normal" debería comenzar con el aprendizaje de la marcha.`],	
 	['P', `La marcha es la expresión más evidente y más clara de la actitud de un ser humano frente a la vida.`],	
