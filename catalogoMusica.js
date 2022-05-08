@@ -423,7 +423,7 @@ const catalogoMusica = {
     "SBE01-07":{nombre:"Senegal Fast Food",autor:"Amadou et Myriam (feat. Manu Chao)",archivos:[{nombre:"SBE 01 - 07 - Amadou et Myriam (feat. Manu Chao) - Senegal Fast Food.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["JUEGO: EUTONÍA DE ESPALDAS "]},
     "SBE01-08":{nombre:"María Mole",autor:"Rita Lee",archivos:[{nombre:"SBE 01 - 08 - MarIa Mole - Rita Lee.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["CONTACTO LÚDICO EN TIERRA "]},
     "SBE01-09":{nombre:"Aquarela do Brasil e Nêga do cabelo duro",autor:"Elis Regina",archivos:[{nombre:"SBE 01 - 09 - Aquarela do Brasil e NEga do cabelo duro - Elis Regina.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:["LLUVIA DE LOS 4 ELEMENTOS "]},
-    "SBE01-10":{nombre:"Natalia Vals",autor:"Nicholas Petrou  Antonio Lauro",archivos:[{nombre:"SBE 01 - 10 - Nicholas Petrou  Antonio Lauro - Natalia Vals.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]}
+    "SBE01-10":{nombre:"Natalia Vals",autor:"Nicholas Petrou Antonio Lauro",archivos:[{nombre:"SBE 01 - 10 - Nicholas Petrou Antonio Lauro - Natalia Vals.mp3",tipo:"audio/mpeg"}],lineaVivencia:"",danzas:[]}
     "HLB":{
         carpeta:"Helene Levy Benseft/",
         "25":"HLB25/",
