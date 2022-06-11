@@ -2874,6 +2874,7 @@ var arrDocumento = [
 	['H', `Música :`],	
 	['C', `IBF19-04     Ray's Blues     Charles, Ray     2:56`],	
 	['C', `IBF15-05     Self Portrait (Of The Bean)     Ellington, Duke / Hawkins, Coleman     3:52`],	
+	['C', `BA55-06     Quintessence - Coleman Hawkins`],	
 	['D', `DANZA DE LA GARZA`],	
 	['P', `Representa la gracia del movimiento, la levedad, la potencia de la ascensión y la armonía. Los movimientos de la danza parten desde el centro del pecho. El vuelo posee la energía del pecho, es un acto de abertura hacia el espacio. La Garza tiene la gracia del vuelo y el dominio de los espacios. La vivencia es de levedad, de falta de gravedad, de lenta ascensión y elevación. Representa también la visión desde la altura.`],	
 	['P', `En psicología se habla mucho sobre la <i>visión con profundidad o abisal</i>, sin considerar la visión de la altura. Debemos acostumbrarnos a mirar las cosas desde la altura, donde las dificultades se dejan ver menos amenazadoras y es posible ver la situación en su totalidad.`],	
