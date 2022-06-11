@@ -413,6 +413,7 @@ var indice= {
 	'CAMINAR VITAL':1,
 	'CAMINAR TRIBAL':1,
 	'VIDA Y PLENITUD': 1,
+	'FLUIDEZ CREATIVA':1,
 }
 var arrDocumento = [
 	['T', `LAS RONDAS`],	
@@ -1745,6 +1746,7 @@ var arrDocumento = [
 	['C', `IBF09-12     Ooh Baby (You Know That I Love You)     Harrison, George     3:59`],	
 	['C', `IBF16-09 Ouverture [Part]     OST Le Grand Bleu     2:29`],	
 	['C', `IBF09-20     Oxygíne, Pt. 1     Jarre, Jean-Michel     7:41`],	
+	['C', `BA19-08     The tao of love - Vangelis`],	
 	['D', `FLUIDEZ : SERIE II`],	
 	['H', `Observación :`],	
 	['P', `La Serie 2 induce la apertura al mundo externo (hacia los demás). La mirada sigue el movimiento de brazos y manos.`],	
