@@ -1770,6 +1770,7 @@ var arrDocumento = [
 	['C', `IBF09-12     Ooh Baby (You Know That I Love You)     Harrison, George     3:59`],	
 	['C', `IBF16-09     Ouverture [Part]     OST Le Grand Bleu     2:29`],	
 	['C', `IBF09-15     The Light Thas Has Lighted The World     Harrison, George     3:29`],	
+	['C', `BA57-14     Roxanne's Veil - Vangelis`],	
 	['D', `FLUIDEZ : SERIE III`],	
 	['P', `La Serie 3 induce un aumento del equilibrio dinámico, creando energía.`],	
 	['P', `Los movimientos de fluidez se realizan en forma lenta y continua. En este caso la velocidad a veces puede aumentar ligeramente como consecuencia del aumento de la energía vital.`],	
