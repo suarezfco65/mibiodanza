@@ -1145,6 +1145,7 @@ var arrDocumento = [
 	['C', `IBF06-09     Who's Sorry Now     The New Orleans Banjo Band     4:22`],	
 	['C', `BA60-06      I'm yours - Jason Mraz`],
 	['OBS', `Sugerida por elenco Buenos Aires para SINCRONIZACIÓN RÍTMICA`],	
+	['C', `BA73-08      Africa Unite - Yannick Noah (Hommage)`],
 	['D', `SINCRONIZACIÓN MELÓDICA EN PARES`],	
 	['H', `Descripción :`],	
 	['P', `Tomados de las manos, uno frente al otro, las personas se mueven armoniosamente, siguiendo la melodía de la música. En este ejercicio es importante la interacción afectiva con el otro. Los ojos pueden estar abiertos o cerrados, según la intensidad de la emoción.`],	
