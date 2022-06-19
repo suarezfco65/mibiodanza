@@ -7466,6 +7466,7 @@ var arrDocumento = [
 	['C',	`BA56-17 Preto, Con Preta - Jorge Aragão`],
 	['C',	`BA35-09 I want to break free - Queen`],
 	['C',	`BA56-20 Hey soul sista - Train`],
+	['C',	`BA15-16 Tigere Rag - Jazz - Dixie`],
 
 	['T',`VIDA Y PLENITUD`],	
 	['D',   `CAMINAR POR LA LÍNEA IMAGINARIA`],
