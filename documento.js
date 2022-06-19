@@ -1181,6 +1181,8 @@ var arrDocumento = [
 	['C', `IBF06-09     Who's Sorry Now     The New Orleans Banjo Band     4:22`],	
 	['C', `BA08-01      Meia Lua Inteira - Caetano Veloso`],	
 	['OBS', `     Sugerida por el elnco de Buenos Aires - Caminar con Alegria        `],	
+	['C', `BA60-06      I'm yours - Jason Mraz`],
+	['C', `BA15-14 Pale blue eyes - Marisa Monte`],	
 	['D', `DANZA EN FEEDBACK EN PARES`],	
 	['H', `Descripción :`],	
 	['P', `Dos participantes inician la danza en la posición convencional, o sea uno de los dos toma con la mano derecha la izquierda del compañero, y apoya la propia mano izquierda alrededor de la cintura de este último; al contrario, el compañero apoya la otra mano en la espalda del primero.`],	
