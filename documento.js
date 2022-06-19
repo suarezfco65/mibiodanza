@@ -495,6 +495,8 @@ var arrDocumento = [
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Tribal`],	
 	['C', `BA05-07       Queixa - Caetano Veloso`],	
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda de Activación`],	
+	['C', `BA54-13       Oh happy day - Nina Simone`],	
+	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda de Iniciación`],	
 	['D', `RONDA SINUOSA`],	
 	['P', `La Ronda Sinuosa puede adquirir características distintas dependiendo de la música. Con una música lenta y dulce (por ejemplo: <i>Tema de amor para Gabriela</i> interpretada por Gal Costa y Tom Jobim u <i>Ordinary fool</i> por Paul Williams) se da la oportunidad a las personas de realizar un contacto y una vinculación mayores, por eso hay que proponerla en grupos de profundización. En cambio, esta misma Ronda, con una música alegre y euforizante (como <i>Aquarela Brasileira</i> interpretada por Emilio Santiago), es útil especialmente para los cursos de inicio; la música más activa reduce las posibilidades de contacto, de esta manera el alumno nuevo no se siente cohibido, sino más libre y al mismo tiempo en conexión con sus compañeros.`],	
 	['P', `La Ronda Sinuosa puede proponerse como segundo ejercicio después de la Ronda de Iniciación.`],	
