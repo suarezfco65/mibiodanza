@@ -489,8 +489,6 @@ var arrDocumento = [
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Inicial`],	
 	['C', `BA73-16       Ciranda - Marcio Faracao`],	
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Inicial Alegre`],	
-	['C', `BA73-16       Ciranda - Marcio Faracao`],	
-	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Inicial Alegre`],	
 	['C', `BA25-05       Sensenina - Mother Africa`],	
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Tribal`],	
 	['C', `BA05-07       Queixa - Caetano Veloso`],	
