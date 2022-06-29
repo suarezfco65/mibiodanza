@@ -7483,6 +7483,12 @@ var arrDocumento = [
 	['C',	`BA56-20 Hey soul sista - Train`],
 	['C',	`BA15-16 Tigere Rag - Jazz - Dixie`],
 	['C',	`BA02-01 Don't get around - Jazz`],
+	['D',   `DANZA DE LEVEDAD`],	
+	['H',	`Línea de Vivencia`],
+	['P',	`Vitalidad y Creatividad`],	
+	['H',	`Música :`],
+	['C',	`BA32-11 China Roses - Enya`],
+	['C',	`BA45-09 Filora´s Secreta - Enya`],
 
 	['T',`VIDA Y PLENITUD`],	
 	['D',   `CAMINAR POR LA LÍNEA IMAGINARIA`],
