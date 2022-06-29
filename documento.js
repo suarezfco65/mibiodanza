@@ -785,6 +785,8 @@ var arrDocumento = [
 	['OBS', `     Sugerida por elenco Buenos Aires para una Ronda Tribal de Activación`],	
 	['C', `BA78-05       Cancion de Biodanza - Canción de Biodanza`],	
 	['OBS', `     Sugerida por elenco Buenos Aires para Caminar Ronda Activa`],	
+	['C', `SC13-17       Reach - Gloria Stefan`],	
+	['OBS', `     Sugerida por elenco Sergio Cruz para Ronda de Celebración Final`],	
 	['T', `LA MARCHA`],	
 	['P', `La rehabilitación del hombre "normal" debería comenzar con el aprendizaje de la marcha.`],	
 	['P', `La marcha es la expresión más evidente y más clara de la actitud de un ser humano frente a la vida.`],	
