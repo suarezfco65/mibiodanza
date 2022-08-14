@@ -890,6 +890,7 @@ var arrDocumento = [
 	['H', `Música :`],	
 	['C', `IBF19-14 This Girl's In Love With You     Fitzgerald, Ella     4:27`],	
 	['C', `SC02-09     Canto para Senegal - Banda Reflexu's`],	
+	['C', `BA41-01     Canto para Senegal - Banda Reflexu's`],	
 	['OBS', `     Sugerida por Sergio Cruz para Marcha Ritmica Sinuosa.`],	
 	['D', `MARCHA ALEGRE`],	
 	['H', `Descripción :`],	
