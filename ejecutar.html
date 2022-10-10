@@ -624,7 +624,24 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         otext.select();
         document.execCommand("copy");
         document.body.removeChild(otext);
-        alert('Copiado el texto, con el formato para el WhatsApp')        
+        alert('Copiado el texto, con el formato para el WhatsApp');
+	var settings = {
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "https://api.ultramsg.com/instance19767/messages/chat",
+	  "method": "POST",
+	  "headers": {},
+	  "data": {
+	    "token": "dw0hj792zb1xaapv",
+	    "to": "+584120902814",
+	    "body": strMensaje,
+	    "priority": "1",
+	    "referenceId": ""
+	  }
+	}
+	$.ajax(settings).done(function (response) {
+	  console.log(response);
+	});
     }
 
     $scope.editarSesion =   function    ()  {
