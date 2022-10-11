@@ -7507,6 +7507,7 @@ var arrDocumento = [
 	['C',	`BA56-20 Hey soul sista - Train`],
 	['C',	`BA15-16 Tigere Rag - Jazz - Dixie`],
 	['C',	`BA02-01 Don't get around - Jazz`],
+	['C',	`BA56-16 Toda Menina Baiana - Gilberto Gil`],
 	['D',   `DANZA DE LEVEDAD`],	
 	['H',	`Línea de Vivencia`],
 	['P',	`Vitalidad y Creatividad`],	
