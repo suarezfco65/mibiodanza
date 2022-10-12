@@ -634,11 +634,12 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
 	  "data": {
 	    "token": "dw0hj792zb1xaapv",
 	    "to": "+584120902814",
-	    "body": strMensaje,
+	    "body": "",
 	    "priority": "1",
 	    "referenceId": ""
 	  }
 	}
+	settings.data.body = strMensaje;
 	$.ajax(settings).done(function (response) {
 	  console.log(response);
 	});
