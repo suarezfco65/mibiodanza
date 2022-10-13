@@ -625,26 +625,9 @@ angular.module('myApp', []).controller('sesionCrtl', function($scope) {
         document.execCommand("copy");
         document.body.removeChild(otext);
         alert('Copiado el texto, con el formato para el WhatsApp+');
-	var settings = {
-	  "async": true,
-	  "crossDomain": true,
-	  "url": "https://api.ultramsg.com/instance19767/messages/chat",
-	  "method": "POST",
-	  "headers": {},
-	  "data": {
-	    "token": "dw0hj792zb1xaapv",
-	    "to": "+584120902814",
-	    "body": "La API de WhatsApp en UltraMsg.com funciona bien",
-	    "priority": "1",
-	    "referenceId": ""
-	  }
-	}
-	settings.data.body = strMensaje;
-	$.ajax(settings).done(function (response) {
-	  console.log(response);
-	});
+	enviarMensajeWS('+584265138216','v3eigq8fam0kl7gk','instance20086',strMensaje);
     }
-
+    
     $scope.editarSesion =   function    ()  {
         var html = 
 `<!DOCTYPE html>
@@ -780,6 +763,25 @@ document.body.addEventListener('drop',drop,false);
 </html>
 <script src="amoBiodanzaAudio.js"></script>
 <script>
+function enviarMensajeWS	(cel, token, instancia, msj)	{
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "https://api.ultramsg.com/"+instancia+"/messages/chat",
+		"method": "POST",
+		"headers": {},
+		"data":	{
+			"token": token,
+			"to": cel,
+			"body": msj,
+			"priority": "1",
+			"referenceId": ""
+		}
+	}
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+}
         /*
         prueba.desde    = 0;
         prueba.cantidad = 0;
