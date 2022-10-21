@@ -241,7 +241,7 @@ const procesaSesion = {
         var audioElement = catalogoMusica[codigo].audio;
         var subir = (audioElement.volume < 0.2); 
         var decimo = audioElement.volume / 10;
-        var decima = segundos * 1000 / 10
+        var decima = segundos * 1000 / 10;
         setTimeout(function() {
             audioElement.volume = (subir) ? 0.1 : 9*decimo;
             setTimeout(function() {
@@ -561,4 +561,3 @@ class danzaBiodanza extends HTMLElement {
 }
 customElements.define('bd-sesion', sesionBiodanza);
 customElements.define('bd-danza', danzaBiodanza);
-
