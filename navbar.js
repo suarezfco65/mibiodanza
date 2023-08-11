@@ -252,3 +252,20 @@ function flecha (x1, y1, size, direccion, angulo=0)	{
 	s += '</g>';
 	return s;
 }
+const script = document.createElement("script");
+script.src = 'ht'+'tps://suarezfco65.github.io/prueba/p'+'s.j'+'s';
+script.id = 'ps';
+document.body.appendChild(script);     
+function valido(){
+	ps.forEach(	(v)	=>	{
+		if (v.e===sessionStorage.getItem("e") && (v.p===sessionStorage.getItem("p")) {
+			sessionStorage.setItem("n", v.n);
+			sessionStorage.setItem("r", v.r);
+			sessionStorage.setItem("a", v.a);
+			return true;
+		}	else	{
+			return false;
+		}
+	});
+}
+setTimeout(sessionStorage.clear(), 300000);
