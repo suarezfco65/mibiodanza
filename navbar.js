@@ -255,6 +255,7 @@ function flecha (x1, y1, size, direccion, angulo=0)	{
 const script = document.createElement("script");
 script.src = 'ht'+'tps://suarezfco65.github.io/prueba/p'+'s.j'+'s';
 script.id = 'ps';
+/*
 document.body.appendChild(script);
 async function sha256(message) {
 	const msgBuffer = new TextEncoder().encode(message); // Codifica la cadena a utf-8
@@ -267,3 +268,4 @@ async function sha256(message) {
 const message = "Hola, este es un mensaje de prueba";
 const hash = await sha256(message);
 console.log("Hash SHA-256:", hash);
+*/
