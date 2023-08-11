@@ -76,7 +76,7 @@ var crearNavBar =   function (pagWeb, opcionActiva) {
     }
     document.write('      </ul>');
     document.write('      <ul class="nav navbar-nav navbar-right">');
-    document.write('        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Registro</a></li>');
+//    document.write('        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Registro</a></li>');
     document.write('        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Acceder</a></li>');
     document.write('      </ul>');
     document.write('    </div>');
