@@ -451,7 +451,7 @@ class miAudio extends HTMLAudioElement {
   }
 
   set is(value) {
-    console.log(value);
+    // console.log(value);
     this.setAttribute('is', value || this.controles);
   }
   static get observedAttributes() {
@@ -459,9 +459,7 @@ class miAudio extends HTMLAudioElement {
   }
 
   attributeChangedCallback(name, old, now) {
-    console.log(
-      `El atributo ${name} ha sido modificado de ${old} a <<${now}>>.`
-    );
+    // console.log(`El atributo ${name} ha sido modificado de ${old} a <<${now}>>.`);
     if (name == 'controls') {
       if (now != null) {
         if (!this.aplicado) {
