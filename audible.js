@@ -347,7 +347,7 @@ class audible extends HTMLElement {
             '<source type="' +
             oMusica.archivos[i].tipo +
             '" src="' +
-            'https://suarezfco65.github.io/mibiodanza/' +
+            'https://suarezfco65.github.io/' +
             oMusica.archivos[i].archivo +
             '"></source>';
         oAudio.innerHTML = sources;
