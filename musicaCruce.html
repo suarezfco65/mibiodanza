@@ -31,7 +31,9 @@
       }
     </style>
 </head>
+<!--
 <script>
+
 var generateData = function(){
     var resultado = [];
     var id =0;
@@ -93,7 +95,7 @@ var generateData = function(){
     </div>
 	<div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-<!--		<button class="btn btn-primary">Save changes</button> -->
+
 	</div>
 </div>
 </div>
@@ -119,13 +121,9 @@ var generateData = function(){
         </tr>
         <tr>
           <th>&nbsp;</th>
-          <!--        <th class="id"><a ng-click="sort_by('id')">Id <i class="fa fa-sort"></i></a></th> -->
         <th class="musica"><a ng-click="sort_by('musica')">Música <i class="fa fa-sort"></i></a></th>
         <th class="danza"><a ng-click="sort_by('danza')">Danza<i class="fa fa-sort"></i></a></th>
         <th class="lineaVivencia"><a ng-click="sort_by('lineaVivencia')">Línea de Vivencia<i class="fa fa-sort"></i></a></th>
-<!--        <th class="evolucion"><a ng-click="sort_by('evolucion')">Link <i class="fa fa-sort"></i></a></th>
-        <th class="field4"><a ng-click="sort_by('field4')">Field 4 <i class="fa fa-sort"></i></a></th>
-        <th class="field5"><a ng-click="sort_by('field5')">Field 5 <i class="fa fa-sort"></i></a></th> -->
       </tr>
       </thead>
       <tfoot>
@@ -136,11 +134,6 @@ var generateData = function(){
           <td>{{item.musica}}</td>
           <td>{{item.danza}}</td>
           <td>{{item.lineaVivencia}}</td>
-<!--          <td><a href="#">{{item.field3}}</a></td>
-          <td>{{item.field4}}</td>
-          <td>{{item.field5}}</td>
-          <td><a href="#" ng-click="deleteItem($index)">x</a></td> -->
-<!--            <td><a href="#myModal" role="button" class="btn btn-success btn-xs" data-toggle="modal" ng-click="mostrarItem(item.id)"><i class="fa fa-book"></i></a></td> -->
         </tr>
       </tbody>
     </table>
@@ -295,3 +288,14 @@ function initApp($scope, $filter) {
 initApp.$inject = ['$scope', '$filter'];
 
 </script>
+-->
+<body>
+  <script>crearNavBar('Yo<span style="color:red">❤</span>Biodanza', 'Sesión')</script>
+  <div class="musicaContainer"></div>
+  <script>
+    $(document).ready(function () {
+      $('.musicaContainer').load('https://ilovebiodanza.github.io/catalogo/musicaDanza.html?tema=cosmo');
+    });
+  </script>
+</body>
+</html>  
