@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Música de Biodanza</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <script src="https://suarezfco65.github.io/amobiodanza/catalogoMusica.js"></script>
+    <style>
+        .autor      {color: crimson; font-weight: bold}
+        .cancion    {color: darkslateblue; font-weight: bold}
+        .desc       {color: green; font-weight: bold}
+        .consigna   {color: orangered}
+    </style>
+    <script>
+        function buscarCancion(form)    {
+            const musica = catalogoMusica[form.elements.namedItem("codigo").value.toUpperCase()]; 
+            if (musica) {
+            obj = document.getElementById("audio");
+                var sources= "";
+                for (var i = 0; i<musica.archivos.length; i++)	
+                    sources += '<source type="'+musica.archivos[i].tipo+'" src="'+musica.archivos[i].archivo+'"></source>';
+                obj.innerHTML = sources;
+                obj.load();
+                obj.play();
+                document.getElementById('dl').href=musica.archivos[0].archivo;
+                document.getElementById('dl').download=form.elements.namedItem("codigo").value.toUpperCase()+' - '+musica.autor+ " - "+musica.nombre;
+                document.getElementById('dl').innerHTML=`<span class="glyphicon glyphicon-download-alt"></span> Descargar`;
+                document.getElementById('nombre').innerHTML=musica.nombre;
+                document.getElementById('autor').innerHTML=musica.autor;
+                document.getElementById('lineaVivencia').innerHTML=musica.lineaVivencia;
+                document.getElementById('danzas').innerHTML='<li>'+musica.danzas.join('</li><li>')+'</li>';
+            } else {
+                document.getElementById('nombre').innerHTML='';
+                document.getElementById('autor').innerHTML='Código no encontrado';
+                document.getElementById('lineaVivencia').innerHTML='';
+                document.getElementById('danzas').innerHTML='';
+            }
+        }
+        function checkAppStatus() {
+    const currentDate = new Date();
+    const endDate = new Date('2026-04-01');
+
+    if (currentDate < endDate) {
+        // Mostrar ventana modal
+        const modalContent = `
+            <div style="padding: 20px; text-align: center;">
+                <h2>Atención</h2>
+                <p>Esta aplicación dejará de funcionar a partir del 01-Abril-2025.</p>
+                <p>Visita la <a href="https://ilovebiodanza.top" target="_blank">Nueva versión de Yo Amo Biodanza</a></p>
+                <button onclick="closeModal()">Cerrar</button>
+            </div>
+        `;
+        showModal(modalContent);
+    } else {
+        // Mostrar alerta y redireccionar
+        alert("La aplicación ha dejado de funcionar.");
+        window.location.href = "https://ilovebiodanza.top";
+    }
+}
+
+function showModal(content) {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = '#FFFFFF';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.innerHTML = content;
+
+    document.body.appendChild(modal);
+}
+
+function closeModal() {
+    const modal = document.querySelector('div[style*="position: fixed"]');
+    if (modal) {
+        document.body.removeChild(modal);
+    }
+}
+
+// Llamar a la función al cargar la página
+window.onload = checkAppStatus;
+
+    </script>
+    <style>
+        .container-audio {
+            width: 100%;
+            height: auto;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #eee;
+            color: #444;
+            margin: 0px auto;
+            overflow: hidden;
+        }
+        audio {
+            width:100%;
+        }
+        audio:nth-child(2), audio:nth-child(4), audio:nth-child(6) {
+            margin: 0;
+        }
+        .container-audio .colum1 {
+            width: 23px;
+            height: 5em;
+            border-radius: 5px;
+            margin: 0 0px 0 0;
+            display: inline-block;
+            position: relative;
+        }
+        .container-audio .colum1:last-child {
+            margin: 0;
+        }
+        .container-audio .colum1 .row {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            background: -webkit-gradient(linear, up, from(#7700aa), to(#8800ff));
+            background: linear-gradient(to up, #7700aa, #8800ff);
+            position: absolute;
+            -webkit-animation: Rofa 10s infinite ease-in-out;
+            animation: Rofa 10s infinite ease-in-out;
+            bottom: 0;
+        } 
+        .lb {
+            position: fixed;
+            width: 100%;
+            left:0px;
+            bottom:0px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <h2><img src="logo300x291.png" height="50" width="50"> Música de Biodanza</h2>
+
+    <ul>
+        <li>International Biocentric Foundation <b>IBF</b> (Ej. IBF01-11) e <b>IBFC</b> (Ej. IBFC20-01) </li>
+        <li>Sergio Cruz <b>SC</b> (Ej. SC01-05) </li>
+        <li>Buenos Aires <b>BA</b> (Ej. BA01-05)</li>
+        <li>Nuevo Elenco <b>NE</b> (Ej. NE01-03)</li>
+        <li>Juegos Expresivos <b>JE</b> (Ej. JE03-04)</li>
+    </ul>
+    <form>
+        <div class="form-group">
+          <label for="codigo">Código de la Música:</label>
+          <input type="text" class="form-control" name="codigo" id="codigo">
+        </div>
+        <button type="button" class="btn" onclick="buscarCancion(this.form)">Buscar</button>
+    </form>
+    <br>
+    <div><!-- <a id="dl" href="#"  download="apple"><span class="glyphicon glyphicon-download-alt"></span></a>&nbsp; -->
+        <span id ="nombre" style="color:blue"></span><br>
+        <span id ="autor" style="color:red"></span><br>
+        <span id="lineaVivencia" style="color:green"></span><br>
+        <ul id="danzas" style="color:purple"></ul>
+        <a id="dl" href="#" class="btn btn-default btn-sm" download="#"></a>
+    </div>
+    <div class="container-audio">
+        <audio id="audio" controls>
+        </audio>
+        <span  onclick="fade('audio',5)" style="cursor: crosshair;">&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+</body>
+</html>
